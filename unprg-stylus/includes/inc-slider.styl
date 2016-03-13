@@ -1,0 +1,47 @@
+
+@import "nib"
+
+.unprg-slider
+	font-size: 10px
+	
+	@media screen and (max-width: 720px)
+		font-size: 9px
+	@media screen and (max-width: 620px)
+		font-size: 8px
+	@media screen and (max-width: 520px)
+		font-size: 7px
+	@media screen and (max-width: 420px)
+		font-size: 6.5px
+	
+	.item
+		box-sizing: border-box
+		position: relative
+		border: 1px solid #444
+
+		img
+			display: block
+			height: auto
+			width: 100%
+		p
+			background-color: rgba(0,0,0,0.6)
+			color: white;
+			position: absolute
+			
+			a
+				cursor: pointer
+				color: white
+				text-decoration: none
+			
+		.item-titulo
+			font-size: 2em
+			font-weight: bold
+			left: 0
+			padding: 0.4em 1em
+			top: 0
+		
+		.item-descripcion
+			bottom: 0px
+			font-size: 1.6em
+			left: 0px
+			padding: 0.5em 1.25em
+			right: 0px

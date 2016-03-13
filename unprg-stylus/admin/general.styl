@@ -1,0 +1,158 @@
+@import "nib"
+@import "../includes/inc-config.styl"
+@import "inc_navAdmin.styl"
+
+section
+	margin: 40px auto
+	
+	.wraper
+		position: relative
+
+	.admin-col
+		box-sizing: border-box
+		float: left
+		
+	.admin-nav
+		width: 24%
+		margin-bottom: 40px
+		
+	.admin-cuerpo
+		width: 76%
+		padding-left: 3%
+		font-size: 16px
+		
+		.encabezado
+			border-bottom: 1px solid black
+			color: black
+			font-size: 25px
+			font-weight: bold
+			display: block
+			margin-bottom: 0 0 16px 0
+			padding-bottom: 0 0 10px 0
+			
+	@media screen and (max-width: 870px)
+		.admin-col
+			float: none
+		.admin-nav
+			width: auto
+		.admin-cuerpo
+			width: auto
+			padding-left: 0px
+			
+
+	form
+		display: block
+		margin: 24px 0px 24px 30px
+		
+		@media screen and (max-width: 870px)
+			margin: 24px 5px
+		
+		hr
+			margin: 24px 0px
+			border: none
+			height: 1px
+			box-sizing: border-box
+			background-color: rgb(160,160,160)
+			
+		& > div
+			margin: 16px 0px
+			line-height: 30px
+			
+			span
+				display: inline-block
+				min-width: 220px
+				vertical-align: middle
+				line-height: 30px
+				@media screen and (max-width: 870px)
+					font-weight: bold
+			
+			input[type=checkbox]
+				display: inline-block
+				height: 24px
+				width: 24px
+				font-size: 24px
+				margin-bottom: 1px
+				vertical-align: middle
+				
+			select, input[type=text], input[type=file]
+				display: inline-block
+				box-sizing: border-box
+				height: 28px
+				font-size: 16px
+				padding: 0px 5px
+				line-height: 12px
+				min-width: 320px
+				max-width: 100%
+			
+			input[type=file]
+				padding-left: 0px
+				
+
+		.formPie
+			margin-top: 24px
+			padding-top: 24px
+			border-top: 1px solid rgb(160,160,160)
+			
+			.info
+				display: inline-block
+				margin-bottom: 10px
+				font-weight: bold
+				color: ccAzul
+				font-size: 18px
+				
+			.boton
+				float: right
+				*
+					font-size: 18px
+					padding: 4px 40px
+					
+					
+.unprg-info
+	position: fixed
+	z-index: 100
+	left: 0px
+	right: 0px
+	bottom: 16px
+	
+	.wraper
+		text-align: center
+		margin-bottom: -156px
+		opacity: 0
+	
+	.info
+		background-color: rgba(0,0,0, 0.9)
+		border: 1px solid ccAzul
+		border-radius: 3px
+		box-shadow: 2px 3px 8px rgba(0,0,0, 0.8)
+		display: inline-block
+		position: relative
+		
+		.icon-cross
+			background-color: ccAzul
+			border-radius: 20px
+			color: white
+			cursor: pointer
+			display: inline-block
+			font-size: 15px
+			padding: 5px
+			right: -7px
+			top: -7px
+			position: absolute
+		
+		.mensaje
+			box-sizing: border-box
+			color: white
+			font-size: 16px
+			max-width: 600px
+			max-height: 140px
+			padding: 10px 16px
+			overflow: auto
+	
+	.visible
+		margin-bottom: 0px
+		opacity: 1
+		
+	.error
+		border: 1px solid red
+		.icon-cross
+			background-color: red

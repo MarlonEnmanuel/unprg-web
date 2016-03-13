@@ -1,0 +1,44 @@
+
+@import "nib"
+@import "../includes/inc-config.styl"
+
+section
+	margin: 40px 0px
+	
+	.wraper
+		max-width: 600px
+		
+	h1
+		text-align: center
+		font-size: 22px
+	h2
+		color: ccAzul
+		text-align: center
+	
+	form
+		display: block
+		background-color: ccAzul
+		border-radius: 10px
+		padding: 26px
+		font-size: 16px
+		max-width: 400px
+		margin: 20px auto
+		box-shadow: 1px 1px 3px black
+		
+		input
+			box-sizing: border-box
+			display: block
+			padding: 4px 6px
+			width: 100%
+		
+		input[type=text],input[type=password],input[type=email]
+			background-color: white
+			color: black
+			margin-bottom: 10px
+			&:focus
+				outline: none
+				border: 2px solid black
+				border-color: ccAmarillo
+			
+		input[type=submit]
+			font-weight: bold
