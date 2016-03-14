@@ -1,35 +1,36 @@
 <?php
-	require_once $_SERVER['DOCUMENT_ROOT'].'/16/backend/config.php';
+	require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
+
+	$pagina = array(
+		//Para ver el detalle de cada variable, ver el método getMetas() del archivo config.php
+		//Las siguientes variables son obigatorias
+		"url" 			=> config::getAbsPath('/autoridades.php'),
+		"type" 			=> "place",
+		"title" 		=> "UNPRG | Autoridades",
+		"description" 	=> "Autoridades de la nueva gestión de la UNPRG",
+		"image" 		=> config::$path_socialImage
+	);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title>UNPRG | Estatuto</title>
-	<meta name="description" content="UNPRG Estatuto">
-	<link rel="shortcut icon" href="<?= config::getPath(true,'/frontend/img/favicon.ico') ?>" type="image/x-icon">
+	<!-- Impresión de etiquetas META TITLE y DESCRIPTION-->
+		<?= config::getMetas($pagina) ?>
 
-	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<!-- Importación de Estilos -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
+		<link rel="stylesheet" href="/frontend/owl-carousel/owl.carousel.css">
 
-	<meta property="og:image"		content="<?= config::getPath(true,'frontend/img/unprg-social.jpg') ?>" />
-	<meta property="og:title"   	content="UNPRG | Estatuto" />
-	<meta property="og:description"	content="Somos una universidad pública que crea, imparte, difunde conocimientos científicos, tecnológicos y humanísticos; forma científicos y profesionales innovadores, éticos, críticos y competitivos, que participan activamente en el desarrollo integral y sustentable de la sociedad." />
-	<meta property="og:url" 		content="http://unprg.edu.pe/" />
-	<meta property="og:locale" 		content="es_ES" />
-	<meta property="og:site_name" 	content="UNPRG" />
+		<!-- Estilos creados -->
+		<link rel="stylesheet" href="/frontend/css/general.css">
+		<link rel="stylesheet" href="/frontend/css/autoridades.css">
 
-	<!-- Importación de Librerías -->
-		<?= config::getScript(config::getPath(false,'/frontend/libs/jquery.js')) ?>
-		<?= config::getLink('https://fonts.googleapis.com/css?family=Titillium+Web') ?>
+	<!-- Importación de Scripts -->
+		<script src="/frontend/js/jquery.js"></script>
+		<script src="/frontend/owl-carousel/owl.carousel.min.js"></script>
 
-	<!-- Importación de Slider -->
-		<?= config::getLink(config::getPath(false,'/frontend/owl-carousel/owl.carousel.css')) ?>
-		<?= config::getScript(config::getPath(false,'/frontend/owl-carousel/owl.carousel.min.js')) ?>
-
-	<!-- Importación de archivos propios -->
-		<?= config::getLink(config::getPath(false,'/frontend/css/general.css')) ?>
-		<?= config::getLink(config::getPath(false,'/frontend/css/autoridades.css')) ?>
-
+		<!-- Scripts creados -->
 		<script type="text/javascript">
 			window.unprg = {};
 			$(document).ready(function(){
@@ -48,10 +49,11 @@
 				});
 			});
 		</script>
+	<!-- Fin de la importación -->
 </head>
 <body>
-	<?php require_once config::getRequirePath('includes/header.php'); ?>
-	<?php require_once config::getRequirePath('includes/nav.php'); ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'; ?>
 	
 	<section>
 		<div class="wraper">
@@ -121,12 +123,12 @@
 				</div>
 				<div class="clean"></div>
 				<div class="galeria owl-carousel owl-theme">
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/agricola.jpg') ?>" alt=""></div>
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/facfym.jpg') ?>" alt=""></div>
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/fachse.jpg') ?>" alt=""></div>
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/ficsa.jpg') ?>" alt=""></div>
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/mecanicaElectrica.jpg') ?>" alt=""></div>
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/zootecnia.jpg') ?>" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/agricola.jpg" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/facfym.jpg" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/fachse.jpg" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/ficsa.jpg" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/mecanicaElectrica.jpg" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/zootecnia.jpg" alt=""></div>
 				</div>
 				<div class="clean"></div>
 			</div>
@@ -250,6 +252,6 @@
 		</div>
 	</section>
 
-	<?php require_once config::getRequirePath('includes/footer.php'); ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'; ?>
 </body>
 </html>

@@ -1,21 +1,28 @@
 <div class="panel-elem">
 	<p class="titulo">Proceso de admisión 2016 - Inscripciones al Examen de Admisión</p>
 	<a href="http://admision.unprg.edu.pe/inscripcion_principal/">
-		<img class="iconImg" src="<?= config::getPath(false,'/frontend/img/enlaces/prospecto2016_logo.jpg')?>" alt="Sistema Académico">
+		<img class="iconImg" src="/frontend/img/enlaces/prospecto2016_logo.jpg" alt="Sistema Académico">
+	</a>
+</div>
+
+<div class="panel-elem">
+	<p class="titulo">Sistema de Gestión de Revistas Científicas UNPRG</p>
+	<a href="http://revistas.unprg.edu.pe/openjournal/">
+		<img class="iconImg" src="/frontend/img/enlaces/revista_logo.jpg" alt="Sistema Académico">
 	</a>
 </div>
 
 <div class="panel-elem">
 	<p class="titulo">Estatuto UNPRG</p>
-	<a href="<?= config::getPath(false, '/estatuto.php') ?>">
+	<a target="_blank" href="/documentos/Estatuto-UNPRG">
 		<span class="icono icon-file-text2" ></span>
 	</a>
 </div>
 
 <div class="panel-elem">
 	<p class="titulo">Sistema Académico</p>
-	<a href="<?= config::getPath(true,'sistemaAcademico.php') ?>">
-		<img class="iconImg" src="<?= config::getPath(false,'/frontend/img/enlaces/sistemaaca.jpeg')?>" alt="Sistema Académico">
+	<a href="/sistemaAcademico.php">
+		<img class="iconImg" src="/frontend/img/enlaces/sistemaaca.jpeg" alt="Sistema Académico">
 	</a>
 	<div class="clean"></div>
 </div>
@@ -23,7 +30,7 @@
 <div class="panel-elem">
 	<p class="titulo">Centro PRE</p>
 	<a target="_blank" href="http://unprg.edu.pe/resexm/index.html">
-		<img class="img" src="<?= config::getPath(false,'/frontend/img/enlaces/centropre.jpg') ?>" alt="Centro Pre">
+		<img class="img" src="/frontend/img/enlaces/centropre.jpg" alt="Centro Pre">
 	</a>
 	<div class="clean"></div>
 </div>
@@ -32,7 +39,7 @@
 	<p class="titulo">Videos</p>
 	<div class="video" data-link='https://www.youtube.com/watch?v=lWDl8S7nrv8'>
 		<span class="icono icon-youtube"></span>
-		<img class="img" src="<?= config::getPath(false,'/frontend/img/videos/admision2015II.jpg') ?>" alt="Admision 2015-II">
+		<img class="img" src="/frontend/img/videos/admision2015II.jpg" alt="Admision 2015-II">
 	</div>
 	<div class="clean"></div>
 </div>

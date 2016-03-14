@@ -4,10 +4,10 @@
 		<div class="footer-col">
 			<p class="titulo">Enlaces</p>
 			<ul>
-				<li><a href="<?= config::getPath(true,'sistemaAcademico.php') ?>">Sistema Académico</a></li>
-				<li><a href="<?= config::getPath(false, '/estatuto.php') ?>">Estatuto Universitario</a></li>
+				<li><a href="/sistemaAcademico.php">Sistema Académico</a></li>
+				<li><a href="/documentos/Estatuto-UNPRG.pdf" target="_blank">Estatuto Universitario</a></li>
 				<li><a href="http://cpu.unprg.edu.pe/cpu/index.php" target="_blank">Centro Pre</a></li>
-				<li><a href="<?= config::getPath(true,'autoridades.php') ?>">Autoridades</a></li>
+				<li><a href="/autoridades.php">Autoridades</a></li>
 				<li><a href="#">Radio Universitaria</a></li>
 			</ul>
 			<div class="clean"></div>

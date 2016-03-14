@@ -4,11 +4,11 @@
 	$pagina = array(
 		//Para ver el detalle de cada variable, ver el método getMetas() del archivo config.php
 		//Las siguientes variables son obigatorias
-		"url" 			=> "http://www.unprg.edu.pe/",
+		"url" 			=> config::getAbsPath('/'),
 		"type" 			=> "place",
 		"title" 		=> "UNPRG | Universidad Nacional Pedro Ruiz Gallo",
 		"description" 	=> "Somos una universidad pública que crea, imparte, difunde conocimientos científicos, tecnológicos y humanísticos; forma científicos y profesionales innovadores, éticos, críticos y competitivos, que participan activamente en el desarrollo integral y sustentable de la sociedad.",
-		"image" => ""
+		"image" 		=> config::$path_socialImage
 	);
 
 	header( "Expires: Mon, 20 Dec 1998 01:00:00 GMT" );
@@ -19,7 +19,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<!-- Impresión de etiquetas META -->
+	<!-- Impresión de etiquetas META TITLE y DESCRIPTION-->
 		<?= config::getMetas($pagina) ?>
 
 	<!-- Importación de Estilos -->
@@ -144,12 +144,12 @@
 				</div>
 				<div class="clean"></div>
 				<div class="galeria owl-carousel owl-theme">
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/agricola.jpg') ?>" alt=""></div>
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/facfym.jpg') ?>" alt=""></div>
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/fachse.jpg') ?>" alt=""></div>
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/ficsa.jpg') ?>" alt=""></div>
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/mecanicaElectrica.jpg') ?>" alt=""></div>
-					<div class="item"><img src="<?= config::getPath(false,'/frontend/img/autoridades/zootecnia.jpg') ?>" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/agricola.jpg" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/facfym.jpg" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/fachse.jpg" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/ficsa.jpg" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/mecanicaElectrica.jpg" alt=""></div>
+					<div class="item"><img src="/frontend/img/autoridades/zootecnia.jpg" alt=""></div>
 				</div>
 				<div class="clean"></div>
 			</div>

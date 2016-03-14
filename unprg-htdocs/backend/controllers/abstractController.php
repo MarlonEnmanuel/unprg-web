@@ -115,116 +115,95 @@ class abstractController {
 	*
 	* @return array devuele un array con llave input y valor el valor del input, o false en caso de error
 	*/
-	public final function getFilterInputs($method, $inputData){
+	public final function getFilterInputs($method, $ipData){
 		$method = strtolower($method);
 		if($method==='post'){
 			$method = INPUT_POST;
 		}elseif($method==='get') {
 			$method = INPUT_GET;
 		}else{
-			return null;
+			return false;
 		}
-		$ip = array();
-		foreach ($inputData as $name => $filter) {
-			if( !is_array($filter) && !is_string($filter) ) return null;
+		$ips = array();
+		foreach ($ipData as $name => $options) {
+			if( !isset($options['type']) ) return false;
 
-			if(is_string($filter)) $filter = explode(',', $filter);
-			$val; $type = strtolower(trim($filter[0]));
+			$val; $type = strtolower(trim($options['type']));
 
 			if($type==='string'){
-				if( isset($filter[1]) ){
-					if(!is_int($filter[1])) return null;
-				}else{
-					$filter[1] = '-';
-				}
-				if( isset($filter[2]) ){
-					if(!is_int($filter[2])) return null;
-				}else{
-					$filter[2] = '-';
-				}
-				if( isset($filter[3]) ){
-					if( $filter[3]!==true ) $filter[3] = false;
-				}else{
-					$filter[3] = false;
-				}
-				$val = filter_input($method, $name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW);
-				$msj = 'Texto inválido: '.$name.'<br>Min: '.$filter[1].', max: '.$filter[2].' caracteres';
-				if($this->checkInputValue($val, $msj, false)===false) return false;
+				$val = $this->getInputString($method, $name, $options);
 
-				if( is_int($filter[1]) && strlen($val)<$filter[1]){
-					if($this->isAjax) $this->responder(false, $msj);
-					return false;
-				}
-				if( is_int($filter[2]) && strlen($val)>$filter[2] && $filter[3]===false ){
-					if($this->isAjax) $this->responder(false, $msj);
-					return false;
-				}
-				if( is_int($filter[2]) && strlen($val)>$filter[2] && $filter[3]===true ){
-					$val = substr($val, 0, $filter[2]);
-				}
-			}elseif($type==='int'){
-				$ops = array('options'=>array());
-				if( isset($filter[1]) ){
-					if( is_int($filter[1]) ){
-						$ops['options']['min_range'] = $filter[1];
-					}else{
-						return null;
-					}
-				}else{
-					$filter[1] = '-';
-				}
-				if( isset($filter[2]) ){
-					if( is_int($filter[2]) ){
-						$ops['options']['max_range'] = $filter[2];
-					}else{
-						return null;
-					}
-				}else{
-					$filter[2] = '-';
-				}
-				$val = filter_input($method, $name, FILTER_VALIDATE_INT, $ops);
-				$msj = 'Número inválido: '.$name.'<br>Min: '.$filter[1].', Max: '.$filter[2];
-				if($this->checkInputValue($val, $msj, false)===false) return false;
-			}elseif($type==='email'){
-				$val = filter_input($method, $name, FILTER_VALIDATE_EMAIL);
-				$msj = 'Email inválido';
-				if($this->checkInputValue($val, $msj, false)===false) return false;
-			}elseif($type==='url'){
-				$val = filter_input($method, $name, FILTER_VALIDATE_URL);
-				$msj = 'URL inválida';
-				if($this->checkInputValue($val, $msj, false)===false) return false;
-			}elseif($type==='boolean'){
-				$val = filter_input($method, $name, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-				$msj = 'Falta checkbox: '.$name;
-				if($this->checkInputValue($val, $msj, true)===false) return false;
+			}elseif ($type==='int' || $type==='integer') {
+				$val = $this->getInputInt($method, $name, $options);
+
+			}elseif ($type==='bool' || $type==='boolean') {
+				$val = $this->getInputBoolean($method, $name, $options);
+
+			}elseif ($type==='email') {
+				$val = $this->getInputEmail($method, $name);
+
+			}elseif ($type==='url') {
+				$val = $this->getInputURL($method, $name);
+
 			}else{
-				return null;
+				return false;
 			}
-			$ip[$name] = $val;
+			$ips[$name] = $val;
 		}
-		return $ip;
+		return $ips;
 	}
 
-	/**
-	* Verifica el valor de un input después del filtrado
-	*
-	* Verifica que el valor no sea null, y que no sea false si no es booleano, alerta al usuario si es ajax o retorna false, retorna true si el valor es válido.
-	* 
-	* @param $value mixin Valor a comprobar
-	* @param $msj string Mensaje en caso de invalidez
-	* @param isBoolean bool Indicar si $value es un booleano
-	* @return bool True si es válido, o false en caso contrario.
-	*/
-	private function checkInputValue($value, $msj, $isBoolean=false){
-		if( is_null($value) ){
-			if($this->isAjax) $this->responder(false, $msj);
-			return false;
+	public final function getInputBoolean($method, $name){
+		$val = filter_input($method, $name, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+		if(!isset($val)) $this->responder(false, "Chekbox ".$name.' no válido');
+		return $val;
+	}
+
+	public final function getInputInt($method, $name, $options){
+		$ops = array('options'=>array());
+		if( !isset($options['min']) ) $options['min'] = '-';
+		if( !isset($options['max']) ) $options['max'] = '-';
+		if( is_int($options['min']) ) {
+			$ops['options']['min_range'] = $options['min'];
+		}else{
+			$options['min'] = '-';
 		}
-		if(!$isBoolean && $value===false){
-			if($this->isAjax) $this->responder(false, $msj);
-			return false;
+		if( is_int($options['max'])) {
+			$ops['options']['max_range'] = $options['max'];
+		}else{
+			$options['max'] = '-';
 		}
-		return true;
+		$msj = 'Número inválido: '.$name.'<br>Min: '.$options['min'].', Max: '.$filter['max'];
+		$val = filter_input($method, $name, FILTER_VALIDATE_INT, $ops);
+		if(is_null($val) || $val===false) $this->responder(false, $msj);
+		return $val;
+	}
+
+	public final function getInputString($method, $name, $options){
+		if( !isset($options['min']) ) $options['min'] = '-';
+		if( !isset($options['max']) ) $options['max'] = '-';
+		if( !is_int($options['min']) ) $options['min'] = '-';
+		if( !is_int($options['max']) ) $options['max'] = '-';
+		$msj = 'Texto inválido: '.$name.'<br>Min: '.$options['min'].', max: '.$options['max'].' caracteres';
+		$val = filter_input($method, $name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_NO_ENCODE_QUOTES);
+		if(is_null($val) || $val===false) $this->responder(false, $msj);
+		if( is_int($options['min']) && strlen($val)<$options['min']) $this->responder(false, $msj);
+		if( is_int($options['max']) && strlen($val)>$options['max']) $this->responder(false, $msj);
+		return $val;
+	}
+
+	public final function getInputEmail($method, $name){
+		$val = filter_input($method, $name, FILTER_VALIDATE_EMAIL);
+		$msj = 'Email inválido';
+		if(is_null($val) || $val===false) $this->responder(false, $msj);
+		return $val;
+	}
+
+	public final function getInputURL($method, $name){
+		$val = filter_input($method, $name, FILTER_VALIDATE_URL);
+		$msj = 'URL inválida';
+		if(is_null($val) || $val===false) $this->responder(false, $msj);
+		return $val;
 	}
 
 	/**

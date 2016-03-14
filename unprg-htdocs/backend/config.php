@@ -16,7 +16,8 @@ class config {
 
 	/* Datos del dominio del proyecto
 	*/
-	public static $path_dom = 'http://www.unprg.edu.pe/';	// dominio del proyecto
+	public static $path_domain = 'http://www.unprg.edu.pe';	// dominio del proyecto
+	public static $path_socialImage = 'http://www.unprg.edu.pe/frontend/img/unprg-social.jpg';
 
 
 	/* Datos de conección a la BD
@@ -48,45 +49,15 @@ class config {
 	* @param $path Ruta
 	* @return Ruta relativa o absulta
 	*/
-	public static function getPath($withDom, $path){
-		$rel = false;
-		if(substr($path, 0, 1) == '/'){
-			$path = substr($path, 1);
-			$rel = true;
+	public static function getAbsPath($path){
+		if(substr($path, 0, 1) !== '/'){
+			$path = '/'.$path;
 		}
-		if($withDom===true && config::$isDeveloping===false){
-			return config::$path_dom.$path;
+		if(config::$isDeveloping===true){
+			return $path;
 		}else{
-			return (($rel)?'/':'').$path;
+			return config::$path_domain.$path;
 		}
-	}
-
-	/**
-	* Genera una ruta absoluta para importar clases o archivos, sin perder la referencia, al ser invocados desde scripts ubicados en diferentes carpetas y niveles del servidor.
-	*
-	* @return conección con la BD
-	*/
-	public static function getRequirePath($path){
-		if(substr($path, 0, 1) == '/') $path = substr($path, 1);
-		return $path = $_SERVER['DOCUMENT_ROOT'].'/'.config::$path_int.'/'.$path;
-	}
-
-	/**
-	* Genera la etiqueta html link configurada, dada una ruta. Usada solo para mayor orden en los documentos.
-	*
-	* @return string Etiqueta html link
-	*/
-	public static function getLink($path){
-		return '<link rel="stylesheet" type="text/css" href="'.$path.'">';
-	}
-
-	/**
-	* Genera la etiqueta html script configurada, dada una ruta. Usada solo para mayor orden en los documentos.
-	*
-	* @return string Etiqueta html script
-	*/
-	public static function getScript($path){
-		return '<script src="'.$path.'"></script>';
 	}
 
 	public static function getMetas($pagina){
@@ -105,7 +76,7 @@ class config {
 		$metas .= '<meta property="og:title"   		content="'.$pagina['title'].'" />';
 		//Descripción de la página
 		$metas .= '<meta property="og:description"	content="'.$pagina['description'].'" />';
-		//Imágen que represaenta a la página
+		//Imágen que representa a la página
 		$metas .= '<meta property="og:image"		content="'.$pagina['image'].'" />';
 		//Idioma de la página
 		$metas .= '<meta property="og:locale" 		content="es_ES" />';

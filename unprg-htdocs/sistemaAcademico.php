@@ -1,35 +1,38 @@
 <?php
-	require_once $_SERVER['DOCUMENT_ROOT'].'/16/backend/config.php';
+	require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
+
+	$pagina = array(
+		//Para ver el detalle de cada variable, ver el método getMetas() del archivo config.php
+		//Las siguientes variables son obigatorias
+		"url" 			=> config::getAbsPath('/sistemaAcademico.php'),
+		"type" 			=> "place",
+		"title" 		=> "UNPRG | Sistema Académico",
+		"description" 	=> "Sistema académico de la UNPRG: Actas Virtuales y OCCA",
+		"image" 		=> config::$path_socialImage
+	);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<title>UNPRG | Sistema Académico</title>
-	<meta name="description" content="UNPRG Sistema Académico">
-	<link rel="shortcut icon" href="<?= config::getPath(true,'/frontend/img/favicon.ico') ?>" type="image/x-icon">
+	<!-- Impresión de etiquetas META TITLE y DESCRIPTION-->
+		<?= config::getMetas($pagina) ?>
 
-	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<!-- Importación de Estilos -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
 
-	<meta property="og:image"		content="<?= config::getPath(true,'frontend/img/unprg-social.jpg') ?>" />
-	<meta property="og:title"   	content="UNPRG | Sistema Académico" />
-	<meta property="og:description"	content="Somos una universidad pública que crea, imparte, difunde conocimientos científicos, tecnológicos y humanísticos; forma científicos y profesionales innovadores, éticos, críticos y competitivos, que participan activamente en el desarrollo integral y sustentable de la sociedad." />
-	<meta property="og:url" 		content="http://unprg.edu.pe/" />
-	<meta property="og:locale" 		content="es_ES" />
-	<meta property="og:site_name" 	content="UNPRG" />
+		<!-- Estilos creados -->
+		<link rel="stylesheet" href="/frontend/css/general.css">
+		<link rel="stylesheet" href="/frontend/css/sistemaAcademico.css">
 
-	<!-- Importación de Librerías -->
-		<?= config::getScript(config::getPath(false,'/frontend/libs/jquery.js')) ?>
-		<?= config::getLink('https://fonts.googleapis.com/css?family=Titillium+Web') ?>
+	<!-- Importación de Scripts -->
+		<script src="/frontend/js/jquery.js"></script>
 
-	<!-- Importación de archivos propios -->
-		<?= config::getLink(config::getPath(false,'/frontend/css/general.css')) ?>
-		<?= config::getLink(config::getPath(false,'/frontend/css/sistemaAcademico.css')) ?>
-
+	<!-- Fin de la importación -->
 </head>
 <body>
-	<?php require_once config::getRequirePath('includes/header.php'); ?>
-	<?php require_once config::getRequirePath('includes/nav.php'); ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'; ?>
 	
 	<section class="enlaces">
 		<div class="wrap">
@@ -43,7 +46,7 @@
 			</a>
 		</div>
 	</section>
-
-	<?php require_once config::getRequirePath('includes/footer.php'); ?>
+	
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'; ?>
 </body>
 </html>

@@ -9,7 +9,7 @@
 			<li><p>Autoridades</p>
 				<ul class="level-second">
 					<li><a href="#">Rector<i>Dr. Jorge Aurelio Oliva Nuñez</i></a></li>
-					<li><a href="<?= config::getPath(true,'autoridades.php') ?>">Autoridades UNPRG</a></li>
+					<li><a href="<?= config::getAbsPath('autoridades.php') ?>">Autoridades UNPRG</a></li>
 				</ul>
 			</li>
 			<li><p>Facultades</p>
@@ -30,8 +30,8 @@
 					<li><a href="#"    		target="_blank">Fac. de Medicina Veterinaria</a></li>
 				</ul>
 			</li>
-			<li><a href="<?= config::getPath(true,'estatuto.php') ?>">Estatuto</a></li>
-			<li><a href="<?= config::getPath(true,'documentos/') ?>">Documentos</a></li>
+			<li><a href="<?= config::getAbsPath('/estatuto.php') ?>">Estatuto</a></li>
+			<li><a href="<?= config::getAbsPath('/documentos') ?>">Documentos</a></li>
 			<li><a href="#">Radio</a></li>
 		</ul>
 	</div>

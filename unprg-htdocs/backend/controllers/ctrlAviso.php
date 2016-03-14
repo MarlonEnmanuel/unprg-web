@@ -43,13 +43,13 @@ class ctrlAviso extends abstractController {
                 'texto'     => $aviso->texto
             );
             if($archivo->type == 'img'){
-                $arrayAviso['img'] = config::getPath(false, $archivo->rutaArch);
+                $arrayAviso['img'] = $archivo->rutaArch;
                 $arrayAviso['nombre'] = $archivo->nombre;
             }elseif($archivo->type == 'doc'){
-                $arrayAviso['doc'] = config::getPath(false, $archivo->rutaArch);
+                $arrayAviso['doc'] = $archivo->rutaArch;
                 $arrayAviso['nombre'] = $archivo->nombre;
             }elseif($archivo->type == 'link'){
-                $arrayAviso['img'] = config::getPath(false, $archivo->rutaArch);
+                $arrayAviso['img'] = $archivo->rutaArch;
                 $arrayAviso['link'] = $archivo->nombre;
             }
             $avisos[$key] = $arrayAviso;
@@ -65,23 +65,24 @@ class ctrlAviso extends abstractController {
         $Usuario = $this->checkAccess('aviso');
 
         $ops = array(
-            'tipo' => 'string',
-            'descripcion' => array('string', 12, null),
-            'destacado' => 'boolean',
-            'emergente' => 'boolean',
-            'visible' => 'boolean',
-            'estado' => 'boolean',
-            'nombre' => array('string',5,45)
+            'tipo'          => array('type'=>'string'),
+            'descripcion'   => array('type'=>'string', 'min'=>12),
+            'destacado'     => array('type'=>'boolean'),
+            'emergente'     => array('type'=>'boolean'),
+            'visible'       => array('type'=>'boolean'),
+            'estado'        => array('type'=>'boolean'),
+            'nombre'        => array('type'=>'string', 'min'=>5, 'max'=>45),
         );
 
         $type = filter_input(INPUT_POST, 'tipo');
         if($type==='link'){
-            $ops['nombre'] = 'url';
+            $ops['nombre'] = array('type'=>'url');
         }else{
             if( $type!=='img' && $type!=='doc' ) $this->responder(false, 'Tipo de aviso inválido');
         }
 
         $file; $ipts = $this->getFilterInputs('post', $ops);
+        
         if($type==='doc'){
             $file = $this->getFileUpload('archivo', array('application/pdf'));
         }else{
@@ -128,7 +129,7 @@ class ctrlAviso extends abstractController {
         }
 
         //Guardando imagen o documento
-        $rutaNueva = $_SERVER['DOCUMENT_ROOT'].$aviso->rutaArch;
+        $rutaNueva = $_SERVER['DOCUMENT_ROOT'].$archivo->rutaArch;
         if(!move_uploaded_file($file['tmp'], $rutaNueva)){
             $this->responder(false, "No se pudo guardar archivo", 'Error al almacear el archivo subido', null, $mysqli);
         }

@@ -1,6 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/16/backend/config.php';
-require_once config::getRequirePath('backend/models/abstractModel.php');
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/abstractModel.php';
 
 class Archivo extends abstractModel{
 

@@ -1,7 +1,7 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/16/backend/config.php';
-require_once config::getRequirePath('backend/controllers/abstractController.php');
-require_once config::getRequirePath('backend/models/Usuario.php');
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/controllers/abstractController.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Usuario.php';
 
 class ctrlUsuario extends abstractController {
 
@@ -25,9 +25,10 @@ class ctrlUsuario extends abstractController {
     }
 
     protected function login(){
+
         $inputs = $this->getFilterInputs('post', array(
-            'email' => 'email',
-            'pass' => 'string'
+            'email' => array('type'=>'email'),
+            'pass'  => array('type'=>'string', 'min'=>'40', 'max'=>'40'),
         ));
 
         $mysqli = $this->getMysqli();
@@ -43,14 +44,14 @@ class ctrlUsuario extends abstractController {
         session_start();
         $user->permisos = explode(',', $user->permisos);
         $_SESSION['Usuario'] = $user->toArray();
-        $this->responder(true, 'Bienvenido', 'redirect', config::getPath(false, '/gestion/panel.php'));
+        $this->responder(true, 'Bienvenido', 'redirect', '/gestion/panel.php');
     }
 
     public function logout(){
         session_start();
         session_destroy();
         $mensaje = "Hasta luego";
-        header('Location: '.config::getPath(false ,'/admin').'?msj='.$mensaje);
+        header('Location: /gestion?msj='.$mensaje);
         exit();
     }
 
@@ -58,14 +59,14 @@ class ctrlUsuario extends abstractController {
         $this->checkAccess('admin');
 
         $ipts = $this->getFilterInputs('post', array(
-            'email' => 'email',
-            'nombres' => array('string', 4, 45),
-            'apellidos' => array('string', 4, 45),
-            'oficina' => array('string', 4, 45),
-            'estado' => 'boolean',
-            'p-aviso' => 'boolean',
-            'p-noticia' => 'boolean',
-            'p-evento' => 'boolean'
+            'email'     => array('type'=>'email'),
+            'nombres'   => array('type'=>'string', 'min'=>4, 'max'=>45),
+            'apellidos' => array('type'=>'string', 'min'=>4, 'max'=>45),
+            'oficina'   => array('type'=>'string', 'min'=>4, 'max'=>45),
+            'estado'    => array('type'=>'boolean'),
+            'p-aviso'   => array('type'=>'boolean'),
+            'p-noticia' => array('type'=>'boolean'),
+            'p-evento'  => array('type'=>'boolean')
         ));
 
         $ipts['permisos'] = array();
@@ -113,9 +114,9 @@ class ctrlUsuario extends abstractController {
         $Usuario = $this->checkAccess();
 
         $ipts = $this->getFilterInputs('post', array(
-            'pass' => array('string', 40, 40),
-            'nuevoPass' => array('string', 40, 40),
-            'nuevoPass2' => array('string', 40, 40),
+            'pass'      => array('type'=>'string', 'min'=>40, 'max'=>40),
+            'nuevoPass' => array('type'=>'string', 'min'=>40, 'max'=>40),
+            'nuevoPass2'=> array('type'=>'string', 'min'=>40, 'max'=>40),
         ));
 
         if($Usuario['password']!=$ipts['pass']){

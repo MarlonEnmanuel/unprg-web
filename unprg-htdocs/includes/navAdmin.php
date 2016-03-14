@@ -1,5 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/16/backend/config.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
+$ctrl->checkAccess();
 
 $menuItems = array(
 	array(
@@ -37,7 +38,7 @@ $menuItems = array(
 	<?php
 		foreach ($menuItems as $key => $val) {
 			if(isset($val['link'])){
-				echo '<li><a href="'.config::getPath(false, $val['link']).'">'.$val['text'].'</a>';
+				echo '<li><a href="'.$val['link'].'">'.$val['text'].'</a>';
 			}else{
 				echo '<li><p>'.$val['text'].'</p>';
 			}
@@ -45,10 +46,10 @@ $menuItems = array(
 				echo '<ul>';
 				foreach ($val['menu'] as $idx => $itm) {
 					if( $itm['perm']=='all'){
-						echo '<li><a href="'.config::getPath(false, $itm['link']).'">'.$itm['text'].'</a></li>';
+						echo '<li><a href="'.$itm['link'].'">'.$itm['text'].'</a></li>';
 					}else{
 						if( in_array($itm['perm'], $_SESSION['Usuario']['permisos']) ){
-							echo '<li><a href="'.config::getPath(false, $itm['link']).'">'.$itm['text'].'</a></li>';
+							echo '<li><a href="'.$itm['link'].'">'.$itm['text'].'</a></li>';
 						}
 					}
 				}

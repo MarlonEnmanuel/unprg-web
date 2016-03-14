@@ -27,7 +27,7 @@
 			timeBgInit		: 1500,   	//tiempo para mostrar el aviso emergente desde la carga de la página
 			playOnlyScroll	: false,  	//si es verdadero solo se anima cuando hay escroll
 			stopOnHover		: true,    	//si es verdadero la reproducción se detiene al posicionar el mouse
-			jsonPath 		: '<?= config::getPath(false, "/backend/controllers/ctrlAviso.php?accion=getVisibles") ?>'
+			jsonPath 		: '/backend/controllers/ctrlAviso.php?accion=getVisibles'
 		},
 
 		init : function(){
@@ -190,7 +190,7 @@
 			item = $("<div/>").addClass('aviso').attr('data-id',aviso.id);
 			if(aviso.destacado) item.addClass('destacado');
 			item.append($("<p/>").addClass('aviso__texto').text(aviso.texto));
-			item.append($("<p/>").addClass('aviso__fecha').text('@'+aviso.fecha));
+			item.append($("<p/>").addClass('aviso__fecha').text(aviso.fecha));
 			item = $("<div/>").addClass('aviso-wrap').attr('data-id',aviso.id).append(item);
 			item.click(function(event) {
 				base.desplegar($(this).data('id'));
