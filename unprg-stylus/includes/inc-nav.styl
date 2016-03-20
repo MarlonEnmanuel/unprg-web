@@ -1,80 +1,31 @@
 @import "nib"
-
-nav
-	background-color: ccAzul
-	font-size: 10px
 	
 .unprg-nav
+	background-color: ccAzulMedio
+	font-size: 10px
+	
 	ul
-		background-color: ccAzul
-		list-style: none;
+		list-style: none
+		font-size: 0px
 		
 	a,p
 		color: white
 		cursor: pointer
 		display: block
-		font-size: 1.6em
-		padding: 8px 26px
+		font-size: 14px
+		padding: 10px 16px
 		text-decoration: none
-		transition: all 0.4s
+		transition: all 200ms
 		white-space: nowrap
 		&:hover
-			background-color: ccAmarillo
-			color: black
-		&:hover 
-			i,span
-				color: ccAzul
-
-		i,span
-			color: ccAmarillo
-			display: block
-			font-size: 0.8em
-			white-space: nowrap
-			margin-left: 15px
+			background-color: ccAzul
+			color: white
 			
 	.level-first
-		text-align: center
-		
+		margin-left: 110px
 		li
 			display: inline-block
-			position: relative
-		
-	.level-second
-		border-radius: 0px 0px 8px 8px
-		display: none
-		text-align: left
-		overflow: hidden
-		position: absolute
-		z-index: 100
-		
-		li
-			display: block
-			
-	.menu
-		display: none
-		color: ccAmarillo
-		padding: 6px 0px
-		
-		div
-			display: inline-block
-			font-size: 1.8em
 			font-weight: bold
 			
-		.icono
-			float: right
-			font-size: 2.7em
-			cursor: pointer
-			
-	@media screen and (max-width: 870px)
-		.menu
-			display: block
-		
-		.level-first
-			border-top: 1px solid ccAzulClaro
-			display: none
-			li
-				display: block
-				
-		.level-second
-			background-color: ccAzulOscuro
-			position: static
+	.level-second
+		display: none

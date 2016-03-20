@@ -1,28 +1,23 @@
-<header>
+<header class="unprg-header">
 	<div class="wraper">
-		<div class="unprg-enlaces">
-			<div class="otros">
-				<a href="https://mail.google.com/" target="_blank">
-					<i class="icon-envelop"></i> Correo Institucional
-				</a>
-				<a href="/documentos/unprg-directorio.pdf" target="_blank">
-					<i class="icon-phone"></i> Directorio Telefónico
-				</a>
-				<a href="/gestion">
-					<i class="icon-cog"></i>
-				</a>
-			</div>
-			<div class="redes-sociales">
-				<a href="#"><img src="/frontend/img/redes/youtube.png" alt="Youtube"></a>
-				<a href="#"><img src="/frontend/img/redes/facebook.png" alt="Facebook"></a>
-				<a href="#"><img src="/frontend/img/redes/gplus.png" alt="Google Plus"></a>
-				<a href="#"><img src="/frontend/img/redes/twitter.png" alt="Twitter"></a>
+		<div class="unprg-home">
+			<a class="unprg-logo" href="/">
+				<img src="/frontend/img/unprg-logo-marlon.png" alt="UNPRG logo">
+			</a>
+			<div class="unprg-titulo">
+				<h2>UNIVERSIDAD NACIONAL</h2>
+				<h1>Pedro Ruiz Gallo</h1>
 			</div>
 		</div>
-		<div class="unprg-inicio">
-			<a href="/"><img class="unprg-logo" src="/frontend/img/unprg-logo.png" alt="UNPRG logo"></a>
-			<img class="unprg-nombre" src="/frontend/img/unprg-nombre.png" alt="Universidad Nacional Pedro Ruiz Gallo">
+		<div class="unprg-enlaces">
+			<a href="https://mail.google.com/" target="_blank">Correo Institucional</a>
+			<a href="/documentos/unprg-directorio.pdf" target="_blank">Directorio Telefónico</a>
+			<a href="/gestion">SG Web</a>
+		</div>
+		<div class="unprg-botones">
+			<a href="#">ADMISIÓN</a>
+			<a href="#">CENTRO PRE</a>
+			<a href="#">POSTGRADO</a>
 		</div>
 	</div>
-	<div class="clean"></div>
 </header>

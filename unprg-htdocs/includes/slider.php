@@ -1,12 +1,12 @@
 <div class="owl-carousel owl-theme">
 	<div class="item">
-		<img src="/frontend/img/portada/img1.jpg" alt="slider 1">
 		<p class="item-titulo">Ceremonia de asunción y juramentación de las nuevas autoridades</p>
+		<img src="/frontend/img/portada/img1.jpg" alt="slider 1">
 		<p class="item-descripcion"><a href="/eventos/juramentacion.php">Ver galería</a></p>
 	</div>
 	<div class="item">
-		<img src="/frontend/img/portada/img2.jpg" alt="slider 2">
 		<p class="item-titulo">Dr. Jorge Aurelio Oliva Nuñez - Rector UNPRG</p>
+		<img src="/frontend/img/portada/img2.jpg" alt="slider 2">
 		<p class="item-descripcion">Nuevas Autoridades ratificaron que su gestión será transparente</p>
 	</div>
 </div>

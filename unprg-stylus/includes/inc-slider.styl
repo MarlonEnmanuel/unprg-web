@@ -12,20 +12,21 @@
 		font-size: 7px
 	@media screen and (max-width: 420px)
 		font-size: 6.5px
+		
+	.owl-controls
+		display: none !important
 	
 	.item
 		box-sizing: border-box
 		position: relative
-		border: 1px solid #444
+		overflow: hidden
 
 		img
 			display: block
 			height: auto
 			width: 100%
 		p
-			background-color: rgba(0,0,0,0.6)
-			color: white;
-			position: absolute
+			color: white
 			
 			a
 				cursor: pointer
@@ -33,15 +34,23 @@
 				text-decoration: none
 			
 		.item-titulo
-			font-size: 2em
-			font-weight: bold
-			left: 0
-			padding: 0.4em 1em
-			top: 0
+			font-size: 2.2em
+			font-family: font2
+			padding: 1.2em 1em
+			background-color: ccAzulOscuro
 		
 		.item-descripcion
-			bottom: 0px
+			background-color: rgba(0,33,71,0.7)
+			bottom: -100px
+			opacity: 0
 			font-size: 1.6em
 			left: 0px
-			padding: 0.5em 1.25em
+			padding: 0.8em 1.25em
+			position: absolute
 			right: 0px
+			background: linear-gradient(to right, rgba(0,33,71,0.7) 0%, rgba(0,33,71,0.7) 70%, rgba(0,33,71,1) 100%)
+			transition: all 300ms
+			
+		&:hover .item-descripcion
+			bottom: 0px
+			opacity: 1

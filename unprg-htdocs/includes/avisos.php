@@ -1,5 +1,5 @@
 <div class="avisos-cont">
-	<p class="titulo">Avisos</p>
+	<p class="titulo">avisos</p>
 	<div class="avisos">
 		<div class="carga">
 			<div class="texto">Cargando</div>
