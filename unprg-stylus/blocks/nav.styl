@@ -1,0 +1,85 @@
+@import "nib"
+	
+.bknav
+	position: absolute
+	box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.8)
+	background-color: crgba(ccAzul2,0.92)
+	
+	&--stiky
+		position: fixed
+		top: 0px
+		left: 0px
+		right: 0px
+		.bknav__up
+			display: inline-block
+	
+	ul
+		list-style: none
+	
+	&__up
+		display: none
+		position: absolute
+		left: 0
+		top: 0
+		bottom: 0
+		vertical-align: middle
+		color: white
+		text-decoration: none
+		
+		.icon-circle-up
+			vertical-align: middle
+			font-size: 1.6em
+			display: inline-block
+			margin-top: 0.3em
+			
+	&__social
+		display: inline-block
+		position: absolute
+		right: 0px
+		
+		a
+			font-size: 1.2em
+			text-decoration: none
+			display: inline-block
+			padding: 0.5em
+			color: white
+			cursor: pointer
+		
+		.bknav__slide
+			font-size: 1.5em
+			text-decoration: none
+			display: inline-block
+			padding: 0.3em
+			color: white
+			cursor: pointer
+		
+	&__sep
+		color: white
+		padding: 0.6em 0em
+		display: inline-block
+		
+	&__bu
+		color: white
+		cursor: pointer
+		display: block
+		padding: 0.6em 1em
+		text-decoration: none
+		white-space: nowrap
+		letter-spacing: 1px
+		font-stretch: condensed
+		transition: all 100ms
+		&:hover
+			color: crgb(ccAmarillo2)
+			transform : scale(1.1)
+			
+	&__cont
+		margin-left: 96px
+			
+	&__li
+		display: inline-block
+		.bknav__bu:hover
+			color: crgb(ccAmarillo2)
+			transform : scale(1.1)
+		
+		&__sub
+			display: none

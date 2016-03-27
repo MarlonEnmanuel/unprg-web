@@ -26,72 +26,20 @@
 		<link rel="stylesheet" href="/frontend/owl-carousel/owl.carousel.css">
 
 		<!-- Estilos creados -->
-		<link rel="stylesheet" href="/frontend/css/general.css">
+		<link rel="stylesheet" href="/frontend/icomoon/style.css">
+		<link rel="stylesheet" href="/frontend/css/master.css">
 		<link rel="stylesheet" href="/frontend/css/home.css">
 
 	<!-- Importación de Scripts -->
 		<script src="/frontend/js/jquery.js"></script>
+		<script src="/frontend/js/master.js"></script>
 		<script src="/frontend/owl-carousel/owl.carousel.min.js"></script>
 
-		<!-- Scripts creados -->
-		<script type="text/javascript">
-			window.unprg = {};
-			$(document).ready(function(){
-				$(".unprg-cuerpo .autoridades .galeria").owlCarousel({
-					autoPlay : 2000,
-					navigation : false, // Show next and prev buttons
-					slideSpeed : 300,
-					paginationSpeed : 400,
-					stopOnHover : true,
-					items : 4,
-					itemsDesktop : [1199,4],
-				    itemsDesktopSmall : false,
-				    itemsTablet: [768,3],
-				    itemsTabletSmall: false,
-				    itemsMobile : [479,2]
-				});
-			});
-		</script>
-	<!-- Fin de la importación -->
 </head>
 <body>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'; ?>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'; ?>
-	
-	<section class="unprg-portada">
-		<div class="wraper">
-			<div class="portada-col unprg-slider">
-				<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/slider.php'; ?>
-			</div>
-
-			<div class="portada-col unprg-avisos">
-				<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/avisos.php'; ?>
-			</div>
-
-			<div class="clean"></div>
-		</div>
-	</section>
-
-	<div class="wraper unprg-cuerpo">
-
-		<section class="cuerpo-col unprg-home">
-
-		</section>
-
-		<aside class="cuerpo-col unprg-panel">
-			<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/panel.php'; ?>
-		</aside>
-
-		<div class="clean"></div>
-
-	</div>	
-
-	<div class="construccion">
-		<div class="wraper">
-			<p>Página en Construcción</p>
-		</div>
-	</div>
-	
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/nav.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/cover.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>
 </body>
 </html>

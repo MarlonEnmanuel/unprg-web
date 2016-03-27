@@ -1,0 +1,48 @@
+@import "nib"
+
+//[class^="btn--"], [class*=" btn--"]
+$btn
+	border: none
+	cursor: pointer
+	display: inline-block
+	font-size: 16px
+	border: none !important
+	border-style: solid !important
+	border-color: white !important
+	border-width: 0px 0px 0.3em 0px !important
+	box-sizing: border-box
+	outline: none !important
+	text-align: center
+	transition: background-color 0ms !important
+	padding: 0.2em 1em
+	&:active
+		border-bottom-width: 0.2em !important
+		padding-top: 0.3em
+	&:disabled
+		border-bottom-width: 0 !important
+		padding-top: 0.4em !important
+		padding-bottom: 0.4em !important
+		pointer: initial
+		
+.btn	
+	&--amarillo
+		@extend $btn
+		background-color: crgb(ccAmarillo2)
+		border-color: crgb(ccAmarillo1) !important
+		color: black
+		&:hover
+			background-color: crgb(ccAmarillo2)+12%
+		&:disabled
+			color: rgb(50,50,50)
+			background-color: crgb(ccAmarillo2) !important
+			
+	&--azul
+		@extend $btn
+		background-color: crgb(ccAzul1)
+		border-color: crgb(ccAzul2) !important
+		color: white
+		&:hover
+			background-color: crgb(ccAzul2)+12%
+		&:disabled
+			color: rgb(200,200,200)
+			background-color: crgb(ccAzul2) !important

@@ -1,0 +1,89 @@
+
+@import "nib"
+
+html,body
+	font-family: font1
+	*
+		margin: 0
+		padding: 0
+		
+a
+	color: inherit
+	
+.block
+	cursor: default
+	font-size: 10px
+	width: 100%
+	
+	&__wraper
+		display: block
+		margin-left: auto
+		margin-right: auto
+		max-width: $pageMaxWidth
+		position: relative
+		@media all and (max-width: $pageMaxWidth)
+			margin-left: $pagePadding
+			margin-right: $pagePadding
+			
+	&__clean
+		clear: both
+		height: 0px
+		width: 100%
+	
+
+.bgc
+	background-color: white
+	
+	&--azul1
+		background-color: crgb(ccAzul1)
+	&--azul2
+		background-color: crgb(ccAzul2)
+	&--azul3
+		background-color: crgb(ccAzul3)
+	&--azul4
+		background-color: crgb(ccAzul4)
+		
+	&--gris1
+		background-color: crgb(ccGris1)
+	&--gris2
+		background-color: crgb(ccGris2)
+	&--gris3
+		background-color: crgb(ccGris3)
+	
+	&--amarillo1
+		background-color: crgb(ccAmarillo1)
+		
+	&--amarillo2
+		background-color: crgb(ccAmarillo2)
+		
+
+.ff
+	&--b
+		font-weight: bold
+	&--i
+		font-style: italic
+	&--o
+		font-style: oblique
+	&--condensed
+		font-stretch: condensed
+	&--special
+		font-family: font2
+		
+	&--34
+		font-size: 3.4em
+	&--30
+		font-style: 3em
+	&--26
+		font-size: 2.6em
+	&--22
+		font-size: 2.2em
+	&--18
+		font-size: 1.8em
+	&--16
+		font-size: 1.6em
+	&--14
+		font-size: 1.4em
+	&--12
+		font-size: 1.2em
+	&--0
+		font-size: 0px

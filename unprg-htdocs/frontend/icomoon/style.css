@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'icomoon';
+    src:    url('fonts/icomoon.eot?n3bq81');
+    src:    url('fonts/icomoon.eot?n3bq81#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?n3bq81') format('truetype'),
+        url('fonts/icomoon.woff?n3bq81') format('woff'),
+        url('fonts/icomoon.svg?n3bq81#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-download:before {
+    content: "\e900";
+}
+.icon-user:before {
+    content: "\e901";
+}
+.icon-spinner2:before {
+    content: "\e902";
+}
+.icon-search:before {
+    content: "\e903";
+}
+.icon-bin2:before {
+    content: "\e904";
+}
+.icon-menu:before {
+    content: "\e905";
+}
+.icon-link:before {
+    content: "\e906";
+}
+.icon-cancel-circle:before {
+    content: "\e907";
+}
+.icon-cross:before {
+    content: "\e908";
+}
+.icon-checkmark:before {
+    content: "\e909";
+}
+.icon-circle-up:before {
+    content: "\e90a";
+}
+.icon-circle-down:before {
+    content: "\e90b";
+}
+.icon-google-drive:before {
+    content: "\e90c";
+}
+.icon-facebook2:before {
+    content: "\e90d";
+}
+.icon-youtube2:before {
+    content: "\e90e";
+}
+
