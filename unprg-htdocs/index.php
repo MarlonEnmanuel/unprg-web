@@ -23,14 +23,11 @@
 		<?= config::getMetas($pagina) ?>
 
 	<!-- Importación de Estilos -->
-
-		<link rel="stylesheet" href="/frontend/icomoon/style.css">
-		<link rel="stylesheet" href="/frontend/css/master.css">
+		<?= config::getStyles() ?>
 		<link rel="stylesheet" href="/frontend/css/home.css">
 
 	<!-- Importación de Scripts -->
-		<script src="/frontend/js/jquery.js"></script>
-		<script src="/frontend/js/master.js"></script>
+		<?= config::getScripts() ?>
 
 </head>
 <body>

@@ -19,15 +19,12 @@
 		<?= config::getMetas($pagina) ?>
 
 	<!-- Importación de Estilos -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
+		<?= config::getStyles() ?>
 		<link rel="stylesheet" href="/frontend/owl-carousel/owl.carousel.css">
-
-		<!-- Estilos creados -->
-		<link rel="stylesheet" href="/frontend/css/general.css">
 		<link rel="stylesheet" href="/frontend/css/autoridades.css">
 
 	<!-- Importación de Scripts -->
-		<script src="/frontend/js/jquery.js"></script>
+		<?= config::getScripts() ?>
 		<script src="/frontend/owl-carousel/owl.carousel.min.js"></script>
 
 		<!-- Scripts creados -->
@@ -52,13 +49,13 @@
 	<!-- Fin de la importación -->
 </head>
 <body>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'; ?>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/nav.php'; ?>
 	
-	<section>
-		<div class="wraper">
+	<section class="block bgc">
+		<div class="block__wraper--sl">
 			
-			<div class="autoridades unprg-sec">
+			<!--div class="autoridades unprg-sec">
 				<p class="titulo">Vicerrectores UNPRG</p>
 				<div class="persona">
 					<p class="persona-nombre">Dr. Bernardo Eliseo Nieto Castellanos</p>
@@ -69,7 +66,7 @@
 					<p class="persona-cargo">Vicerrector de Investigación</p>
 				</div>
 				<div class="clean"></div>
-			</div>
+			</div-->
 
 			<div class="autoridades unprg-sec">
 				<p class="titulo">Decanos UNPRG</p>
@@ -252,6 +249,6 @@
 		</div>
 	</section>
 
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>
 </body>
 </html>

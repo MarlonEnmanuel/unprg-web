@@ -1,91 +1,105 @@
 <nav class="block bknav">
 	<div class="block__wraper">
-		<ul class="bknav__cont ff--16">
-
-			<a class="bknav__up" href="#header">
+		
+		<div class="bknav__up">
+			<a class="bknav__up__bu" href="#header" title="Subir">
 				<span class="icon-circle-up"></span>
 			</a>
+		</div>
 
-			<li class="bknav__li">
-				<a class="bknav__bu" href="/">Inicio</a>
-			</li><span class="bknav__sep">|</span>
+		<ul class="bknav__ul ff--16">
 
-			<li class="bknav__li">
-				<p class="bknav__bu">Autoridades</p>
-				<ul class="bknav__li__sub">
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#">Rector</a>
-					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="<?= config::getAbsPath('autoridades.php') ?>">Autoridades UNPRG</a>
-					</li>
-				</ul>
-			</li><span class="bknav__sep">|</span>
+			<li class="bknav__ul__li">
+				<a class="bknav__ul__li__bu" href="/">Inicio</a>
+			</li>
+			<span class="bknav__ul__sep">|</span>
 
-			<li class="bknav__li">
-				<p class="bknav__bu">Facultades</p>
-				<ul class="bknav__li__sub">
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de CC. Encon. Admin. y Contables</a>
+			<li class="bknav__ul__li">
+				<p class="bknav__ul__li__bu">Autoridades</p>
+				<!--ul class="bknav__subul">
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#">Rector</a>
 					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de CC. Físicas y Matemáticas</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="<?= config::getAbsPath('autoridades.php') ?>">Autoridades UNPRG</a>
+					</li>
+				</ul-->
+			</li>
+			<span class="bknav__ul__sep">|</span>
+
+			<li class="bknav__ul__li">
+				<p class="bknav__ul__li__bu">Facultades</p>
+				<ul class="bknav__subul">
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de CC. Encon. Admin. y Contables</a>
+					</li>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de CC. Físicas y Matemáticas</a>
 					</li>
 					<li><a href="#" target="_blank">Fac. de CC. Histórico Sociales y Edu.</a></li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de Agronomía</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Agronomía</a>
 					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de CC. Biológicas</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de CC. Biológicas</a>
 					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de Derecho y CC. Políticas</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Derecho y CC. Políticas</a>
 					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de Enfermería</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Enfermería</a>
 					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de Ing. Agrícola</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Ing. Agrícola</a>
 					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de Ing. Civil, Sistemas y Arquitectura</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Ing. Civil, Sistemas y Arquitectura</a>
 					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de Ing Mecánica y Eléctrica</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Ing Mecánica y Eléctrica</a>
 					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de Ing Química e Industrias Aliment.</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Ing Química e Industrias Aliment.</a>
 					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de Ing. Zootecnia</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Ing. Zootecnia</a>
 					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de Medicina Humana</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Medicina Humana</a>
 					</li>
-					<li class="bknav__li--sub">
-						<a class="bknav__bu--sub" href="#" target="_blank">Fac. de Medicina Veterinaria</a>
+					<li class="bknav__subul__li">
+						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Medicina Veterinaria</a>
 					</li>
 				</ul>
-			</li><span class="bknav__sep">|</span>
-
-			<li class="bknav__li">
-				<a class="bknav__bu" href="<?= config::getAbsPath('/estatuto.php') ?>">Estatuto</a>
-			</li><span class="bknav__sep">|</span>
-
-			<li class="bknav__li">
-				<a class="bknav__bu" href="<?= config::getAbsPath('/documentos') ?>">Documentos</a>
-			</li><span class="bknav__sep">|</span>
-
-			<li class="bknav__li">
-				<a class="bknav__bu" href="#">Radio</a>
 			</li>
+			<span class="bknav__ul__sep">|</span>
 
-			<div class="bknav__social">
-				<a target="_blank" href="https://www.facebook.com/Universidad-Nacional-Pedro-Ruiz-Gallo-Oficial-2016-145705039139557/"><span class="icon-facebook2"></span></a>
-				<a target="_blank" href="https://www.youtube.com/channel/UCv6Fuz01Q0Aryy6d8TpmpWw"><span class="icon-youtube2"></span></a>
-				<span class="bknav__slide icon-menu"></span>
-			</div>
+			<li class="bknav__ul__li">
+				<a class="bknav__ul__li__bu" href="<?= config::getAbsPath('/estatuto.php') ?>">Estatuto</a>
+			</li>
+			<span class="bknav__ul__sep">|</span>
+
+			<li class="bknav__ul__li">
+				<a class="bknav__ul__li__bu" href="<?= config::getAbsPath('/documentos') ?>">Documentos</a>
+			</li>
+			<span class="bknav__ul__sep">|</span>
+
+			<li class="bknav__ul__li">
+				<a class="bknav__ul__li__bu" href="#">Radio</a>
+			</li>
 		</ul>
+
+		<div class="bknav__icons">
+			<a class="bknav__icons__bu" target="_blank" href="https://www.facebook.com/Universidad-Nacional-Pedro-Ruiz-Gallo-Oficial-2016-145705039139557/" title="Facebook">
+				<span class="icon-facebook"></span>
+			</a>
+			<a class="bknav__icons__bu " target="_blank" href="https://www.youtube.com/channel/UCv6Fuz01Q0Aryy6d8TpmpWw" title="Youtube">
+				<span class="icon-youtube2"></span>
+			</a>
+			<div class="bknav__icons__bu bknav__slide" title="Menu">
+				<span class="icon-menu"></span>
+			</div>
+		</div>
 	</div>
 </nav>
 <script type="text/javascript">

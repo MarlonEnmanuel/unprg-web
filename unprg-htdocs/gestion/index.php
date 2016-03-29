@@ -20,27 +20,22 @@
 		<?= config::getMetas($pagina) ?>
 
 	<!-- Importación de Estilos -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
-
-		<!-- Estilos creados -->
-		<link rel="stylesheet" href="/frontend/css/general.css">
+		<?= config::getStyles() ?>
 		<link rel="stylesheet" href="/frontend/css/admin/general.css">
 		<link rel="stylesheet" href="/frontend/css/admin/login.css">
 
 	<!-- Importación de Scripts -->
-		<script src="/frontend/js/jquery.js"></script>
+		<?= config::getScripts() ?>
 		<script src="/frontend/js/sha1.js"></script>
-
-		<!-- Scripts creados -->
 		
 	<!-- Fin de la importación -->
 </head>
 <body>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'; ?>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/nav.php'; ?>
 	
-	<section>
-		<div class="wraper">
+	<section class="block">
+		<div class="block__wraper">
 			<h1 class="titulo">Sistema de Gestión Web<br><b>UNPRG</b></h1>
 			<form>
 				<input type="email" name="email" value="" placeholder="Correo">
@@ -97,6 +92,6 @@
 		});
 	</script>
 
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>
 </body>
 </html>

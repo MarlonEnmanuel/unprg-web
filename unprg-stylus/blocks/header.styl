@@ -2,11 +2,12 @@
 
 .bkhdr
 	color: crgb(ccGris1)
+	border-top: 3px solid crgb(ccAzul3)
 	
 	&__logo
 		text-align: left
-		padding-top: 10px
-		padding-bottom: 10px
+		padding-top: 14px
+		padding-bottom: 14px
 		
 		&__img
 			display: inline-block
@@ -15,7 +16,7 @@
 				display: block
 				height: auto
 				vertical-align: middle
-				width: 90px
+				width: 80px
 		&__name
 			display: inline-block
 			margin-left: 16px
@@ -24,6 +25,7 @@
 				margin-top: 4px
 				
 	&__links
+		color: crgb(ccGris2)
 		float: right
 		text-align: right
 		position: absolute		
@@ -41,17 +43,17 @@
 			transition: all 0.2s
 			margin-top: 1px
 			&:hover
-				outline: 1px solid crgba(ccGris1,0.5) !important
+				outline: 1px solid crgb(ccGris2) !important
 	
 	&__buttons
-		bottom: 0px
+		bottom: 25px
 		position: absolute
 		right: 0px
 		box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.5)
 		
 		a
-			background-color: crgb(ccAmarillo1)
-			//box-shadow: inset 0px 0px 120px 40px crgb(ccAmarillo1)
+			background-color: crgb(ccAzul3)
+			color: white
 			font-weight: bold
 			font-size: 14px
 			float: left
@@ -59,6 +61,7 @@
 			padding: 15px
 			text-decoration: none
 			transition: all 150ms
+			text-transform: uppercase
 			&:hover
 				transform: scale(1.02)
 				box-shadow: 0px 0px 4px 0px rgb(0,0,0)

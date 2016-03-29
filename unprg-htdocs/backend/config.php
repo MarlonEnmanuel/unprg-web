@@ -86,6 +86,24 @@ class config {
 		return $metas;
 	}
 
+	/**
+	* Proporciona las etiquetas de estilos que se usarán en todo el sitio web
+	*/
+	public static function getStyles(){
+		$styles  = '<link rel="stylesheet" href="/frontend/icomoon/style.css">';
+		$styles .= '<link rel="stylesheet" href="/frontend/css/master.css">';
+		return $styles;
+	}
+
+	/**
+	* Proporciona las etiquetas de Scritps que se usarán en todo el sitio web
+	*/
+	public static function getScripts(){
+		$scripts  = '<script src="/frontend/js/jquery.js"></script>';
+		$scripts .= '<script src="/frontend/js/master.js"></script>';
+		return $scripts;
+	}
+
 
 	/**
 	* Abre una conección a la BD, y configura el charset a UTF-8

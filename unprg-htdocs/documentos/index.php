@@ -18,23 +18,20 @@
 		<?= config::getMetas($pagina) ?>
 
 	<!-- Importación de Estilos -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web">
-
-		<!-- Estilos creados -->
-		<link rel="stylesheet" href="/frontend/css/general.css">
+		<?= config::getStyles() ?>
 		<link rel="stylesheet" href="/frontend/css/documentosIntro.css">
 
 	<!-- Importación de Scripts -->
-		<script src="/frontend/js/jquery.js"></script>
+		<?= config::getScripts() ?>
 
 	<!-- Fin de la importación -->
 </head>
 <body>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/header.php'; ?>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/nav.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/nav.php'; ?>
 	
-	<section>
-		<div class="wraper">
+	<section class="block">
+		<div class="block__wraper">
 			<div class="comunicado">
 				<h1>Vicerrectorado de Investigación</h1>
 				<p>
@@ -71,6 +68,6 @@
 		</div>
 	</section>
 
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/footer.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>
 </body>
 </html>

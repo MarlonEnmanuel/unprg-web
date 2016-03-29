@@ -25,6 +25,16 @@ a
 			margin-left: $pagePadding
 			margin-right: $pagePadding
 			
+		&--sl
+			display: block
+			margin-left: auto
+			margin-right: auto
+			max-width: $pageMaxWidthSlide
+			position: relative
+			@media all and (max-width: $pageMaxWidthSlide)
+				margin-left: $pagePadding
+				margin-right: $pagePadding
+			
 	&__clean
 		clear: both
 		height: 0px
@@ -49,6 +59,12 @@ a
 		background-color: crgb(ccGris2)
 	&--gris3
 		background-color: crgb(ccGris3)
+	&--gris4
+		background-color: crgb(ccGris4)
+	&--gris5
+		background-color: crgb(ccGris5)
+	&--gris6
+		background-color: crgb(ccGris6)
 	
 	&--amarillo1
 		background-color: crgb(ccAmarillo1)
@@ -58,6 +74,7 @@ a
 		
 
 .ff
+	font-size: 10px
 	&--b
 		font-weight: bold
 	&--i
@@ -66,13 +83,14 @@ a
 		font-style: oblique
 	&--condensed
 		font-stretch: condensed
+		letter-spacing: 1px
 	&--special
 		font-family: font2
 		
 	&--34
 		font-size: 3.4em
 	&--30
-		font-style: 3em
+		font-size: 3em
 	&--26
 		font-size: 2.6em
 	&--22
@@ -87,3 +105,11 @@ a
 		font-size: 1.2em
 	&--0
 		font-size: 0px
+		
+.plx
+	&__item
+		transition: opacity 400ms
+		.hide
+			opacity: 0
+		.show
+			opacity: 1
