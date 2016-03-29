@@ -16,61 +16,88 @@
 
 			<li class="bknav__ul__li">
 				<p class="bknav__ul__li__bu">Autoridades</p>
-				<!--ul class="bknav__subul">
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#">Rector</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="<?= config::getAbsPath('autoridades.php') ?>">Autoridades UNPRG</a>
-					</li>
-				</ul-->
+				<div class="bknav__sub--single">
+					<div class="bknav__sub__wraper">
+						<ul class="bknav__sub__ul">
+							<li class="bknav__sub__ul__li--title">
+								<a class="bknav__sub__ul__li__bu" href="#">Rector de la UNPRG</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<p class="bknav__sub__ul__li__bu">Dr. Jorge Aurelio Oliva Nuñes</p>
+							</li>
+						</ul>
+						<ul class="bknav__sub__ul">
+							<br>
+							<li class="bknav__sub__ul__li ff--b">
+								<a class="bknav__sub__ul__li__bu" href="#">Vicerrectores de la UNPRG</a>
+							</li>
+							<li class="bknav__sub__ul__li ff--b">
+								<a class="bknav__sub__ul__li__bu" href="/autoridades.php">Todas las Autoridades</a>
+							</li>
+						</ul>
+						<div class="block__clean"></div>
+					</div>
+				</div>
 			</li>
 			<span class="bknav__ul__sep">|</span>
 
 			<li class="bknav__ul__li">
 				<p class="bknav__ul__li__bu">Facultades</p>
-				<ul class="bknav__subul">
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de CC. Encon. Admin. y Contables</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de CC. Físicas y Matemáticas</a>
-					</li>
-					<li><a href="#" target="_blank">Fac. de CC. Histórico Sociales y Edu.</a></li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Agronomía</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de CC. Biológicas</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Derecho y CC. Políticas</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Enfermería</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Ing. Agrícola</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Ing. Civil, Sistemas y Arquitectura</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Ing Mecánica y Eléctrica</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Ing Química e Industrias Aliment.</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Ing. Zootecnia</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Medicina Humana</a>
-					</li>
-					<li class="bknav__subul__li">
-						<a class="bknav__subul__li__bu" href="#" target="_blank">Fac. de Medicina Veterinaria</a>
-					</li>
-				</ul>
+				<div class="bknav__sub">
+					<div class="bknav__sub__wraper">
+						<ul class="bknav__sub__ul">
+							<li class="bknav__sub__ul__li--title">
+								<p class="bknav__sub__ul__li__bu">Facultades de la UNPRG</p>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de CC. Encon. Admin. y Contables</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de CC. Físicas y Matemáticas</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de CC. Histórico Sociales y Edu.</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de Agronomía</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de CC. Biológicas</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de Derecho y CC. Políticas</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de Enfermería</a>
+							</li>
+						</ul>
+						<ul class="bknav__sub__ul">
+							<br><br>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de Ing. Agrícola</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de Ing. Civil, Sistemas y Arquitectura</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de Ing Mecánica y Eléctrica</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de Ing Química e Industrias Aliment.</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de Ing. Zootecnia</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de Medicina Humana</a>
+							</li>
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Fac. de Medicina Veterinaria</a>
+							</li>
+						</ul>
+						<div class="block__clean"></div>
+					</div>
+				</div>
 			</li>
 			<span class="bknav__ul__sep">|</span>
 

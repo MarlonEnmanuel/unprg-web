@@ -34,19 +34,17 @@
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/nav.php'; ?>
 	
-	<section class="block">
+	<section class="block bksgw">
 		<div class="block__wraper">
+		
+			<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/navAdmin.php'; ?>
 
-			<div class="admin-col admin-nav">
-				<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/navAdmin.php'; ?>
-			</div>
-
-			<div class="admin-col admin-cuerpo">
+			<div class="bksgw__col admin-cuerpo">
 				<div class="encabezado">Bienvenido</div>
 			</div>
 
 		</div>
-		<div class="clean"></div>
+		<div class="block__clean"></div>
 	</section>
 
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>

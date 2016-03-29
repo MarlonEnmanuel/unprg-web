@@ -29,33 +29,34 @@ $menuItems = array(
 );
 
 ?>
-
-<div class="titulo">
-	<div class="unprg">Gestión Web</div>
-	<div class="usuario">Bienvenido, Administrador</div>
-</div>
-<ul>
-	<?php
-		foreach ($menuItems as $key => $val) {
-			if(isset($val['link'])){
-				echo '<li><a href="'.$val['link'].'">'.$val['text'].'</a>';
-			}else{
-				echo '<li><p>'.$val['text'].'</p>';
-			}
-			if(isset($val['menu'])){
-				echo '<ul>';
-				foreach ($val['menu'] as $idx => $itm) {
-					if( $itm['perm']=='all'){
-						echo '<li><a href="'.$itm['link'].'">'.$itm['text'].'</a></li>';
-					}else{
-						if( in_array($itm['perm'], $_SESSION['Usuario']['permisos']) ){
+<div class="bkswg__col">
+	<div class="titulo">
+		<div class="unprg">Gestión Web</div>
+		<div class="usuario">Bienvenido, Administrador</div>
+	</div>
+	<ul>
+		<?php
+			foreach ($menuItems as $key => $val) {
+				if(isset($val['link'])){
+					echo '<li><a href="'.$val['link'].'">'.$val['text'].'</a>';
+				}else{
+					echo '<li><p>'.$val['text'].'</p>';
+				}
+				if(isset($val['menu'])){
+					echo '<ul>';
+					foreach ($val['menu'] as $idx => $itm) {
+						if( $itm['perm']=='all'){
 							echo '<li><a href="'.$itm['link'].'">'.$itm['text'].'</a></li>';
+						}else{
+							if( in_array($itm['perm'], $_SESSION['Usuario']['permisos']) ){
+								echo '<li><a href="'.$itm['link'].'">'.$itm['text'].'</a></li>';
+							}
 						}
 					}
+					echo '</ul>';
 				}
-				echo '</ul>';
+				echo '</li>';
 			}
-			echo '</li>';
-		}
-	?>
-</ul>
+		?>
+	</ul>
+</div>

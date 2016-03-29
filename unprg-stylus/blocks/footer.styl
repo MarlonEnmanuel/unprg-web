@@ -1,107 +1,67 @@
 
 @import "nib"
 
-
-footer
-	background-color: ccAzulOscuro
-	padding-top: 20px
-	margin-top: 20px
-	font-size: 10px
-	position: relative
+.bkfoo
+	color: white
+	padding: 30px 0px
 	
-	margin-top: 700px
-	
-	.logo
-		font-size: 22px
-		color: ccAzulClaro
-		padding-bottom: 2px
-		margin-bottom: 20px
-		border-bottom: 1px solid ccAzulClaro
-		
-		
-	.footer-col
-		box-sizing: border-box
+	&__logo
 		float: left
-		min-height: 200px
-		width: 25%
-		padding: 20px
-		margin-top: 20px
-		@media screen and (max-width: 1024px)
-			width: 50%
-			padding: 0px 10px
-		@media screen and (max-width: 520px)
-			width: 100%
-			padding: 0px 0px
-			text-align: center
+		display: inline-block
+		width: 38%
 		
-
-		&:hover .titulo
-			border-bottom: 1px solid ccAmarillo
-			margin-bottom: 9px
-			
-		.titulo
-			font-size: 1.8em
-			color: ccAmarillo
-			margin-bottom: 10px
-			padding-bottom: 2px
-		
-		ul
-			li
-				font-size: 1.4em
-				line-height: 2em
-				padding-left: 5px
-				color: white
-				transition: all 300ms
-				list-style: square
-				list-style-position: inside
-				a
-					text-decoration: none
-					color: white
-					transition: all 300ms
-					display: block
-					white-space: nowrap
-					overflow: hidden
-					text-overflow: ellipsis
-				&:hover
-					background-color: ccAzulMedio
-					
-		.info
-			text-align: center
-			margin: 20px 0px
-			box-sizing: border-box
-			p
-				font-size: 1.5em
-				color: white
-			
-			i
+		&__img
+			display: inline-block
+			vertical-align: middle
+			img
 				display: block
-				font-size: 1.3em
-				color: ccAzulClaro 
-				line-height: 1.2em
+				height: auto
+				vertical-align: middle
+				width: 60px
+		&__name
+			display: inline-block
+			margin-left: 16px
+			vertical-align: middle
+			&__2
 				margin-top: 4px
 				
-		.info-dev
-			cursor: pointer
-			padding-top: 10px
-			border-radius: 5px
-			overflow: hidden
-			&:hover
-				border: 1px solid ccAzul
-			&:hover .flotar
-				height: 83px
-				padding: 10px 8px
+		&__dir
+			border-top: 1px solid crgb(ccGris2)
+			margin-left: 82px
+			padding-top: 15px
+			display: inline-block
+			&__l
+				margin-bottom: 5px
+				span
+					display: inline-block
+					width: 90px
+	
+	&__map
+		display: inline-block
+		float: left
+		width: 24%
+		&__t
+			margin-bottom: 10px
+			font-weight: bold
+		iframe
+			width: 100%
+			height: 100%
 			
-			.flotar
-				color: white
-				text-align: center
-				font-size: 14px
-				padding: 0px
-				box-sizing: border-box
-				background-color: ccAzul
-				transition: all 200ms
-				height: 0px
-				overflow: hidden
-				margin-top: 10px
-				
-				p
-					font-size: 14px
+	&__info
+		display: inline-block
+		float: left
+		width: 38%
+		text-align: right
+		
+		&__sep
+			margin-bottom: 15px
+			
+			&:last-child
+				margin-bottom: 0px
+			
+			&__t
+				font-weight: bold
+				margin-bottom: 8px
+				font-family: font1
+			&__d
+				color: crgb(ccGris4)
