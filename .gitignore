@@ -13,3 +13,6 @@
 
 #ignorar archivos compilados de css
 /unprg-htdocs/frontend/css/
+
+#ignorar gulpfile
+/gulpfile.js
