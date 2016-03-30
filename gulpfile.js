@@ -4,7 +4,7 @@ var stylus = require("gulp-stylus");
 var sftp = require("gulp-sftp");
 var nib = require('nib');
 
-var host = '192.168.0.10';
+var host = '192.168.0.11';
 
 gulp.task('estilos', function(){
 	gulp.src(['./unprg-stylus/*.styl','./unprg-stylus/!(includes|blocks|libs)/*.styl'])
