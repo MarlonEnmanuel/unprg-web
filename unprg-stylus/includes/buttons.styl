@@ -11,6 +11,7 @@ $btn
 	border-color: white !important
 	border-width: 0px 0px 0.3em 0px !important
 	box-sizing: border-box
+	border-radius: 0.2em
 	outline: none !important
 	text-align: center
 	transition: background-color 0ms !important
@@ -38,11 +39,11 @@ $btn
 			
 	&--azul
 		@extend $btn
-		background-color: crgb(ccAzul1)
-		border-color: crgb(ccAzul2) !important
+		background-color: crgb(ccAzul2)
+		border-color: crgb(ccAzul1) !important
 		color: white
 		&:hover
 			background-color: crgb(ccAzul2)+12%
 		&:disabled
 			color: rgb(200,200,200)
-			background-color: crgb(ccAzul2) !important
+			background-color: crgb(ccAzul1) !important

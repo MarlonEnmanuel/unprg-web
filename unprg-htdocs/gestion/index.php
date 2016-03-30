@@ -34,15 +34,18 @@
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/nav.php'; ?>
 	
-	<section class="block">
+	<section class="block bklogin">
 		<div class="block__wraper">
-			<h1 class="titulo">Sistema de Gestión Web<br><b>UNPRG</b></h1>
-			<form>
+			<div class="bklogin__titulo">
+				<p class="ff--22">Sistema de Gestión Web</p>
+				<p class="ff--18">UNPRG</p>
+			</div>
+			<form class="bklogin__form">
 				<input type="email" name="email" value="" placeholder="Correo">
 				<input type="password" name="pass" value="" placeholder="Contraseña">
-				<input type="submit" value="Entrar" class="boton-amarillo">
+				<input type="submit" value="Entrar" class="btn--amarillo">
 			</form>
-			<h2><?= ($msj)?$msj:'Información' ?></h2>
+			<p class="bklogin__info ff--16 ff--b"><?= ($msj)?$msj:'Información' ?></p>
 		</div>
 	</section>
 

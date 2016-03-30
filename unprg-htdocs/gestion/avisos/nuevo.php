@@ -32,14 +32,10 @@
 </head>
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php'; ?>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/nav.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
 	
 	<section class="block">
-		<div class="block__wraper">
-
-			<div class="admin-col admin-nav">
-				<?php require_once $_SERVER['DOCUMENT_ROOT'].'/includes/navAdmin.php'; ?>
-			</div>
+		<div class="block__wraper--slim">
 
 			<div class="admin-col admin-cuerpo">
 				<div class="encabezado">Nuevo aviso</div>
@@ -100,7 +96,7 @@
 					<div class="formPie">
 						<div class="info">Información de estado</div>
 						<div class="boton">
-							<input type="submit" class="boton boton-azul" value="Enviar">
+							<input type="submit" class="boton btn--azul" value="Enviar">
 						</div>
 					</div>
 				</form>

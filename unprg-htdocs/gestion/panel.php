@@ -32,12 +32,10 @@
 </head>
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php'; ?>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/nav.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
 	
 	<section class="block bksgw">
-		<div class="block__wraper">
-		
-			<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/navAdmin.php'; ?>
+		<div class="block__wraper--slim">
 
 			<div class="bksgw__col admin-cuerpo">
 				<div class="encabezado">Bienvenido</div>

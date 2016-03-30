@@ -53,7 +53,7 @@
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/nav.php'; ?>
 	
 	<section class="block bgc">
-		<div class="block__wraper--sl">
+		<div class="block__wraper--slim">
 			
 			<!--div class="autoridades unprg-sec">
 				<p class="titulo">Vicerrectores UNPRG</p>

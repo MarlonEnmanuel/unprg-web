@@ -2,23 +2,19 @@
 @import "nib"
 @import "../includes/config.styl"
 
-section
-	margin-top: 80px
-	
-	.wraper
-		max-width: 600px
+.bklogin
+	padding: 100px 0px 80px 0px
 		
-	h1
+	&__titulo
 		text-align: center
-		font-size: 22px
 		
-	h2
-		color: ccAzul
+	&__info
+		color: crgb(ccAzul2)
 		text-align: center
 	
-	form
+	&__form
 		display: block
-		background-color: ccAzul
+		background-color: crgb(ccAzul2)
 		border-radius: 10px
 		padding: 26px
 		font-size: 16px
@@ -39,7 +35,7 @@ section
 			&:focus
 				outline: none
 				border: 2px solid black
-				border-color: ccAmarillo
+				border-color: crgb(ccAmarillo1)
 			
 		input[type=submit]
 			font-weight: bold
