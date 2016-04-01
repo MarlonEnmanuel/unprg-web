@@ -31,7 +31,7 @@
 	<!-- Fin de la importación -->
 </head>
 <body>
-	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
 	
 	<section class="block bksgw">

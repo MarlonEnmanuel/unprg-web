@@ -29,7 +29,7 @@ $sgnavSalir = array( 'text' => 'Salir', 'link' => '/backend/controllers/ctrlUsua
 
 ?>
 <div class="block__clean"></div>
-<nav class="block bknav">
+<nav class="block bknav bknav--sg">
 	<div class="block__wraper">
 		
 		<div class="bknav__up">

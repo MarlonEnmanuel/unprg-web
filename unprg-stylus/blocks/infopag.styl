@@ -1,0 +1,81 @@
+@import "nib"
+
+.infpg
+	
+	@media all and (max-width: 560px)
+		font-size: 9px
+	@media all and (max-width: 480px)
+		font-size: 8px
+	@media all and (max-width: 320px)
+		font-size: 7px
+	
+	&__cover
+		background-color: none
+		position: relative
+		overflow: hidden
+		margin-bottom: 2em
+		
+		@media all and (max-width: 560px)
+			font-size: 8.5px
+		@media all and (max-width: 480px)
+			font-size: 7px
+		@media all and (max-width: 320px)
+			font-size: 5.5px
+		
+		&__img
+			display: block
+			width: 100%
+			height: auto
+		
+		&__texto
+			color: white
+			background: linear-gradient(to bottom,rgba(0,0,0,0) 0%,rgba(0,0,0,0.22) 17%,rgba(0,0,0,0.75) 57%,rgba(0,0,0,0.75) 88%,rgba(0,0,0,0.75) 100%)
+			padding: 4% 0 6% 0
+			position: absolute
+			left: 0px
+			right: 0px
+			bottom: 0px
+			a
+				text-decoration: none
+				color: crgb(ccAmarillo2)
+				
+	&__block
+		clear: both
+		padding: 1.2em 0px
+		line-height: 1.8em
+		color: crgb(ccGris1)
+		overflow: hidden
+		border-radius: 0.5em
+		
+	&__ul
+		ul
+			display: block
+			list-style: square
+			margin-left: 2em
+			li
+				line-height: 1.5em
+				margin-bottom: 0.8em
+				
+	&__col
+		&2
+			float: left
+			display: inline-block
+			width: 50%
+			box-sizing: border-box
+			padding: 1em
+			overflow: hidden
+			border-radius: 0.5em
+		&3
+			float: left
+			display: inline-block
+			width: 33.3333333%
+			box-sizing: border-box
+			padding: 1em
+			overflow: hidden
+			border-radius: 0.5em
+		&4
+			float: left
+			display: inline-block
+			width: 25%
+			box-sizing: border-box
+			padding: 1em

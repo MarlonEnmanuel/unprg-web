@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="/frontend/owl-carousel/owl.carousel.css">
 
-<div class="block bkcov bgc--gris1">
+<div class="block bkcov bgc--azul1">
 	<div class="bkcov__sl owl-carousel owl-theme">
 
-		<div class="item bkcov__sl__item">
+		<div class="item bkcov__sl__item plx">
 			<img class="bkcov__sl__item__img" src="/frontend/img/portada/por1.jpg" alt="">
 			<div class="bkcov__sl__item__text ff--condensed">
-				<div class="block__wraper">
-					<p class="bkcov__sl__item__text__1 ff--30 ff--b">Ceremonia de asunción y juramentación de las nuevas autoridades</p>
-					<p class="bkcov__sl__item__text__2">Lorem <a href="#header">Aqui</a> ipsum dolor sit amet, consectetur adipisicing elit. Officiis dolore, error ad, eos quisquam accusamus quam illum doloribus harum, explicabo in ab sit illo sequi ea ex praesentium. Ab, nemo.</p>
+				<div class="block__wraper plx__item slow">
+					<p class="bkcov__sl__item__text__1 ff--34 ff--b">Ceremonia de asunción y juramentación de las nuevas autoridades</p>
+					<p class="bkcov__sl__item__text__2 ff--18">Lorem <a href="#header">Aqui</a> ipsum dolor sit amet, consectetur adipisicing elit. Officiis dolore, error ad, eos quisquam accusamus quam illum doloribus harum, explicabo in ab sit illo sequi ea ex praesentium. Ab, nemo.</p>
 				</div>
 			</div>
 		</div>
@@ -16,9 +16,9 @@
 		<div class="item bkcov__sl__item">
 			<img class="bkcov__sl__item__img" src="/frontend/img/portada/por2.jpg" alt="">
 			<div class="bkcov__sl__item__text ff--condensed">
-				<div class="block__wraper">
-					<p class="bkcov__sl__item__text__1 ff--30 ff--b"><a href="#header">Universidad Nacional Pedro Ruiz Gallo al servicio de la comunidad</a></p>
-					<p class="bkcov__sl__item__text__2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis dolore, error ad, eos quisquam accusamus quam illum doloribus harum, explicabo in ab sit illo sequi ea ex praesentium. Ab, nemo.</p>
+				<div class="block__wraper plx__item slow">
+					<p class="bkcov__sl__item__text__1 ff--34 ff--b"><a href="#header">Universidad Nacional Pedro Ruiz Gallo al servicio de la comunidad</a></p>
+					<p class="bkcov__sl__item__text__2 ff--18">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis dolore, error ad, eos quisquam accusamus quam illum doloribus harum, explicabo in ab sit illo sequi ea ex praesentium. Ab, nemo.</p>
 				</div>
 			</div>
 		</div>
