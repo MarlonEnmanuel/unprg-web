@@ -1,0 +1,101 @@
+commit 59608e0672c437c6e8ab89f53e7d98f6c435e8cb
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Fri Apr 1 04:21:15 2016 -0500
+
+    Efecto paralax, páginas informativas
+
+commit cfe69e7bfbaaa1904996cc5ec982b5ecfc293c98
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Wed Mar 30 21:48:49 2016 -0500
+
+    Footer optimizado, actualizado normalice
+
+commit 3997b63afdd66bc4af6cdfe944b6f5c6105abb19
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Wed Mar 30 16:25:54 2016 -0500
+
+    Arreglando sistema
+
+commit ac955ee599414f8135bd67a4ee4ba135be65fc94
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Tue Mar 29 20:33:46 2016 -0500
+
+    Modelo corregido
+
+commit 57702f253a86f20a3c6bce8da087833b878ac635
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Tue Mar 29 20:14:57 2016 -0500
+
+    Corregido ignore gulpfile
+
+commit db8d4f0e7a8c1bd281636a8a1d129f13909b4e47
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Tue Mar 29 20:03:07 2016 -0500
+
+    Modelo ER corregido
+
+commit 1021d2e405b71e74f6319d599b64e9e5393f144a
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Tue Mar 29 19:25:32 2016 -0500
+
+    Modificacion modelo bdd
+
+commit 26da6d3e68685c2fd3aa00a1de8846ddd04166d3
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Tue Mar 29 19:14:06 2016 -0500
+
+    Ignorar gulpfile
+
+commit 9e196ccbf81b9fdb010bdd1500903522fc82e76c
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Tue Mar 29 18:33:11 2016 -0500
+
+    Terminado nav y agregado el footer
+
+commit e540436fb03d75ce369d670369bc13f3bbb736fe
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Tue Mar 29 10:52:29 2016 -0500
+
+    Carpetas para uploads
+
+commit efd5b00c4bd25a3f1bf74b26b8791194511be645
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Tue Mar 29 10:31:55 2016 -0500
+
+    Arreglado gulpfile
+
+commit 1de977b561ca16f6b5b0389e008446a7333fa5e5
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Tue Mar 29 10:20:18 2016 -0500
+
+    Diseño elegido
+
+commit c11238b58a2863e569e673e69bbfe0003ed4361b
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Sat Mar 26 21:48:10 2016 -0500
+
+    Cambio de rama
+
+commit eaa751e1daae2960840b005586bf2479c89ba46d
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Sat Mar 26 21:30:45 2016 -0500
+
+    Estilo elegido
+
+commit 9d40f0459f8aa3cd0e9fe50a9098a9d7dcb90c3e
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Sun Mar 20 13:24:31 2016 -0500
+
+    Propuesta color azul oscuro
+
+commit 65f3b8d7a3064f5e833ee2e6fc9bdeb8b16cc71d
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Sun Mar 13 20:23:17 2016 -0500
+
+    Adaptación a servidor individual completa
+
+commit 9861dbc9673815161746dfcbd8865c3e8b0ff839
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Sun Mar 13 13:05:51 2016 -0500
+
+    Primer commit
