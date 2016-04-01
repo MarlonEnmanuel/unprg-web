@@ -1,19 +1,19 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/abstractModel.php';
-require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Archivo.php';
+
 
 class Aviso extends abstractModel{
 
 	public $fchReg;
+    public $titutlo;
 	public $texto;
 	public $destacado;
 	public $emergente;
-	public $visible;
 	public $estado;
-	public $bloqueado;
-	public $idArchivo;
+	public $link;
 	public $idUsuario;
+    public $idImagen;
 
 	public function __construct(&$mysqli, $id=null){
 		parent::__construct($mysqli, $id);
@@ -34,14 +34,14 @@ class Aviso extends abstractModel{
         $stmt->bind_result(    
         	$this->idAviso,
         	$this->fchReg,
+            $this->titulo,
         	$this->texto,
         	$this->destacado,
         	$this->emergente,
-        	$this->visible,
         	$this->estado,
-        	$this->bloqueado,
-        	$this->idArchivo,
-        	$this->idUsuario
+        	$this->link,
+        	$this->idUsuario,
+            $this->idImagen
         	);
         if($stmt->fetch()){
             $this->fchReg = DateTime::createFromFormat(config::$date_sql, $this->fchReg); //se convierte de string a DateTime
@@ -58,7 +58,7 @@ class Aviso extends abstractModel{
 
 	public function searchVisible(){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
-		$sql = "select * from aviso where visible=? order by fchReg desc";
+		$sql = "select * from aviso where estado=? order by fchReg desc LIMIT 3";
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
         $vis=1;
@@ -67,28 +67,28 @@ class Aviso extends abstractModel{
 		$stmt->bind_result(
 			$_id,
 			$_fchReg,
+            $_titulo,
 			$_texto,
 			$_destacado,
 			$_emergente,
-			$_visible,
 			$_estado,
-			$_bloqueado,
-			$_idArchivo,
-			$_idUsuario
+            $_link,
+			$_idUsuario,
+            $_idImagen
 			);
 		$list=array();
 		while ($stmt->fetch()) {
 			$avi=new Aviso($this->mysqli);
 			$avi->id 	    = $_id;
 			$avi->fchReg 	= DateTime::createFromFormat(config::$date_sql, $_fchReg);
-			$avi->texto 	= $_texto;
+			$avi->titulo 	= $_titulo;
+            $avi->texto     = $_texto;
 			$avi->destacado = $_destacado;
 			$avi->emergente = $_emergente;
-			$avi->visible 	= $_visible;
 			$avi->estado 	= $_estado;
-			$avi->bloqueado = $_bloqueado;
-			$avi->idArchivo = $_idArchivo;
+            $avi->link      = $_link;
 			$avi->idUsuario = $_idUsuario;
+            $avi->idImagen  = $_idImagen
 			array_push($list, $avi);
 		}
 		$stmt->close();
@@ -103,32 +103,32 @@ class Aviso extends abstractModel{
 		$stmt->bind_param('i', $idUsuario);
 		$stmt->execute();
 		$stmt->bind_result(
-			$_id,
-			$_fchReg,
-			$_texto,
-			$_destacado,
-			$_emergente,
-			$_visible,
-			$_estado,
-			$_bloqueado,
-			$_idArchivo,
-			$_idUsuario
-			);
-		$list=array();
-		while ($stmt->fetch()) {
-			$avi=new Aviso($this->mysqli);
-			$avi->id 	    = $_id;
-			$avi->fchReg 	= DateTime::createFromFormat(config::$date_sql, $_fchReg);
-			$avi->texto 	= $_texto;
-			$avi->destacado = $_destacado;
-			$avi->emergente = $_emergente;
-			$avi->visible 	= $_visible;
-			$avi->estado 	= $_estado;
-			$avi->bloqueado = $_bloqueado;
-			$avi->idArchivo = $_idArchivo;
-			$avi->idUsuario = $_idUsuario;
-			array_push($list, $avi);
-		}
+            $_id,
+            $_fchReg,
+            $_titulo,
+            $_texto,
+            $_destacado,
+            $_emergente,
+            $_estado,
+            $_link,
+            $_idUsuario,
+            $_idImagen
+            );
+        $list=array();
+        while ($stmt->fetch()) {
+            $avi=new Aviso($this->mysqli);
+            $avi->id        = $_id;
+            $avi->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
+            $avi->titulo    = $_titulo;
+            $avi->texto     = $_texto;
+            $avi->destacado = $_destacado;
+            $avi->emergente = $_emergente;
+            $avi->estado    = $_estado;
+            $avi->link      = $_link;
+            $avi->idUsuario = $_idUsuario;
+            $avi->idImagen  = $_idImagen
+            array_push($list, $avi);
+        }
 		$stmt->close();
         return $list;
 	}
@@ -140,19 +140,19 @@ class Aviso extends abstractModel{
     		return $this->md_estado = false;
     	}
 
-    	$sql = "INSERT INTO aviso (texto, destacado, emergente, visible, estado, bloqueado, idArchivo, idUsuario) 
+    	$sql = "INSERT INTO aviso (titulo,texto, destacado, emergente,  estado, link, idUsuario, idImagen) 
 				VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		$stmt = $this->mysqli->stmt_init();
     	$stmt->prepare($sql);
     	$stmt->bind_param('siiiiiii',
+            $this->titulo,
     		$this->texto,
     		$this->destacado,
     		$this->emergente,
-    		$this->visible,
     		$this->estado,
-    		$this->bloqueado,
-    		$this->idArchivo,
-    		$this->idUsuario
+    		$this->link,
+    		$this->idUsuario,
+            $this->idImagen
     		);
     	if($stmt->execute()){
             $this->id = $stmt->insert_id;
@@ -175,12 +175,11 @@ class Aviso extends abstractModel{
     		return $this->md_estado = false;
     	}
     	$sql = "UPDATE aviso SET 
+                    titulo=?,
 					texto=?, 
 					destacado=?, 
 					emergente=?, 
-					visible=?, 
-					estado=?, 
-					bloqueado=? 
+					estado=?
 				WHERE idAviso=?";
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
@@ -188,9 +187,7 @@ class Aviso extends abstractModel{
     		$this->texto,
     		intval($this->destacado),
     		intval($this->emergente),
-    		intval($this->visible),
     		intval($this->estado),
-    		intval($this->bloqueado),
     		$this->id
     		);
 		if($stmt->execute()){
