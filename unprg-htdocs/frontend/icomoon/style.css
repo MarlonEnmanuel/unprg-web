@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'icomoon';
-    src:    url('fonts/icomoon.eot?mt6gnd');
-    src:    url('fonts/icomoon.eot?mt6gnd#iefix') format('embedded-opentype'),
-        url('fonts/icomoon.ttf?mt6gnd') format('truetype'),
-        url('fonts/icomoon.woff?mt6gnd') format('woff'),
-        url('fonts/icomoon.svg?mt6gnd#icomoon') format('svg');
+    src:    url('fonts/icomoon.eot?nlvy1w');
+    src:    url('fonts/icomoon.eot?nlvy1w#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?nlvy1w') format('truetype'),
+        url('fonts/icomoon.woff?nlvy1w') format('woff'),
+        url('fonts/icomoon.svg?nlvy1w#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -24,8 +24,26 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-download:before {
+.icon-newspaper:before {
     content: "\e900";
+}
+.icon-pencil2:before {
+    content: "\e912";
+}
+.icon-image:before {
+    content: "\e913";
+}
+.icon-play:before {
+    content: "\e914";
+}
+.icon-file-text2:before {
+    content: "\e915";
+}
+.icon-location:before {
+    content: "\e916";
+}
+.icon-calendar:before {
+    content: "\e917";
 }
 .icon-user:before {
     content: "\e901";
@@ -77,5 +95,8 @@
 }
 .icon-youtube2:before {
     content: "\e911";
+}
+.icon-file-pdf:before {
+    content: "\e918";
 }
 
