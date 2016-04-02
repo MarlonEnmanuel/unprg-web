@@ -37,9 +37,9 @@ class config {
 
 	/* Rutas de alamacenamiento de archivos
 	*/
-	public static $upload_avisos   = "/uploads/avisos/";     //Carpeta para avisos
-	public static $upload_noticias = "/uploads/noticias/";   //Carpeta para noticias
-	public static $upload_eventos  = "/uploads/eventos/";    //Carpeta para eventos
+	public static $upload_images   = "/uploads/images/";     //Carpeta para imagenesyes
+	public static $upload_documents = "/uploads/documents/";   //Carpeta para documentos
+	
 
 
 	/**

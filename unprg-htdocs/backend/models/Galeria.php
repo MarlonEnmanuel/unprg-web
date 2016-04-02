@@ -13,7 +13,31 @@ class Galeria extends abstractModel
 	}
 
 	public function get(){
-		#nose que chucha hacer aqui
+		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        if(!isset($this->id)){                  //debe tener id para buscar
+            $this->md_mensaje = "Debe indicar un id para buscar";
+            return $this->md_estado = false;
+        }
+        $sql="select * from galeria where IdNoticia=?";
+        $stmt=$this->mysqli->stmt_init();
+        $stmt->preprare($sql);
+        $stmt->bind_param('i', $this->id);  //se vinculan los parámetros
+        $stmt->execute(); 
+        $stmt->bind_resul(
+        	$this->idNoticia,
+        	$this->idImagen
+        	);
+        if($stmt->fetch()){
+        	$this->md_estado=true;
+        	$this->md_mensaje="Galeria Encontrada";
+        }else{
+        	$this->md_estado=false;
+        	$this->md_estado="Error al obtener galeria";
+        	if(config::$isDebugging) $this->md_detalle=$stmt->error;
+        }
+        $stmt->close();
+        return $this->md_estado;
 	}
 }
 ?>

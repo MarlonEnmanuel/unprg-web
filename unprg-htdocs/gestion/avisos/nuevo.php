@@ -42,12 +42,8 @@
 
 				<form class="formAviso" enctype="multipart/form-data">
 					<div>
-						<span>Tipo de aviso</span>
-						<select name="tipo">
-							<option value="img">Publicar Imagen</option>
-							<option value="doc">Publicar Documento PDF</option>
-							<option value="link">Enlace a otra página</option>
-						</select>
+						<span title="Titulo del aviso que aparece en el panel de avisos">Titulo del aviso</span>
+						<input type="text" name="titulo">
 					</div>
 					<div>
 						<span title="Descripción breve del aviso, aparece en el panel de avisos.">
@@ -60,12 +56,6 @@
 							Aviso destacado
 						</span>
 						<input type="checkbox" name="destacado">
-					</div>
-					<div>
-						<span title="Mostrar el aviso en la página principal.">
-							Visible en página principal
-						</span>
-						<input type="checkbox" name="visible" checked>
 					</div>
 					<div>
 						<span title="Hacer que el aviso, se despliegue al cargar la página (Nota: el aviso será emergente, hasta que algún usuario cree otro aviso emergente).">
@@ -93,6 +83,12 @@
 						</span>
 						<input type="text" name="nombre" maxlength="45">
 					</div>
+					<div>
+						<span class="p2" title="Enlace interno y/o externo">
+							Enlace
+						</span>
+						<input type="text" name="enlace" maxlength="45">
+					</div>
 					<div class="formPie">
 						<div class="info">Información de estado</div>
 						<div class="boton">
@@ -103,25 +99,6 @@
 			</div>
 
 			<script type="text/javascript">
-				$('.formAviso select').change(function(){
-					var op = $('.formAviso select').val();
-					var p1 = $('.formAviso .p1');
-					var p2 = $('.formAviso .p2');
-					var fl = p1.siblings('input');
-					if(op == 'img'){
-						p1.text('Seleccione imágen');
-						p2.text('Nombre de la imágen');
-						fl.attr('accept', 'image/jpeg,image/png');
-					}else if(op == 'doc'){
-						p1.text('Seleccione documento');
-						p2.text('Nombre del documento');
-						fl.attr('accept', 'application/pdf');
-					}else if(op == 'link'){
-						p1.text('Imagen del enlace');
-						p2.text('Enlace de la página');
-						fl.attr('accept', 'image/jpeg,image/png');
-					}
-				});
 				$('.formAviso input[name^=archivo]').change(function(event) {
 					var nom = $(this).val();
 					if( nom.lastIndexOf('\\')!=-1 ){

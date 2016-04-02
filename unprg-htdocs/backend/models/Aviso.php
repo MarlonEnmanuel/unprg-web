@@ -3,6 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/abstractModel.php';
 
 
+
 class Aviso extends abstractModel{
 
 	public $fchReg;
@@ -58,11 +59,11 @@ class Aviso extends abstractModel{
 
 	public function searchVisible(){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
-		$sql = "select * from aviso where estado=? order by fchReg desc LIMIT 3";
+		$sql = "select * from aviso where estado=1 order by fchReg desc LIMIT ?";
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
-        $vis=1;
-		$stmt->bind_param('i', $vis);
+        $vis=3;
+        $stmt->bind_param('i', $vis);
 		$stmt->execute();
 		$stmt->bind_result(
 			$_id,
@@ -88,7 +89,7 @@ class Aviso extends abstractModel{
 			$avi->estado 	= $_estado;
             $avi->link      = $_link;
 			$avi->idUsuario = $_idUsuario;
-            $avi->idImagen  = $_idImagen
+            $avi->idImagen  = $_idImagen;
 			array_push($list, $avi);
 		}
 		$stmt->close();
@@ -126,7 +127,7 @@ class Aviso extends abstractModel{
             $avi->estado    = $_estado;
             $avi->link      = $_link;
             $avi->idUsuario = $_idUsuario;
-            $avi->idImagen  = $_idImagen
+            $avi->idImagen  = $_idImagen;
             array_push($list, $avi);
         }
 		$stmt->close();
@@ -144,7 +145,7 @@ class Aviso extends abstractModel{
 				VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		$stmt = $this->mysqli->stmt_init();
     	$stmt->prepare($sql);
-    	$stmt->bind_param('siiiiiii',
+    	$stmt->bind_param('ssiiisii',
             $this->titulo,
     		$this->texto,
     		$this->destacado,
