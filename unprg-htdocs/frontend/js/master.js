@@ -1,4 +1,14 @@
 
+sgw = {};
+
+sgw.Models = {};
+sgw.Views = {};
+sgw.Collections = {};
+
+models = {};
+views = {};
+collections = {};
+
 $(document).ready(function($) {
 	/** Desplazamiento suave hacia anclas de documento
 	*/

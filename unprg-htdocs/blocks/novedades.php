@@ -1,3 +1,15 @@
+
+<script type="text/template" id="template_aviso">
+	<div class="bklast__avi__el">
+		<a class="bklast__avi__el__text ff--14" href="#">
+			<%= texto %>
+		</a>
+		<div class="bklast__avi__el__fech ff--12 ff--r ff--b cc--azul2">
+			@<%= fecha %>
+		</div>
+	</div>
+</script>
+
 <section class="block plx bklast bgc--gris6 cc--gris1">
 	<div class="block__wraper">
 
@@ -5,50 +17,6 @@
 			<div class="bklast__col__titulo ff--26 ff--special cc--azul2">Avisos</div>
 			<div class="bklast__col__cont">
 
-				<div class="bklast__avi__el">
-					<a class="bklast__avi__el__text ff--14 ff--j" href="#">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur beatae sed harum nulla asperiores?
-					</a>
-					<div class="bklast__avi__el__fech ff--12 ff--r ff--b cc--azul2">
-						@01/04/2016
-					</div>
-				</div>
-
-				<div class="bklast__avi__el">
-					<a class="bklast__avi__el__text ff--14 ff--j" href="#">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus tenetur, aliquid totam possimus perspiciatis molestiae voluptates mollitia sequi aut rerum numquam inventore maxime dolores, tempore. Nihil deleniti eos rerum id.
-					</a>
-					<div class="bklast__avi__el__fech ff--12 ff--r ff--b cc--azul2">
-						@01/04/2016
-					</div>
-				</div>
-
-				<div class="bklast__avi__el">
-					<a class="bklast__avi__el__text ff--14 ff--j" href="#">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					</a>
-					<div class="bklast__avi__el__fech ff--12 ff--r ff--b cc--azul2">
-						@01/04/2016
-					</div>
-				</div>
-
-				<div class="bklast__avi__el">
-					<a class="bklast__avi__el__text ff--14 ff--j" href="#">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique enim consequatur asperiores, tempore autem ea assumenda.
-					</a>
-					<div class="bklast__avi__el__fech ff--12 ff--r ff--b cc--azul2">
-						@01/04/2016
-					</div>
-				</div>
-
-				<div class="bklast__avi__el">
-					<a class="bklast__avi__el__text ff--14 ff--j" href="#">
-						Lorem ipsum dolor sit amet, consectetur.
-					</a>
-					<div class="bklast__avi__el__fech ff--12 ff--r ff--b cc--azul2">
-						@01/04/2016
-					</div>
-				</div>
 
 			</div>
 		</div>
@@ -59,7 +27,7 @@
 
 				<div class="bklast__doc__el">
 					<span class="icon-file-pdf ff--44 cc--gris2"></span>
-					<a class="bklast__doc__el__text ff--14 ff--j" href="#">
+					<a class="bklast__doc__el__text ff--14" href="#">
 						Lorem ipsum dolor sit amet, consectetur adipisicing.
 					</a>
 					<div class="bklast__doc__el__fech ff--12 ff--r ff--b cc--azul3">
@@ -69,7 +37,7 @@
 
 				<div class="bklast__doc__el">
 					<span class="icon-file-pdf ff--44 cc--gris2"></span>
-					<a class="bklast__doc__el__text ff--14 ff--j" href="#">
+					<a class="bklast__doc__el__text ff--14" href="#">
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt laboriosam, quibusdam obcaecati expedita.
 					</a>
 					<div class="bklast__doc__el__fech ff--12 ff--r ff--b cc--azul3">
@@ -79,7 +47,7 @@
 
 				<div class="bklast__doc__el">
 					<span class="icon-file-pdf ff--44 cc--gris2"></span>
-					<a class="bklast__doc__el__text ff--14 ff--j" href="#">
+					<a class="bklast__doc__el__text ff--14" href="#">
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus esse dolorum, veniam accusamus eius, at.
 					</a>
 					<div class="bklast__doc__el__fech ff--12 ff--r ff--b cc--azul3">
@@ -89,7 +57,7 @@
 
 				<div class="bklast__doc__el">
 					<span class="icon-file-pdf ff--44 cc--gris2"></span>
-					<a class="bklast__doc__el__text ff--14 ff--j" href="#">
+					<a class="bklast__doc__el__text ff--14" href="#">
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur ratione accusamus, illo facere saepe a totam sunt aperiam possimus! Iste quisquam illum cupiditate labore facilis, nihil iure aliquid provident voluptatum!
 					</a>
 					<div class="bklast__doc__el__fech ff--12 ff--r ff--b cc--azul3">
@@ -99,7 +67,7 @@
 
 				<div class="bklast__doc__el">
 					<span class="icon-file-pdf ff--44 cc--gris2"></span>
-					<a class="bklast__doc__el__text ff--14 ff--j" href="#">
+					<a class="bklast__doc__el__text ff--14" href="#">
 						Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 					</a>
 					<div class="bklast__doc__el__fech ff--12 ff--r ff--b cc--azul3">
@@ -195,3 +163,6 @@
 		<div class="block__clean"></div>
 	</div>
 </section>
+
+<script type="text/javascript" src="/frontend/js/avisos.js"></script>
+<script type="text/javascript" src="/frontend/js/novedades.js"></script>

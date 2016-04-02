@@ -26,7 +26,7 @@
 
 	<!-- Importación de Scripts -->
 		<?= config::getScripts() ?>
-		<script src="/frontend/js/sha1.js"></script>
+		<script src="/frontend/jslibs/sha1.js"></script>
 		
 	<!-- Fin de la importación -->
 </head>

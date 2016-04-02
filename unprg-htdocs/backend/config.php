@@ -39,6 +39,11 @@ class config {
 	*/
 	public static $upload_images   = "/uploads/images/";     //Carpeta para imagenesyes
 	public static $upload_documents = "/uploads/documents/";   //Carpeta para documentos
+
+	/**
+	*
+	*/
+	public static $access = ['avisos','documentos','agenda','noticias'];
 	
 
 
@@ -99,7 +104,9 @@ class config {
 	* Proporciona las etiquetas de Scritps que se usarán en todo el sitio web
 	*/
 	public static function getScripts(){
-		$scripts  = '<script src="/frontend/js/jquery.js"></script>';
+		$scripts  = '<script src="/frontend/jslibs/jquery.js"></script>';
+		$scripts .= '<script src="/frontend/jslibs/underscore-min.js"></script>';
+		$scripts .= '<script src="/frontend/jslibs/backbone-min.js"></script>';
 		$scripts .= '<script src="/frontend/js/master.js"></script>';
 		return $scripts;
 	}

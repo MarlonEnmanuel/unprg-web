@@ -85,7 +85,6 @@
 
 	};
 
-	if(!window.unprg) window.unprg = {};
 	window.unprg.cado = Cado;
 	
 })(jQuery);
