@@ -57,13 +57,13 @@ class Aviso extends abstractModel{
         return $this->md_estado;
 	}
 
-	public function searchVisible(){
+	public function searchVisible($vis,$fin=0){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
-		$sql = "select * from aviso where estado=1 order by fchReg desc LIMIT ?";
+		$sql = "select * from aviso where estado=1 order by fchReg desc LIMIT ? OFFSET ?";
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
-        $vis=3;
-        $stmt->bind_param('i', $vis);
+        
+        $stmt->bind_param('ii', $vis,$fin);
 		$stmt->execute();
 		$stmt->bind_result(
 			$_id,

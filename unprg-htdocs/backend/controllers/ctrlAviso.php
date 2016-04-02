@@ -27,9 +27,11 @@ class ctrlAviso extends abstractController {
 
     protected function getVisibles() {
         $mysqli = $this->getMysqli();
-        
+        $vi=3;
+        $fi=0;
         $aux = new Aviso($mysqli);
-        $lista = $aux->searchVisible();
+        
+        $lista = $aux->searchVisible($vi,$fi);
         $avisos = array();
 
         foreach ($lista as $key => $aviso) {
@@ -113,7 +115,7 @@ class ctrlAviso extends abstractController {
             $this->responder(false, "No se pudo guardar el aviso", $aviso->md_detalle, null, $mysqli);
         }
 
-        //Guardando imagen o documento
+        //Guardando imagen 
         $rutaNueva = $_SERVER['DOCUMENT_ROOT'].$imagen->ruta;
         if(!move_uploaded_file($file['tmp'], $rutaNueva)){
             $this->responder(false, "No se pudo guardar imagen", 'Error al almacear la imagen subida', null, $mysqli);
