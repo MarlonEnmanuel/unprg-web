@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/abstractModel.php';
 
-class Documentos extends abstractModel{
+class Documento extends abstractModel{
 	
 	public $fchReg;
 	public $nombre;
@@ -11,8 +11,7 @@ class Documentos extends abstractModel{
 	public $validacion;
 	public $idUsuario;
 
-	public function __construct(&$mysqli,$id=null)
-	{
+	public function __construct(&$mysqli,$id=null){
 		parent::__construct($mysqli,$id);
 	}
 
@@ -35,7 +34,7 @@ class Documentos extends abstractModel{
         	$this->ruta,
         	$this->tipo,
         	$this->validacion,
-        	$this->$idUsuario
+        	$this->idUsuario
         	);
         if($stmt->fetch()){
             $this->fchReg = DateTime::createFromFormat(config::$date_sql, $this->fchReg); //se convierte de string a DateTime
@@ -89,16 +88,17 @@ class Documentos extends abstractModel{
     		$this->md_mensaje = "El documento ya tiene id";
     		return $this->md_estado = false;
     	}
-    	$sql="INSERT INTO documentos(nombre,ruta,tipo) VALUES (?,?,?)";
+    	$sql="INSERT INTO documentos(nombre,ruta,tipo,idUsuario) VALUES (?,?,?,?)";
     	$stmt=$this->mysqli->stmt_init();
     	$stmt->prepare($sql);
-    	$stmt->bind_param('siiii',
+    	$stmt->bind_param('sssi',
     		$this->nombre,
     		$this->ruta,
-    		$this->tipo
+    		$this->tipo,
+            $this->idUsuario
     		);
     	if($stmt->execute()){
-    		$this->id=$stmt->insert_id;
+    		$this->id = $stmt->insert_id;
     		$this->md_estado=true;
     		$this->md_mensaje="Documento insertado";
     	}else{
@@ -111,8 +111,36 @@ class Documentos extends abstractModel{
 	}
 
 	public function edit(){
-		#nose que editar :3 :3
+		 if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        if(!isset($this->id)){  //debe tener id para poder editar
+            $this->md_mensaje = "Debe indicar un id para editar";
+            return $this->md_estado = false;
+        }
+
+        $sql="UPDATE documentos SET nombre=?,ruta=?,tipo=? where idDocumentos=?";
+        $stmt = $this->mysqli->stmt_init();
+        $stmt->prepare($sql);
+        $stmt->bind_param('sssi',
+            $this->nombre,
+            $this->ruta,
+            $this->tipo,
+            $this->id
+            );
+        if($stmt->execute()){
+            $this->md_estado = true;
+            $this->md_mensaje = "Documento actualizado";
+        }else{
+            $this->md_estado = false;
+            $this->md_mensaje = "Error al actualizar documento";
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+        }
+        $stmt->close();
+        return $this->md_estado;
+
 	}
+
+
 	public function delete(){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
@@ -123,8 +151,7 @@ class Documentos extends abstractModel{
     	$sql="UPDATE documentos SET validacion= WHERE idDocumentos=?";
     	$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
-		$stmt->bind_param('siiiiii',
-			#revisa esta parte bien
+		$stmt->bind_param('i',
     		$this->id
     		);
 		if($stmt->execute()){
@@ -139,4 +166,5 @@ class Documentos extends abstractModel{
         return $this->md_estado;
 	}
 }
+
 ?>
