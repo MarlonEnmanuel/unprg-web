@@ -1,13 +1,45 @@
 
-sgw = {};
+Backbone.emulateHTTP = true;
 
+sgw = {};
 sgw.Models = {};
 sgw.Views = {};
 sgw.Collections = {};
+window.models = {};
+window.views = {};
+window.collections = {};
 
-models = {};
-views = {};
-collections = {};
+sgw.cado = {
+
+	get : function(url, data, done, fail, always){
+		var params = { url:url, type:'get', dataType:'json', data:data };
+		sgw.ajax(params, done, fail, always);
+	},
+
+	post : function(url, data, done, fail, always){
+		var params = { url:url, type:'post', dataType:'json', data:data };
+		sgw.ajax(params, done, fail, always);
+	},
+
+	file : function(url, data, done, fail, always){
+		var params = { url:url, type:'post', dataType:'json', data:data, cache:false, contentType:false, processData:false };
+		sgw.ajax(params, done, fail, always);
+	},
+
+	ajax : function(params, done, fail, always){
+		$.ajax(params).done(function(response) {
+			if(response.estado){ 
+				if(done) done(response.mensaje, response.detalle, response.data);
+			}else{
+				if(fail) fail(response.mensaje, response.detalle, response.data);
+			}
+		}).fail(function(response) {
+			if(fail) fail(response.mensaje, false, false);
+		}).always(function(response) {
+			if(always) always(response);
+		});
+	}
+};
 
 $(document).ready(function($) {
 	/** Desplazamiento suave hacia anclas de documento

@@ -16,28 +16,5 @@ sgw.Views.Aviso = Backbone.View.extend({
 
 sgw.Collections.Avisos = Backbone.Collection.extend({
 	model : sgw.Models.Aviso,
-	url : '/backend/controllers/ctrlAviso.php',
-
-	fetch : function(){
-		$.$.ajax({
-			url: this.url,
-			type: 'get',
-			dataType: 'json',
-			data: {accion: 'getVisibles'},
-		})
-		.done(function(response) {
-			if(response.estado){
-				
-			}else{
-				alert('Error al cargar avisos');
-			}
-		})
-		.fail(function(response) {
-			
-		})
-		.always(function(response) {
-			
-		});
-		
-	}
+	url : '/backend/controllers/ctrlAviso.php'
 });
