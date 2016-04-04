@@ -13,15 +13,11 @@ abstract class abstractController {
 		//Se inicializa el controlador solo si recibe peticiones ajax
 		if($isAjax){
 			//Identificar tipo de request
-			$this->method = isset($_GET) ? INPUT_GET : INPUT_POST;
+			$this->method = empty($_POST) ? INPUT_GET : INPUT_POST;
 
 			$accion = filter_input($this->method, '_accion');
 			if( isset($accion) ){ //Se ejecuta la acción si se recibe
-				if( isset($accion) ){
-					$this->init($accion);
-				}else{
-					$this->responder(false, "No se indicó una acción");
-				}
+				$this->init($accion);
 			}else{ //Si no se recibe la accion entonces indentificamos método de backbone
 				$this->method = null; //método no es usado
 
@@ -40,20 +36,20 @@ abstract class abstractController {
 						$this->read($_id);
 					}
 				}else{
-					$top    = filter_input($this->method, '_top', FILTER_VALIDATE_INT);
+					$limit  = filter_input($this->method, '_limit', FILTER_VALIDATE_INT);
 					$offset = filter_input($this->method, '_offset', FILTER_VALIDATE_INT);
-					$this->readList($top, $offset);
+					$this->readList($limit, $offset);
 				}
 			}
 		}
 	}
 
-	abstract protected 	function init    ($accion);
-	abstract public 	function create  ($model);
-	abstract public 	function update  ($model);
-	abstract public 	function delete  ($_id);
-	abstract public 	function read    ($_id);
-	abstract public 	function readList($top, $offset);
+	abstract protected function init ($accion);
+	abstract public function create ($model);
+	abstract public function update ($model);
+	abstract public function delete ($_id);
+	abstract public function read ($_id);
+	abstract public function readList ($limit, $offset);
 
 	/**
 	* Abre una conección y comprueba su estado

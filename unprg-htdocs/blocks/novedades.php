@@ -7,7 +7,7 @@
 				<script type="text/template" id="template_aviso">
 					<div class="bklast__avi__el">
 						<a class="bklast__avi__el__text ff--14" href="#">
-							<%= texto %>
+							<%= titulo %>
 						</a>
 						<div class="bklast__avi__el__fech ff--12 ff--r ff--b cc--azul2">
 							@<%= fecha %>
@@ -60,4 +60,4 @@
 	</div>
 </section>
 
-<script type="text/javascript" src="/frontend/js/avisos.js"></script>
+<script type="text/javascript" src="/frontend/js/novedades.js"></script>

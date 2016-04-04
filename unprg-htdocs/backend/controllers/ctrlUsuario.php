@@ -6,56 +6,16 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Usuario.php';
 class ctrlUsuario extends abstractController {
 
     protected function init($accion){
+        switch ($accion) {
+            case 'login': $this->login(); break;
 
-        if($accion == 'login'){         //acción del controlador
-            $this->login();
-
-        }elseif($accion == 'logout'){   //acción del controlador
-            $this->logout();    
-
-        }elseif($accion == 'nuevoUsuario'){         //acción del controlador
-            $this->nuevoUsuario();
-
-        }elseif($accion == ''){         //acción del controlador
-
-
-        }else{                          //responde cuando la acción no corresponde a ningun controlador
-            $this->responder(false, "Acción no soportada");
+            case 'logout': $this->logout(); break;
+            
+            default: $this->responder(false, "Acción no soportada"); break;
         }
     }
 
-    protected function login(){
-
-        $inputs = $this->getFilterInputs('post', array(
-            'email' => array('type'=>'email'),
-            'pass'  => array('type'=>'string', 'min'=>'40', 'max'=>'40'),
-        ));
-
-        $mysqli = $this->getMysqli();
-
-        $user = new Usuario($mysqli);
-        $user->getEmail($inputs['email']);
-
-        if($user->md_estado == false) $this->responder(false, "Usuario incorrecto");
-        if($user->password != $inputs['pass']) $this->responder(false, "Contraseña incorrecta");
-
-        if(!$user->estado) $this->responder(false, "Usuario bloqueado, contacte con el administrador");
-
-        session_start();
-        $user->permisos = explode(',', $user->permisos);
-        $_SESSION['Usuario'] = $user->toArray();
-        $this->responder(true, 'Bienvenido', 'redirect', '/gestion/panel.php');
-    }
-
-    public function logout(){
-        session_start();
-        session_destroy();
-        $mensaje = "Hasta luego";
-        header('Location: /gestion?msj='.$mensaje);
-        exit();
-    }
-
-    protected function nuevoUsuario(){
+    public function create ($model){
         $this->checkAccess('admin');
 
         $ipts = $this->getFilterInputs('post', array(
@@ -100,6 +60,52 @@ class ctrlUsuario extends abstractController {
         }else{
             $this->responder(false, $user->md_mensaje, $user->md_detalle);
         }
+    }
+
+    public function update ($model){
+
+    }
+
+    public function delete ($_id){
+
+    }
+
+    public function read ($_id){
+
+    }
+
+    public function readList ($limit, $offset){
+
+    }
+
+    protected function login(){
+        $inputs = $this->getFilterInputs('post', array(
+            'email' => array('type'=>'email'),
+            'pass'  => array('type'=>'string', 'min'=>'40', 'max'=>'40'),
+        ));
+
+        $mysqli = $this->getMysqli();
+
+        $user = new Usuario($mysqli);
+        $user->getEmail($inputs['email']);
+
+        if($user->md_estado == false) $this->responder(false, "Usuario incorrecto");
+        if($user->password != $inputs['pass']) $this->responder(false, "Contraseña incorrecta");
+
+        if(!$user->estado) $this->responder(false, "Usuario bloqueado, contacte con el administrador");
+
+        session_start();
+        $user->permisos = explode(',', $user->permisos);
+        $_SESSION['Usuario'] = $user->toArray();
+        $this->responder(true, 'Bienvenido', 'redirect', '/gestion/panel.php');
+    }
+
+    public function logout(){
+        session_start();
+        session_destroy();
+        $mensaje = "Hasta luego";
+        header('Location: /gestion?msj='.$mensaje);
+        exit();
     }
 
     private function getRandomPass($length){

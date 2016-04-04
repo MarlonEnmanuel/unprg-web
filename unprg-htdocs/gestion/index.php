@@ -41,8 +41,8 @@
 				<p class="ff--18">UNPRG</p>
 			</div>
 			<form class="bklogin__form">
-				<input type="email" name="email" value="" placeholder="Correo">
-				<input type="password" name="pass" value="" placeholder="Contraseña">
+				<input type="email" name="login-email" value="" placeholder="Correo">
+				<input type="password" name="login-pass" value="" placeholder="Contraseña">
 				<input type="submit" value="Entrar" class="btn--amarillo">
 			</form>
 			<p class="bklogin__info ff--16 ff--b"><?= ($msj)?$msj:'Información' ?></p>
@@ -54,12 +54,12 @@
 			event.preventDefault();
 
 			var $form = $(this);
-			var $info = $('section .wraper h2');
+			var $info = $('.bklogin__info');
 
 			var form = {
-				accion : 'login',
-				email : $('section form input[name=email]').val().trim(),
-				pass : $('section form input[name=pass]').val().trim()
+				_accion : 'login',
+				email : $('section form input[name=login-email]').val().trim(),
+				pass : $('section form input[name=login-pass]').val().trim()
 			};
 
 			if( !form.email || !form.pass ){
@@ -90,6 +90,7 @@
 			})
 			.fail(function(data) {
 				$form.find('input[type=submit]').removeAttr('disabled').val('Entrar');
+				$info.html('Error del Servidor');
 				console.log(data);
 			});
 		});
