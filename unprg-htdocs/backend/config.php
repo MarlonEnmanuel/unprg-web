@@ -32,7 +32,7 @@ class config {
 	/* Formatos de fecha usados en el proyecto
 	*/
 	public static $date_sql   = "Y-m-d H:i:s";				//Formato de la BD
-	public static $date_aviso = "@d/m/Y";					//Formato de los avisos
+	public static $date_aviso = "d/m/Y";					//Formato de los avisos
 
 
 	/* Rutas de alamacenamiento de archivos

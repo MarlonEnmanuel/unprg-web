@@ -7,58 +7,10 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Imagen.php';
 class ctrlAviso extends abstractController {
 
     protected function init($accion){
-        
-        if($accion == 'getVisibles'){   //acción del controlador
-            $this->getVisibles();
-
-        }elseif($accion == 'nuevoAviso'){         //acción del controlador
-            $this->nuevoAviso();
-
-        }elseif($accion == ''){         //acción del controlador
-
-
-        }elseif($accion == ''){         //acción del controlador
-
-
-        }else{                          //responde cuando la acción no corresponde a ningun controlador
-            $this->responder(false, "Acción no soportada");
-        }
+        $this->responder(false, "Acciones no implementadas");
     }
 
-    protected function getVisibles() {
-        $mysqli = $this->getMysqli();
-        $vi=3;
-        $fi=0;
-        $aux = new Aviso($mysqli);
-        
-        $lista = $aux->searchVisible($vi,$fi);
-        $avisos = array();
-
-        foreach ($lista as $key => $aviso) {
-            $imagen = new Imagen($mysqli,$aviso->idImagen);
-            $imagen->get();
-            $arrayAviso = array(
-                'id'        => $aviso->id,
-                'fecha'     => $aviso->fchReg->format(config::$date_aviso),
-                'titulo'    => $aviso->titulo,
-                'texto'     => $aviso->texto,
-                'destacado' => $aviso->destacado,
-                'emergente' => $aviso->emergente,
-                'estado'    => $aviso->estado,
-                'link'      => $aviso->link,
-                'ruta'      => $imagen->ruta,
-                'nombre'    => $imagen->nombre
-            );
-            $avisos[$key] = $arrayAviso;
-        }
-
-        if(empty($avisos)) $this->responder(false, 'No hay avisos para mostrar');
-
-        $this->responder(true, 'Avisos visible', '', $avisos);
-    }
-
-    protected function nuevoAviso(){
-        
+    public function create($model){
         $Usuario = $this->checkAccess('aviso');
 
         $ops = array(
@@ -126,7 +78,54 @@ class ctrlAviso extends abstractController {
         }
 
         $this->responder(true, "Aviso creado!", "redirect", '/');
+    }
 
+    public function update($model){
+        $this->responder(false, 'Método no soportado');
+    }
+
+    public function patch($model){
+        $this->responder(false, 'Método no soportado');
+    }
+
+    public function delete($model){
+        $this->responder(false, 'Método no soportado');
+    }
+
+    public function read($idtoRead){
+        $this->responder(false, 'Método no soportado');
+    }
+
+    public function readList($top, $offset){
+        $top = 5; $offset = 0;
+
+        $mysqli = $this->getMysqli();
+        $aux = new Aviso($mysqli);
+
+        $lista = $aux->searchVisible($top,$offset);
+        $avisos = array();
+
+        foreach ($lista as $key => $aviso) {
+            $imagen = new Imagen($mysqli,$aviso->idImagen);
+            $imagen->get();
+            $arrayAviso = array(
+                'id'        => $aviso->id,
+                'fecha'     => $aviso->fchReg->format(config::$date_aviso),
+                'titulo'    => $aviso->titulo,
+                'texto'     => $aviso->texto,
+                'destacado' => $aviso->destacado,
+                'emergente' => $aviso->emergente,
+                'estado'    => $aviso->estado,
+                'link'      => $aviso->link,
+                'ruta'      => $imagen->ruta,
+                'nombre'    => $imagen->nombre
+            );
+            $avisos[$key] = $arrayAviso;
+        }
+
+        if(empty($avisos)) $this->responder(false, 'No hay avisos para mostrar');
+
+        $this->responder(true, 'Avisos obtenidos', '', $avisos);
     }
 
 }

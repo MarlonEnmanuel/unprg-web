@@ -1,38 +1,59 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 
-class abstractController {
+abstract class abstractController {
 
 	public $isAjax = false;
+	public $method;
 
 	public function __construct($isAjax=false){
-
-		if(!method_exists($this, 'init')){
-			throw new ErrorException("No se ha definido el método init()");
-		}
 		
-		if($isAjax===true || $isAjax===false){
-			$this->isAjax = $isAjax;
-		}
+		$this->isAjax = $isAjax ? true : false;
 
 		//Se inicializa el controlador solo si recibe peticiones ajax
 		if($isAjax){
-	        $accion = filter_input(INPUT_POST, 'accion', FILTER_SANITIZE_STRING);
+			//Identificar tipo de request
+			$this->method = isset($_GET) ? INPUT_GET : INPUT_POST;
 
-	        //Si no encuentra se pide por get
-	        if($accion==null){
-	        	$accion = filter_input(INPUT_GET , 'accion', FILTER_SANITIZE_STRING);
-	        }
+			$accion = filter_input($this->method, '_accion');
+			if( isset($accion) ){ //Se ejecuta la acción si se recibe
+				if( isset($accion) ){
+					$this->init($accion);
+				}else{
+					$this->responder(false, "No se indicó una acción");
+				}
+			}else{ //Si no se recibe la accion entonces indentificamos método de backbone
+				$this->method = null; //método no es usado
 
-	        //Si falla se responde al usuario
-	        if($accion==false || $accion==null){
-            	$this->responder(false, "No se indicó una acción");
-            }
+				$_id = filter_input(INPUT_GET, '_method', FILTER_VALIDATE_INT);
 
-            //Se inicializar el controlador
-            $this->init($accion);
+				if( isset($_id) ){
+					$accion = filter_input(INPUT_POST, '_method');
+					if(isset($accion)){
+						switch ($accion) {
+							case 'POST'	  : $this->create ( json_decode(filter_input(INPUT_POST, 'model')) ); break;
+							case 'PUT'	  : $this->update ( json_decode(filter_input(INPUT_POST, 'model')) ); break;
+							case 'DELETE' : $this->delete ( $_id ); break;
+							default: $this->responder(false, "Método inválido"); break;
+						}
+					}else{
+						$this->read($_id);
+					}
+				}else{
+					$top    = filter_input($this->method, '_top', FILTER_VALIDATE_INT);
+					$offset = filter_input($this->method, '_offset', FILTER_VALIDATE_INT);
+					$this->readList($top, $offset);
+				}
+			}
 		}
 	}
+
+	abstract protected 	function init    ($accion);
+	abstract public 	function create  ($model);
+	abstract public 	function update  ($model);
+	abstract public 	function delete  ($_id);
+	abstract public 	function read    ($_id);
+	abstract public 	function readList($top, $offset);
 
 	/**
 	* Abre una conección y comprueba su estado
@@ -105,7 +126,7 @@ class abstractController {
 	*
 	* Obtiene los datos por el metodo inficado GET o POST, luego filtra cada datos de acuerdo al tipo de filtro indicado, valida los datos recibidos de acuerdo al filtro, y finalmente responde el usuario si ocurre algún error
 	*
-	* @param $method string Metodo de entrada get o post
+	* @param $this->method string Metodo de entrada get o post
 	* @param $inputData array Array asociativo, debe tener como clave el nombre del input, y como llave el tipo de filtro aplicado. Los tipos de filtro pueden ser:
 	* "string,maxLength,trim" escapa una cadena, se puede indicar un tamaño máximo (opcional), y si debe recortar o invalidar si no cumple el maxLength.
 	* "int,min,max" valida un número, opcionalmente se puede indicar un máximo y un mínimo, si min o max es null entonces no se toma en cuenta el limite.
@@ -115,15 +136,7 @@ class abstractController {
 	*
 	* @return array devuele un array con llave input y valor el valor del input, o false en caso de error
 	*/
-	public final function getFilterInputs($method, $ipData){
-		$method = strtolower($method);
-		if($method==='post'){
-			$method = INPUT_POST;
-		}elseif($method==='get') {
-			$method = INPUT_GET;
-		}else{
-			return false;
-		}
+	public final function getFilterInputs($methd, $ipData){
 		$ips = array();
 		foreach ($ipData as $name => $options) {
 			if( !isset($options['type']) ) return false;
@@ -131,19 +144,19 @@ class abstractController {
 			$val; $type = strtolower(trim($options['type']));
 
 			if($type==='string'){
-				$val = $this->getInputString($method, $name, $options);
+				$val = $this->getInputString($this->method, $name, $options);
 
 			}elseif ($type==='int' || $type==='integer') {
-				$val = $this->getInputInt($method, $name, $options);
+				$val = $this->getInputInt($this->method, $name, $options);
 
 			}elseif ($type==='bool' || $type==='boolean') {
-				$val = $this->getInputBoolean($method, $name, $options);
+				$val = $this->getInputBoolean($this->method, $name, $options);
 
 			}elseif ($type==='email') {
-				$val = $this->getInputEmail($method, $name);
+				$val = $this->getInputEmail($this->method, $name);
 
 			}elseif ($type==='url') {
-				$val = $this->getInputURL($method, $name);
+				$val = $this->getInputURL($this->method, $name);
 
 			}else{
 				return false;
@@ -154,7 +167,7 @@ class abstractController {
 	}
 
 	public final function getInputBoolean($method, $name){
-		$val = filter_input($method, $name, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
+		$val = filter_input($this->method, $name, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
 		if(!isset($val)) $this->responder(false, "Chekbox ".$name.' no válido');
 		return $val;
 	}
@@ -174,7 +187,7 @@ class abstractController {
 			$options['max'] = '-';
 		}
 		$msj = 'Número inválido: '.$name.'<br>Min: '.$options['min'].', Max: '.$filter['max'];
-		$val = filter_input($method, $name, FILTER_VALIDATE_INT, $ops);
+		$val = filter_input($this->method, $name, FILTER_VALIDATE_INT, $ops);
 		if(is_null($val) || $val===false) $this->responder(false, $msj);
 		return $val;
 	}
@@ -185,7 +198,7 @@ class abstractController {
 		if( !is_int($options['min']) ) $options['min'] = '-';
 		if( !is_int($options['max']) ) $options['max'] = '-';
 		$msj = 'Texto inválido: '.$name.'<br>Min: '.$options['min'].', max: '.$options['max'].' caracteres';
-		$val = filter_input($method, $name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_NO_ENCODE_QUOTES);
+		$val = filter_input($this->method, $name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_NO_ENCODE_QUOTES);
 		if(is_null($val) || $val===false) $this->responder(false, $msj);
 		if( is_int($options['min']) && strlen($val)<$options['min']) $this->responder(false, $msj);
 		if( is_int($options['max']) && strlen($val)>$options['max']) $this->responder(false, $msj);
@@ -193,18 +206,22 @@ class abstractController {
 	}
 
 	public final function getInputEmail($method, $name){
-		$val = filter_input($method, $name, FILTER_VALIDATE_EMAIL);
+		$val = filter_input($this->method, $name, FILTER_VALIDATE_EMAIL);
 		$msj = 'Email inválido';
 		if(is_null($val) || $val===false) $this->responder(false, $msj);
 		return $val;
 	}
 
 	public final function getInputURL($method, $name){
-		$val = filter_input($method, $name, FILTER_VALIDATE_URL);
+		$val = filter_input($this->method, $name, FILTER_VALIDATE_URL);
 		$msj = 'URL inválida';
 		if(is_null($val) || $val===false) $this->responder(false, $msj);
 		return $val;
 	}
+
+	/*public final function validateInputs($data, $options){
+
+	}*/
 
 	/**
 	* Obtiene y valida un archivo enviado por el cliente
