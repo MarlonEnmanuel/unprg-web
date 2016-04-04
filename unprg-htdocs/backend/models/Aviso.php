@@ -7,14 +7,14 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/abstractModel.php';
 class Aviso extends abstractModel{
 
 	public $fchReg;
-    public $titutlo;
+    public $titulo;
 	public $texto;
 	public $destacado;
 	public $emergente;
 	public $estado;
 	public $link;
 	public $idUsuario;
-    public $idImagen;
+
 
 	public function __construct(&$mysqli, $id=null){
 		parent::__construct($mysqli, $id);
@@ -41,8 +41,7 @@ class Aviso extends abstractModel{
         	$this->emergente,
         	$this->estado,
         	$this->link,
-        	$this->idUsuario,
-            $this->idImagen
+        	$this->idUsuario
         	);
         if($stmt->fetch()){
             $this->fchReg = DateTime::createFromFormat(config::$date_sql, $this->fchReg); //se convierte de string a DateTime
@@ -74,8 +73,7 @@ class Aviso extends abstractModel{
 			$_emergente,
 			$_estado,
             $_link,
-			$_idUsuario,
-            $_idImagen
+			$_idUsuario
 			);
 		$list=array();
 		while ($stmt->fetch()) {
@@ -89,7 +87,6 @@ class Aviso extends abstractModel{
 			$avi->estado 	= $_estado;
             $avi->link      = $_link;
 			$avi->idUsuario = $_idUsuario;
-            $avi->idImagen  = $_idImagen;
 			array_push($list, $avi);
 		}
 		$stmt->close();
@@ -112,8 +109,7 @@ class Aviso extends abstractModel{
             $_emergente,
             $_estado,
             $_link,
-            $_idUsuario,
-            $_idImagen
+            $_idUsuario
             );
         $list=array();
         while ($stmt->fetch()) {
@@ -127,7 +123,6 @@ class Aviso extends abstractModel{
             $avi->estado    = $_estado;
             $avi->link      = $_link;
             $avi->idUsuario = $_idUsuario;
-            $avi->idImagen  = $_idImagen;
             array_push($list, $avi);
         }
 		$stmt->close();
@@ -141,19 +136,18 @@ class Aviso extends abstractModel{
     		return $this->md_estado = false;
     	}
 
-    	$sql = "INSERT INTO aviso (titulo,texto, destacado, emergente,  estado, link, idUsuario, idImagen) 
-				VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    	$sql = "INSERT INTO aviso (titulo,texto, destacado, emergente,  estado, link, idUsuario) 
+				VALUES (?, ?, ?, ?, ?, ?, ?)";
 		$stmt = $this->mysqli->stmt_init();
     	$stmt->prepare($sql);
-    	$stmt->bind_param('ssiiisii',
+    	$stmt->bind_param('ssiiisi',
             $this->titulo,
     		$this->texto,
     		$this->destacado,
     		$this->emergente,
     		$this->estado,
     		$this->link,
-    		$this->idUsuario,
-            $this->idImagen
+    		$this->idUsuario
     		);
     	if($stmt->execute()){
             $this->id = $stmt->insert_id;
@@ -180,15 +174,18 @@ class Aviso extends abstractModel{
 					texto=?, 
 					destacado=?, 
 					emergente=?, 
-					estado=?
+					estado=?,
+                    link=?
 				WHERE idAviso=?";
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
-		$stmt->bind_param('siiiiii',
+		$stmt->bind_param('ssiiisi',
     		$this->texto,
+            $this->titulo,
     		intval($this->destacado),
     		intval($this->emergente),
     		intval($this->estado),
+            $this->link,
     		$this->id
     		);
 		if($stmt->execute()){

@@ -69,22 +69,8 @@
 						</span>
 						<input type="checkbox" name="estado" checked>
 					</div>
-					<hr>
 					<div>
-						<span class="p1" title="Este archivo se mostrará al desplegar el aviso.">
-							Seleccione imágen
-						</span>
-						<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-						<input type="file" name="archivo" accept="image/jpeg,image/png">
-					</div>
-					<div>
-						<span class="p2" title="Nombre que tendrá el archivo al ser descargado.">
-							Nombre de la imágen
-						</span>
-						<input type="text" name="nombre" maxlength="45">
-					</div>
-					<div>
-						<span class="p2" title="Enlace interno y/o externo">
+						<span class="p2" title="Enlace de la imagen o archivo">
 							Enlace
 						</span>
 						<input type="text" name="enlace" maxlength="45">
@@ -99,35 +85,18 @@
 			</div>
 
 			<script type="text/javascript">
-				$('.formAviso input[name^=archivo]').change(function(event) {
-					var nom = $(this).val();
-					if( nom.lastIndexOf('\\')!=-1 ){
-						nom = nom.substring(nom.lastIndexOf('\\')+1);
-					}
-					if( nom.lastIndexOf('.')!=-1 ){
-						nom = nom.substring(0, nom.lastIndexOf('.'));
-					}
-					$('.formAviso input[name=nombre]').val(nom);					
-				});
-
+				
 				$('.formAviso').submit(function(event) {
 					event.preventDefault();
 
 					var form = $(this);
 					var info = form.find('.info');
 
-					if( form.find('input[name=descripcion]').val().length<1 || 
-						form.find('input[name=nombre]').val().length<1 || 
-						form.find('input[name=archivo]').val().length<1 ){
-
-						info.text('Llene los campos y/o seleccine un archivo');
-						return false;
-					}
-
+					
 					form.find('input[type=submit]').attr('disabled','disabled');
 
 					var data = new FormData(form[0]);
-					data.append('accion','nuevoAviso');
+					
 
 					console.log(data);
 					$.ajax({
