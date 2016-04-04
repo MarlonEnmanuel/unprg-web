@@ -32,10 +32,10 @@ $sgnavItems = array(
 		)
 	),
 	array(
-		'text' => 'Eventos',
+		'text' => 'Agenda',
 		'menu' => array(
-			array('text' => 'Mis Eventos', 'perm' => 'aviso', 'link' => '/gestion/eventos/'),
-			array('text' => 'Crear Eventos', 'perm' => 'aviso', 'link' => '/gestion/eventos/nuevo.php'),
+			array('text' => 'Mis Agendas', 'perm' => 'aviso', 'link' => '/gestion/eventos/'),
+			array('text' => 'Crear Agenda', 'perm' => 'aviso', 'link' => '/gestion/agenda/nuevo.php'),
 		)
 	),
 	array(

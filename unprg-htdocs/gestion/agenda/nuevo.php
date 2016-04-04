@@ -55,7 +55,7 @@
 					</div>
 					<div>
 						<span title="Breve descripcion del evento">Descripcion del Evento</span>
-						<input type="text" name="text"/>
+						<input type="text" name="texto"/>
 					</div>
 					<div>
 						<span title="Donde se realizara el evento">Lugar</span>
@@ -79,16 +79,7 @@
 			</div>
 
 			<script type="text/javascript">
-				$('.formAviso input[name^=archivo]').change(function(event) {
-					var nom = $(this).val();
-					if( nom.lastIndexOf('\\')!=-1 ){
-						nom = nom.substring(nom.lastIndexOf('\\')+1);
-					}
-					if( nom.lastIndexOf('.')!=-1 ){
-						nom = nom.substring(0, nom.lastIndexOf('.'));
-					}
-					$('.formAviso input[name=nombre]').val(nom);					
-				});
+				
 
 				$('.formAviso').submit(function(event) {
 					event.preventDefault();
@@ -96,20 +87,16 @@
 					var form = $(this);
 					var info = form.find('.info');
 
-					if( form.find('input[name=nombre]').val().length<1){
-
-						info.text('Llene los campos y/o seleccine un archivo');
-						return false;
-					}
+					
 
 					form.find('input[type=submit]').attr('disabled','disabled');
 
 					var data = new FormData(form[0]);
-					data.append('accion','nuevoDocumento');
+					
 
 					console.log(data);
 					$.ajax({
-						url: "/backend/controllers/ctrlDocumento.php",
+						url: "/backend/controllers/ctrlAgenda.php",
 						type: 'post',
 						dataType: 'json',
 						data: data,

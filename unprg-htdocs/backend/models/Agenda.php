@@ -7,7 +7,7 @@ class Agenda extends abstractModel{
 
 	public $fchInicio;
 	public $titulo;
-	public $text;
+	public $texto;
 	public $lugar;
 	public $mapa;
 	public $organizador;
@@ -35,7 +35,7 @@ class Agenda extends abstractModel{
 			$this->id,
 			$this->fchInicio,
 			$this->titulo,
-			$this->text,
+			$this->texto,
 			$this->lugar,
 			$this->mapa,
 			$this->organizador,
@@ -45,7 +45,7 @@ class Agenda extends abstractModel{
 		if($stmt->fetch()){
 			$this->fchInicio=DateTime::createFromFormat(config::$date_sql,$this->fchInicio);
 			$this->md_estado=true;
-			$this->md_estado="Agenda obtenida"
+			$this->md_estado="Agenda obtenida";
 		}else{
 			$this->md_estado="Error al obtener Agenda";
 			if(config::$isDebugging) $this->md_detalle=$stmt->error;
@@ -66,7 +66,7 @@ class Agenda extends abstractModel{
 			$_id,
 			$_fchInicio,
 			$_titulo,
-			$_text,
+			$_texto,
 			$_lugar,
 			$_mapa,
 			$_organizador,
@@ -79,7 +79,7 @@ class Agenda extends abstractModel{
 			$age->id=$_id;
 			$age->fchInicio=DateTime::createFromFormat(config::$date_sql,$_fchInicio);
 			$age->titulo=$_titulo;
-			$age->text=$_text;
+			$age->texto=$_texto;
 			$age->lugar=$_lugar;
 			$age->mapa=$_mapa;
 			$age->organizador=$_organizador;
@@ -104,7 +104,7 @@ class Agenda extends abstractModel{
 			$_id,
 			$_fchInicio,
 			$_titulo,
-			$_text,
+			$_texto,
 			$_lugar,
 			$_mapa,
 			$_organizador,
@@ -117,7 +117,7 @@ class Agenda extends abstractModel{
 			$age->id=$_id;
 			$age->fchInicio=DateTime::createFromFormat(config::$date_sql,$_fchInicio);
 			$age->titulo=$_titulo;
-			$age->text=$_text;
+			$age->texto=$_texto;
 			$age->lugar=$_lugar;
 			$age->mapa=$_mapa;
 			$age->organizador=$_organizador;
@@ -130,7 +130,36 @@ class Agenda extends abstractModel{
 	}
 
 	public function set(){
-		
+		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+		if(isset($this->id)){	//si tiene ID entonces ya existe en la BD
+    		$this->md_mensaje = "La agenda ya tiene id";
+    		return $this->md_estado = false;
+    	}
+
+    	$sql="INSERT INTO agenda(fchInicio,titulo,texto,lugar,mapa,organizador,idUsuario) VALUES (?,?,?,?,?,?,?)";
+    	$stmt=$this->mysqli->stmt_init();
+    	$stmt->prepare($sql);
+    	$aux=$this->fchInicio->format(config::$date_sql);
+    	$stmt->bind_param('ssssssi',
+    		$aux,
+    		$this->titulo,
+    		$this->texto,
+    		$this->lugar,
+    		$this->mapa,
+    		$this->organizador,
+    		$this->idUsuario
+    		);
+    	if($stmt->execute()){
+    		$this->id=$stmt->insert_id;
+    		$this->md_estado=true;
+    		$this->md_mensaje="Agenda insertada";
+    	}else{
+    		$this->md_estado=false;
+    		$this->md_estado="Error al insertar agenda";
+    		if(config::$isDebugging) $this->md_detalle = $stmt->error;
+    	}
+    	$stmt->close();
+    	return $this->md_estado;
 	}
 
 	

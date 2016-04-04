@@ -26,18 +26,18 @@ DROP TABLE IF EXISTS `agenda`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `agenda` (
   `idAgenda` int(11) NOT NULL AUTO_INCREMENT,
-  `fchInicio` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fchInicio` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `titulo` text COLLATE utf8_unicode_ci NOT NULL,
-  `text` text COLLATE utf8_unicode_ci NOT NULL,
+  `texto` text COLLATE utf8_unicode_ci NOT NULL,
   `lugar` text COLLATE utf8_unicode_ci,
   `mapa` text COLLATE utf8_unicode_ci,
   `organizador` text COLLATE utf8_unicode_ci,
-  `estado` tinyint(1) NOT NULL,
+  `estado` tinyint(1) NOT NULL DEFAULT '1',
   `idUsuario` int(11) NOT NULL,
   PRIMARY KEY (`idAgenda`),
   KEY `fk_agenda_usuario1_idx` (`idUsuario`),
   CONSTRAINT `fk_agenda_usuario1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +46,7 @@ CREATE TABLE `agenda` (
 
 LOCK TABLES `agenda` WRITE;
 /*!40000 ALTER TABLE `agenda` DISABLE KEYS */;
+INSERT INTO `agenda` VALUES (3,'2016-04-25 12:30:00','INICIO DE CLASES','INICIOOOOOOOOOOOO','UNPRG','','UNPRG',1,1);
 /*!40000 ALTER TABLE `agenda` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,13 +93,10 @@ CREATE TABLE `aviso` (
   `estado` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'indica si el aviso está activo o inactivo',
   `link` text COLLATE utf8_unicode_ci,
   `idUsuario` int(11) NOT NULL,
-  `idImagen` int(11) NOT NULL,
   PRIMARY KEY (`idAviso`),
   KEY `fk_aviso_usuario1_idx` (`idUsuario`),
-  KEY `fk_aviso_imagen1_idx` (`idImagen`),
-  CONSTRAINT `fk_aviso_imagen1` FOREIGN KEY (`idImagen`) REFERENCES `imagen` (`idImagen`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_aviso_usuario1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +105,7 @@ CREATE TABLE `aviso` (
 
 LOCK TABLES `aviso` WRITE;
 /*!40000 ALTER TABLE `aviso` DISABLE KEYS */;
-INSERT INTO `aviso` VALUES (2,'2016-04-02 00:54:26','PRUEBAsdffffffdffffffff','0',1,1,1,NULL,1,7),(3,'2016-04-02 00:58:43','PRUEBA','0',1,1,1,'0',1,8),(4,'2016-04-02 01:36:15','PRUEBA','charizar charizar charizar',1,1,1,'fghdfggd',1,9);
+INSERT INTO `aviso` VALUES (2,'2016-04-02 00:54:26','PRUEBAsdffffffdffffffff','0',1,1,1,NULL,1),(3,'2016-04-02 00:58:43','PRUEBA','0',1,1,1,'0',1),(4,'2016-04-02 01:36:15','PRUEBA','charizar charizar charizar',1,1,1,'fghdfggd',1),(5,'2016-04-04 18:11:37','ABCDEFG','hola mundo :3',0,0,1,'/opt/lampp/htdocs/uploads/images/ABC.jpeg',1),(6,'2016-04-04 18:15:57','GAFERAS','kdjfslkdfjsdklfj',0,0,1,'/opt/lampp/htdocs/uploads/documents/El Jefe d',1),(7,'2016-04-04 19:27:09','asdasdasda','asdasasasasdasda',0,0,1,'/opt/lampp/htdocs/uploads/documentsdiseños_factoriales_a_dos_niveles.pdf',1),(8,'2016-04-04 19:27:50','asdasdasda','asdasasasasdasda',0,0,1,'/opt/lampp/htdocs/uploads/documents/diseños_factoriales_a_dos_niveles.pdf',1);
 /*!40000 ALTER TABLE `aviso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,7 +127,7 @@ CREATE TABLE `documentos` (
   PRIMARY KEY (`idDocumentos`),
   KEY `fk_documentos_usuario1_idx` (`idUsuario`),
   CONSTRAINT `fk_documentos_usuario1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -138,7 +136,7 @@ CREATE TABLE `documentos` (
 
 LOCK TABLES `documentos` WRITE;
 /*!40000 ALTER TABLE `documentos` DISABLE KEYS */;
-INSERT INTO `documentos` VALUES (14,'2016-04-02 21:47:49','diseÑo_de_experimentos_diseño_2_k_una_sola_ré','','Resolucion',1,1),(15,'2016-04-02 21:48:36','diseño_de_experimentos_sesión_03_diseño_compl','','Resolucion',1,1),(16,'2016-04-02 21:50:22','actividad_01','','Resolucion',1,1),(17,'2016-04-02 21:53:52','práctica_dirigida_comparaciones_múltiples','','Resolucion',1,1),(18,'2016-04-02 21:54:52','diseÑo_de_experimentos_diseño_2_k_una_sola_ré','.l.','Resolucion',1,1),(19,'2016-04-02 21:57:02','diseños_factoriales_a_dos_niveles','/uploads/documents/diseños_factoriales_a_dos_niveles.pdf','Resolucion',1,1),(20,'2016-04-03 16:34:45','Separata_ArqComp_ParteIIA Buses','/uploads/documents/Separata_ArqComp_ParteIIA Buses.pdf','Carta',1,1);
+INSERT INTO `documentos` VALUES (14,'2016-04-02 21:47:49','diseÑo_de_experimentos_diseño_2_k_una_sola_ré','','Resolucion',1,1),(15,'2016-04-02 21:48:36','diseño_de_experimentos_sesión_03_diseño_compl','','Resolucion',1,1),(16,'2016-04-02 21:50:22','actividad_01','','Resolucion',1,1),(17,'2016-04-02 21:53:52','práctica_dirigida_comparaciones_múltiples','','Resolucion',1,1),(18,'2016-04-02 21:54:52','diseÑo_de_experimentos_diseño_2_k_una_sola_ré','.l.','Resolucion',1,1),(19,'2016-04-02 21:57:02','diseños_factoriales_a_dos_niveles','/uploads/documents/diseños_factoriales_a_dos_niveles.pdf','Resolucion',1,1),(20,'2016-04-03 16:34:45','Separata_ArqComp_ParteIIA Buses','/uploads/documents/Separata_ArqComp_ParteIIA Buses.pdf','Carta',1,1),(21,'2016-04-04 18:14:41','El Jefe de Información','/uploads/documents/El Jefe de Información.pdf','Resolucion',1,1);
 /*!40000 ALTER TABLE `documentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,8 +148,12 @@ DROP TABLE IF EXISTS `galeria`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `galeria` (
+  `idGaleria` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   `idNoticia` int(11) NOT NULL,
   `idImagen` int(11) NOT NULL,
+  PRIMARY KEY (`idGaleria`),
+  UNIQUE KEY `nombre_UNIQUE` (`nombre`),
   KEY `fk_galeria_noticia1_idx` (`idNoticia`),
   KEY `fk_galeria_imagen1_idx` (`idImagen`),
   CONSTRAINT `fk_galeria_imagen1` FOREIGN KEY (`idImagen`) REFERENCES `imagen` (`idImagen`) ON DELETE CASCADE ON UPDATE NO ACTION,
@@ -180,6 +182,7 @@ CREATE TABLE `imagen` (
   `fchReg` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `nombre` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   `ruta` text COLLATE utf8_unicode_ci NOT NULL,
+  `tipo` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`idImagen`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -190,7 +193,7 @@ CREATE TABLE `imagen` (
 
 LOCK TABLES `imagen` WRITE;
 /*!40000 ALTER TABLE `imagen` DISABLE KEYS */;
-INSERT INTO `imagen` VALUES (7,'2016-04-02 00:54:25','img2aaaaaa','/uploads/images/8f14e45fceea167a5a36dedd4bea2543.jpeg'),(8,'2016-04-02 00:58:43','fondo','/uploads/images/c9f0f895fb98ab9159f51fd0297e236d.jpeg'),(9,'2016-04-02 01:36:15','img1a','/uploads/images/45c48cce2e2d7fbdea1afc51c7c6ad26.jpeg');
+INSERT INTO `imagen` VALUES (7,'2016-04-02 00:54:25','img2aaaaaa','/uploads/images/8f14e45fceea167a5a36dedd4bea2543.jpeg','aviso'),(8,'2016-04-02 00:58:43','fondo','/uploads/images/c9f0f895fb98ab9159f51fd0297e236d.jpeg','aviso'),(9,'2016-04-02 01:36:15','img1a','/uploads/images/45c48cce2e2d7fbdea1afc51c7c6ad26.jpeg','aviso');
 /*!40000 ALTER TABLE `imagen` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -298,4 +301,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-04-04 11:06:29
+-- Dump completed on 2016-04-04 18:39:00
