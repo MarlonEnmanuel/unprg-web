@@ -24,8 +24,21 @@ class ctrlAviso extends abstractController {
     public function delete ($_id){
         
     }
-    public function read ($_id){
-        
+    public function read ($_ruta){
+        $mysqli=$this->getMysqli();
+        $ruta=$_ruta;
+        $aux=new Imagen($mysqli);
+
+        $lista=$aux->searchLink($ruta);
+
+        if(empty($lista)) $this->responder(false, 'No hay imagenes para mostrar');
+
+        $img=array();
+        foreach ($lista as $key => $images) {
+                $img[$key]=$images->toArray();
+                $img[$key]['fchReg']=$img[$key]['fchReg']->format(config::$date_fecha);
+        }
+        $this->responder(true,'Imagen visible','',$img);
     }
     public function readList ($limit, $offset){
         

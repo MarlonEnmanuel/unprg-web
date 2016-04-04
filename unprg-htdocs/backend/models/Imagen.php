@@ -46,6 +46,35 @@ class Imagen extends abstractModel{
         return $this->md_estado;
 	}
 
+    public function searchLink($ruta){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+        $sql = "select * from imagen where link=?";
+        $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
+        $stmt->prepare($sql);               //se arma la consulta preparada
+        $stmt->bind_param('s', $this->id);  //se vinculan los parámetros
+        $stmt->execute();                   //se ejecuta la consulta
+        $stmt->bind_result(
+            $_id,
+            $_fchReg,
+            $_nombre,
+            $_ruta,
+            $_tipo
+            );
+        $list=array();
+        while ($stmt->fetch()) {
+            $img=new Imagen($this->$mysqli);
+            $img->id        = $_id;
+            $img->fchReg    = $_fchReg;
+            $img->nombre    = $_nombre;
+            $img->ruta      = $_ruta;
+            $img->tipo      = $_tipo;
+            array_push($list, $img);
+        }
+        $stmt->close();
+        return $this->$list;
+
+    }
+
     public function edit(){
         if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
