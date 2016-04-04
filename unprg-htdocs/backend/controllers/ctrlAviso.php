@@ -110,7 +110,7 @@ class ctrlAviso extends abstractController {
             $imagen->get();
             $arrayAviso = array(
                 'id'        => $aviso->id,
-                'fecha'     => $aviso->fchReg->format(config::$date_aviso),
+                'fecha'     => $aviso->fchReg->format(config::$date_fecha),
                 'titulo'    => $aviso->titulo,
                 'texto'     => $aviso->texto,
                 'destacado' => $aviso->destacado,
