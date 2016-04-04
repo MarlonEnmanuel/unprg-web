@@ -11,10 +11,25 @@ $sgnavItems = array(
 		)
 	),
 	array(
-		'text' => 'Noticias'
+		'text'=>'Documentos',
+		'menu' => array(
+			array('text' => 'Mis Documentos', 'perm' => 'aviso', 'link' => '/uploads/documents/'),
+			array('text' => 'Crear Documento', 'perm' => 'aviso', 'link' => '/gestion/documentos/nuevo.php'),
+		)
 	),
 	array(
-		'text' => 'Eventos'
+		'text' => 'Noticias',
+		'menu' => array(
+			array('text' => 'Mis Noticias', 'perm' => 'aviso', 'link' => '/gestion/noticias/'),
+			array('text' => 'Crear Noticia', 'perm' => 'aviso', 'link' => '/gestion/noticias/nuevo.php'),
+		)
+	),
+	array(
+		'text' => 'Eventos',
+		'menu' => array(
+			array('text' => 'Mis Eventos', 'perm' => 'aviso', 'link' => '/gestion/eventos/'),
+			array('text' => 'Crear Eventos', 'perm' => 'aviso', 'link' => '/gestion/eventos/nuevo.php'),
+		)
 	),
 	array(
 		'text' => 'Usuario',

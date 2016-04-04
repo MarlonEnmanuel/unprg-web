@@ -129,6 +129,10 @@ class Agenda extends abstractModel{
 		return $list;
 	}
 
+	public function set(){
+		
+	}
+
 	
 }
 ?>
