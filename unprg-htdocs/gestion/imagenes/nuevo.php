@@ -7,7 +7,7 @@
 		//Las siguientes variables son obigatorias
 		"url" 			=> config::getAbsPath('/gestion'),
 		"type" 			=> "place",
-		"title" 		=> "SG WEB | Nueva Agenda",
+		"title" 		=> "SG WEB | Nuevo Documento",
 		"description" 	=> "Sistema de gestión de contenidos para la UNPRG",
 		"image" 		=> config::$path_socialImage
 	);
@@ -38,36 +38,36 @@
 		<div class="block__wraper--slim">
 
 			<div class="admin-col admin-cuerpo">
-				<div class="encabezado">Nueva Agenda</div>
+				<div class="encabezado">Nuevo documento</div>
 
 				<form class="formAviso" enctype="multipart/form-data">
 					<div>
-						<span>Titulo del evento</span>
-						<input type="text" name="titulo" />
+						<span title="Seleccione el tipo de archivo">Tipo del documento</span>
+						<select name="tipo">
+							<option value="Aviso">Para aviso</option>
+							<option value="Noticia">Para noticia</option>
+						</select>
+					</div>
+					
+					<hr>
+					<div>
+						<span class="p1" title="Este archivo se mostrará al desplegar el aviso.">
+							Seleccione documento
+						</span>
+						<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
+						<input type="file" name="archivo" accept="image/*" multiple>
 					</div>
 					<div>
-						<span title="Seleccione la fecha de Realizacion del evento">Fecha del Evento</span>
-						<input type="date" name="fchInicio" />
+						<span class="p2" title="Nombre que tendrá la imagen al ser descargado.">
+							Nombre de la imágen
+						</span>
+						<input type="text" name="nombre" maxlength="45">
 					</div>
 					<div>
-					<span title="Hora de Inicio del Evento">Hora del Evento</span>
-					<input type="time" name="timeEvento"/>
-					</div>
-					<div>
-						<span title="Breve descripcion del evento">Descripcion del Evento</span>
-						<input type="text" name="text"/>
-					</div>
-					<div>
-						<span title="Donde se realizara el evento">Lugar</span>
-						<input type="text" name="lugar" />
-					</div>
-					<div>
-						<span title="Copiar de google maps el lugar">Mapa</span>
-						<input type="text" name="mapa" />
-					</div>
-					<div>
-						<span title="Persona u ofinica que lo organiza">Organizador</span>
-						<input type="text" name="organizador"/>
+						<span class="p2" title="Nombre de la galeria y/o conjunto de fotos.">
+							Nombre de la galería
+						</span>
+						<input type="text" name="nombre" maxlength="45">
 					</div>
 					<div class="formPie">
 						<div class="info">Información de estado</div>

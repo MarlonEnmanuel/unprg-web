@@ -21,7 +21,7 @@ $sgnavItems = array(
 		'text'=>'Imagenes',
 		'menu' => array(
 			array('text' => 'Mis Imagenes', 'perm' => 'aviso', 'link' => '/uploads/images/'),
-			array('text' => 'Crear Documento', 'perm' => 'aviso', 'link' => '/gestion/documentos/nuevo.php'),
+			array('text' => 'Crear Imagen', 'perm' => 'aviso', 'link' => '/gestion/imagenes/nuevo.php'),
 		)
 	),
 	array(

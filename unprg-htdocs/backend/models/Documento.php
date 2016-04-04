@@ -58,7 +58,7 @@ class Documento extends abstractModel{
 		$stmt->bind_param('i', $vis);
 		$stmt->execute();
 		$stmt->bind_result(
-			$_id,
+			$_idDocumentos,
 			$_fchReg,
 			$_nombre,
 			$_ruta,
@@ -67,9 +67,9 @@ class Documento extends abstractModel{
 			$_idUsuario
 			);
 		$list=array();
-		while ($stmt->fecth()) {
-			$doc= new Documentos($this->mysqli);
-			$doc->id=$_id;
+		while ($stmt->fetch()) {
+			$doc= new Documento($this->mysqli);
+			$doc->id=$_idDocumentos;
 			$doc->fchReg= DateTime::createFromFormat(config::$date_sql, $_fchReg);
 			$doc->nombre=$_nombre;
 			$doc->ruta=$_ruta;
