@@ -70,8 +70,15 @@
 						<input type="checkbox" name="estado" checked>
 					</div>
 					<div>
+						<span title="Seleccione el tipo de archivo que desea con extension">Tipo de Archivo</span>
+						<select name="tipo">
+							<option value="images">Imagen</option>
+							<option value="documents">Documentos</option>
+						</select>
+					</div>
+					<div>
 						<span class="p2" title="Enlace de la imagen o archivo">
-							Enlace
+							Nombre del archivo
 						</span>
 						<input type="text" name="enlace" maxlength="45">
 					</div>

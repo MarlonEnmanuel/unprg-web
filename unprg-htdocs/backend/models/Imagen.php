@@ -7,6 +7,7 @@ class Imagen extends abstractModel{
 	public $fchReg;
 	public $nombre;
 	public $ruta;
+    public $tipo;
 
 	public function __construct(&$mysqli,$id=null){
 		parent::__construct($mysqli, $id);
@@ -29,7 +30,8 @@ class Imagen extends abstractModel{
         	$this->id,
         	$this->fchReg,
         	$this->nombre,
-        	$this->ruta
+        	$this->ruta,
+            $this->tipo
         	);
         if($stmt->fetch()){
             $this->fchReg = DateTime::createFromFormat(config::$date_sql, $this->fchReg); //se convierte de string a DateTime
@@ -55,9 +57,10 @@ class Imagen extends abstractModel{
         $sql="UPDATE imagen SET nombre=?,ruta=? WHERE idImagen=?";
         $stmt = $this->mysqli->stmt_init();
         $stmt->prepare($sql);
-        $stmt->bind_param('ssi',
+        $stmt->bind_param('sssi',
             $this->nombre,
             $this->ruta,
+            $this->tipo,
             $this->id
             );
         if($stmt->execute()){
@@ -84,9 +87,10 @@ class Imagen extends abstractModel{
         $sql="INSERT INTO imagen (nombre,ruta) VALUES(?,?)";
         $stmt = $this->mysqli->stmt_init();
         $stmt->prepare($sql);
-        $stmt->bind_param('ss',
+        $stmt->bind_param('sss',
         	$this->nombre,
-        	$this->ruta
+        	$this->ruta,
+            $this->tipo
         	);
         if($stmt->execute()){
             $this->id = $stmt->insert_id;

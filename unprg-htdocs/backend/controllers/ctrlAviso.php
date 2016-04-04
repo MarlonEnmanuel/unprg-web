@@ -19,12 +19,13 @@ class ctrlAviso extends abstractController {
             'destacado'     => array('type'=>'boolean'),
             'emergente'     => array('type'=>'boolean'),
             'estado'        => array('type'=>'boolean'),
+            'tipo'          => array('type'=>'string'),
             'enlace'        => array('type'=>'string')
         );
         $ipts=$this->getFilterInputs('post',$ops);
         //Abrir coneccion en modo NO autoconfirmado
         $mysqli = $this->getMysqli();
-        
+        $url='/opt/lampp/htdocs/uploads/';
         
         //Creando el aviso
         $aviso = new Aviso($mysqli);
@@ -33,7 +34,7 @@ class ctrlAviso extends abstractController {
         $aviso->destacado   = $ipts['destacado'];
         $aviso->emergente   = $ipts['emergente'];
         $aviso->estado      = $ipts['estado'];
-        $aviso->link        = $ipts['enlace'];
+        $aviso->link        = $url.$ipts['tipo'].'/'.$ipts['enlace'];
         $aviso->idUsuario   = $Usuario['id'];
 
         if(!$aviso->set()) { //Insertando el aviso

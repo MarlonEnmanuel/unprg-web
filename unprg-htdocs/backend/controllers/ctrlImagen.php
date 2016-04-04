@@ -10,21 +10,26 @@ class ctrlAviso extends abstractController {
         
         if($accion == 'getVisibles'){   //acción del controlador
             $this->getVisibles();
-
-        }elseif($accion == 'nuevoAviso'){         //acción del controlador
-            $this->nuevoAviso();
-
-        }elseif($accion == ''){         //acción del controlador
-
-
-        }elseif($accion == ''){         //acción del controlador
-
-
         }else{                          //responde cuando la acción no corresponde a ningun controlador
             $this->responder(false, "Acción no soportada");
         }
-    }
 
+    }
+    public function create ($model){
+        
+    }
+    public function update ($model){
+        
+    }
+    public function delete ($_id){
+        
+    }
+    public function read ($_id){
+        
+    }
+    public function readList ($limit, $offset){
+        
+    }
 }
 
 $ctrl = new ctrlAviso(true);
