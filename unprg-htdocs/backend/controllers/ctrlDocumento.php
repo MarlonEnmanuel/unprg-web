@@ -30,22 +30,15 @@ class ctrlDocumento extends abstractController{
         $aux = new Documento($mysqli);
         
         $lista = $aux->search();
-        $document = array();
-        foreach ($lista as $key => $documentos) {
-        	$arrayDoc=array(
-        		'id'		=> $documentos->id,
-        		'fecha'		=> $documentos->fchReg->format(config::$date_aviso),
-        		'nombre'	=> $documentos->nombre,
-        		'ruta'		=> $documentos->ruta,
-        		'tipo'		=> $documentos->tipo,
-        		'validacion'=> $documentos->validacion,
-        		'idUsuario'	=> $documentos->idUsuario
-        		);
-        	$document[$key]=$arrayDoc;
-        }
-        if(empty($document)) $this->responder(false, 'No hay documentos para mostrar');
+        if(empty($lista)) $this->responder(false, 'No hay documentos para mostrar');
 
-        $this->responder(true, 'Documento visible', '', $document);
+        $documentos = array();
+        foreach ($lista as $key => $document) {
+        	$documentos[$key] = $document->toArray();
+            $documentos[$key]['fchReg'] = $documentos[$key]['fchReg']->format(config::$date_aviso);
+        }
+
+        $this->responder(true, 'Documento visible', '', $documentos);
 
 	}
     public function create ($model){
