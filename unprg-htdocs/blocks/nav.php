@@ -103,7 +103,7 @@
 			<span class="bknav__ul__sep">|</span>
 
 			<li class="bknav__ul__li">
-				<a class="bknav__ul__li__bu" href="<?= config::getAbsPath('/estatuto.php') ?>">Estatuto</a>
+				<a class="bknav__ul__li__bu" href="#">Transparencia</a>
 			</li>
 			<span class="bknav__ul__sep">|</span>
 
@@ -113,7 +113,22 @@
 			<span class="bknav__ul__sep">|</span>
 
 			<li class="bknav__ul__li">
-				<a class="bknav__ul__li__bu" href="#">Radio</a>
+				<p class="bknav__ul__li__bu">Enlace</p>
+				<div class="bknav__sub">
+					<div class="bknav__sub__wraper">
+						<ul class="bknav__sub__ul">
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Radio</a>
+							</li>
+						</ul>
+						<ul class="bknav__sub__ul">
+							<li class="bknav__sub__ul__li">
+								<a class="bknav__sub__ul__li__bu" href="#" target="_blank">Blog de docentes</a>
+							</li>
+						</ul>
+						<div class="block__clean"></div>
+					</div>
+				</div>
 			</li>
 		</ul>
 
