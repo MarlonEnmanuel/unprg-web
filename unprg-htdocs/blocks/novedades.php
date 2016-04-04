@@ -10,7 +10,7 @@
 							<%= titulo %>
 						</a>
 						<div class="bklast__avi__el__fech ff--12 ff--r ff--b cc--azul2">
-							@<%= fecha %>
+							@<%= fchReg %>
 						</div>
 					</div>
 				</script>
