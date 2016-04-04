@@ -83,7 +83,7 @@ sgw.Views.Agendas = Backbone.View.extend({
 sgw.Collections.Agendas = Backbone.Collection.extend({
 	name : 'Agendas',
 	model : Backbone.Model.extend({}),
-	url : '/backend/controllers/ctrlDocumento.php',
+	url : '/backend/controllers/ctrlAgendas.php',
 	parse : function(resp, options){
 		return resp.data;
 	}
@@ -91,11 +91,9 @@ sgw.Collections.Agendas = Backbone.Collection.extend({
 
 $(document).ready(function($) {
 	sgw.error = function(collection, resp, options){
-		debugger;
-		collection.$el.find('.bklast__error').show();
+		collection.view.$el.find('.bklast__error').show();
 	};
 	sgw.success = function(collection, resp, options){
-		debugger;
 		if(!resp.data) sgw.error(collection, resp, options);
 	};
 
@@ -107,7 +105,7 @@ $(document).ready(function($) {
 		el : $('.bklast__avi__cont'),
 		collection : collections.avisos
 	});
-
+	collections.avisos.view = views.avisos;
 	
 	//obtener documentos
 	collections.documentos = new sgw.Collections.Documentos();
@@ -116,6 +114,7 @@ $(document).ready(function($) {
 		el : $('.bklast__doc__cont'),
 		collection : collections.documentos
 	});
+	collections.documentos.view = views.documentos;
 
 	//obtener agendas
 	collections.agendas = new sgw.Collections.Agendas();
@@ -124,4 +123,5 @@ $(document).ready(function($) {
 		el : $('.bklast__age__cont'),
 		collection : collections.agendas
 	});
+	collections.agendas.view = views.agendas;
 });

@@ -46,15 +46,15 @@
 				<script type="text/template" id="template_agenda">
 					<div class="bklast__age__el">
 						<div class="bklast__age__el__fech bgc--azul2 cc ff ff--c">
-							<div class="bklast__age__el__fech__dia ff--special ff--22">02</div>
-							<div class="bklast__age__el__fech__mes ff--special ff--18 cc--amarillo2 ff--r">Abr</div>
-							<div class="bklast__age__el__fech__hor ff--b ff--18">01:30</div>
+							<div class="bklast__age__el__fech__dia ff--special ff--22"><%= fchInicio_dia %></div>
+							<div class="bklast__age__el__fech__mes ff--special ff--18 cc--amarillo2 ff--r"><%= fchInicio_mes %></div>
+							<div class="bklast__age__el__fech__hor ff--b ff--18"><%= fchInicio_hora %></div>
 						</div>
 						<a class="bklast__age__el__text ff--16 ff--special" href="#">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							<%= titulo %>
 						</a>
 						<div class="bklast__age__el__place ff--14 ff--r ff--b cc--azul3">
-							Biblioteca central de la UNPRG
+							<%= lugar %>
 						</div>
 						<div class="block__clean"></div>
 					</div>

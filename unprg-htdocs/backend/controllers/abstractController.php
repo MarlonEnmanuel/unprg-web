@@ -13,6 +13,7 @@ abstract class abstractController {
 		//Se inicializa el controlador solo si recibe peticiones ajax
 		if($isAjax){
 			//Identificar tipo de request
+
 			$this->method = empty($_POST) ? INPUT_GET : INPUT_POST;
 
 			$accion = filter_input($this->method, '_accion');
@@ -21,24 +22,26 @@ abstract class abstractController {
 			}else{ //Si no se recibe la accion entonces indentificamos método de backbone
 				$this->method = null; //método no es usado
 
-				$_id = filter_input(INPUT_GET, '_method', FILTER_VALIDATE_INT);
-
+				$_id = filter_input(INPUT_GET, '_id', FILTER_VALIDATE_INT);
 				if( isset($_id) ){
-					$accion = filter_input(INPUT_POST, '_method');
-					if(isset($accion)){
+					if(empty($_POST)){
+						$this->read($_id);
+					}else{
+						$accion = filter_input(INPUT_POST, '_method');
 						switch ($accion) {
-							case 'POST'	  : $this->create ( json_decode(filter_input(INPUT_POST, 'model')) ); break;
 							case 'PUT'	  : $this->update ( json_decode(filter_input(INPUT_POST, 'model')) ); break;
 							case 'DELETE' : $this->delete ( $_id ); break;
 							default: $this->responder(false, "Método inválido"); break;
 						}
-					}else{
-						$this->read($_id);
 					}
 				}else{
-					$limit  = filter_input($this->method, '_limit', FILTER_VALIDATE_INT);
-					$offset = filter_input($this->method, '_offset', FILTER_VALIDATE_INT);
-					$this->readList($limit, $offset);
+					if(empty($_POST)){
+						$limit  = filter_input($this->method, '_limit', FILTER_VALIDATE_INT);
+						$offset = filter_input($this->method, '_offset', FILTER_VALIDATE_INT);
+						$this->readList($limit, $offset);
+					}else{
+						$this->create ( json_decode(filter_input(INPUT_POST, 'model')) );
+					}
 				}
 			}
 		}
