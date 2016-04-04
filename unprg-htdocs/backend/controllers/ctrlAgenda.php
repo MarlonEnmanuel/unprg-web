@@ -65,6 +65,7 @@ class ctrlAgenda extends abstractController{
         $mysqli->autocommit(false);
 
         $agenda =new Agenda($mysqli);
+        $agenda->titulo			= $ipts['titulo'];
         
 	}
 }

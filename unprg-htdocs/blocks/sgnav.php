@@ -18,6 +18,13 @@ $sgnavItems = array(
 		)
 	),
 	array(
+		'text'=>'Imagenes',
+		'menu' => array(
+			array('text' => 'Mis Imagenes', 'perm' => 'aviso', 'link' => '/uploads/images/'),
+			array('text' => 'Crear Documento', 'perm' => 'aviso', 'link' => '/gestion/documentos/nuevo.php'),
+		)
+	),
+	array(
 		'text' => 'Noticias',
 		'menu' => array(
 			array('text' => 'Mis Noticias', 'perm' => 'aviso', 'link' => '/gestion/noticias/'),
