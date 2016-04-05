@@ -24,6 +24,9 @@ class ctrlAviso extends abstractController {
         $mysqli = $this->getMysqli();
 
         if($ipts['tipo']=='galeria'){
+            $files = $this->getFilesUpload('archivo',array('image/jpg','image/jpeg','image/png','image/gif'));
+            $mysqli->autocommit(false);
+            
             
         }else{
             $file = $this->getFileUpload('archivo',array('image/jpg','image/jpeg','image/png','image/gif'));
@@ -31,20 +34,23 @@ class ctrlAviso extends abstractController {
             $mysqli->autocommit(false);
 
             $img = new Imagen($mysqli);
-            $img->nombre = $ipts['nombre'];
+            $img->nombre = $this->stripAccents(strtolower(trim($ipts['nombre'])));
             $img->tipo = $ipts['tipo'];
             $img->idUsuario = $Usuario['id'];
 
             $extension = substr(strrchr($file['type'], "/"), 1);
-            $nombre = preg_replace ('/[ ]+/', '_', trim($img->nombre));
+            $nombre = preg_replace('/[ ]+/', '_', $img->nombre);
 
             $img->ruta = config::$upload_images.$nombre.'.'.$extension;
 
+            $imgaux = new Imagen($mysqli);
+            if($imgaux->getbyNombre($img->nombre))
+                $this->responder(false, 'Ya existe una imagen con este nombre');
 
             if( $img->set() == false)
                 $this->responder(false, 'No se pudo guardar la imagen', $img->md_detalle, null, $mysqli);
             
-            
+
             $rutaArchivo = $_SERVER['DOCUMENT_ROOT'].$img->ruta;
             if(move_uploaded_file($file['tmp'], $rutaArchivo) == false)
                 $this->responder(false, "No se pudo guardar imagen", 'Error al almacear la imagen subida', null, $mysqli);
@@ -72,6 +78,13 @@ class ctrlAviso extends abstractController {
 
     public function readList ($limit, $offset){
         
+    }
+
+    public function stripAccents($cadena) {
+        $no_permitidas= array ("á","é","í","ó","ú","Á","É","Í","Ó","Ú","ñ","À","Ã","Ì","Ò","Ù","Ã™","Ã ","Ã¨","Ã¬","Ã²","Ã¹","ç","Ç","Ã¢","ê","Ã®","Ã´","Ã»","Ã‚","ÃŠ","ÃŽ","Ã”","Ã›","ü","Ã¶","Ã–","Ã¯","Ã¤","«","Ò","Ã","Ã„","Ã‹");
+        $permitidas= array ("a","e","i","o","u","A","E","I","O","U","n","N","A","E","I","O","U","a","e","i","o","u","c","C","a","e","i","o","u","A","E","I","O","U","u","o","O","i","a","e","U","I","A","E");
+        $texto = str_replace($no_permitidas, $permitidas ,$cadena);
+        return $texto;
     }
 
 }
