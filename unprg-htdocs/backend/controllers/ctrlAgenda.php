@@ -20,7 +20,7 @@ class ctrlAgenda extends abstractController{
 				'timeEvento'	=> array('type'=>'string'),
 				'texto'			=> array('type'=>'string'),
 				'lugar'			=> array('type'=>'string'),
-				'mapa'			=> array('type'=>'string'),
+				'mapa'			=> array('type'=>'url'),
 				'organizador'	=> array('type'=>'string')
 			);
 
@@ -56,30 +56,35 @@ class ctrlAgenda extends abstractController{
 
 	}
 	public function readList ($limit, $offset){
+		$top=5;$offset=0;
+
 		$mysqli=$this->getMysqli();
 		$aux=new Agenda($mysqli);
 
-		$lista=$aux->searchVisble();
-		$agenda=array();
+		$lista=$aux->searchNow();
+		$agendas=array();
 
 		foreach ($lista as $key => $agenda) {
 			$arrayAgenda=array(
 				'id'			=> $agenda->id,
-				'fecha'			=> $agenda->fchInicio,
+				'fecha'			=> $agenda->fchInicio->format(config::$date_fechaHora),
 				'titulo'		=> $agenda->titulo,
 				'texto'			=> $agenda->texto,
 				'lugar'			=> $agenda->lugar,
 				'mapa'			=> $agenda->mapa,
 				'organizador'	=> $agenda->organizador,
 				'estado'		=> $agenda->estado,
-				'idUsuario'		=> $agenda->idUsuario
+				'idUsuario'		=> $agenda->idUsuario,
+				'fchInicio_dia' => $agenda->fchInicio->format('d'),
+				'fchInicio_mes' => $agenda->fchInicio->format('m'),
+				'fchInicio_hora'=> $agenda->fchInicio->format('H:i')
 				);
-			$agenda[$key]=$arrayAgenda;
+			$agendas[$key]=$arrayAgenda;
 		}
 
-		if(empty($avisos)) $this->responder(false, 'No hay eventos para mostrar');
+		if(empty($agendas)) $this->responder(false, 'No hay eventos para mostrar');
 
-        $this->responder(true, 'Evento visible', '', $avisos);
+        $this->responder(true, 'Evento visible', '', $agendas);
 	}
 
 

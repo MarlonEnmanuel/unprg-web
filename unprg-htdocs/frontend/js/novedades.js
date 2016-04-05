@@ -83,7 +83,7 @@ sgw.Views.Agendas = Backbone.View.extend({
 sgw.Collections.Agendas = Backbone.Collection.extend({
 	name : 'Agendas',
 	model : Backbone.Model.extend({}),
-	url : '/backend/controllers/ctrlAgendas.php',
+	url : '/backend/controllers/ctrlAgenda.php',
 	parse : function(resp, options){
 		return resp.data;
 	}

@@ -94,11 +94,11 @@ class Agenda extends abstractModel{
 
 	public function searchNow(){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
-		$sql = "select * from Agenda where estado=? and fchInicio>now() order by fchReg asc";
+		$sql = "select * from agenda where estado=? ";
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
-        $vis=1;
-		$stmt->bind_param('i', $vis);
+        $val=1;
+		$stmt->bind_param('i',$val);
 		$stmt->execute();
 		$stmt->bind_result(
 			$_id,
@@ -126,7 +126,9 @@ class Agenda extends abstractModel{
 			array_push($list,$age);
 		}
 		$stmt->close();
+		
 		return $list;
+
 	}
 
 	public function set(){
