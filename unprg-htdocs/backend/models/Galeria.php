@@ -3,10 +3,11 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/abstractModel.php';
 
 
-class Galeria extends abstractModel
-{
+class Galeria extends abstractModel {
+
 	public $idNoticia;
 	public $idImagen;
+    public $nombre;
 
 	function __construct(&$mysqli,$id=null)	{
 		parent::__construct($mysqli,$id);
@@ -39,5 +40,9 @@ class Galeria extends abstractModel
         $stmt->close();
         return $this->md_estado;
 	}
+
+    public function set(){
+        
+    }
 }
 ?>

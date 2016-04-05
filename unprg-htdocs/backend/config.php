@@ -45,7 +45,7 @@ class config {
 	/**
 	*
 	*/
-	public static $access = ['avisos','documentos','agenda','noticias'];
+	public static $access = ['avisos','documentos','agenda','noticias','imagenes'];
 	
 
 
