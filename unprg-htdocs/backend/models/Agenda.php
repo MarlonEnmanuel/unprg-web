@@ -94,7 +94,7 @@ class Agenda extends abstractModel{
 
 	public function searchNow(){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
-		$sql = "select * from agenda where estado=? and fchInicio> NOW() ORDER BY fchInicio asc";
+		$sql = "select * from agenda where estado=? and fchInicio> NOW() ORDER BY fchInicio asc limit 5";
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
         $val=1;

@@ -62,7 +62,7 @@ class ctrlAviso extends abstractController {
     }
 
     public function readList($top, $offset){
-        $top = 5; $offset = 0;
+        $top = 6; $offset = 0;
 
         $mysqli = $this->getMysqli();
         $aux = new Aviso($mysqli);

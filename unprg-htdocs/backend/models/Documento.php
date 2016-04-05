@@ -51,7 +51,7 @@ class Documento extends abstractModel{
 
 	public function search(){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
-		$sql="select * from documentos where validacion=? order by fchReg desc";
+		$sql="select * from documentos where validacion=? order by fchReg desc limit 6";
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
         $vis=1;

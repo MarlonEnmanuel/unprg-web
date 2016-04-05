@@ -100,11 +100,7 @@
 					</div>
 				</div>
 			</li>
-			<span class="bknav__ul__sep">|</span>
-
-			<li class="bknav__ul__li">
-				<a class="bknav__ul__li__bu" href="#">Transparencia</a>
-			</li>
+			
 			<span class="bknav__ul__sep">|</span>
 
 			<li class="bknav__ul__li">
@@ -129,6 +125,11 @@
 						<div class="block__clean"></div>
 					</div>
 				</div>
+			</li>
+			<span class="bknav__ul__sep">|</span>
+
+			<li class="bknav__ul__li">
+				<a class="bknav__ul__li__bu" href="#">Transparencia</a>
 			</li>
 		</ul>
 
