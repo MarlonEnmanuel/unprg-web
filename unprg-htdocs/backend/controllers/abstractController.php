@@ -271,6 +271,47 @@ abstract class abstractController {
 		return $file;
 	}
 
+	public function getFilesUpload($nameFile, $types, $maxSize=2000000){
+		$listFiles = array();
+		for ($i=0; $i < count($_FILES[$nameFile]['name']) ; $i++) { 
+			$file = array(
+				'name' => $_FILES[$nameFile]['name'][$i],
+			    'type' => $_FILES[$nameFile]['type'][$i],
+			    'size' => $_FILES[$nameFile]['size'][$i],
+			    'tmp' => $_FILES[$nameFile]['tmp_name'][$i],
+			    'errno' => $_FILES[$nameFile]['error'][$i]
+			);
+			if( $file['errno']!==0 ){
+				if($file['errno']===1||$file['errno']===2){
+					$file['error'] = 'Archivos muy grande<br>Máximo '.($maxSize/1000000).'MB';
+				}elseif ($file['errno']===3) {
+					$file['error'] = 'Los archivos se recibieron imcompletos';
+				}elseif ($file['errno']===4) {
+					$file['error'] = 'No se recibieron los archivos';
+				}elseif ($file['errno']===7) {
+					$file['error'] = 'Error de escritura del archivos';
+				}else {
+					$file['error'] = 'Error desconocido al subir archivos';
+				}
+				if($this->isAjax) $this->responder(false, $file['error']);
+			}
+			if($file['size']<=0){
+				$file['error'] = 'No se envió un archivo';
+				if($this->isAjax) $this->responder(false, $file['error']);
+			}
+			if($file['size']>$maxSize){
+				$file['error'] = 'Un archivo es muy grande<br>Máximo '.($maxSize/1000000).'MB';
+				if($this->isAjax) $this->responder(false, $file['error']);
+			}
+			if(!in_array($file['type'], $types)){
+				$file['error'] = 'Formato inválido de un archivo<br>Se acepta: '.implode(', ', $types);
+				if($this->isAjax) $this->responder(false, $file['error']);
+			}
+			array_push($listFiles, $file);
+		}
+		return $listFiles;
+	}
+
 	/**
 	* Envía la respuesta del controlador al usuario
 	*
