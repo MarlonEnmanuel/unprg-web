@@ -60,8 +60,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `unprg-web`.`galeria` (
   `idGaleria` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `fchReg` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '',
   `nombre` VARCHAR(45) NOT NULL COMMENT '',
-  `estado` TINYINT(1) NOT NULL COMMENT '',
+  `estado` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '',
   PRIMARY KEY (`idGaleria`)  COMMENT '',
   UNIQUE INDEX `nombre_UNIQUE` (`nombre` ASC)  COMMENT '')
 ENGINE = InnoDB;
@@ -75,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `unprg-web`.`imagen` (
   `fchReg` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '',
   `nombre` VARCHAR(45) NOT NULL COMMENT '',
   `tipo` VARCHAR(45) NOT NULL COMMENT '',
-  `ruta` TEXT NULL COMMENT '',
+  `ruta` TEXT NOT NULL COMMENT '',
   `version` INT NOT NULL DEFAULT 1 COMMENT '',
   `idUsuario` INT NOT NULL COMMENT '',
   `idGaleria` INT NULL COMMENT '',
