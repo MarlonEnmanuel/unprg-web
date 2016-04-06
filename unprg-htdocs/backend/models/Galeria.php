@@ -8,6 +8,7 @@ class Galeria extends abstractModel {
     public $fchReg;
     public $nombre;
     public $estado;
+    public $imagenes = array();
 
 	function __construct(&$mysqli,$id=null)	{
 		parent::__construct($mysqli,$id);
