@@ -2,8 +2,9 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/controllers/abstractController.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Imagen.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Galeria.php';
 
-class ctrlAviso extends abstractController {
+class ctrlImagen extends abstractController {
 
     protected function init($accion){
         $this->responder(false, "Acciones no implementadas");
@@ -17,26 +18,54 @@ class ctrlAviso extends abstractController {
                 'nombre' => array('type'=>'string','min'=>5,'max'=>'45')
             ));
 
-        $tipos = ['aviso','galeria','noticiaCuerpo','noticiaPortada'];
+        $tipos = ['aviso','galeria','noticiaCuerpo','noticiaPortada', 'portada'];
         if(!in_array($ipts['tipo'], $tipos))
             $this->responder(false, 'Tipo de imagen no válido');
 
         $mysqli = $this->getMysqli();
+        $mysqli->autocommit(false);
 
         if($ipts['tipo']=='galeria'){
             $files = $this->getFilesUpload('archivo',array('image/jpg','image/jpeg','image/png','image/gif'));
-            $mysqli->autocommit(false);
             
+            $galeria = new Galeria($mysqli);
+            $galeria->nombre = $this->stripAccents(strtolower(trim( $ipts['nombre'] )));
+
+            $galaux = new Galeria($mysqli);
+            if($galaux->getbyNombre($galeria->nombre))
+                $this->responder(false, 'Ya existe una galería con este nombre', '', null, $mysqli);
+
+            if($galeria->set()==false)
+                $this->responder(false, "Error al insertar la galería", '', null, $mysqli);
+
+
+            foreach ($files as $key => $file) {
+                $img = new Imagen($mysqli);
+                $img->nombre    = $galeria->nombre.'-'.$key;
+                $img->tipo      = $ipts['galeria'];
+                $img->version   = 0;
+                $img->idUsuario = $Usuario['id'];
+
+                $extension = substr(strrchr($file['type'], "/"), 1);
+                $nombre = preg_replace('/[ ]+/', '_', $img->nombre);
+                $img->ruta = config::$upload_images.$nombre.'.'.$extension;
+
+                if( $img->set() == false)
+                    $this->responder(false, 'No se pudo guardar la imagen', $img->md_detalle, null, $mysqli);
+
+                $rutaArchivo = $_SERVER['DOCUMENT_ROOT'].$img->ruta;
+                if(move_uploaded_file($file['tmp'], $rutaArchivo) == false)
+                    $this->responder(false, "No se pudo guardar imagen", 'Error al almacear la imagen subida', null, $mysqli);
+            }
+
             
         }else{
             $file = $this->getFileUpload('archivo',array('image/jpg','image/jpeg','image/png','image/gif'));
 
-            $mysqli->autocommit(false);
-
             $img = new Imagen($mysqli);
-            $img->nombre = $this->stripAccents(strtolower(trim($ipts['nombre'])));
-            $img->tipo = $ipts['tipo'];
-            $img->version=0;
+            $img->nombre    = $this->stripAccents(strtolower(trim($ipts['nombre'])));
+            $img->tipo      = $ipts['tipo'];
+            $img->version   = 0;
             $img->idUsuario = $Usuario['id'];
 
             $extension = substr(strrchr($file['type'], "/"), 1);
@@ -46,7 +75,7 @@ class ctrlAviso extends abstractController {
 
             $imgaux = new Imagen($mysqli);
             if($imgaux->getbyNombre($img->nombre))
-                $this->responder(false, 'Ya existe una imagen con este nombre');
+                $this->responder(false, 'Ya existe una imagen con este nombre', '', null, $mysqli);
 
             if( $img->set() == false)
                 $this->responder(false, 'No se pudo guardar la imagen', $img->md_detalle, null, $mysqli);
@@ -90,6 +119,6 @@ class ctrlAviso extends abstractController {
 
 }
 
-$ctrl = new ctrlAviso(true);
+$ctrl = new ctrlImagen(true);
 
 ?>

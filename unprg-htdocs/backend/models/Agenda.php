@@ -157,6 +157,7 @@ class Agenda extends abstractModel{
     		);
     	if($stmt->execute()){
     		$this->id=$stmt->insert_id;
+    		$this->get();
     		$this->md_estado=true;
     		$this->md_mensaje="Agenda insertada";
     	}else{
