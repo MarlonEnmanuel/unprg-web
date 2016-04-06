@@ -45,7 +45,7 @@ class config {
 	/**
 	*
 	*/
-	public static $access = ['avisos','documentos','agenda','noticias','imagenes'];
+	public static $permisos = ['admin','imagen','documento','aviso','agenda','noticia','enlace','portada','pagina'];
 	
 
 
