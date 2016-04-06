@@ -155,10 +155,12 @@ CREATE TABLE IF NOT EXISTS `unprg-web`.`noticia` (
   `estado` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '',
   `idUsuario` INT NOT NULL COMMENT '',
   `idGaleria` INT NULL COMMENT '',
+  `idImagen` INT NOT NULL COMMENT '',
   PRIMARY KEY (`idNoticia`)  COMMENT '',
   UNIQUE INDEX `titulo_UNIQUE` (`titulo` ASC)  COMMENT '',
   INDEX `fk_noticia_usuario1_idx` (`idUsuario` ASC)  COMMENT '',
   INDEX `fk_noticia_galeria1_idx` (`idGaleria` ASC)  COMMENT '',
+  INDEX `fk_noticia_imagen1_idx` (`idImagen` ASC)  COMMENT '',
   CONSTRAINT `fk_noticia_usuario1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `unprg-web`.`usuario` (`idUsuario`)
@@ -167,6 +169,11 @@ CREATE TABLE IF NOT EXISTS `unprg-web`.`noticia` (
   CONSTRAINT `fk_noticia_galeria1`
     FOREIGN KEY (`idGaleria`)
     REFERENCES `unprg-web`.`galeria` (`idGaleria`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_noticia_imagen1`
+    FOREIGN KEY (`idImagen`)
+    REFERENCES `unprg-web`.`imagen` (`idImagen`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -198,7 +205,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `unprg-web`.`portada` (
   `idPortada` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `titulo` VARCHAR(45) NOT NULL COMMENT '',
+  `titulo` VARCHAR(100) NOT NULL COMMENT '',
   `descripcion` TEXT NOT NULL COMMENT '',
   `estado` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '',
   `idUsuario` INT NOT NULL COMMENT '',

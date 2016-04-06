@@ -30,6 +30,8 @@ class ctrlImagen extends abstractController {
             
             $galeria = new Galeria($mysqli);
             $galeria->nombre = $this->stripAccents(strtolower(trim( $ipts['nombre'] )));
+            $img->titulo     = $ipts['nombre'];
+            $img->descripcion= ''; //Corregir luego
 
             $galaux = new Galeria($mysqli);
             if($galaux->getbyNombre($galeria->nombre))

@@ -7,7 +7,10 @@ class Galeria extends abstractModel {
 
     public $fchReg;
     public $nombre;
+    public $titulo;
+    public $descripcion;
     public $estado;
+
     public $imagenes = array();
 
 	function __construct(&$mysqli,$id=null)	{
@@ -31,6 +34,8 @@ class Galeria extends abstractModel {
             $this->id,
             $this->fchReg,
             $this->nombre,
+            $this->titulo,
+            $this->descripcion,
             $this->estado
             );
         if($stmt->fetch()){
@@ -63,6 +68,8 @@ class Galeria extends abstractModel {
             $this->id,
             $this->fchReg,
             $this->nombre,
+            $this->titulo,
+            $this->descripcion,
             $this->estado
             );
         if($stmt->fetch()){
@@ -94,6 +101,8 @@ class Galeria extends abstractModel {
             $_id,
             $_fchReg,
             $_nombre,
+            $_titulo,
+            $_descripcion,
             $_estado
             );
         $list=array();
@@ -102,6 +111,8 @@ class Galeria extends abstractModel {
             $gal->id        = $_idDocumentos;
             $gal->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
             $gal->nombre    = $_nombre;
+            $gal->titulo    = $_titulo;
+            $gal->descripcion = $_descripcion;
             $gal->estado    = $_estado;
             array_push($list, $gal);
         }
@@ -117,10 +128,10 @@ class Galeria extends abstractModel {
             return $this->md_estado = false;
         }
 
-        $sql="INSERT INTO galeria(nombre) VALUES (?)";
+        $sql="INSERT INTO galeria(nombre, titulo, descripcion) VALUES (?)";
         $stmt=$this->mysqli->stmt_init();
         $stmt->prepare($sql);
-        $stmt->bind_param('s', $this->nombre );
+        $stmt->bind_param('sss', $this->nombre, $this->titulo, $this->descripcion );
         if($stmt->execute()){
             $this->id=$stmt->insert_id;
             $this->get();
