@@ -41,10 +41,11 @@ class ctrlImagen extends abstractController {
 
             foreach ($files as $key => $file) {
                 $img = new Imagen($mysqli);
-                $img->nombre    = $galeria->nombre.'-'.$key;
-                $img->tipo      = $ipts['galeria'];
+                $img->nombre    = 'gal-'.$galeria->nombre.'-'.$key;
+                $img->tipo      = 'galeria';
                 $img->version   = 0;
                 $img->idUsuario = $Usuario['id'];
+                $img->idGaleria = $galeria->id;
 
                 $extension = substr(strrchr($file['type'], "/"), 1);
                 $nombre = preg_replace('/[ ]+/', '_', $img->nombre);
@@ -55,9 +56,15 @@ class ctrlImagen extends abstractController {
 
                 $rutaArchivo = $_SERVER['DOCUMENT_ROOT'].$img->ruta;
                 if(move_uploaded_file($file['tmp'], $rutaArchivo) == false)
-                    $this->responder(false, "No se pudo guardar imagen", 'Error al almacear la imagen subida', null, $mysqli);
+                    $this->responder(false, "No se pudo almacenar imagen", 'Error al almacear la imagen subida', null, $mysqli);
+
+                array_push($galeria->imagenes, $img);
             }
 
+            if( $mysqli->commit() == false)
+                $this->responder(false, "No se pudo confirmar cambios", $mysqli->error, null, $mysqli);
+
+            $this->responder(true, "Imagen creada y guardada", '', $galeria);
             
         }else{
             $file = $this->getFileUpload('archivo',array('image/jpg','image/jpeg','image/png','image/gif'));
@@ -87,8 +94,6 @@ class ctrlImagen extends abstractController {
 
             if( $mysqli->commit() == false)
                 $this->responder(false, "No se pudo confirmar cambios", $mysqli->error, null, $mysqli);
-
-            $img->get();
 
             $this->responder(true, "Imagen creada y guardada", '', $img);
 
