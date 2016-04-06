@@ -12,7 +12,7 @@ class ctrlAgenda extends abstractController{
 
 	public function create ($model){
 
-		$Usuario=$this->checkAccess('evento');
+		$Usuario=$this->checkAccess('agenda');
 
 		$ops=array(
 				'titulo'		=> array('type'=>'string'),

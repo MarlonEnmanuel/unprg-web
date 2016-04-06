@@ -42,7 +42,7 @@ class ctrlDocumento extends abstractController{
 
 	}
     public function create ($model){
-        $Usuario = $this->checkAccess('documentos');
+        $Usuario = $this->checkAccess('documento');
 
         $ipts = $this->getFilterInputs('post', array(
             'nombre'    => array('type'=>'string'),
@@ -59,6 +59,7 @@ class ctrlDocumento extends abstractController{
         $doc->nombre        = $ipts['nombre'];
         $doc->ruta          = '.l.';
         $doc->tipo          = $ipts['tipo'];
+        $doc->version       = 0;
         $doc->idUsuario     = $Usuario['id'];
 
 

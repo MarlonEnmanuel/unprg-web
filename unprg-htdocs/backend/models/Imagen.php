@@ -93,7 +93,7 @@ class Imagen extends abstractModel{
 
         $sql="SELECT * FROM imagen ORDER BY fchReg DESC ";
         if(isset($_limit) && is_int($_limit) && is_int($_offset) ) 
-            $sql .= "LIMIT ".$_limit." OFFSET ".$_limit;
+            $sql .= "LIMIT ".$_limit." OFFSET ".$_offset;
 
         $stmt = $this->mysqli->stmt_init();
         $stmt->prepare($sql);

@@ -36,6 +36,7 @@ class ctrlAviso extends abstractController {
             $img = new Imagen($mysqli);
             $img->nombre = $this->stripAccents(strtolower(trim($ipts['nombre'])));
             $img->tipo = $ipts['tipo'];
+            $img->version=0;
             $img->idUsuario = $Usuario['id'];
 
             $extension = substr(strrchr($file['type'], "/"), 1);

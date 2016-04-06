@@ -58,7 +58,7 @@ class Documento extends abstractModel{
         if($_onlyActive) $sql .= "WHERE estado=1 ";
         $sql .= "ORDER BY fchReg DESC ";
         if(isset($_limit) && is_int($_limit) && is_int($_offset) ) 
-            $sql .= "LIMIT ".$_limit." OFFSET ".$_limit;
+            $sql .= "LIMIT ".$_limit." OFFSET ".$_offset;
 
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
@@ -76,7 +76,7 @@ class Documento extends abstractModel{
 		$list=array();
 		while ($stmt->fetch()) {
 			$doc = new Documento($this->mysqli);
-			$doc->id        = $_idDocumentos;
+			$doc->id        = $_idDocumento;
 			$doc->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
 			$doc->nombre    = $_nombre;
             $doc->tipo      = $_tipo;
