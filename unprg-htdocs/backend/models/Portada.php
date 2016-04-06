@@ -10,6 +10,8 @@ class Portada extends abstractModel{
 	public $idUsuario;
 	public $idImagen;
 
+	public $ruta; //solo para ayuda
+
 	public function __construct(&$mysqli, $id=null){
 		parent::__construct($mysqli, $id);
 	}
@@ -35,7 +37,7 @@ class Portada extends abstractModel{
         	$this->idImagen
         	);
         if($stmt->fetch()){
-            $this->fchReg = DateTime::createFromFormat(config::$date_sql, $this->fchReg); //se convierte de string a DateTime
+
             $this->md_estado = true;                //estado del procedimiento: correcto
             $this->md_mensaje = "Portada obtenida"; //mensaje del procedimiento
         }else{
@@ -52,19 +54,112 @@ class Portada extends abstractModel{
     		$this->md_mensaje = "El usuario ya tiene id";
     		return $this->md_estado = false;
     	}
-    	
+    	$sql="INSERT INTO portada (titulo,descripcion,idUsuario,idImagen) values (?, ?, ?,(SELECT idImagen FROM imagen where nombre=?))";
+
+    	$stmt = $this->mysqli->stmt_init();
+    	$stmt->prepare($sql);
+    	$stmt->bind_param('ssis',
+    		$this->titulo,
+    		$this->descripcion,
+    		$this->idUsuario,
+    		$this->ruta
+    		);
+    	if($stmt->execute()){
+            $this->id = $stmt->insert_id;
+            $this->get();
+            $this->md_estado = true;
+            $this->md_mensaje = "Portada insertada";
+        }else{
+            $this->md_estado = false;
+            $this->md_mensaje = "Error al insertar portada";
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+        }
+        $stmt->close();
+        return $this->md_estado;
+
+
 	}
 
 	public function edit(){
+		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
+    	if(!isset($this->id)){	//debe tener id para poder editar
+    		$this->md_mensaje = "Debe indicar un id para buscar";
+    		return $this->md_estado = false;
+    	}
+
+    	$sql="UPDATE portada SET titulo=?, descripcion=?, estado=? WHERE idPortada=?";
+    	$stmt = $this->mysqli->stmt_init();
+		$stmt->prepare($sql);
+
+		$stmt->bind_param('ssii',
+			$this->titulo,
+			$this->descripcion,
+			$this->estado,
+			$this->id);
+		if($stmt->execute()){
+			$this->md_estado=true;
+			$this->md_mensaje="Portada actualizada";
+		}else{
+			$this->md_estado = false;
+            $this->md_mensaje = "Error al actualizar portada";
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+		}
 	}
 
 	public function delete(){
+		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
+        if(!isset($this->id)){  //debe tener id para poder eliminar
+            $this->md_mensaje = "Debe indicar un id para eliminar";
+            return $this->md_estado = false;
+        }
+        
+        $sql = "DELETE FROM portada WHERE idPortada=?";
+        $stmt = $this->mysqli->stmt_init();
+        $stmt->prepare($sql);
+        $stmt->bind_param('i', $this->id);
+        if($stmt->execute()){
+            $this->md_estado = true;
+            $this->md_mensaje = "Portada eliminada";
+        }else{
+            $this->md_estado = false;
+            $this->md_mensaje = "Error al eliminar portada";
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+        }
+        $stmt->close();
+        return $this->md_estado;
 	}
 
-	public function search(){
-		
+	public function search($_onlyActive=true){
+		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+		$sql = "select idPortada,titulo,descripcion,estado,p.idUsuario,i.ruta from portada p inner join imagen i on p.idImagen=i.idImagen ";
+		if($_onlyActive) $sql.="WHERE estado=1";
+
+		$stmt = $this->mysqli->stmt_init();
+		$stmt->prepare($sql);
+		$stmt->execute();
+		$stmt->bind_result(
+			$_id,
+			$_titulo,
+			$_descripcion,
+			$_estado,
+			$_idUsuario,
+			$_ruta
+			);
+		$list=array();
+		while ($stmt->fetch()) {
+			$port=new Portada($this->mysqli);
+			$port->id   		= $_id;
+			$port->titulo 		= $_titulo;
+			$port->descripcion 	= $_descripcion;
+			$port->estado 		= $_estado;
+			$port->idUsuario 	= $_idUsuario;
+			$port->ruta 		= $_ruta;
+			array_push($list, $port);
+		}
+		$stmt->close();
+		return $list;
 	}
 }
 ?>
