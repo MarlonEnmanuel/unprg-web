@@ -67,7 +67,7 @@ class ctrlAviso extends abstractController {
         $mysqli = $this->getMysqli();
         $aux = new Aviso($mysqli);
 
-        $lista = $aux->searchVisible($top,$offset);
+        $lista = $aux->search(true, $top, $offset);
         if(empty($lista)) $this->responder(false, 'No hay documentos para mostrar');
         $avisos = array();
 

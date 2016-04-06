@@ -54,13 +54,17 @@ class Agenda extends abstractModel{
 		return $this->md_estado;
 	}
 
-	public function searchVisible(){
+	public function search($_onlyActive=true, $_limit=null, $_offset=0){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
-		$sql = "select * from Agenda where estado=? order by fchReg asc";
+
+		$sql="SELECT * FROM agenda ";
+        if($_onlyActive) $sql .= "WHERE estado=1 ";
+        $sql .= "ORDER BY fchReg DESC ";
+        if(isset($_limit) && is_int($_limit) && is_int($_offset) ) 
+            $sql .= "LIMIT ".$_limit." OFFSET ".$_limit;
+
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
-        $vis=1;
-		$stmt->bind_param('i', $vis);
 		$stmt->execute();
 		$stmt->bind_result(
 			$_id,
@@ -138,7 +142,7 @@ class Agenda extends abstractModel{
     		return $this->md_estado = false;
     	}
 
-    	$sql="INSERT INTO agenda(fchInicio,titulo,texto,lugar,mapa,organizador,idUsuario) VALUES (?,?,?,?,?,?,?)";
+    	$sql="INSERT INTO agenda(fchInicio, titulo, texto, lugar, mapa, organizador, idUsuario) VALUES (?,?,?,?,?,?,?)";
     	$stmt=$this->mysqli->stmt_init();
     	$stmt->prepare($sql);
     	$aux=$this->fchInicio->format(config::$date_sql);

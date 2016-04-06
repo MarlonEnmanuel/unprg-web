@@ -25,7 +25,7 @@ class config {
 	public static $db_host = "localhost";           		//Dirección de la BD
 	public static $db_user = "root";            		 	//Usuario de la BD
 	public static $db_pass = "root";          				//Password de la BD
-	public static $db_name = "unprg-web2";        			//Nombre de la BD	
+	public static $db_name = "unprg-web";        			//Nombre de la BD	
 	public static $db_port = "3306";         				//Puerto de la BD
 
 

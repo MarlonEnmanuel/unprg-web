@@ -6,9 +6,10 @@ class Documento extends abstractModel{
 	
 	public $fchReg;
 	public $nombre;
+    public $tipo;
 	public $ruta;
-	public $tipo;
-	public $validacion;
+	public $version;
+    public $estado;
 	public $idUsuario;
 
 	public function __construct(&$mysqli,$id=null){
@@ -22,7 +23,7 @@ class Documento extends abstractModel{
             $this->md_mensaje = "Debe indicar un id para buscar";
             return $this->md_estado = false;
         }
-         $sql = "select * from documentos where idDocumentos=?";
+         $sql = "select * from documento where idDocumento=?";
         $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
         $stmt->prepare($sql);               //se arma la consulta preparada
         $stmt->bind_param('i', $this->id);  //se vinculan los parámetros
@@ -31,9 +32,10 @@ class Documento extends abstractModel{
         	$this->id,
         	$this->fchReg,
         	$this->nombre,
+            $this->tipo,
         	$this->ruta,
-        	$this->tipo,
-        	$this->validacion,
+        	$this->version,
+            $this->estado,
         	$this->idUsuario
         	);
         if($stmt->fetch()){
@@ -49,33 +51,39 @@ class Documento extends abstractModel{
         return $this->md_estado;
 	}
 
-	public function search(){
+	public function search($_onlyActive=true, $_limit=null, $_offset=0){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
-		$sql="select * from documentos where validacion=? order by fchReg desc limit 6";
+
+		$sql="SELECT * FROM documento ";
+        if($_onlyActive) $sql .= "WHERE estado=1 ";
+        $sql .= "ORDER BY fchReg DESC ";
+        if(isset($_limit) && is_int($_limit) && is_int($_offset) ) 
+            $sql .= "LIMIT ".$_limit." OFFSET ".$_limit;
+
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
-        $vis=1;
-		$stmt->bind_param('i', $vis);
 		$stmt->execute();
 		$stmt->bind_result(
-			$_idDocumentos,
+			$_idDocumento,
 			$_fchReg,
 			$_nombre,
+            $_tipo,
 			$_ruta,
-			$_tipo,
-			$_validacion,
+			$_version,
+            $_estado,
 			$_idUsuario
 			);
 		$list=array();
 		while ($stmt->fetch()) {
-			$doc= new Documento($this->mysqli);
-			$doc->id=$_idDocumentos;
-			$doc->fchReg= DateTime::createFromFormat(config::$date_sql, $_fchReg);
-			$doc->nombre=$_nombre;
-			$doc->ruta=$_ruta;
-			$doc->tipo=$_tipo;
-			$doc->validacion=$_validacion;
-			$doc->idUsuario=$_idUsuario;
+			$doc = new Documento($this->mysqli);
+			$doc->id        = $_idDocumentos;
+			$doc->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
+			$doc->nombre    = $_nombre;
+            $doc->tipo      = $_tipo;
+			$doc->ruta      = $_ruta;
+			$doc->version   = $_version;
+            $doc->estado    = $_estado;
+			$doc->idUsuario = $_idUsuario;
 			array_push($list, $doc);
 		}
 		$stmt->close();
@@ -88,13 +96,14 @@ class Documento extends abstractModel{
     		$this->md_mensaje = "El documento ya tiene id";
     		return $this->md_estado = false;
     	}
-    	$sql="INSERT INTO documentos(nombre,ruta,tipo,idUsuario) VALUES (?,?,?,?)";
+    	$sql="INSERT INTO documento(nombre,tipo,ruta,version,idUsuario) VALUES (?,?,?,?,?)";
     	$stmt=$this->mysqli->stmt_init();
     	$stmt->prepare($sql);
-    	$stmt->bind_param('sssi',
+    	$stmt->bind_param('sssii',
     		$this->nombre,
-    		$this->ruta,
     		$this->tipo,
+    		$this->ruta,
+            $this->version,
             $this->idUsuario
     		);
     	if($stmt->execute()){
@@ -118,13 +127,15 @@ class Documento extends abstractModel{
             return $this->md_estado = false;
         }
 
-        $sql="UPDATE documentos SET nombre=?,ruta=?,tipo=? where idDocumentos=?";
+        $sql="UPDATE documento SET nombre=?, tipo=?, ruta=?, version=?, estado=? where idDocumento=?";
         $stmt = $this->mysqli->stmt_init();
         $stmt->prepare($sql);
-        $stmt->bind_param('sssi',
+        $stmt->bind_param('sssiii',
             $this->nombre,
-            $this->ruta,
             $this->tipo,
+            $this->ruta,
+            $this->version,
+            $this->estado,
             $this->id
             );
         if($stmt->execute()){
@@ -145,10 +156,10 @@ class Documento extends abstractModel{
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
     	if(!isset($this->id)){	//debe tener id para poder editar
-    		$this->md_mensaje = "Debe indicar un id para buscar";
+    		$this->md_mensaje = "Debe indicar un id para eliminar";
     		return $this->md_estado = false;
     	}
-    	$sql="UPDATE documentos SET validacion= WHERE idDocumentos=?";
+    	$sql="DELETE FROM documentos WHERE idDocumento=?";
     	$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
 		$stmt->bind_param('i',

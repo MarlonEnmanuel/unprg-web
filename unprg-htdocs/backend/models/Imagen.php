@@ -5,10 +5,12 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/abstractModel.php';
 class Imagen extends abstractModel{
 
 	public $fchReg;
-	public $nombre;
-	public $ruta;
+    public $nombre;
     public $tipo;
+    public $ruta;
+    public $version;
     public $idUsuario;
+    public $idGaleria;
 
 	public function __construct(&$mysqli,$id=null){
 		parent::__construct($mysqli, $id);
@@ -31,9 +33,11 @@ class Imagen extends abstractModel{
         	$this->id,
         	$this->fchReg,
         	$this->nombre,
-        	$this->ruta,
             $this->tipo,
-            $this->idUsuario
+        	$this->ruta,
+            $this->version,
+            $this->idUsuario,
+            $this->idGaleria
         	);
         if($stmt->fetch()){
             $this->fchReg = DateTime::createFromFormat(config::$date_sql, $this->fchReg); //se convierte de string a DateTime
@@ -65,9 +69,11 @@ class Imagen extends abstractModel{
             $this->id,
             $this->fchReg,
             $this->nombre,
-            $this->ruta,
             $this->tipo,
-            $this->idUsuario
+            $this->ruta,
+            $this->version,
+            $this->idUsuario,
+            $this->idGaleria
             );
         if($stmt->fetch()){
             $this->fchReg = DateTime::createFromFormat(config::$date_sql, $this->fchReg); //se convierte de string a DateTime
@@ -82,6 +88,84 @@ class Imagen extends abstractModel{
         return $this->md_estado;
     }
 
+    public function search($_limit=null, $_offset=0){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        $sql="SELECT * FROM imagen ORDER BY fchReg DESC ";
+        if(isset($_limit) && is_int($_limit) && is_int($_offset) ) 
+            $sql .= "LIMIT ".$_limit." OFFSET ".$_limit;
+
+        $stmt = $this->mysqli->stmt_init();
+        $stmt->prepare($sql);
+        $stmt->execute();
+        $stmt->bind_result(
+            $_idImagen,
+            $_fchReg,
+            $_nombre,
+            $_tipo,
+            $_ruta,
+            $_version,
+            $_idUsuario,
+            $_idGaleria
+            );
+        $list=array();
+        while ($stmt->fetch()) {
+            $doc = new Documento($this->mysqli);
+            $doc->id        = $_idImagen;
+            $doc->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
+            $doc->nombre    = $_nombre;
+            $doc->tipo      = $_tipo;
+            $doc->ruta      = $_ruta;
+            $doc->version   = $_version;
+            $doc->idUsuario = $_idUsuario;
+            $doc->idGaleria = $_idGaleria;
+            array_push($list, $doc);
+        }
+        $stmt->close();
+        return $list;
+    }
+
+    public function searchByGalery($_idGaleria){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        if(!isset($_idGaleria)){  //debe tener id para poder editar
+            $this->md_mensaje = "Debe indicar un idGaleria para buscar";
+            return $this->md_estado = false;
+        }
+
+        $sql="SELECT * FROM imagen WHERE idGaleria=? ORDER BY fchReg DESC ";
+
+        $stmt = $this->mysqli->stmt_init();
+        $stmt->prepare($sql);
+        $stmt->bind_param('i', $_idGaleria);
+        $stmt->execute();
+        $stmt->bind_result(
+            $_idImagen,
+            $_fchReg,
+            $_nombre,
+            $_tipo,
+            $_ruta,
+            $_version,
+            $_idUsuario,
+            $_idGaleria
+            );
+        $list=array();
+        while ($stmt->fetch()) {
+            $doc = new Documento($this->mysqli);
+            $doc->id        = $_idImagen;
+            $doc->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
+            $doc->nombre    = $_nombre;
+            $doc->tipo      = $_tipo;
+            $doc->ruta      = $_ruta;
+            $doc->version   = $_version;
+            $doc->idUsuario = $_idUsuario;
+            $doc->idGaleria = $_idGaleria;
+            array_push($list, $doc);
+        }
+        $stmt->close();
+        return $list;
+    }
+
     public function edit(){
         if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
@@ -90,13 +174,15 @@ class Imagen extends abstractModel{
             return $this->md_estado = false;
         }
 
-        $sql="UPDATE imagen SET nombre=?,ruta=? WHERE idImagen=?";
+        $sql="UPDATE imagen SET nombre=?,tipo=?,ruta=?,version=?,idGaleria=? WHERE idImagen=?";
         $stmt = $this->mysqli->stmt_init();
         $stmt->prepare($sql);
-        $stmt->bind_param('sssi',
+        $stmt->bind_param('sssiii',
             $this->nombre,
-            $this->ruta,
             $this->tipo,
+            $this->ruta,
+            $this->version,
+            $this->idGaleria,
             $this->id
             );
         if($stmt->execute()){
@@ -120,14 +206,16 @@ class Imagen extends abstractModel{
             return $this->md_estado = false;
         }
 
-        $sql="INSERT INTO imagen (nombre, ruta, tipo, idUsuario) VALUES (?,?,?,?)";
+        $sql="INSERT INTO imagen (nombre, tipo, ruta, version, idUsuario, idGaleria) VALUES (?,?,?,?,?,?)";
         $stmt = $this->mysqli->stmt_init();
         $stmt->prepare($sql);
-        $stmt->bind_param('sssi',
+        $stmt->bind_param('sssiii',
         	$this->nombre,
-        	$this->ruta,
             $this->tipo,
-            $this->idUsuario
+        	$this->ruta,
+            $this->version,
+            $this->idUsuario,
+            $this->idGaleria
         	);
         if($stmt->execute()){
             $this->id = $stmt->insert_id;

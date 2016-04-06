@@ -11,8 +11,8 @@ class Aviso extends abstractModel{
 	public $texto;
 	public $destacado;
 	public $emergente;
+    public $link;
 	public $estado;
-	public $link;
 	public $idUsuario;
 
 
@@ -39,8 +39,8 @@ class Aviso extends abstractModel{
         	$this->texto,
         	$this->destacado,
         	$this->emergente,
+            $this->link,
         	$this->estado,
-        	$this->link,
         	$this->idUsuario
         	);
         if($stmt->fetch()){
@@ -56,42 +56,46 @@ class Aviso extends abstractModel{
         return $this->md_estado;
 	}
 
-	public function searchVisible($vis,$fin=0){
-		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
-		$sql = "select * from aviso where estado=1 order by fchReg desc LIMIT ? OFFSET ?";
-		$stmt = $this->mysqli->stmt_init();
-		$stmt->prepare($sql);
-        
-        $stmt->bind_param('ii', $vis,$fin);
-		$stmt->execute();
-		$stmt->bind_result(
-			$_id,
-			$_fchReg,
+    public function search($_onlyActive=true, $_limit=null, $_offset=0){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        $sql="SELECT * FROM aviso ";
+        if($_onlyActive) $sql .= "WHERE estado=1 ";
+        $sql .= "ORDER BY fchReg DESC ";
+        if(isset($_limit) && is_int($_limit) && is_int($_offset) ) 
+            $sql .= "LIMIT ".$_limit." OFFSET ".$_limit;
+
+        $stmt = $this->mysqli->stmt_init();
+        $stmt->prepare($sql);
+        $stmt->execute();
+        $stmt->bind_result(
+            $_id,
+            $_fchReg,
             $_titulo,
-			$_texto,
-			$_destacado,
-			$_emergente,
-			$_estado,
+            $_texto,
+            $_destacado,
+            $_emergente,
             $_link,
-			$_idUsuario
-			);
-		$list=array();
-		while ($stmt->fetch()) {
-			$avi=new Aviso($this->mysqli);
-			$avi->id 	    = $_id;
-			$avi->fchReg 	= DateTime::createFromFormat(config::$date_sql, $_fchReg);
-			$avi->titulo 	= $_titulo;
+            $_estado,
+            $_idUsuario
+            );
+        $list=array();
+        while ($stmt->fetch()) {
+            $avi=new Aviso($this->mysqli);
+            $avi->id        = $_id;
+            $avi->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
+            $avi->titulo    = $_titulo;
             $avi->texto     = $_texto;
-			$avi->destacado = $_destacado;
-			$avi->emergente = $_emergente;
-			$avi->estado 	= $_estado;
+            $avi->destacado = $_destacado;
+            $avi->emergente = $_emergente;
             $avi->link      = $_link;
-			$avi->idUsuario = $_idUsuario;
-			array_push($list, $avi);
-		}
-		$stmt->close();
+            $avi->estado    = $_estado;
+            $avi->idUsuario = $_idUsuario;
+            array_push($list, $avi);
+        }
+        $stmt->close();
         return $list;
-	}
+    }
 
 	public function searchUsuario($idUsuario){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
@@ -107,8 +111,8 @@ class Aviso extends abstractModel{
             $_texto,
             $_destacado,
             $_emergente,
-            $_estado,
             $_link,
+            $_estado,
             $_idUsuario
             );
         $list=array();
@@ -120,8 +124,8 @@ class Aviso extends abstractModel{
             $avi->texto     = $_texto;
             $avi->destacado = $_destacado;
             $avi->emergente = $_emergente;
-            $avi->estado    = $_estado;
             $avi->link      = $_link;
+            $avi->estado    = $_estado;
             $avi->idUsuario = $_idUsuario;
             array_push($list, $avi);
         }
@@ -136,17 +140,16 @@ class Aviso extends abstractModel{
     		return $this->md_estado = false;
     	}
 
-    	$sql = "INSERT INTO aviso (titulo,texto, destacado, emergente,  estado, link, idUsuario) 
-				VALUES (?, ?, ?, ?, ?, ?, ?)";
+    	$sql = "INSERT INTO aviso (titulo, texto, destacado, emergente, link, idUsuario) 
+				VALUES (?, ?, ?, ?, ?, ?)";
 		$stmt = $this->mysqli->stmt_init();
     	$stmt->prepare($sql);
-    	$stmt->bind_param('ssiiisi',
+    	$stmt->bind_param('ssiisi',
             $this->titulo,
     		$this->texto,
     		$this->destacado,
     		$this->emergente,
-    		$this->estado,
-    		$this->link,
+            $this->link,
     		$this->idUsuario
     		);
     	if($stmt->execute()){
@@ -169,23 +172,17 @@ class Aviso extends abstractModel{
     		$this->md_mensaje = "Debe indicar un id para buscar";
     		return $this->md_estado = false;
     	}
-    	$sql = "UPDATE aviso SET 
-                    titulo=?,
-					texto=?, 
-					destacado=?, 
-					emergente=?, 
-					estado=?,
-                    link=?
-				WHERE idAviso=?";
+    	$sql = "UPDATE aviso SET titulo=?, texto=?, destacado=?, emergente=?, link=?, estado=? WHERE idAviso=?";
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
-		$stmt->bind_param('ssiiisi',
-    		$this->texto,
+
+		$stmt->bind_param('ssiisii',
             $this->titulo,
-    		intval($this->destacado),
-    		intval($this->emergente),
-    		intval($this->estado),
+    		$this->texto,
+    		$this->destacado,
+    		$this->emergente,
             $this->link,
+    		$this->estado,
     		$this->id
     		);
 		if($stmt->execute()){
