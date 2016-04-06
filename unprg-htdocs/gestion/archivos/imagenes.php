@@ -58,6 +58,7 @@
 						<option value="noticiaCuerpo">Para Cuerpo de Noticia</option>
 						<option value="noticiaPortada">Para Portada de Noticia</option>
 						<option value="galeria">Para Galería</option>
+						<option value="portada">Portada Principal</option>
 					</select>
 
 					<div class="bksgw__form__sep"></div>
