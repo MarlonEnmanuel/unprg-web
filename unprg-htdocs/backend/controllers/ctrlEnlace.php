@@ -57,4 +57,6 @@ class ctrlEnlace extends abstractController{
         $this->responder(true, 'enlaces obtenidos', '', $enlaces);
 	}
 }
+
+$ctrl=new ctrlEnlace(true);
 ?>
