@@ -20,10 +20,11 @@ class ctrlPortada extends abstractController{
  		$ipts=$this->getFilterInputs('post',$ops);
 
  		$mysqli=$this->getMysqli();
-
+        $a=array('<','>');
+        $b=array('[',']');
  		$port=new Portada($mysqli);
  		$port->titulo 		= $ipts['titulo'];
- 		$port->descripcion 	= $ipts['descripcion'];
+ 		$port->descripcion 	= str_replace($a, $b, $ipts['descripcion']);
  		$port->idUsuario	= $Usuario['id'];
  		$port->ruta 		= $ipts['enlace'];
 
@@ -50,10 +51,13 @@ class ctrlPortada extends abstractController{
 
         $lista = $aux->search(true);
         if(empty($lista)) $this->responder(false, 'No hay portadas para mostrar');
+        $a=array('[',']');
+        $b=array('<','>');
         $port = array();
 
         foreach ($lista as $key => $portada) {
             $port[$key]=$portada->toArray();
+            $port[$key]['descripcion']=str_replace($a, $b, $port[$key]['descripcion']);
             
             
         }
