@@ -62,6 +62,7 @@
 						<input type="checkbox" name="estado" checked>
 					</div>
 					<hr>
+					
 					<div>
 						<span>Acceso a Avisos</span>
 						<input type="checkbox" name="p-aviso">
@@ -71,8 +72,28 @@
 						<input type="checkbox" name="p-noticia">
 					</div>
 					<div>
-						<span>Acceso a Eventos</span>
-						<input type="checkbox" name="p-evento">
+						<span>Acceso a Agenda</span>
+						<input type="checkbox" name="p-agenda">
+					</div>
+					<div>
+						<span>Acceso a Imagenes</span>
+						<input type="checkbox" name="p-imagen">
+					</div>
+					<div>
+						<span>Acceso a Documentos</span>
+						<input type="checkbox" name="p-documento">
+					</div>
+					<div>
+						<span>Acceso a Enlace</span>
+						<input type="checkbox" name="p-enlace">
+					</div>
+					<div>
+						<span>Acceso a Portada</span>
+						<input type="checkbox" name="p-portada">
+					</div>
+					<div>
+						<span>Acceso a pagina</span>
+						<input type="checkbox" name="p-pagina">
 					</div>
 					<div class="formPie">
 						<div class="info">Información de estado</div>

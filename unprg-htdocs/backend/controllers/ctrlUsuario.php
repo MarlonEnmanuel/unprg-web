@@ -26,13 +26,24 @@ class ctrlUsuario extends abstractController {
             'estado'    => array('type'=>'boolean'),
             'p-aviso'   => array('type'=>'boolean'),
             'p-noticia' => array('type'=>'boolean'),
-            'p-evento'  => array('type'=>'boolean')
+            'p-agenda'  => array('type'=>'boolean'),
+            'p-imagen'  => array('type'=>'boolean'),
+            'p-documento'  => array('type'=>'boolean'),
+            'p-enlace'  => array('type'=>'boolean'),
+            'p-portada'  => array('type'=>'boolean'),
+            'p-pagina'  => array('type'=>'boolean')
+
         ));
 
         $ipts['permisos'] = array();
         if($ipts['p-aviso']) array_push($ipts['permisos'], 'aviso');
         if($ipts['p-noticia']) array_push($ipts['permisos'], 'noticia');
-        if($ipts['p-evento']) array_push($ipts['permisos'], 'evento');
+        if($ipts['p-agenda']) array_push($ipts['permisos'], 'agenda');
+        if($ipts['p-imagen']) array_push($ipts['permisos'], 'imagen');
+        if($ipts['p-documento']) array_push($ipts['permisos'], 'documento');
+        if($ipts['p-enlace']) array_push($ipts['permisos'], 'enlace');
+        if($ipts['p-portada']) array_push($ipts['permisos'], 'portada');
+        if($ipts['p-pagina']) array_push($ipts['permisos'], 'pagina');
         if( empty($ipts['permisos']) ){
             $this->responder(false, 'Debe elegir al menos un acceso');
         }
