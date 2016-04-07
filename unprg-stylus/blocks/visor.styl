@@ -10,18 +10,86 @@
 	right: 0px
 	left: 0px
 	z-index: 120
-	font-size: 0px
+	display: none
 	
-	&__cont
+	&__close
+		position: absolute
+		top: 0
+		right: 0
+		text-shadow: 0px 0px 4px black
+		z-index: 130
+		cursor: pointer
+		&:hover
+			color: rgb(255,150,150)
+	
+	&__wraper
 		position: absolute
 		right: 4%
 		left: 4%
 		top: 3%
 		bottom: 3%
-		padding: 0
-		margin: 0 auto
-		max-width: 900px
-		background-color: white
-		font-size: 0px
-		border-radius: 4px
-		overflow: hidden
+		
+		&__cont
+			font-size: 0px
+			text-align: center
+			max-width: 900px
+			min-width: 300px
+			border-radius: 4px
+			overflow: hidden
+			height: 100%
+			margin 0 auto
+			width: 100%
+		
+	&__doc
+		height: 100%
+		width: 100%
+		position: relative
+		
+		&__file
+			height: 100%
+			width: 100%
+		&__text
+			text-align: left
+			display: none
+			position: absolute
+			font-size: 10px
+			background-color: crgba(ccGris1,0.8)
+			bottom: 0px
+			left: 0px
+			right: 0px
+			padding: 1.5em 3%
+			box-shadow: 0 -2px 6px 0 rgba(0,0,0,0.5)
+			
+	&__img
+		height: 100%
+		width: 100%
+		display: table
+		vertical-align: middle
+		
+		&__cell
+			display: table-cell
+			vertical-align: middle
+			width: 100%
+			text-align: center
+			
+			&__in
+				display: inline-block
+				max-width: 100%
+				&__file
+					display: block
+					width: 100%
+					height: auto
+					overflow: auto
+		
+
+		
+		&__text
+			display: none
+			position: absolute
+			font-size: 10px
+			background-color: crgba(ccGris1,0.8)
+			bottom: 0px
+			left: 0px
+			right: 0px
+			padding: 1.5em 3%
+			box-shadow: 0 -2px 6px 0 rgba(0,0,0,0.5)

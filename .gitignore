@@ -16,3 +16,5 @@
 
 #ignorar gulp
 /gulpfile.js
+
+/npm-debug.log
