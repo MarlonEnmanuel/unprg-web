@@ -2,26 +2,17 @@
 
 <div class="block bkcov bgc--azul1">
 	<div class="bkcov__sl owl-carousel owl-theme">
-
-		<div class="item bkcov__sl__item plx">
-			<img class="bkcov__sl__item__img" src="/frontend/img/portada/por1.jpg" alt="">
-			<div class="bkcov__sl__item__text ff--condensed">
-				<div class="block__wraper plx__item slow">
-					<p class="bkcov__sl__item__text__1 ff--34 ff--b">Ceremonia de asunción y juramentación de las nuevas autoridades</p>
-					<p class="bkcov__sl__item__text__2 ff--18">Lorem <a href="#header">Aqui</a> ipsum dolor sit amet, consectetur adipisicing elit. Officiis dolore, error ad, eos quisquam accusamus quam illum doloribus harum, explicabo in ab sit illo sequi ea ex praesentium. Ab, nemo.</p>
+		<script type="text/template" id="template_portada">
+			<div class="item bkcov__sl__item">
+				<img class="bkcov__sl__item__img" src="<%= ruta %>" alt="">
+				<div class="bkcov__sl__item__text ff--condensed">
+					<div class="block__wraper plx__item slow">
+						<p class="bkcov__sl__item__text__1 ff--34 ff--b"><%= titulo %></p>
+						<p class="bkcov__sl__item__text__2 ff--18"><%= descripcion %></p>
+					</div>
 				</div>
 			</div>
-		</div>
-
-		<div class="item bkcov__sl__item">
-			<img class="bkcov__sl__item__img" src="/frontend/img/portada/por2.jpg" alt="">
-			<div class="bkcov__sl__item__text ff--condensed">
-				<div class="block__wraper plx__item slow">
-					<p class="bkcov__sl__item__text__1 ff--34 ff--b"><a href="#header">Universidad Nacional Pedro Ruiz Gallo al servicio de la comunidad</a></p>
-					<p class="bkcov__sl__item__text__2 ff--18">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis dolore, error ad, eos quisquam accusamus quam illum doloribus harum, explicabo in ab sit illo sequi ea ex praesentium. Ab, nemo.</p>
-				</div>
-			</div>
-		</div>
+		</script>
 
 	</div>
 	<div class="bkcov__bu--prev ff" title="Anterior"><span class="icon-circle-left"></span></div>
@@ -29,25 +20,29 @@
 </div>
 
 <script src="/frontend/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/frontend/js/cover.js"></script>
 <script type="text/javascript">
 	(function() {
-		var evButtons = function($el){
-			var owl = this;
-			$('.bkcov__bu--next').click(function() {
-				owl.next();
+		window.setTimeout(function(){
+			var evButtons = function($el){
+				var owl = this;
+				$('.bkcov__bu--next').click(function() {
+					owl.next();
+				});
+				$('.bkcov__bu--prev').click(function() {
+					owl.prev();
+				});
+			};
+			$('.bkcov__sl').owlCarousel({
+				autoPlay : 3000,
+				navigation : false, // Show next and prev buttons
+				slideSpeed : 300,
+				paginationSpeed : 400,
+				singleItem : true,
+				stopOnHover : true,
+				afterInit: evButtons
 			});
-			$('.bkcov__bu--prev').click(function() {
-				owl.prev();
-			});
-		};
-		$('.bkcov__sl').owlCarousel({
-			autoPlay : 3000,
-			navigation : false, // Show next and prev buttons
-			slideSpeed : 300,
-			paginationSpeed : 400,
-			singleItem : true,
-			stopOnHover : true,
-			afterInit: evButtons
-		});
+		},500);
 	})();
 </script>
+
