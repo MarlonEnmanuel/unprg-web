@@ -21,28 +21,5 @@
 
 <script src="/frontend/owl-carousel/owl.carousel.min.js"></script>
 <script type="text/javascript" src="/frontend/js/cover.js"></script>
-<script type="text/javascript">
-	(function() {
-		window.setTimeout(function(){
-			var evButtons = function($el){
-				var owl = this;
-				$('.bkcov__bu--next').click(function() {
-					owl.next();
-				});
-				$('.bkcov__bu--prev').click(function() {
-					owl.prev();
-				});
-			};
-			$('.bkcov__sl').owlCarousel({
-				autoPlay : 3000,
-				navigation : false, // Show next and prev buttons
-				slideSpeed : 300,
-				paginationSpeed : 400,
-				singleItem : true,
-				stopOnHover : true,
-				afterInit: evButtons
-			});
-		},500);
-	})();
-</script>
+
 

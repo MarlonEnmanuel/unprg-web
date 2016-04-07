@@ -13,9 +13,11 @@
 	sgw.Models = {};
 	sgw.Views = {};
 	sgw.Collections = {};
+
 	window.models = {};
 	window.views = {};
 	window.collections = {};
+	sgw.slider={};
 })();
 
 

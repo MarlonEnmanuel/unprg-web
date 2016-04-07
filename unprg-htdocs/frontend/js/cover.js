@@ -16,6 +16,7 @@ sgw.Views.Portada=Backbone.View.extend({
 		this.collection.each(function(model){
 			self.$el.append(self.template(model.toJSON()));
 		});
+		sgw.slider.init();
 		return this;
 	}
 });
@@ -45,3 +46,26 @@ $(document).ready(function($) {
 		collection:collections.port});
 	collections.port.view=views.port;
 });
+
+sgw.slider.init=function(){
+	window.setTimeout(function(){
+			var evButtons = function($el){
+				var owl = this;
+				$('.bkcov__bu--next').click(function() {
+					owl.next();
+				});
+				$('.bkcov__bu--prev').click(function() {
+					owl.prev();
+				});
+			};
+			$('.bkcov__sl').owlCarousel({
+				autoPlay : 3000,
+				navigation : false, // Show next and prev buttons
+				slideSpeed : 300,
+				paginationSpeed : 400,
+				singleItem : true,
+				stopOnHover : true,
+				afterInit: evButtons
+			});
+		},20);
+}
