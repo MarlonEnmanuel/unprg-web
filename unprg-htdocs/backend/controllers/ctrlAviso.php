@@ -42,7 +42,7 @@ class ctrlAviso extends abstractController {
         }
 
 
-        $this->responder(true, "Aviso creado!", "redirect", '/');
+        $this->responder(true, "Aviso creado!");
     }
 
     public function update($model){
