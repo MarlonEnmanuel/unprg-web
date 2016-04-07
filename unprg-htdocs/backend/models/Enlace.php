@@ -34,7 +34,7 @@ class Enlace extends abstractModel{
         	$this->estado,
         	$this->idUsuario
         	);
-        if($stmt->fetch){
+        if($stmt->fetch()){
         	$this->md_estado=true;
         	$this->md_mensaje="Enlace obtenido";
         }else{
