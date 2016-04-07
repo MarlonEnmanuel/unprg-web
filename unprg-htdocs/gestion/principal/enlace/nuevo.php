@@ -7,13 +7,13 @@
 		//Las siguientes variables son obigatorias
 		"url" 			=> config::getAbsPath('/gestion'),
 		"type" 			=> "place",
-		"title" 		=> "SG WEB | Nuevo Documento",
+		"title" 		=> "SG WEB | Nuevo Enlace",
 		"description" 	=> "Sistema de gestión de contenidos para la UNPRG",
 		"image" 		=> config::$path_socialImage
 	);
 
 	$ctrl = new Controller();
-	$ctrl->checkAccess('aviso');
+	$ctrl->checkAccess('enlace');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,32 +38,22 @@
 		<div class="block__wraper--slim">
 
 			<div class="admin-col admin-cuerpo">
-				<div class="encabezado">Nuevo documento</div>
+				<div class="encabezado">Nuevo Enlace</div>
 
 				<form class="formAviso" enctype="multipart/form-data">
 					<div>
-						<span title="Seleccione el tipo de archivo">Tipo del documento</span>
-						<select name="tipo">
-							<option value="Resolucion">Resolución</option>
-							<option value="Oficina">Oficio</option>
-							<option value="Carta">Carta</option>
-						</select>
-					</div>
-					
-					<hr>
-					<div>
-						<span class="p1" title="Este archivo se mostrará al desplegar el aviso.">
-							Seleccione documento
-						</span>
-						<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-						<input type="file" name="archivo" accept="application/pdf">
+						<span>Nombre del Enlace</span>
+						<input type="text" name="nombre" />
 					</div>
 					<div>
-						<span class="p2" title="Nombre que tendrá el archivo al ser descargado.">
-							Nombre de la imágen
-						</span>
-						<input type="text" name="nombre" maxlength="45">
+						<span title="Breve descripcion del Enlace">Descripcion del Enlace</span>
+						<input type="text" name="descripcion"/>
 					</div>
+					<div>
+						<span title="Link a un enlace externo y/o interno">Link Externo</span>
+						<input type="text" name="link"/>
+					</div>
+
 					<div class="formPie">
 						<div class="info">Información de estado</div>
 						<div class="boton">
@@ -74,16 +64,7 @@
 			</div>
 
 			<script type="text/javascript">
-				$('.formAviso input[name^=archivo]').change(function(event) {
-					var nom = $(this).val();
-					if( nom.lastIndexOf('\\')!=-1 ){
-						nom = nom.substring(nom.lastIndexOf('\\')+1);
-					}
-					if( nom.lastIndexOf('.')!=-1 ){
-						nom = nom.substring(0, nom.lastIndexOf('.'));
-					}
-					$('.formAviso input[name=nombre]').val(nom);					
-				});
+				
 
 				$('.formAviso').submit(function(event) {
 					event.preventDefault();
@@ -91,11 +72,7 @@
 					var form = $(this);
 					var info = form.find('.info');
 
-					if( form.find('input[name=nombre]').val().length<1){
-
-						info.text('Llene los campos y/o seleccine un archivo');
-						return false;
-					}
+					
 
 					form.find('input[type=submit]').attr('disabled','disabled');
 
@@ -104,7 +81,7 @@
 
 					console.log(data);
 					$.ajax({
-						url: "/backend/controllers/ctrlDocumento.php",
+						url: "/backend/controllers/ctrlEnlace.php",
 						type: 'post',
 						dataType: 'json',
 						data: data,

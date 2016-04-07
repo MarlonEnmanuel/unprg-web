@@ -4,50 +4,31 @@ $ctrl->checkAccess();
 
 $sgnavItems = array(
 	array(
-		'text' => 'Avisos',
+		'text' => 'Pagina Principal',
 		'menu' => array(
-			array('text' => 'Mis Avisos', 'perm' => 'aviso', 'link' => '/gestion/avisos/'),
-			array('text' => 'Crear Aviso', 'perm' => 'aviso', 'link' => '/gestion/avisos/nuevo.php'),
+			array('text' => 'Aviso', 'perm' => 'aviso', 'link' => '/gestion/principal/avisos/nuevo.php'),
+			array('text' => 'Agenda', 'perm' => 'agenda', 'link' => '/gestion/principal/agenda/nuevo.php'),
+			array('text'=>'Enlace','perm'=>'enlace','link'=>'/gestion/principal/enlace/nuevo.php'),
+			array('text'=>'Portada','perm'=>'portada','link'=>'/gestion/principal/portada/nuevo.php')
 		)
 	),
 	array(
-		'text'=>'Documentos',
+		'text' => 'Archivos',
 		'menu' => array(
-			array('text' => 'Mis Documentos', 'perm' => 'aviso', 'link' => '/uploads/documents/'),
-			array('text' => 'Crear Documento', 'perm' => 'aviso', 'link' => '/gestion/documentos/nuevo.php'),
-		)
+				array('text' => 'Documentos', 'perm' => 'aviso', 'link' => '/gestion/archivos/documentos/nuevo.php'),
+				array('text' => 'Imagenes', 'perm' => 'aviso', 'link' => '/gestion/archivos/imagenes.php')
+			)
 	),
+	
 	array(
-		'text'=>'Imagenes',
+		'text' => 'Gestion',
 		'menu' => array(
-			array('text' => 'Mis Imagenes', 'perm' => 'aviso', 'link' => '/uploads/images/'),
-			array('text' => 'Crear Imagen', 'perm' => 'aviso', 'link' => '/gestion/archivos/imagenes.php'),
-		)
-	),
-	array(
-		'text' => 'Noticias',
-		'menu' => array(
-			array('text' => 'Mis Noticias', 'perm' => 'aviso', 'link' => '/gestion/noticias/'),
-			array('text' => 'Crear Noticia', 'perm' => 'aviso', 'link' => '/gestion/noticias/nuevo.php'),
-		)
-	),
-	array(
-		'text' => 'Agenda',
-		'menu' => array(
-			array('text' => 'Mis Agendas', 'perm' => 'aviso', 'link' => '/gestion/eventos/'),
-			array('text' => 'Crear Agenda', 'perm' => 'aviso', 'link' => '/gestion/agenda/nuevo.php'),
-		)
-	),
-	array(
-		'text' => 'Usuario',
-		'menu' => array(
-			array('text' => 'Crear Usuario', 'perm' => 'admin', 'link' => '/gestion/usuarios/nuevo.php'),
-			array('text' => 'Mi usuario', 'perm' => 'all', 'link' => '/gestion/perfil.php'),
-		)
+				array('text' => 'Usuarios', 'perm' => 'admin', 'link' => '/gestion/usuarios/nuevo.php')
+			)
 	)
 );
 
-$sgnavSalir = array( 'text' => 'Salir', 'link' => '/backend/controllers/ctrlUsuario.php?accion=logout' );
+$sgnavSalir = array( 'text' => 'Salir', 'link' => '/backend/controllers/ctrlUsuario.php?_accion=logout' );
 
 ?>
 <div class="block__clean"></div>

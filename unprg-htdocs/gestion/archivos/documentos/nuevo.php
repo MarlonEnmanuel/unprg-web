@@ -44,8 +44,10 @@
 					<div>
 						<span title="Seleccione el tipo de archivo">Tipo del documento</span>
 						<select name="tipo">
-							<option value="Aviso">Para aviso</option>
-							<option value="Noticia">Para noticia</option>
+							<option value="Resolucion">Resolución</option>
+							<option value="Oficina">Oficio</option>
+							<option value="Carta">Carta</option>
+							<option value="Principal">Principal</option>
 						</select>
 					</div>
 					
@@ -55,17 +57,11 @@
 							Seleccione documento
 						</span>
 						<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-						<input type="file" name="archivo" accept="image/*" multiple>
+						<input type="file" name="archivo" accept="application/pdf">
 					</div>
 					<div>
-						<span class="p2" title="Nombre que tendrá la imagen al ser descargado.">
+						<span class="p2" title="Nombre que tendrá el archivo al ser descargado.">
 							Nombre de la imágen
-						</span>
-						<input type="text" name="nombre" maxlength="45">
-					</div>
-					<div>
-						<span class="p2" title="Nombre de la galeria y/o conjunto de fotos.">
-							Nombre de la galería
 						</span>
 						<input type="text" name="nombre" maxlength="45">
 					</div>
@@ -105,7 +101,7 @@
 					form.find('input[type=submit]').attr('disabled','disabled');
 
 					var data = new FormData(form[0]);
-					data.append('accion','nuevoDocumento');
+					
 
 					console.log(data);
 					$.ajax({

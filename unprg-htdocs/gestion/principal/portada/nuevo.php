@@ -13,7 +13,7 @@
 	);
 
 	$ctrl = new Controller();
-	$ctrl->checkAccess('aviso');
+	$ctrl->checkAccess('portada');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,9 +38,9 @@
 		<div class="block__wraper--slim">
 
 			<div class="admin-col admin-cuerpo">
-				<div class="encabezado">Nuevo aviso</div>
+				<div class="encabezado">Nueva portada</div>
 
-				<form class="formAviso" enctype="multipart/form-data">
+				<form class="formPortada" enctype="multipart/form-data">
 					<div>
 						<span title="Titulo de la portada que aparece en el panel ">Titulo de la portada</span>
 						<input type="text" name="titulo">
@@ -68,7 +68,7 @@
 
 			<script type="text/javascript">
 				
-				$('.formAviso').submit(function(event) {
+				$('.formPortada').submit(function(event) {
 					event.preventDefault();
 
 					var form = $(this);

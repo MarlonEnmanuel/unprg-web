@@ -19,7 +19,7 @@
 
 		<div class="bkhdr__buttons ff--14 ff--condensed">
 			<a href="#">Guía de Usuario</a>
-			<a href="#">Cerrar Sesión</a>
+			<a href="/backend/controllers/ctrlUsuario.php?_accion=logout">Cerrar Sesión</a>
 			<div class="block__clean"></div>
 		</div>
 
