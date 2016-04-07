@@ -4,6 +4,7 @@
 		<div class="bklast__col bgc bklast__avi plx__item">
 			<div class="bklast__col__titulo ff--26 ff--special cc--azul2">Avisos</div>
 			<div class="bklast__col__cont bklast__avi__cont">
+
 				<script type="text/template" id="template_aviso">
 					<div class="bklast__avi__el">
 						<a class="bklast__avi__el__text ff--14" href="#">
@@ -14,6 +15,7 @@
 						</div>
 					</div>
 				</script>
+				
 				<div class="bklast__error ff--14 ff--c cc--gris1">
 					No se pudo obtener contenido :(
 				</div>

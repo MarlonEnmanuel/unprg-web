@@ -1,11 +1,7 @@
 <div class="block bkvis">
 	<div class="bkvis__wraper">
 		<span class="bkvis__close icon-cancel-circle cc--gris5 ff--34"></span>
-		<div class="bkvis__wraper__cont">
-
-
-
-		</div>
+		<div class="bkvis__wraper__cont"></div>
 	</div>
 </div>
 
@@ -13,7 +9,7 @@
 	<div class="bkvis__img">
 		<div class="bkvis__img__cell">
 			<div class="bkvis__img__cell__in">
-				<img src="<%=  %>" alt="" class="bkvis__img__cell__in__file">
+				<img src="<%= ruta %>" alt="" class="bkvis__img__cell__in__file">
 			</div>
 		</div>
 		<div class="bkvis__img__text">
@@ -56,3 +52,5 @@
 		});
 	})();
 </script>
+
+<script type="text/javascript" src="/frontend/js/visor.js"></script>

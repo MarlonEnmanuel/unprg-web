@@ -1,22 +1,13 @@
 //Vista de Aviso
-sgw.Views.Avisos = Backbone.View.extend({
+sgw.Views.Aviso = Backbone.View.extend({
+	name 		: 'Aviso',
 	tagName 	: 'div',
 	className 	: 'bklast__avi__el',
 	template 	: _.template($('#template_aviso').html()),
-	initialize : function(){
-		var self = this;
-		self.$el = $(self.$el);
-		self.collection.on('sync', function(){
-			self.render();
-		});
-	},
 	render : function(){
-		var self = this;
-		self.$el.empty();
-		this.collection.each(function(model){
-			self.$el.append(self.template(model.toJSON()));
-		});
-		return this;
+		var data = this.model.toJSON();
+		var html = this.template(data);
+		this.$el.html( html );
 	}
 });
 //Coleccion de Aviso
@@ -97,15 +88,20 @@ $(document).ready(function($) {
 		if(!resp.data) sgw.error(collection, resp, options);
 	};
 
-	//obtener avisos
-	collections.avisos = new sgw.Collections.Avisos();
 
-	collections.avisos.fetch({success : sgw.success, error : sgw.error });
-	views.avisos = new sgw.Views.Avisos({
-		el : $('.bklast__avi__cont'),
-		collection : collections.avisos
+
+	//obtener avisos
+	collections.avisos = new sgw.Collections.Avisos({});
+	collections.avisos.on('add', function(model){
+		var view = new sgw.Views.Aviso({ model: model });
+		view.render();
+		view.$el.appendTo('.bklast__avi__cont');
 	});
-	collections.avisos.view = views.avisos;
+	collections.avisos.fetch({
+		success : sgw.success,
+		error : sgw.error
+	});
+
 	
 	//obtener documentos
 	collections.documentos = new sgw.Collections.Documentos();
