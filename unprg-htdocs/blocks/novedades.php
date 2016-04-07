@@ -5,17 +5,15 @@
 			<div class="bklast__col__titulo ff--26 ff--special cc--azul2">Avisos</div>
 			<div class="bklast__col__cont bklast__avi__cont">
 
-				<script type="text/template" id="template_aviso">
-					<div class="bklast__avi__el">
-						<a class="bklast__avi__el__text ff--14" href="#">
-							<%= titulo %>
-						</a>
-						<div class="bklast__avi__el__fech ff--12 ff--r ff--b cc--azul2">
-							<%= fchReg %>
-						</div>
+				<script type="text/template" id="template_aviso" data-class="bklast__avi__el" data-tag="div">
+					<a class="bklast__avi__el__text ff--14" href="#">
+						<%= titulo %>
+					</a>
+					<div class="bklast__avi__el__fech ff--12 ff--r ff--b cc--azul2">
+						<%= fchReg %>
 					</div>
 				</script>
-				
+
 				<div class="bklast__error ff--14 ff--c cc--gris1">
 					No se pudo obtener contenido :(
 				</div>
