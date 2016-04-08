@@ -47,7 +47,7 @@ class ctrlAviso extends abstractController {
         $ipts=$this->getFilterInputs('post',$ops);
         //Abrir coneccion en modo NO autoconfirmado
         $mysqli = $this->getMysqli();
-        $url='/opt/lampp/htdocs/uploads/';
+        $url='/uploads/';
         
         //Creando el aviso
         $aviso = new Aviso($mysqli);

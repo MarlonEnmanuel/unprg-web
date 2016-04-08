@@ -9,22 +9,22 @@
 	<div class="bkvis__img">
 		<div class="bkvis__img__cell">
 			<div class="bkvis__img__cell__in">
-				<img src="<%= ruta %>" alt="" class="bkvis__img__cell__in__file">
+				<img src="<%= link %>" alt="" class="bkvis__img__cell__in__file">
 			</div>
 		</div>
 		<div class="bkvis__img__text">
-			<p class="ff--18 ff--special cc--amarillo2">Titulo de aviso</p><br>
-			<p class="ff--14 cc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint laudantium veritatis expedita atque itaque quasi placeat perspiciatis rem quis, distinctio harum a sapiente praesentium soluta, molestiae eaque omnis inventore eius.</p>
+			<p class="ff--18 ff--special cc--amarillo2"><%= titulo %></p><br>
+			<p class="ff--14 cc"><%= texto %></p>
 		</div>
 	</div>
 </script>
 
 <script type="text/template" id="template_visor_doc">
 	<div class="bkvis__doc">
-		<embed class="bkvis__doc__file" type="application/pdf" src="../uploads/documents/documento_prueba.pdf" />
+		<embed class="bkvis__doc__file" type="application/pdf" src="<%= link %>" />
 		<div class="bkvis__doc__text">
-			<p class="ff--18 ff--special cc--amarillo2">Titulo de aviso</p><br>
-			<p class="ff--14 cc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint laudantium veritatis expedita atque itaque quasi placeat perspiciatis rem quis, distinctio harum a sapiente praesentium soluta, molestiae eaque omnis inventore eius.</p>
+			<p class="ff--18 ff--special cc--amarillo2"><%= titulo %></p><br>
+			<p class="ff--14 cc"><%= texto %></p>
 		</div>
 	</div>
 </script>
@@ -52,5 +52,4 @@
 		});
 	})();
 </script>
-
 <script type="text/javascript" src="/frontend/js/visor.js"></script>
