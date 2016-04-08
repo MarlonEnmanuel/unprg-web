@@ -2,6 +2,8 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 $ctrl->checkAccess();
 
+$sgnavInicio = array( 'text' => 'Inicio', 'link' => '/gestion/miUsuario.php' );
+
 $sgnavItems = array(
 	array(
 		'text' => 'Pagina Principal',
@@ -44,7 +46,12 @@ $sgnavSalir = array( 'text' => 'Salir', 'link' => '/backend/controllers/ctrlUsua
 		<ul class="bknav__ul ff--16">
 
 			<?php
+				echo '<li class="bknav__ul__li">
+						  <a class="bknav__ul__li__bu" href="'.$sgnavInicio['link'].'">'.$sgnavInicio['text'].'</a>
+					  </li>';
+					echo '</li><span class="bknav__ul__sep">|</span>';
 				foreach ($sgnavItems as $key => $val) {
+					
 					echo '<li class="bknav__ul__li">';
 					if(isset($val['link'])){
 						echo '<a class="bknav__ul__li__bu" href="'.$val['link'].'">'.$val['text'].'</a>';
