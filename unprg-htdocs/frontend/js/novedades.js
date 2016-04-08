@@ -67,20 +67,16 @@ sgw.Views.Visor = Backbone.View.extend({
 		});
 	},
 	show : function(aviso, event){
+		if(event) event.preventDefault();
 		var self = this;
 		var cont;
 		var ext = self.getExtencion( aviso.get('link') );
-		if( aviso.get('link').trim()==='' ){
-			if(event) event.preventDefault();
-			cont = self.template_txt( aviso.toJSON() );
-		}else if( ext =='pdf' ){
-			if(event) event.preventDefault();
+		if( ext =='pdf' ){
 			cont = self.template_doc( aviso.toJSON() );
 		}else if( ext=='jpg' || ext=='jpeg' || ext=='png' || ext=='gif' ){
-			if(event) event.preventDefault();
 			cont = self.template_img( aviso.toJSON() );
 		}else{
-			return event;
+			cont = self.template_txt( aviso.toJSON() );
 		}
 		self.$el.find('.bkvis__wraper__cont').append(cont);
 		self.$el.fadeIn(250);

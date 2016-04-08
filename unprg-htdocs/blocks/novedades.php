@@ -9,6 +9,9 @@
 							<div class="bkvis__txt__cell__in__txt bgc">
 								<div class="bkvis__txt__cell__in__txt__t ff--special cc--azul2"><%= titulo %></div>
 								<div class="bkvis__txt__cell__in__txt__d ff--j cc--gris1"><%= texto %></div>
+								<% if( link !== '' ) { %>
+								    <a target="_blank" href="<%= link %>" class="bkvis__txt__cell__in__txt__l cc--azul2"><%= link %></a>
+								<% } %>
 							</div>
 						</div>
 					</div>
