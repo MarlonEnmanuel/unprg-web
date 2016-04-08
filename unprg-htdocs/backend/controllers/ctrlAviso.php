@@ -7,8 +7,30 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Imagen.php';
 class ctrlAviso extends abstractController {
 
     protected function init($accion){
-        $this->responder(false, "Acciones no implementadas");
+        
+        switch ($accion) {
+            case 'getEmergente':
+                $this->getEmergente();
+
+                break;
+            
+            default:
+                $this->responder(false, "Acciones no implementadas");
+                break;
+        }
     }
+
+
+
+    public function getEmergente(){
+        $mysqli = $this->getMysqli();
+
+        $emer = new Aviso($mysqli);
+        $emer->getEmergente();
+        
+        $this->responder(true, 'Emergente obtenidos', '', $emer);
+    }
+
 
     public function create($model){
         $Usuario = $this->checkAccess('aviso');

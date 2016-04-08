@@ -132,7 +132,39 @@ class Aviso extends abstractModel{
         }
 		$stmt->close();
         return $list;
-	}
+	}  
+
+     public function getEmergente(){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        $sql="SELECT * FROM aviso where emergente=0 order by fchReg desc limit 1";
+
+        $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
+        $stmt->prepare($sql);               //se arma la consulta preparada
+        $stmt->execute();                   //se ejecuta la consulta
+        $stmt->bind_result(    
+            $this->idAviso,
+            $this->fchReg,
+            $this->titulo,
+            $this->texto,
+            $this->destacado,
+            $this->emergente,
+            $this->link,
+            $this->estado,
+            $this->idUsuario
+            );
+        if($stmt->fetch()){
+            $this->fchReg = DateTime::createFromFormat(config::$date_sql, $this->fchReg); //se convierte de string a DateTime
+            $this->md_estado = true;                //estado del procedimiento: correcto
+            $this->md_mensaje = "Aviso obtenido"; //mensaje del procedimiento
+        }else{
+            $this->md_estado = false;               //estado del procedimiento: fallido
+            $this->md_mensaje = "Error al obtener Aviso";//mensaje del procedimiento
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+        }
+        $stmt->close();
+        return $this->md_estado;
+    }
 
     public function set(){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
