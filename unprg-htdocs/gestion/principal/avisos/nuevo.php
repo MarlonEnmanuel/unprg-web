@@ -23,7 +23,7 @@
 
 	<!-- Importación de Estilos -->
 		<?= config::getStyles() ?>
-		<link rel="stylesheet" href="/frontend/css/admin/general.css">
+		<link rel="stylesheet" href="/frontend/css/gestion/master.css">
 
 	<!-- Importación de Scripts -->
 		<?= config::getScripts() ?>
@@ -34,62 +34,89 @@
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
 	
-	<section class="block">
+	<section class="block bksgw--first sgwAvi	">
+		<div class="block__wraper--slim">
+			
+			<div class="bksgw__titulo">Mis imágenes</div>
+			
+
+		</div>
+		<div class="block__clean"></div>
+	</section>
+
+	<section class="block bksgw sgwAvi">
 		<div class="block__wraper--slim">
 
-			<div class="admin-col admin-cuerpo">
-				<div class="encabezado">Nuevo aviso</div>
+			<div class="bksgw__titulo">Nuevo aviso</div>
 
-				<form class="formAviso" enctype="multipart/form-data">
-					<div>
-						<span title="Titulo del aviso que aparece en el panel de avisos">Titulo del aviso</span>
-						<input type="text" name="titulo">
-					</div>
-					<div>
-						<span title="Descripción breve del aviso, aparece en el panel de avisos.">
-							Descripción del aviso
-						</span>
-						<input type="text" name="descripcion">
-					</div>
-					<div>
-						<span title="Hacer que el avise parpadee para llamar la atención.">
-							Aviso destacado
-						</span>
-						<input type="checkbox" name="destacado">
-					</div>
-					<div>
-						<span title="Hacer que el aviso, se despliegue al cargar la página (Nota: el aviso será emergente, hasta que algún usuario cree otro aviso emergente).">
-							Mostrar al abrir la página
-						</span>
-						<input type="checkbox" name="emergente">
-					</div>
-					<div>
-						<span title="Hacer que el aviso sea público, caso contrario solo Ud. y el administrador podrán verlo.">
-							Disponible al público
-						</span>
-						<input type="checkbox" name="estado" checked>
-					</div>
-					<div>
-						<span title="Seleccione el tipo de archivo que desea con extension">Tipo de Archivo</span>
-						<select name="tipo">
-							<option value="images">Imagen</option>
-							<option value="documents">Documentos</option>
-						</select>
-					</div>
-					<div>
-						<span class="p2" title="Enlace de la imagen o archivo">
-							Nombre del archivo
-						</span>
-						<input type="text" name="enlace" maxlength="45">
-					</div>
-					<div class="formPie">
-						<div class="info">Información de estado</div>
-						<div class="boton">
-							<input type="submit" class="boton btn--azul" value="Enviar">
+				<form class="bksgw__form" enctype="multipart/form-data">
+					<div class="bksgw__col--1">
+						<div>
+							<label title="Titulo del aviso que aparece en el panel de avisos">Titulo del aviso</label>
+							<input type="text" name="titulo">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label title="Descripción breve del aviso, aparece en el panel de avisos.">
+								Descripción del aviso
+							</label>
+							<input type="text" name="descripcion">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label title="Hacer que el avise parpadee para llamar la atención.">
+								Aviso destacado
+							</label>
+							<input type="checkbox" name="destacado">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label title="Hacer que el aviso, se despliegue al cargar la página (Nota: el aviso será emergente, hasta que algún usuario cree otro aviso emergente).">
+								Mostrar al abrir la página
+							</label>
+							<input type="checkbox" name="emergente">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label title="Hacer que el aviso sea público, caso contrario solo Ud. y el administrador podrán verlo.">
+								Disponible al público
+							</label>
+							<input type="checkbox" name="estado" checked>
 						</div>
 					</div>
+					<div class="bksgw__col--2">
+						<div>
+							<label title="Seleccione el tipo de archivo que desea con extension">Tipo de Archivo</label>
+							<select name="tipo">
+								<option value="images">Imagen</option>
+								<option value="documents">Documentos</option>
+							</select>
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label class="p2" title="Enlace de la imagen o archivo">
+								Nombre del archivo
+							</label>
+							<input type="text" name="enlace" maxlength="45">
+						</div>
+						
+						
+					</div>
+
+					<div class="block__clean"></div>
+
+					<div class="bksgw__form__sep--hr"></div>
+
+					<div class="bksgw__col--1">
+						<input type="submit" class="btn--azul" value="Crear Imágen">
+					</div>
+					<div class="bksgw__col--2">
+						<div class="bksgw__form__status">Estado de la operación</div>
+					</div>
+
+					<div class="block__clean"></div>
 				</form>
-			</div>
+			
 
 			<script type="text/javascript">
 				

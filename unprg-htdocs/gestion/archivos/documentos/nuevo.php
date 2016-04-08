@@ -23,7 +23,7 @@
 
 	<!-- Importación de Estilos -->
 		<?= config::getStyles() ?>
-		<link rel="stylesheet" href="/frontend/css/admin/general.css">
+		<link rel="stylesheet" href="/frontend/css/gestion/master.css">
 
 	<!-- Importación de Scripts -->
 		<?= config::getScripts() ?>
@@ -34,45 +34,65 @@
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
 	
-	<section class="block">
+	<section class="block bksgw--first sgwDoc">
+		<div class="block__wraper--slim">
+			
+			<div class="bksgw__titulo">Mis imágenes</div>
+			
+
+		</div>
+		<div class="block__clean"></div>
+	</section>
+
+	<section class="block bksgw sgwDoc">
 		<div class="block__wraper--slim">
 
-			<div class="admin-col admin-cuerpo">
-				<div class="encabezado">Nuevo documento</div>
+			<div class="bksgw__titulo">Nuevo documento</div>
 
-				<form class="formAviso" enctype="multipart/form-data">
-					<div>
-						<span title="Seleccione el tipo de archivo">Tipo del documento</span>
-						<select name="tipo">
-							<option value="Resolucion">Resolución</option>
-							<option value="Oficina">Oficio</option>
-							<option value="Carta">Carta</option>
-							<option value="Principal">Principal</option>
-						</select>
+				<form class="bksgw__form" enctype="multipart/form-data">
+					<div class="bksgw__col--1">
+						<div>
+							<label title="Seleccione el tipo de archivo">Tipo del documento</label>
+							<select name="tipo">
+								<option value="Resolucion">Resolución</option>
+								<option value="Oficina">Oficio</option>
+								<option value="Carta">Carta</option>
+								<option value="Principal">Principal</option>
+							</select>
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label class="p1" title="Este archivo se mostrará al desplegar el aviso.">
+								Seleccione documento
+							</label>
+							<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
+							<input type="file" name="archivo" accept="application/pdf">
+						</div>
+						
 					</div>
-					
-					<hr>
-					<div>
-						<span class="p1" title="Este archivo se mostrará al desplegar el aviso.">
-							Seleccione documento
-						</span>
-						<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-						<input type="file" name="archivo" accept="application/pdf">
-					</div>
-					<div>
-						<span class="p2" title="Nombre que tendrá el archivo al ser descargado.">
-							Nombre de la imágen
-						</span>
-						<input type="text" name="nombre" maxlength="45">
-					</div>
-					<div class="formPie">
-						<div class="info">Información de estado</div>
-						<div class="boton">
-							<input type="submit" class="boton btn--azul" value="Enviar">
+					<div class="bksgw__col--2">
+						<div>
+							<label class="p2" title="Nombre que tendrá el archivo al ser descargado.">
+								Nombre del archivo
+							</label>
+							<input type="text" name="nombre" maxlength="45">
 						</div>
 					</div>
+						
+					<div class="block__clean"></div>
+
+					<div class="bksgw__form__sep--hr"></div>
+
+					<div class="bksgw__col--1">
+						<input type="submit" class="btn--azul" value="Crear Imágen">
+					</div>
+					<div class="bksgw__col--2">
+						<div class="bksgw__form__status">Estado de la operación</div>
+					</div>
+
+					<div class="block__clean"></div>
 				</form>
-			</div>
+			
 
 			<script type="text/javascript">
 				$('.formAviso input[name^=archivo]').change(function(event) {

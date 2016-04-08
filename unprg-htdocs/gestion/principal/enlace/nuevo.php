@@ -23,7 +23,7 @@
 
 	<!-- Importación de Estilos -->
 		<?= config::getStyles() ?>
-		<link rel="stylesheet" href="/frontend/css/admin/general.css">
+		<link rel="stylesheet" href="/frontend/css/gestion/master.css">
 
 	<!-- Importación de Scripts -->
 		<?= config::getScripts() ?>
@@ -33,35 +33,55 @@
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
-	
-	<section class="block">
+	<section class="block bksgw--first sgwEnl">
 		<div class="block__wraper--slim">
+			
+			<div class="bksgw__titulo">Mis Enlaces</div>
+			
 
-			<div class="admin-col admin-cuerpo">
-				<div class="encabezado">Nuevo Enlace</div>
+		</div>
+		<div class="block__clean"></div>
+	</section>
 
-				<form class="formAviso" enctype="multipart/form-data">
+	<section class="block bksgw sgwEnl">
+		<div class="block__wraper--slim">
+			<div class="bksgw__titulo">Nuevo Enlace</div>
+
+			<form class="bksgw__form" enctype="multipart/form-data">	
+				<div class="bksgw__col--1">
 					<div>
-						<span>Nombre del Enlace</span>
+						<label>Nombre del Enlace</label>
 						<input type="text" name="nombre" />
 					</div>
+					<div class="bksgw__form__sep"></div>
 					<div>
-						<span title="Breve descripcion del Enlace">Descripcion del Enlace</span>
+						<label title="Breve descripcion del Enlace">Descripcion del Enlace</label>
 						<input type="text" name="descripcion"/>
 					</div>
+					<div class="bksgw__form__sep"></div>
+				</div>
+				<div class="bksgw__col--2">
 					<div>
-						<span title="Link a un enlace externo y/o interno">Link Externo</span>
+						<label title="Link a un enlace externo y/o interno">Link Externo</label>
 						<input type="text" name="link"/>
 					</div>
+				</div>
 
-					<div class="formPie">
-						<div class="info">Información de estado</div>
-						<div class="boton">
-							<input type="submit" class="boton btn--azul" value="Enviar">
-						</div>
-					</div>
-				</form>
-			</div>
+				<div class="block__clean"></div>
+
+				
+				<div class="bksgw__form__sep--hr"></div>
+
+				<div class="bksgw__col--1">
+					<input type="submit" class="btn--azul" value="Crear Imágen">
+				</div>
+				<div class="bksgw__col--2">
+					<div class="bksgw__form__status">Estado de la operación</div>
+				</div>
+
+				<div class="block__clean"></div>
+			</form>
+			
 
 			<script type="text/javascript">
 				
