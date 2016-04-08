@@ -25,6 +25,7 @@
 	<!-- Importación de Estilos -->
 		<?= config::getStyles() ?>
 		<link rel="stylesheet" href="/frontend/css/home.css">
+		<link rel="stylesheet" href="/frontend/owl-carousel/owl.carousel.css">
 
 	<!-- Importación de Scripts -->
 		<?= config::getScripts() ?>

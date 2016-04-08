@@ -1,8 +1,466 @@
+commit 044e283b82677290abf29972d9e0a1687d87822f
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Fri Apr 8 17:39:19 2016 -0500
+
+    Cover arreglado
+
+commit 7c362fdaf082baa482e86a8cba265399bf242bd6
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Fri Apr 8 13:21:55 2016 -0500
+
+    Vista User
+
+commit a0f9ef0535ebb3c246bd499ad8d2c60a7cf6cc1d
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Fri Apr 8 11:57:16 2016 -0500
+
+    Mi Usuario
+
+commit 8311d9b8942f92d75a72de2e365d800daf9698af
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Fri Apr 8 11:41:24 2016 -0500
+
+    Visor corregido
+
+commit bfc8fb9874d6085f9bf7ac5c58b5761ed4401433
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Fri Apr 8 11:02:43 2016 -0500
+
+    Aviso corregido
+
+commit b8849a3827ef988e9b8b82e94c87d86deea70961
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Fri Apr 8 00:32:14 2016 -0500
+
+    Visor terminado, creación de aviso corregido
+
+commit e9d53029a5b283dbc8733191fff127bceca40d51
+Merge: 30bc938 7d3f954
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Apr 7 21:19:45 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 30bc938feebef1546d2fec1d1611036bfdfa9509
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Apr 7 21:19:29 2016 -0500
+
+    emergente
+
+commit 7d3f954aa76dc8bfae741c7e8f9e5e12e829fd42
+Merge: 81349cb 53d89a7
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Thu Apr 7 21:11:12 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 81349cbab72598c24edec15ddf6fc26f91377adb
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Thu Apr 7 21:10:30 2016 -0500
+
+    Visor terminado
+
+commit 53d89a7463b9cc5218f904bb63cf1d60b6626779
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Apr 7 21:02:27 2016 -0500
+
+    Arreglado los estilos
+
+commit f1ea31e85176c5b8a6e7016d113fb5efb33a1130
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Thu Apr 7 18:34:37 2016 -0500
+
+    Template aviso arreglado
+
+commit 2474b473bc3b5ba967d152a2acfb391e4d242898
+Merge: bf7fd81 0a7f088
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Thu Apr 7 18:30:41 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit bf7fd81562e8fc22820a610afa89e17fb554a2b6
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Thu Apr 7 18:18:53 2016 -0500
+
+    Visor a medias
+
+commit 0a7f088a95feb7f8d8668994365a19d8c24131e5
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Apr 7 17:57:25 2016 -0500
+
+    enlace
+
+commit 727916fe10ebef43ec7478944ac594c88340cf44
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Apr 7 17:52:29 2016 -0500
+
+    restablecimiento
+
+commit fe9054cc71e6229f52657f656036290e3249f861
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Apr 7 15:11:46 2016 -0500
+
+    correccion Enlace
+
+commit aea9a3511c5f7016c82e3ab182a9834115311155
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Apr 7 14:30:45 2016 -0500
+
+    Enlaces
+
+commit 308bc53edf5c9f67b8b0cfe7dfb08dbea7b5cf75
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Apr 7 12:41:57 2016 -0500
+
+    correccion usuario
+
+commit 680432a7c6ae9fe945ac2ee07ec146a93413d19e
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Apr 7 11:29:06 2016 -0500
+
+    Algo
+
+commit db6578ed89424929326f1a40a0678216508a2d4d
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Apr 7 10:03:04 2016 -0500
+
+    slider BDD
+
+commit b976b37ee5e61ee901feafcd1fb36078dd878d29
+Merge: d477473 75fff58
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Wed Apr 6 19:21:24 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit d477473b0b62eb6a9181d4641af8e248be1072bf
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Wed Apr 6 19:21:09 2016 -0500
+
+    Slider
+
+commit 75fff58242abb7c05d8b624420deee086d2592bd
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Wed Apr 6 19:20:52 2016 -0500
+
+    Visor terminado
+
+commit a7b0999632cfc201f4492d8ffac579deaf0dd5fc
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Wed Apr 6 16:37:36 2016 -0500
+
+    Estilos corregidos
+
+commit a5d7cdadbb029e297b3d579cdba9e5666baf184e
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Wed Apr 6 16:35:06 2016 -0500
+
+    Modelo corregido y arreglado creacion de galeria
+
+commit b2ea32368886030ae6ed635dcbc5c454073aae63
+Merge: d5dcf92 90d870c
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Wed Apr 6 16:33:15 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit d5dcf920fd6b78018867e5f3cb00fe9743a7372e
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Wed Apr 6 16:32:19 2016 -0500
+
+    Portada
+
+commit 90d870c61a91e6ef3e053a1fa1be3d3b719f9478
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Wed Apr 6 13:45:31 2016 -0500
+
+    Subit galeria terminado
+
+commit a9345006910f91b3b8a8323033cf2df814fadade
+Merge: 8b43d67 ed69a27
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Wed Apr 6 13:28:09 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 8b43d670f873c4a2abd310e71e30ba6ca0aba93a
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Wed Apr 6 13:27:53 2016 -0500
+
+    Portada
+
+commit ed69a277fb03f1de8af709c0cc6f36bd29ed0add
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Wed Apr 6 13:22:41 2016 -0500
+
+    ctrlImagen arreglado
+
+commit 39586eeafb3fbbed182054bace0b5dd1228cc5f5
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Wed Apr 6 12:48:15 2016 -0500
+
+    Modelo galeria agregado
+
+commit 8e58d9866f03b3dd847468c0c7c40966fbae357d
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Wed Apr 6 12:46:00 2016 -0500
+
+    Modificaciones
+
+commit ea08144647eb302fdf54b931781baba2352a674e
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Wed Apr 6 12:15:41 2016 -0500
+
+    Modelos corregidos
+
+commit 1187f87dbbd379b3ac4d30e3b6b799428bfbea90
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Wed Apr 6 10:54:51 2016 -0500
+
+    Base de datos corregida
+
+commit e9318baa3b079397045a24f91f70793d60a08839
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Wed Apr 6 10:10:43 2016 -0500
+
+    Permisos definidos y nuevo modelo agregado
+
+commit 788455f6949b27601a0769c82bc5e1d78f72f6cf
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Tue Apr 5 14:35:10 2016 -0500
+
+    Algo
+
+commit 77f0a1af7655938a28ba51cb88c38199ea292085
+Merge: 4792137 c35cb58
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Tue Apr 5 11:17:35 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 4792137192cdebb35a2bce79abd7e86a3bcdb2c0
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Tue Apr 5 11:17:20 2016 -0500
+
+    Agenda
+
+commit c35cb585161842da6565c9e4b1be0ee12923a037
+Merge: 5dbd734 764603c
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Tue Apr 5 09:09:43 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 5dbd7349452122348caf3f7d7d3e30639c778e4d
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Tue Apr 5 09:08:43 2016 -0500
+
+    Controlador de imagen
+
+commit 764603c7fb3b4e0d0add9ad7bed6231804cd47f5
+Merge: ff440ef a8d5ab5
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Tue Apr 5 08:06:20 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit ff440ef028b7acf186f9f5958511af87f120a650
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Tue Apr 5 08:06:01 2016 -0500
+
+    Agenda
+
+commit a8d5ab544c6d00bf7ca48f39d645b7d172139145
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Mon Apr 4 19:53:50 2016 -0500
+
+    Subida de imágenes
+
+commit ced1267f01386d126d04a6bac46668ca0aa6024a
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Mon Apr 4 18:40:36 2016 -0500
+
+    Backup/Registro Agenda
+
+commit 7ccffcd689a7105e2556d63438b237d13ed06dc0
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Mon Apr 4 16:29:08 2016 -0500
+
+    Navegador
+
+commit 67113944cbe670119c877643a9a876ad08d27f5c
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Mon Apr 4 15:21:03 2016 -0500
+
+    ctrlImagen
+
+commit 0c44f790b3921100a0a22422a8384f80d0b5edbc
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Mon Apr 4 14:48:19 2016 -0500
+
+    Documento verificado
+
+commit 19b2f4d3979d4156e3787439bae758d29b7380ec
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Mon Apr 4 13:23:41 2016 -0500
+
+    plantilla corregida
+
+commit 5d376f9ca0707a77a966340f606c562cd09651f5
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Mon Apr 4 13:19:13 2016 -0500
+
+    Documentos/Avisos
+
+commit 02f47c47044804d274bbdc95ed644154db65aebb
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Mon Apr 4 13:06:00 2016 -0500
+
+    absController corregido
+
+commit ae18d3288151749e0e888fcf4ab1e1dfd1a074b0
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Mon Apr 4 12:27:08 2016 -0500
+
+    formatos fecha corregido
+
+commit 074142eba546d02353c46450577593d0fed8f0b8
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Mon Apr 4 12:24:18 2016 -0500
+
+    Documento y formato de fecha corregido
+
+commit d99ed6975f2026adb82dec61ba54179b37dfb031
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Mon Apr 4 12:00:42 2016 -0500
+
+    Documento corregido
+
+commit 3dac307115218ccd076aaff01c85d1e36223720e
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Mon Apr 4 11:07:07 2016 -0500
+
+    Backup
+
+commit 7ae3ea5203a1bcb8f22f1301d7fe4b302311ad6d
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Mon Apr 4 09:59:15 2016 -0500
+
+    absController corregido para aceptar backbone
+
+commit 1bfdf41b3e4f7ff92e367ab2656e01ef1f0753dd
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Sun Apr 3 21:30:37 2016 -0500
+
+    backbone configurado para peticiones
+
+commit d658a5e321b09fb65ba1c8f58b5bde13bf865d8e
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Sun Apr 3 21:12:41 2016 -0500
+
+    Algo
+
+commit 7e405ea353a75a3ddb2182b475c95d3463adcff0
+Merge: 7543673 e74cf13
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Sat Apr 2 19:30:07 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 75436736eb1c3ac57b925e0f731fafdac7ba9a54
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Sat Apr 2 19:29:53 2016 -0500
+
+    creado avisos de backbone
+
+commit e74cf13d0408ed5b522daa61632d234b15fd6722
+Merge: 150c249 e9bf989
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Sat Apr 2 17:25:06 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 150c2495b174c0ba8a72b0975b99183a0208ca98
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Sat Apr 2 17:24:17 2016 -0500
+
+    Creacion de Documentos/Aviso listo
+
+commit e9bf989f96818cbd199fa2474c5d772eb164c527
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Sat Apr 2 14:46:21 2016 -0500
+
+    Uniendo frontend y backend
+
+commit e7299c5f66d5d365aab2ac212a34a98ed682018c
+Merge: 288e8ae a83c420
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Fri Apr 1 20:45:53 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 288e8aecdf5b47bc5ff467b6ad7cdb1fbd43fc9d
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Fri Apr 1 20:45:25 2016 -0500
+
+    creacion y vista de aviso
+
+commit a83c420ba4156e328c50fd90168e5fd2edd0c5e1
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Fri Apr 1 20:40:01 2016 -0500
+
+    Novedades agregafo
+
+commit 51ff0bd0d5bc8c5427ca4841a20df8e05a90ba50
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Fri Apr 1 09:06:11 2016 -0500
+
+    Paralax en cover
+
+commit 84d5feb694d851e751a8371413c3a8d4748bcb44
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Fri Apr 1 04:31:01 2016 -0500
+
+    Nuevo gulpfile
+
+commit 7daa60eea04fcfe7660d313b6764e76c3d58dba7
+Merge: 5dca41c 7f18872
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Fri Apr 1 04:27:51 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 5dca41c918a75fdd83f319b917586660dc66e86d
+Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
+Date:   Fri Apr 1 04:27:36 2016 -0500
+
+    Problema gulpfile.rar arreglado
+
 commit 59608e0672c437c6e8ab89f53e7d98f6c435e8cb
 Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
 Date:   Fri Apr 1 04:21:15 2016 -0500
 
     Efecto paralax, páginas informativas
+
+commit 7f18872661f68a0689cd765432358e2047505a84
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Mar 31 21:50:18 2016 -0500
+
+    nuevos modelos
+
+commit 44e83e1ebd8a7008ca7cf57dae75493901586dd0
+Merge: 729e42c cfe69e7
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Mar 31 21:42:18 2016 -0500
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 729e42caa2244d28c2dcc05528d63defcf874890
+Author: carlos2710 <cfernandezmaza@gmail.com>
+Date:   Thu Mar 31 21:40:12 2016 -0500
+
+    nuevos modelos
 
 commit cfe69e7bfbaaa1904996cc5ec982b5ecfc293c98
 Author: Marlon Enmanuel Montalvo Flores <marlon.enmanuel.mf@gmail.com>
