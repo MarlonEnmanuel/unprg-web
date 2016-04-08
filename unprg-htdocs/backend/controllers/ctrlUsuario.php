@@ -82,7 +82,22 @@ class ctrlUsuario extends abstractController {
     }
 
     public function read ($_id){
+        
+        $Usuario=$this->checkAccess();
+        $mysqli=$this->getMysqli();
 
+        $user=new Usuario($mysqli);
+        $user->id=$Usuario['id'];
+        if($user->get()==false)
+            $this->responder(false, 'Error al obtener Usuario', $user->md_detalle);
+
+
+        $campos=array('id','email','nombres','apellidos','oficina','fchReg','permisos');
+
+        $User=$user->toArray($campos);
+        $User['fchReg']=$user->fchReg->format("d/m/Y H:i");
+        $this->responder(true, 'Usuario obtenido', '',$User );
+        
     }
 
     public function readList ($limit, $offset){
@@ -108,7 +123,7 @@ class ctrlUsuario extends abstractController {
         session_start();
         $user->permisos = explode(',', $user->permisos);
         $_SESSION['Usuario'] = $user->toArray();
-        $this->responder(true, 'Bienvenido', 'redirect', '/gestion/panel.php');
+        $this->responder(true, 'Bienvenido', 'redirect', '/gestion/miUsuario.php');
     }
 
     public function logout(){

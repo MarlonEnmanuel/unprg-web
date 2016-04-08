@@ -34,11 +34,11 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
-	<section class="block bksgw--first sgwAvi	">
+	<section class="block bksgw--first sgwUser">
 		<div class="block__wraper--slim">
 			
 			<div class="bksgw__titulo">Mi Usuario</div>
-				<form class="bksgw__form formUsu" enctype="multipart/form-data">
+				<form class="bksgw__form formUser" enctype="multipart/form-data">
 					<div class="bksgw__col--1">
 						<div>
 							<label>Nombres</label>
@@ -52,8 +52,8 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 						<div class="bksgw__form__sep"></div>
 						<div>
 							<label>Fecha de Registro</label>
-							<div class="bksgw__form__info">
-								FECHAAAAAA
+							<div class="bksgw__form__info" name="fchReg">
+								
 							</div>
 						</div>
 					</div>
@@ -71,8 +71,8 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 						<div class="bksgw__form__sep"></div>
 						<div>
 							<label>Permisos del usuario</label>
-							<div class="bksgw__form__info">
-								PERMISOOOOS
+							<div class="bksgw__form__info" name="permisos">
+								
 							</div>
 						</div>
 						<div class="bksgw__form__sep"></div>
@@ -86,7 +86,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 
 		<div class="clean"></div>
 	</section>
-	
+	<script src="/frontend/js/miUser.js"></script>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>
 </body>
 </html>
