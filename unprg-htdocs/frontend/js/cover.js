@@ -68,4 +68,4 @@ sgw.slider.init=function(){
 				afterInit: evButtons
 			});
 		},20);
-}
+};

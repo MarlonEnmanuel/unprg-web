@@ -23,7 +23,7 @@
 
 	<!-- Importación de Estilos -->
 		<?= config::getStyles() ?>
-		<link rel="stylesheet" href="/frontend/css/admin/general.css">
+		<link rel="stylesheet" href="/frontend/css/gestion/master.css">
 
 	<!-- Importación de Scripts -->
 		<?= config::getScripts() ?>
@@ -33,76 +33,110 @@
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
-	
-	<section class="block">
+	<section class="block bksgw--first sgwUsu">
+		<div class="block__wraper--slim">
+			
+			<div class="bksgw__titulo">Mis Usuarios</div>
+			
+
+		</div>
+		<div class="block__clean"></div>
+	</section>
+
+	<section class="block bksgw sgwUsu">
 		<div class="block__wraper--slim">
 
-			<div class="admin-col admin-cuerpo">
-				<div class="encabezado">Nuevo Usuario</div>
+			<div class="bksgw__titulo">Nuevo Usuario</div>
 
-				<form class="formAviso">
-					<div>
-						<span>Email del usuario</span>
-						<input type="text" name="email">
+				<form class="bksgw__form">
+					<div class="bksgw__col--1">
+						<div>
+							<label>Email del usuario</label>
+							<input type="text" name="email">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label>Nombres del usuario</label>
+							<input type="text" name="nombres">
+						</div>
+						<div class="bksgw__form__sep"></div>
 					</div>
-					<div>
-						<span>Nombres del usuario</span>
-						<input type="text" name="nombres">
+					<div class="bksgw__col--2">
+						<div>
+							<label>Apellidos del usuario</label>
+							<input type="text" name="apellidos">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label>Oficina o Departamento</label>
+							<input type="text" name="oficina">
+						</div>	
+						<div class="bksgw__form__sep"></div>
 					</div>
-					<div>
-						<span>Apellidos del usuario</span>
-						<input type="text" name="apellidos">
-					</div>
-					<div>
-						<span>Oficina o Departamento</span>
-						<input type="text" name="oficina">
-					</div>
-					<div>
-						<span>Usuario Activo</span>
-						<input type="checkbox" name="estado" checked>
-					</div>
-					<hr>
-					
-					<div>
-						<span>Acceso a Avisos</span>
-						<input type="checkbox" name="p-aviso">
-					</div>
-					<div>
-						<span>Acceso a Noticias</span>
-						<input type="checkbox" name="p-noticia">
-					</div>
-					<div>
-						<span>Acceso a Agenda</span>
-						<input type="checkbox" name="p-agenda">
-					</div>
-					<div>
-						<span>Acceso a Imagenes</span>
-						<input type="checkbox" name="p-imagen">
-					</div>
-					<div>
-						<span>Acceso a Documentos</span>
-						<input type="checkbox" name="p-documento">
-					</div>
-					<div>
-						<span>Acceso a Enlace</span>
-						<input type="checkbox" name="p-enlace">
-					</div>
-					<div>
-						<span>Acceso a Portada</span>
-						<input type="checkbox" name="p-portada">
-					</div>
-					<div>
-						<span>Acceso a pagina</span>
-						<input type="checkbox" name="p-pagina">
-					</div>
-					<div class="formPie">
-						<div class="info">Información de estado</div>
-						<div class="boton">
-							<input type="submit" class="boton btn--azul" value="Crear Usuario">
+
+					<div class="bksgw__form__sep--hr"></div>
+
+					<div class="bksgw__col--1">
+						<div>
+							<label>Usuario Activo</label>
+							<input type="checkbox" name="estado" checked>
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label>Acceso a Avisos</label>
+							<input type="checkbox" name="p-aviso">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label>Acceso a Noticias</label>
+							<input type="checkbox" name="p-noticia">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label>Acceso a Agenda</label>
+							<input type="checkbox" name="p-agenda">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label>Acceso a Imagenes</label>
+							<input type="checkbox" name="p-imagen">
+						</div>
+						<div class="bksgw__form__sep"></div>
+					</div>	
+					<div class="bksgw__col--2">
+						<div>
+							<label>Acceso a Documentos</label>
+							<input type="checkbox" name="p-documento">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label>Acceso a Enlace</label>
+							<input type="checkbox" name="p-enlace">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label>Acceso a Portada</label>
+							<input type="checkbox" name="p-portada">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label>Acceso a pagina</label>
+							<input type="checkbox" name="p-pagina">
 						</div>
 					</div>
+					
+					<div class="bksgw__form__sep--hr"></div>
+
+					<div class="bksgw__col--1">
+						<input type="submit" class="btn--azul" value="Crear Imágen">
+					</div>
+					<div class="bksgw__col--2">
+						<div class="bksgw__form__status">Estado de la operación</div>
+					</div>
+
+					<div class="block__clean"></div>
+						
 				</form>
-			</div>
 
 			<script type="text/javascript">
 				$('.formAviso').submit(function(event) {

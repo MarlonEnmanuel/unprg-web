@@ -23,7 +23,7 @@
 
 	<!-- Importación de Estilos -->
 		<?= config::getStyles() ?>
-		<link rel="stylesheet" href="/frontend/css/admin/general.css">
+		<link rel="stylesheet" href="/frontend/css/gestion/master.css">
 
 	<!-- Importación de Scripts -->
 		<?= config::getScripts() ?>
@@ -33,38 +33,58 @@
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
-	
-	<section class="block">
+	<section class="block bksgw--first sgwImg">
+		<div class="block__wraper--slim">
+			
+			<div class="bksgw__titulo">Mis imágenes</div>
+			
+
+		</div>
+		<div class="block__clean"></div>
+	</section>
+
+	<section class="block bksgw sgwPor">
 		<div class="block__wraper--slim">
 
-			<div class="admin-col admin-cuerpo">
-				<div class="encabezado">Nueva portada</div>
+			<div class="bksgw__titulo">Nueva portada</div>
 
-				<form class="formPortada" enctype="multipart/form-data">
-					<div>
-						<span title="Titulo de la portada que aparece en el panel ">Titulo de la portada</span>
-						<input type="text" name="titulo">
+				<form class="bksgw__form" enctype="multipart/form-data">
+					<div class="bksgw__col--1">
+						<div>
+							<label title="Titulo de la portada que aparece en el panel ">Titulo de la portada</label>
+							<input type="text" name="titulo">
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label title="Descripción breve de la imagen">
+								Descripción de la portada
+							</label>
+							<input type="text" name="descripcion">
+						</div>
+						<div class="bksgw__form__sep"></div>
 					</div>
-					<div>
-						<span title="Descripción breve de la imagen">
-							Descripción de la portada
-						</span>
-						<input type="text" name="descripcion">
-					</div>
-					<div>
-						<span class="p2" title="Enlace de la imagen o archivo">
-							Nombre de la imagen
-						</span>
-						<input type="text" name="enlace" maxlength="45">
-					</div>
-					<div class="formPie">
-						<div class="info">Información de estado</div>
-						<div class="boton">
-							<input type="submit" class="boton btn--azul" value="Enviar">
+					<div class="bksgw__col--2">
+						<div>
+							<label class="p2" title="Enlace de la imagen o archivo">
+								Nombre de la imagen
+							</label>
+							<input type="text" name="enlace" maxlength="45">
 						</div>
 					</div>
+						
+					<div class="block__clean"></div>
+
+					<div class="bksgw__form__sep--hr"></div>
+
+					<div class="bksgw__col--1">
+						<input type="submit" class="btn--azul" value="Crear Imágen">
+					</div>
+					<div class="bksgw__col--2">
+						<div class="bksgw__form__status">Estado de la operación</div>
+					</div>
+
+					<div class="block__clean"></div>
 				</form>
-			</div>
 
 			<script type="text/javascript">
 				

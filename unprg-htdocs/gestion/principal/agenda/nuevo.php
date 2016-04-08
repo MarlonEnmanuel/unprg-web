@@ -23,7 +23,7 @@
 
 	<!-- Importación de Estilos -->
 		<?= config::getStyles() ?>
-		<link rel="stylesheet" href="/frontend/css/admin/general.css">
+		<link rel="stylesheet" href="/frontend/css/gestion/master.css">
 
 	<!-- Importación de Scripts -->
 		<?= config::getScripts() ?>
@@ -33,50 +33,72 @@
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
-	
-	<section class="block">
+
+	<section class="block bksgw--first sgwImg">
+		<div class="block__wraper--slim">
+			
+			<div class="bksgw__titulo">Mis Agendas</div>
+			
+
+		</div>
+		<div class="block__clean"></div>
+	</section>
+
+	<section class="block bksgw">
 		<div class="block__wraper--slim">
 
-			<div class="admin-col admin-cuerpo">
-				<div class="encabezado">Nueva Agenda</div>
+			<div class="bksgw__titulo">Nueva Agenda</div>
 
-				<form class="formAviso" enctype="multipart/form-data">
-					<div>
-						<span>Titulo del evento</span>
-						<input type="text" name="titulo" />
-					</div>
-					<div>
-						<span title="Seleccione la fecha de Realizacion del evento">Fecha del Evento</span>
-						<input type="date" name="fchInicio" />
-					</div>
-					<div>
-					<span title="Hora de Inicio del Evento">Hora del Evento</span>
-					<input type="time" name="timeEvento"/>
-					</div>
-					<div>
-						<span title="Breve descripcion del evento">Descripcion del Evento</span>
-						<input type="text" name="texto"/>
-					</div>
-					<div>
-						<span title="Donde se realizara el evento">Lugar</span>
-						<input type="text" name="lugar" />
-					</div>
-					<div>
-						<span title="Copiar de google maps el lugar">Mapa</span>
-						<input type="text" name="mapa" />
-					</div>
-					<div>
-						<span title="Persona u ofinica que lo organiza">Organizador</span>
-						<input type="text" name="organizador"/>
-					</div>
-					<div class="formPie">
-						<div class="info">Información de estado</div>
-						<div class="boton">
-							<input type="submit" class="boton btn--azul" value="Enviar">
+				<form class="bksgw__form" enctype="multipart/form-data">
+					<div class="bksgw__col--1">
+						<div>
+							<label>Titulo del evento</label>
+							<input type="text" name="titulo" />
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label title="Seleccione la fecha de Realizacion del evento">Fecha del Evento</label>
+							<input type="date" name="fchInicio" />
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label title="Hora de Inicio del Evento">Hora del Evento</label>
+							<input type="time" name="timeEvento"/>
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label title="Breve descripcion del evento">Descripcion del Evento</label>
+							<input type="text" name="texto"/>
 						</div>
 					</div>
+					<div class="bksgw__col--2">
+						<div>
+							<label title="Donde se realizara el evento">Lugar</label>
+							<input type="text" name="lugar" />
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label title="Copiar de google maps el lugar">Mapa</label>
+							<input type="text" name="mapa" />
+						</div>
+						<div class="bksgw__form__sep"></div>
+						<div>
+							<label title="Persona u ofinica que lo organiza">Organizador</label>
+							<input type="text" name="organizador"/>
+						</div>
+					</div>
+					
+					<div class="bksgw__form__sep--hr"></div>		
+						
+					<div class="bksgw__col--1">
+						<input type="submit" class="btn--azul" value="Enviar">
+					</div>
+					<div class="bksgw__col--2">
+						<div class="bksgw__form__status">Información de estado</div>
+					</div>
+					<div class="block__clean"></div>
 				</form>
-			</div>
+			
 
 			<script type="text/javascript">
 				
