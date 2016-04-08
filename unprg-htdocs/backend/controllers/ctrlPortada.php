@@ -62,7 +62,7 @@ class ctrlPortada extends abstractController{
             
         }
 
-        $this->responder(true, 'Avisos obtenidos', '', $port);
+        $this->responder(true, 'Portadas obtenidos', '', $port);
 	}
 }
 

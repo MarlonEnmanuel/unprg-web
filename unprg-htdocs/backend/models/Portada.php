@@ -149,11 +149,16 @@ class Portada extends abstractModel{
 			$_ruta
 			);
 		$list=array();
+        $a=array('[',']');
+        $b=array('<','>');
 		while ($stmt->fetch()) {
 			$port=new Portada($this->mysqli);
 			$port->id   		= $_id;
 			$port->titulo 		= $_titulo;
-			$port->descripcion 	= $_descripcion;
+            
+            $_descripcion=str_replace($a, $b, $_descripcion);
+
+            $port->descripcion  = $_descripcion;
 			$port->estado 		= $_estado;
 			$port->idUsuario 	= $_idUsuario;
 			$port->ruta 		= $_ruta;

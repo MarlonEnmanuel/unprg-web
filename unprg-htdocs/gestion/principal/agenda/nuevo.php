@@ -13,7 +13,7 @@
 	);
 
 	$ctrl = new Controller();
-	$ctrl->checkAccess('aviso');
+	$ctrl->checkAccess('agenda');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -49,7 +49,7 @@
 
 			<div class="bksgw__titulo">Nueva Agenda</div>
 
-				<form class="bksgw__form" enctype="multipart/form-data">
+				<form class="bksgw__form formAgenda" enctype="multipart/form-data">
 					<div class="bksgw__col--1">
 						<div>
 							<label>Titulo del evento</label>
@@ -103,11 +103,11 @@
 			<script type="text/javascript">
 				
 
-				$('.formAviso').submit(function(event) {
+				$('.formAgenda').submit(function(event) {
 					event.preventDefault();
 
 					var form = $(this);
-					var info = form.find('.info');
+					var info = form.find('.bksgw__form__status');
 
 					
 

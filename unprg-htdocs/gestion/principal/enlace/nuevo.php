@@ -47,7 +47,7 @@
 		<div class="block__wraper--slim">
 			<div class="bksgw__titulo">Nuevo Enlace</div>
 
-			<form class="bksgw__form" enctype="multipart/form-data">	
+			<form class="bksgw__form formEnlace" enctype="multipart/form-data">	
 				<div class="bksgw__col--1">
 					<div>
 						<label>Nombre del Enlace</label>
@@ -86,11 +86,11 @@
 			<script type="text/javascript">
 				
 
-				$('.formAviso').submit(function(event) {
+				$('.formEnlace').submit(function(event) {
 					event.preventDefault();
 
 					var form = $(this);
-					var info = form.find('.info');
+					var info = form.find('.bksgw__form__status');
 
 					
 

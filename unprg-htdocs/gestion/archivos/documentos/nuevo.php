@@ -49,7 +49,7 @@
 
 			<div class="bksgw__titulo">Nuevo documento</div>
 
-				<form class="bksgw__form formAviso" enctype="multipart/form-data">
+				<form class="bksgw__form formDocumento" enctype="multipart/form-data">
 					<div class="bksgw__col--1">
 						<div>
 							<label title="Seleccione el tipo de archivo">Tipo del documento</label>
@@ -95,7 +95,7 @@
 			
 
 			<script type="text/javascript">
-				$('.formAviso input[name^=archivo]').change(function(event) {
+				$('.formDocumento input[name^=archivo]').change(function(event) {
 					var nom = $(this).val();
 					if( nom.lastIndexOf('\\')!=-1 ){
 						nom = nom.substring(nom.lastIndexOf('\\')+1);
@@ -103,10 +103,10 @@
 					if( nom.lastIndexOf('.')!=-1 ){
 						nom = nom.substring(0, nom.lastIndexOf('.'));
 					}
-					$('.formAviso input[name=nombre]').val(nom);					
+					$('.formDocumento input[name=nombre]').val(nom);					
 				});
 
-				$('.formAviso').submit(function(event) {
+				$('.formDocumento').submit(function(event) {
 					event.preventDefault();
 
 					var form = $(this);

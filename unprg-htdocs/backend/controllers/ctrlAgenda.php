@@ -76,7 +76,7 @@ class ctrlAgenda extends abstractController{
 				'estado'		=> $agenda->estado,
 				'idUsuario'		=> $agenda->idUsuario,
 				'fchInicio_dia' => $agenda->fchInicio->format('d'),
-				'fchInicio_mes' => $agenda->fchInicio->format('m'),
+				'fchInicio_mes' => $agenda->fchInicio->format('F'),
 				'fchInicio_hora'=> $agenda->fchInicio->format('H:i')
 				);
 			$agendas[$key]=$arrayAgenda;

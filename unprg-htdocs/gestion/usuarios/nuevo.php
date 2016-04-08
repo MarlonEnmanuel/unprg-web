@@ -48,7 +48,7 @@
 
 			<div class="bksgw__titulo">Nuevo Usuario</div>
 
-				<form class="bksgw__form">
+				<form class="bksgw__form formUser">
 					<div class="bksgw__col--1">
 						<div>
 							<label>Email del usuario</label>
@@ -139,11 +139,11 @@
 				</form>
 
 			<script type="text/javascript">
-				$('.formAviso').submit(function(event) {
+				$('.formUser').submit(function(event) {
 					event.preventDefault();
 
 					var form = $(this);
-					var info = form.find('.info');
+					var info = form.find('.bksgw__form__status');
 					
 					var data = {
 						'accion' : 'nuevoUsuario',
