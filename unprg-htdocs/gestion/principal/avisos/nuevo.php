@@ -90,6 +90,8 @@
 							<select name="tipo">
 								<option value="images">Imagen</option>
 								<option value="documents">Documentos</option>
+								<option value="link">Link Externo</option>
+								<option value="vacio">Sin Link</option>
 							</select>
 						</div>
 						<div class="bksgw__form__sep"></div>

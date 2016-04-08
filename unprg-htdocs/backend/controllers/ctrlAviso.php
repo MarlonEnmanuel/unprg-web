@@ -43,8 +43,20 @@ class ctrlAviso extends abstractController {
         $ipts=$this->getFilterInputs('post',$ops);
         //Abrir coneccion en modo NO autoconfirmado
         $mysqli = $this->getMysqli();
-        $url='/uploads/';
+        $tipo=$ipts['tipo'];
         
+        $link;
+        if($ipts['tipo']='link'){
+            $link=$ipts['enlace'];
+        }elseif($ipts['tipo']='images'){
+            $link='/uploads/images/'.$ipts['enlace'];
+        }elseif ($ipts['tipo']='documents') {
+            $link='/uploads/documents/'.$ipts['enlace'];
+        }else{
+            $link='';
+        }
+        
+
         //Creando el aviso
         $aviso = new Aviso($mysqli);
         $aviso->titulo      = $ipts['titulo'];
@@ -52,7 +64,7 @@ class ctrlAviso extends abstractController {
         $aviso->destacado   = $ipts['destacado'];
         $aviso->emergente   = $ipts['emergente'];
         $aviso->estado      = $ipts['estado'];
-        $aviso->link        = $url.$ipts['tipo'].'/'.$ipts['enlace'];
+        $aviso->link        = $link;
         $aviso->idUsuario   = $Usuario['id'];
 
         if(!$aviso->set()) { //Insertando el aviso
