@@ -44,18 +44,17 @@ class ctrlAviso extends abstractController {
         //Abrir coneccion en modo NO autoconfirmado
         $mysqli = $this->getMysqli();
         $tipo=$ipts['tipo'];
-        
-        $link;
-        if($ipts['tipo']='link'){
+        $link='';
+        if($tipo=='link'){
             $link=$ipts['enlace'];
-        }elseif($ipts['tipo']='images'){
+        };
+        if($tipo=='images'){
             $link='/uploads/images/'.$ipts['enlace'];
-        }elseif ($ipts['tipo']='documents') {
+        };
+        if ($tipo=='documents') {
             $link='/uploads/documents/'.$ipts['enlace'];
-        }else{
-            $link='';
         }
-        
+
 
         //Creando el aviso
         $aviso = new Aviso($mysqli);
