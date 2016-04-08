@@ -48,7 +48,7 @@
 
 			<div class="bksgw__titulo">Nueva portada</div>
 
-				<form class="bksgw__form" enctype="multipart/form-data">
+				<form class="bksgw__form formPortada" enctype="multipart/form-data">
 					<div class="bksgw__col--1">
 						<div>
 							<label title="Titulo de la portada que aparece en el panel ">Titulo de la portada</label>
@@ -92,7 +92,7 @@
 					event.preventDefault();
 
 					var form = $(this);
-					var info = form.find('.info');
+					var info = form.find('.bksgw__form__status');
 
 					
 					form.find('input[type=submit]').attr('disabled','disabled');
