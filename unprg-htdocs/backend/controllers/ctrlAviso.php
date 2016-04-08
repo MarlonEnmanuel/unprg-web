@@ -9,14 +9,8 @@ class ctrlAviso extends abstractController {
     protected function init($accion){
         
         switch ($accion) {
-            case 'getEmergente':
-                $this->getEmergente();
-
-                break;
-            
-            default:
-                $this->responder(false, "Acciones no implementadas");
-                break;
+            case 'getEmergente': $this->getEmergente(); break;
+            default: $this->responder(false, "Acciones no implementadas"); break;
         }
     }
 
@@ -26,7 +20,9 @@ class ctrlAviso extends abstractController {
         $mysqli = $this->getMysqli();
 
         $emer = new Aviso($mysqli);
-        $emer->getEmergente();
+
+        if( $emer->getEmergente()==false )
+            $this->responder(false, 'Error al obtener emergente', $emer->md_detalle);
         
         $this->responder(true, 'Emergente obtenidos', '', $emer);
     }

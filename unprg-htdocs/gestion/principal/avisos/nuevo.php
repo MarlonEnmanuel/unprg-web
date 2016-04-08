@@ -49,7 +49,7 @@
 
 			<div class="bksgw__titulo">Nuevo aviso</div>
 
-				<form class="bksgw__form" enctype="multipart/form-data">
+				<form class="bksgw__form formAviso" enctype="multipart/form-data">
 					<div class="bksgw__col--1">
 						<div>
 							<label title="Titulo del aviso que aparece en el panel de avisos">Titulo del aviso</label>
@@ -124,7 +124,7 @@
 					event.preventDefault();
 
 					var form = $(this);
-					var info = form.find('.info');
+					var info = form.find('.bksgw__form__status');
 
 					
 					form.find('input[type=submit]').attr('disabled','disabled');

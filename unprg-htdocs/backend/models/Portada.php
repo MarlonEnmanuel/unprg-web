@@ -48,6 +48,7 @@ class Portada extends abstractModel{
         $stmt->close();
         return $this->md_estado;
 	}
+
 	public function set(){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 		if(isset($this->id)){	//si tiene ID entonces ya existe en la BD
@@ -66,7 +67,6 @@ class Portada extends abstractModel{
     		);
     	if($stmt->execute()){
             $this->id = $stmt->insert_id;
-            $this->get();
             $this->md_estado = true;
             $this->md_mensaje = "Portada insertada";
         }else{
@@ -75,6 +75,7 @@ class Portada extends abstractModel{
             if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
         }
         $stmt->close();
+        if($this->md_estado) $this->get();
         return $this->md_estado;
 
 

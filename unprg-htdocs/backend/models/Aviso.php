@@ -27,7 +27,7 @@ class Aviso extends abstractModel{
             $this->md_mensaje = "Debe indicar un id para buscar";
             return $this->md_estado = false;
         }
-        $sql = "select * from Aviso where idAviso=?";
+        $sql = "select * from aviso where idAviso=?";
         $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
         $stmt->prepare($sql);               //se arma la consulta preparada
         $stmt->bind_param('i', $this->id);  //se vinculan los parámetros
@@ -134,10 +134,10 @@ class Aviso extends abstractModel{
         return $list;
 	}  
 
-     public function getEmergente(){
+    public function getEmergente(){
         if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
-        $sql="SELECT * FROM aviso where emergente=0 order by fchReg desc limit 1";
+        $sql="SELECT * FROM aviso where emergente=1 order by fchReg desc limit 1";
 
         $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
         $stmt->prepare($sql);               //se arma la consulta preparada
@@ -163,6 +163,7 @@ class Aviso extends abstractModel{
             if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
         }
         $stmt->close();
+
         return $this->md_estado;
     }
 
@@ -187,7 +188,6 @@ class Aviso extends abstractModel{
     		);
     	if($stmt->execute()){
             $this->id = $stmt->insert_id;
-            $this->get();
             $this->md_estado = true;
             $this->md_mensaje = "Aviso insertado";
         }else{
@@ -196,6 +196,7 @@ class Aviso extends abstractModel{
             if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
         }
         $stmt->close();
+        if($this->md_estado) $this->get();
         return $this->md_estado;
     }
 

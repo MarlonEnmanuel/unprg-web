@@ -1,6 +1,6 @@
 //Vista de Aviso
 sgw.Views.Aviso = Backbone.View.extend({
-	tagName 	: 'div',
+	tagName 	: 'a',
 	className 	: 'bklast__avi__el',
 	template 	: _.template($('#template_aviso').html()),
 	events 		: {
@@ -8,10 +8,12 @@ sgw.Views.Aviso = Backbone.View.extend({
 	},
 	render : function(){
 		this.$el.html(this.template(this.model.toJSON()));
+		this.$el.attr('href', this.model.get('link'));
+		this.$el.attr('target', '_blank');
 		return this;
 	},
-	visualizar : function(){
-		if( views.visor ) views.visor.show( this.model );
+	visualizar : function(event){
+		if( views.visor ) views.visor.show( this.model, event);
 	}
 });
 sgw.Views.Documento = Backbone.View.extend({
@@ -52,6 +54,7 @@ sgw.Collections.Agendas = Backbone.Collection.extend({
 sgw.Views.Visor = Backbone.View.extend({
 	template_doc : _.template($('#template_visor_doc').html()),
 	template_img : _.template($('#template_visor_img').html()),
+	template_txt : _.template($('#template_visor_txt').html()),
 	events : {
 		'click .bkvis__close' : "close"
 	},
@@ -63,13 +66,21 @@ sgw.Views.Visor = Backbone.View.extend({
 			});
 		});
 	},
-	show : function(aviso){
+	show : function(aviso, event){
 		var self = this;
 		var cont;
-		if( self.getExtencion( aviso.get('link') )=='pdf' ){
+		var ext = self.getExtencion( aviso.get('link') );
+		if( aviso.get('link').trim()==='' ){
+			if(event) event.preventDefault();
+			cont = self.template_txt( aviso.toJSON() );
+		}else if( ext =='pdf' ){
+			if(event) event.preventDefault();
 			cont = self.template_doc( aviso.toJSON() );
-		}else{
+		}else if( ext=='jpg' || ext=='jpeg' || ext=='png' || ext=='gif' ){
+			if(event) event.preventDefault();
 			cont = self.template_img( aviso.toJSON() );
+		}else{
+			return event;
 		}
 		self.$el.find('.bkvis__wraper__cont').append(cont);
 		self.$el.fadeIn(250);
@@ -110,10 +121,21 @@ $(document).ready(function($) {
 	collections.documentos.fetch({success : sgw.success, error : sgw.error });
 
 //obtener agendas
-	collections.agendas = new sgw.Collections.Agendas();
+	collections.agendas = new sgw.Collections.Agendas({});
 	collections.agendas.on('add', function(model){
 		var view = new sgw.Views.Agenda({ model: model });
 		view.render().$el.appendTo('.bklast__age__cont');
 	});
-	collections.agendas.view = views.agendas;
+	collections.agendas.fetch({success : sgw.success, error : sgw.error });
+
+//obtener y mostrar aviso emergente
+	var Emer = Backbone.Model.extend({});
+	$.ajax({
+		url: '/backend/controllers/ctrlAviso.php',
+		dataType: 'json',
+		data: {'_accion': 'getEmergente'},
+	}).done(function(resp) {
+		console.log(resp);
+		if(resp.estado) views.visor.show( new Emer(resp.data, null) );
+	});
 });

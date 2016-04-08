@@ -49,7 +49,7 @@
 
 			<div class="bksgw__titulo">Nuevo documento</div>
 
-				<form class="bksgw__form" enctype="multipart/form-data">
+				<form class="bksgw__form formAviso" enctype="multipart/form-data">
 					<div class="bksgw__col--1">
 						<div>
 							<label title="Seleccione el tipo de archivo">Tipo del documento</label>
@@ -110,10 +110,9 @@
 					event.preventDefault();
 
 					var form = $(this);
-					var info = form.find('.info');
+					var info = form.find('.bksgw__form__status');
 
 					if( form.find('input[name=nombre]').val().length<1){
-
 						info.text('Llene los campos y/o seleccine un archivo');
 						return false;
 					}
@@ -122,8 +121,6 @@
 
 					var data = new FormData(form[0]);
 					
-
-					console.log(data);
 					$.ajax({
 						url: "/backend/controllers/ctrlDocumento.php",
 						type: 'post',

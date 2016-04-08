@@ -80,16 +80,39 @@
 					width: 100%
 					height: auto
 					overflow: auto
+					border-radius: 4px
+					
+	&__txt
+		height: 100%
+		width: 100%
+		display: table
+		vertical-align: middle
 		
-
-		
-		&__text
-			display: none
-			position: absolute
-			font-size: 10px
-			background-color: crgba(ccGris1,0.8)
-			bottom: 0px
-			left: 0px
-			right: 0px
-			padding: 1.5em 3%
-			box-shadow: 0 -2px 6px 0 rgba(0,0,0,0.5)
+		&__cell
+			display: table-cell
+			vertical-align: middle
+			width: 100%
+			text-align: center
+			
+			&__in
+				display: inline-block
+				max-width: 100%
+				&__txt
+					display: block
+					width: 100%
+					height: auto
+					overflow: auto
+					border-radius: 10px 0 10px 0
+					padding: 4em
+					font-size: 10px
+					text-align: left
+					box-sizing: border-box
+					&__t
+						font-size: 2.6em
+						padding-bottom: 0.4em
+						margin-bottom: 1em
+						border-bottom: 1px solid crgb(ccAmarillo1)
+						
+					&__d
+						font-size: 1.7em
+						line-height: 1.6em

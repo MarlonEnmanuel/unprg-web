@@ -3,12 +3,6 @@
 	Backbone.emulateHTTP = true;
 	Backbone.emulateJSON = true;
 
-	/*var parser = function(resp, options){
-		return resp.data;
-	};
-	Backbone.Model.parse = parser;
-	Backbone.Collection.parse = parser;*/
-
 	sgw = {};
 	sgw.Models = {};
 	sgw.Views = {};

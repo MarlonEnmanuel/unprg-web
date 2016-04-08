@@ -2,6 +2,18 @@
 	<div class="bkvis__wraper">
 		<span class="bkvis__close icon-cancel-circle cc--gris5 ff--34"></span>
 		<div class="bkvis__wraper__cont">
+			<script type="text/template" id="template_visor_txt">
+				<div class="bkvis__txt bkvis__el">
+					<div class="bkvis__txt__cell">
+						<div class="bkvis__txt__cell__in">
+							<div class="bkvis__txt__cell__in__txt bgc">
+								<div class="bkvis__txt__cell__in__txt__t ff--special cc--azul2"><%= titulo %></div>
+								<div class="bkvis__txt__cell__in__txt__d ff--j cc--gris1"><%= texto %></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</script>
 			<script type="text/template" id="template_visor_img">
 				<div class="bkvis__img bkvis__el">
 					<div class="bkvis__img__cell">
@@ -25,7 +37,7 @@
 			<div class="bklast__col__titulo ff--26 ff--special cc--azul2">Avisos</div>
 			<div class="bklast__col__cont bklast__avi__cont">
 				<script type="text/template" id="template_aviso">
-					<a class="bklast__avi__el__text ff--14" href="#"><%= titulo %></a>
+					<div class="bklast__avi__el__text ff--14" href="#"><%= titulo %></div>
 					<div class="bklast__avi__el__fech ff--12 ff--r ff--b cc--azul2"><%= fchReg %></div>
 				</script>
 				<div class="bklast__error ff--14 ff--c cc--gris1">No se pudo obtener contenido :(</div>
