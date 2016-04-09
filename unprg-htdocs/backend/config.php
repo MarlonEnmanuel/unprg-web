@@ -17,7 +17,7 @@ class config {
 	/* Datos del dominio del proyecto
 	*/
 	public static $path_domain = 'http://www.unprg.edu.pe';	// dominio del proyecto
-	public static $path_socialImage = 'http://www.unprg.edu.pe/frontend/img/unprg-social.jpg';
+	public static $path_socialImage = '/frontend/img/unprg-social.jpg';
 
 
 	/* Datos de conección a la BD
