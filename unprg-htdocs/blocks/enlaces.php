@@ -1,16 +1,16 @@
 <div class="block__clean"></div>
 <div class="block bklinks bgc--gris6 cc--gris1">
 	<div class="block__wraper bklinks__wraper">
-		<script type="text/template" id="template_enlace" data-tag="a" data-class="bklinks__el bgc">
-			<div class="bklinks__el__titulo ff--16 cc--azul2 ff--special"><%= nombre %></div>
-			<div class="bklinks__el__texto ff--14"><%= descripcion %></div>
+		<script type="text/template" id="template_enlace" data-tag="a" data-class="bklinks__el bgc--azul2">
+			<div class="bklinks__el__titulo ff--16 cc--amarillo2 ff--special"><%= nombre %></div>
+			<div class="bklinks__el__texto ff--14 cc"><%= descripcion %></div>
 		</script>
 	</div>
 </div>
 <script type="text/javascript">
 	sgw.Views.Enlace = Backbone.View.extend({
-		tagName 	: 'a',
-		className 	: 'bklinks__el bgc',
+		tagName 	: $('#template_enlace').attr('data-tag'),
+		className 	: $('#template_enlace').attr('data-class'),
 		template 	: _.template($('#template_enlace').html()),
 		render : function(){
 			this.$el.html(this.template(this.model.toJSON()));
