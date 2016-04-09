@@ -45,7 +45,7 @@ class ctrlEnlace extends abstractController{
 		$mysqli = $this->getMysqli();
         $aux = new Enlace($mysqli);
 
-        $lista = $aux->search(true,$top);
+        $lista = $aux->search(true, 6);
         if(empty($lista)) $this->responder(false, 'No hay enlaces para mostrar');
         $enlaces = array();
 

@@ -1,6 +1,6 @@
 //Vista de Aviso
 sgw.Views.Aviso = Backbone.View.extend({
-	tagName 	: 'a',
+	tagName 	: 'div',
 	className 	: 'bklast__avi__el',
 	template 	: _.template($('#template_aviso').html()),
 	events 		: {
@@ -8,8 +8,6 @@ sgw.Views.Aviso = Backbone.View.extend({
 	},
 	render : function(){
 		this.$el.html(this.template(this.model.toJSON()));
-		this.$el.attr('href', this.model.get('link'));
-		this.$el.attr('target', '_blank');
 		return this;
 	},
 	visualizar : function(event){

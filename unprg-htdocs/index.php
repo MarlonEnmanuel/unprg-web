@@ -35,6 +35,7 @@
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/nav.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/cover.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/enlaces.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/novedades.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>
 </body>
