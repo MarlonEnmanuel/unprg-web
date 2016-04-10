@@ -3,19 +3,32 @@
 .bkhdr
 	color: crgb(ccGris1)
 	border-top: 3px solid crgb(ccAzul3)
+	text-align: center
+	
+	@media all and (max-width: 900px)
+		font-size: 9px
+	@media all and (max-width: 500px)
+		font-size: 8px
+	@media all and (max-width: 380px)
+		font-size: 7px
+	@media all and (max-width: 280px)
+		font-size: 6px
 	
 	&--sg
 		border-top: 3px solid crgb(ccAzul1)
 		.bkhdr__buttons a
 			background-color: crgb(ccAzul2)
-			//color: crgb(ccGris1)
 			
 	
 	&__logo
 		text-align: left
 		padding-top: 14px
 		padding-bottom: 14px
-		display: inline-block
+		display: block
+		@media all and (max-width: 900px)
+			margin: 0 auto
+		@media all and (max-width: 780px)
+			display: inline-block
 		
 		&__img
 			display: inline-block
@@ -24,7 +37,7 @@
 				display: block
 				height: auto
 				vertical-align: middle
-				width: 80px
+				width: 8em
 		&__name
 			display: inline-block
 			margin-left: 16px
@@ -37,11 +50,17 @@
 	&__links
 		color: crgb(ccGris2)
 		float: right
-		text-align: right
+		text-align: center
 		position: absolute		
 		top: 25px
 		right: 0px
 		margin-right: 1px
+		
+		@media all and (max-width: 900px)
+			float: none
+			position: static
+			margin-top: 0.5em
+			
 		
 		&:hover a
 			border-left: none !important
@@ -56,22 +75,34 @@
 				outline: 1px solid crgb(ccGris2) !important
 	
 	&__buttons
-		bottom: 25px
+		bottom: 2.5em
 		position: absolute
 		right: 0px
 		box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.5)
+		display: inline-block
+		
+		@media all and (max-width: 900px)
+			bottom: 4.3em			
+		@media all and (max-width: 780px)
+			display: block
+			position: static
+			margin-bottom: 1em
 		
 		a
 			background-color: crgb(ccAzul3)
 			color: white
 			font-weight: bold
-			font-size: 14px
 			float: left
 			display: inline-block
-			padding: 15px
+			padding: 1.06em
 			text-decoration: none
 			transition: all 150ms
 			text-transform: uppercase
+			@media all and (max-width: 780px)
+				box-sizing: border-box
+				width: 25%
+				padding: 1em 0
+				
 			&:hover
 				transform: scale(1.02)
 				box-shadow: 0px 0px 4px 0px rgb(0,0,0)

@@ -18,11 +18,11 @@
 			</div>
 		</div>
 
-		<div class="bkhdr__buttons ff--14 ff--condensed">
-			<a href="/centropre">Centro Pre</a>
-			<a href="/admision">Admisión</a>
-			<a href="/pregrado">Pregrado</a>
-			<a href="/postgrado">Postgrado</a>
+		<div class="bkhdr__buttons ff--condensed">
+			<a class="ff--14" href="/centropre">Centro Pre</a>
+			<a class="ff--14" href="/admision">Admisión</a>
+			<a class="ff--14" href="/pregrado">Pregrado</a>
+			<a class="ff--14" href="/postgrado">Postgrado</a>
 			<div class="block__clean"></div>
 		</div>
 

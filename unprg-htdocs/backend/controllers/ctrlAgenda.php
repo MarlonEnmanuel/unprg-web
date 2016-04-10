@@ -46,15 +46,19 @@ class ctrlAgenda extends abstractController{
 
         $this->responder(true,"Agenda Creada!");
 	}
+
 	public function update ($model){
 
 	}
+
 	public function delete ($_id){
 
 	}
+
 	public function read ($_id){
 
 	}
+
 	public function readList ($limit, $offset){
 		$top=5;$offset=0;
 
@@ -76,7 +80,7 @@ class ctrlAgenda extends abstractController{
 				'estado'		=> $agenda->estado,
 				'idUsuario'		=> $agenda->idUsuario,
 				'fchInicio_dia' => $agenda->fchInicio->format('d'),
-				'fchInicio_mes' => $agenda->fchInicio->format('F'),
+				'fchInicio_mes' => $this->mothName($agenda->fchInicio->format('m')),
 				'fchInicio_hora'=> $agenda->fchInicio->format('H:i')
 				);
 			$agendas[$key]=$arrayAgenda;
@@ -87,6 +91,24 @@ class ctrlAgenda extends abstractController{
         $this->responder(true, 'Evento visible', '', $agendas);
 	}
 
+	public function mothName($numberMonth){
+		$num = intval($numberMonth);
+		switch ($num) {
+			case 1: return 'Ene';
+			case 2: return 'Feb';
+			case 3: return 'Mar';
+			case 4: return 'Abr';
+			case 5: return 'May';
+			case 6: return 'Jun';
+			case 7: return 'Jul';
+			case 8: return 'Ago';
+			case 9: return 'Sep';
+			case 10: return 'Oct';
+			case 11: return 'Nov';
+			case 12: return 'Dic';
+			default: return '---';
+		}
+	}
 
 }
 
