@@ -129,7 +129,7 @@
 			<span class="bknav__ul__sep">|</span>
 
 			<li class="bknav__ul__li">
-				<a class="bknav__ul__li__bu" href="/transparencia/transparencia.php">Transparencia</a>
+				<a class="bknav__ul__li__bu" href="/transparencia/">Transparencia</a>
 			</li>
 		</ul>
 
