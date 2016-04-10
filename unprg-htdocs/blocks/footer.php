@@ -38,7 +38,7 @@
 			</div>
 			<div class="bkfoo__info__sep">
 				<div class="bkfoo__info__sep__t">Desarrollo por</div>
-				<div class="bkfoo__info__sep__d">Oficina Central de Informática (OCI)</div>
+				<div class="bkfoo__info__sep__d">Oficina General de Sistemas Informáticos Administrativos</div>
 				<div class="bkfoo__info__sep__d">Ing. Robert Puican Gutierres</div>
 				<div class="bkfoo__info__sep__d">Marlon Enmanuel Montalvo Flores</div>
 				<div class="bkfoo__info__sep__d">Carlos Enrique Fernández Maza</div>
