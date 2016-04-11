@@ -4,6 +4,12 @@
 
 .bklast
 	padding: 2em 0
+	@media all and (max-width: 780px)
+		font-size: 9px
+	@media all and (max-width: 640px)
+		font-size: 8px
+	@media all and (max-width: 420px)
+		font-size: 7px
 	
 	&__error
 		display: none
@@ -25,6 +31,8 @@
 			border-bottom: 1px solid crgb(ccGris5)
 			
 	&__avi
+		@media all and (max-width: 700px)
+			width: 50%
 		&__el
 			display: block
 			padding: 1em 0px
@@ -32,13 +40,15 @@
 			cursor: pointer
 			&__text
 				display: block
-				min-height: 32px
+				min-height: 2em
 				overflow: hidden
 				
 			&__fech
 				margin-top: 0.4em
 					
 	&__doc
+		@media all and (max-width: 700px)
+			width: 50%
 		&__el
 			display: block
 			padding: 1em 0px
@@ -52,32 +62,36 @@
 				
 			&__text
 				display: block
-				min-height: 32px
+				min-height: 2em
 				overflow: hidden
 				
 			&__fech
 				margin-top: 0.4em
 				
 	&__age
+		@media all and (max-width: 700px)
+			margin-top: 4px
+			width: 100%
+			
 		&__el
 			display: block
 			padding: 1em 0px
+			box-sizing: border-box
 			border-bottom: 1px solid crgb(ccGris5)
 			
 			&__fech
 				display: inline-block
 				float: left
 				margin-right: 1.2em
-				padding: 0.5em 1em
-				font-size: 9px
+				padding: 0.8em 1em 0.5em 1em
+				font-size: 0.9em
 				border-radius: 0.2em
 				
 				&__dia
-					font-size: 3.4em
+					font-size: 3.2em
 					line-height: 0.6em
 				&__mes
 					font-size: 1.8em
-					margin-bottom: 0.1em
 					text-shadow: 0 -1px 0.4em black
 				&__hor
 					font-size: 1.8em

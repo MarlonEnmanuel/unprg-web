@@ -7,24 +7,34 @@
 	
 	&__wraper
 		border-radius: 0.4em
+		text-align: center
 		
 	&__titulo
 		padding-bottom: 0.2em
 		border-bottom: 1px solid crgb(ccGris5)
 		
 	&__el
-		padding: 1em
+		padding: 0.8em
 		display: inline-block
 		font-size: 10px
-		width: 33.33333333333%
+		width: 20%
 		box-sizing: border-box
-		border: 4px solid crgb(ccGris6)
+		border: 2px solid crgb(ccGris6)
 		text-decoration: none
-		border-radius: 8px
+		border-radius: 6px
 		text-align: left
-		
+		@media all and (max-width: 780px)
+			font-size: 9px
+			border-radius: 4px
+			width: 25%
+		@media all and (max-width: 640px)
+			font-size: 8px
+			border-width: 1px
+		@media all and (max-width: 420px)
+			width: 33.33333333%
+			
 		&__titulo
-			padding-bottom: 0.2em
+			padding-bottom: 0.1em
 			overflow: hidden
 			white-space: nowrap
 			text-overflow: ellipsis
