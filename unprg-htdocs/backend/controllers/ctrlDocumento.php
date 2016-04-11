@@ -23,7 +23,7 @@ class ctrlDocumento extends abstractController{
         }
 	}
 
-	public function readList($limit,$offset){
+	public function readList(){
 		$mysqli = $this->getMysqli();
         $vi=3;
         $fi=0;
@@ -41,7 +41,7 @@ class ctrlDocumento extends abstractController{
         $this->responder(true, 'Documento visible', '', $documentos);
 
 	}
-    public function create ($model){
+    public function create (){
         $Usuario = $this->checkAccess('documento');
 
         $ipts = $this->getFilterInputs('post', array(
@@ -90,13 +90,13 @@ class ctrlDocumento extends abstractController{
 
 
     }
-    public function update ($model){
+    public function update (){
 
     }
-    public function delete ($_id){
+    public function delete (){
 
     }
-    public function read ($_id){
+    public function read (){
 
     }
 

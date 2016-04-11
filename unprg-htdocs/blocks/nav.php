@@ -1,6 +1,7 @@
 <div class="block__clean"></div>
 <nav class="block bknav">
-	<div class="block__wraper">
+	<div class="block__wraper bknav__wraper">
+
 		
 		<div class="bknav__up">
 			<a class="bknav__up__bu" href="#header" title="Subir">
@@ -8,7 +9,7 @@
 			</a>
 		</div>
 
-		<ul class="bknav__ul ff--16">
+		<ul class="bknav__ul">
 
 			<li class="bknav__ul__li">
 				<a class="bknav__ul__li__bu" href="/">Inicio</a>
@@ -144,6 +145,8 @@
 				<span class="icon-menu"></span>
 			</div>
 		</div>
+
+
 	</div>
 </nav>
 <script type="text/javascript">

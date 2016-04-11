@@ -14,6 +14,56 @@
 	sgw.slider={};
 })();
 
+Backbone.Model.parse= function(resp, options){
+	if(resp.estado) return resp.data;
+	if(typeof options.error == 'function') options.error(this, resp, options);
+};
+Backbone.Collection.parse= function(resp, options){
+	if(resp.estado) return resp.data;
+	if(typeof options.error == 'function') options.error(this, resp, options);
+};
+
+Backbone.sync = function(method, model, options) {
+	//debugger;
+    var params = {type: 'POST', dataType: 'json'};
+
+    if (! (params.url = options.url)) {
+    	params.url = _.result(model, 'url') || urlError();
+    }
+
+    if ( method === 'create' || method === 'update' ) {
+    	params.data = _.extend(model.toJSON(),  { '_accion' : method });
+    	params.data = _.extend( params.data, data.attrs );
+    }else if( method === 'read' ){
+    	if(model.models){ //es una coleccion
+			params.data = _.extend({'_accion': 'readList'}, options.attrs);
+    	}else{
+    		params.data = _.extend({'_accion': 'read', '_id': model.get('id')}, options.attrs);
+    	}
+    }else if( method == 'delete'){
+    	params.data = _.extend({'_accion': 'delete', '_id': model.get('id')}, options.attrs);
+    }else{
+    	console.error('Method "patch" not supported');
+    	return;
+    }
+
+    var error = options.error;
+    options.error = function(xhr, textStatus, errorThrown) {
+      options.textStatus = textStatus;
+      options.errorThrown = errorThrown;
+      if (error) error.call(options.context, model, xhr, textStatus);
+    };
+
+    if(options.error) params.error = options.error;
+    if(options.success) params.success = options.success;
+    if(options.complete) params.complete = options.complete;
+    if(options.beforeSend) params.beforeSend = options.beforeSend;
+
+    var xhr = options.xhr = Backbone.ajax(params);
+    model.trigger('request', model, xhr, options);
+    return xhr;
+};
+
 
 sgw.cado = {
 	get : function(url, data, done, fail, always){

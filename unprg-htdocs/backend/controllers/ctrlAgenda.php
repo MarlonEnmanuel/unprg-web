@@ -10,7 +10,7 @@ class ctrlAgenda extends abstractController{
 		
 	}
 
-	public function create ($model){
+	public function create (){
 
 		$Usuario=$this->checkAccess('agenda');
 
@@ -47,19 +47,19 @@ class ctrlAgenda extends abstractController{
         $this->responder(true,"Agenda Creada!");
 	}
 
-	public function update ($model){
+	public function update (){
 
 	}
 
-	public function delete ($_id){
+	public function delete (){
 
 	}
 
-	public function read ($_id){
+	public function read (){
 
 	}
 
-	public function readList ($limit, $offset){
+	public function readList (){
 		$top=5;$offset=0;
 
 		$mysqli=$this->getMysqli();

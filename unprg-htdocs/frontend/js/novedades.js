@@ -88,8 +88,8 @@ sgw.Views.Visor = Backbone.View.extend({
 });
 
 $(document).ready(function($) {
-	sgw.error = function(collection, resp, options){
-		collection.view.$el.find('.bklast__error').show();
+	sgw.error = function(collection, resp, textStatus){
+		console.log(resp);
 	};
 	sgw.success = function(collection, resp, options){
 		if(!resp.data) sgw.error(collection, resp, options);
@@ -123,13 +123,14 @@ $(document).ready(function($) {
 	collections.agendas.fetch({success : sgw.success, error : sgw.error });
 
 //obtener y mostrar aviso emergente
-	var Emer = Backbone.Model.extend({});
+	sgw.Models.Emergente = Backbone.Model.extend({});
 	$.ajax({
 		url: '/backend/controllers/ctrlAviso.php',
 		dataType: 'json',
 		data: {'_accion': 'getEmergente'},
 	}).done(function(resp) {
-		console.log(resp);
-		if(resp.estado) views.visor.show( new Emer(resp.data, null) );
+		models.emergente = new sgw.Models.Emergente(resp.data);
+		if(resp.estado) views.visor.show( models.emergente, null );
 	});
+
 });
