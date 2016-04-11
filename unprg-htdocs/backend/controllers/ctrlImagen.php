@@ -124,7 +124,12 @@ class ctrlImagen extends abstractController {
         $mysqli = $this->getMysqli();
         $aux=new Imagen($mysqli);
 
-        $tipo='aviso';
+        $Tipo = $this->getFilterInputs("get",array(
+            'tipo'=>array('type'=>'string')
+            ));
+        
+        $tipo=$Tipo['tipo'];
+        
 
         $lista = $aux->searchtipo($tipo);
 
