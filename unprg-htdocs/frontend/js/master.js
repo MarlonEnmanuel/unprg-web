@@ -1,8 +1,5 @@
 //Configuración de Backbone
 (function(){
-	Backbone.emulateHTTP = true;
-	Backbone.emulateJSON = true;
-
 	sgw = {};
 	sgw.Models = {};
 	sgw.Views = {};
@@ -14,17 +11,7 @@
 	sgw.slider={};
 })();
 
-Backbone.Model.parse= function(resp, options){
-	if(resp.estado) return resp.data;
-	if(typeof options.error == 'function') options.error(this, resp, options);
-};
-Backbone.Collection.parse= function(resp, options){
-	if(resp.estado) return resp.data;
-	if(typeof options.error == 'function') options.error(this, resp, options);
-};
-
 Backbone.sync = function(method, model, options) {
-	//debugger;
     var params = {type: 'POST', dataType: 'json'};
 
     if (! (params.url = options.url)) {
@@ -53,49 +40,18 @@ Backbone.sync = function(method, model, options) {
       options.errorThrown = errorThrown;
       if (error) error.call(options.context, model, xhr, textStatus);
     };
-
     if(options.error) params.error = options.error;
     if(options.success) params.success = options.success;
     if(options.complete) params.complete = options.complete;
     if(options.beforeSend) params.beforeSend = options.beforeSend;
-
     var xhr = options.xhr = Backbone.ajax(params);
     model.trigger('request', model, xhr, options);
     return xhr;
 };
 
 
-sgw.cado = {
-	get : function(url, data, done, fail, always){
-		var params = { url:url, type:'get', dataType:'json', data:data };
-		sgw.ajax(params, done, fail, always);
-	},
-	post : function(url, data, done, fail, always){
-		var params = { url:url, type:'post', dataType:'json', data:data };
-		sgw.ajax(params, done, fail, always);
-	},
-	file : function(url, data, done, fail, always){
-		var params = { url:url, type:'post', dataType:'json', data:data, cache:false, contentType:false, processData:false };
-		sgw.ajax(params, done, fail, always);
-	},
-	ajax : function(params, done, fail, always){
-		$.ajax(params).done(function(response) {
-			if(response.estado){ 
-				if(done) done(response.mensaje, response.detalle, response.data);
-			}else{
-				if(fail) fail(response.mensaje, response.detalle, response.data);
-			}
-		}).fail(function(response) {
-			if(fail) fail(response.mensaje, false, false);
-		}).always(function(response) {
-			if(always) always(response);
-		});
-	}
-};
-
 $(document).ready(function($) {
-	/** Desplazamiento suave hacia anclas de documento
-	*/
+//Desplazamiento suave hacia anclas de documento
 	$('a[href*=#]').click(function(event) {
 		var $link = this;
 		if (location.pathname.replace(/^\//,'') == $link.pathname.replace(/^\//,'') && 
@@ -112,8 +68,7 @@ $(document).ready(function($) {
 		}
 	});
 
-	/** Efecto paralax
-	*/
+// Efecto paralax
 	(function(){
 		var options = {
 			timeTransition : 500,
