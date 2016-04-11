@@ -7,7 +7,10 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Galeria.php';
 class ctrlImagen extends abstractController {
 
     protected function init($accion){
-        $this->responder(false, "Acciones no implementadas");
+        switch ($accion) {
+            case 'readTipo': $this->readTipo(); break;
+            default: $this->responder(false, "Acciones no implementadas"); break;
+        }
     }
 
     public function create (){
@@ -117,6 +120,30 @@ class ctrlImagen extends abstractController {
     public function readList (){
         
     }
+
+    public function readTipo(){
+        $mysqli = $this->getMysqli();
+        $aux=new Imagen($mysqli);
+
+        $Tipo = $this->getFilterInputs("get",array(
+            'tipo'=>array('type'=>'string')
+            ));
+        
+        $tipo=$Tipo['tipo'];
+        
+
+        $lista = $aux->searchtipo($tipo);
+
+        if(empty($lista)) $this->responder(false, 'No hay imagenes para mostrar');
+
+        $imagenes=array();
+        foreach ($lista as $key => $images) {
+            $imagenes[$key]=$images->toArray();
+            $imagenes[$key]['fchReg'] = $imagenes[$key]['fchReg']->format(config::$date_fecha);
+        }
+        $this->responder(true, 'Imagenes obtenidas', '', $imagenes);
+    }
+    
 
     public function stripAccents($cadena) {
         $no_permitidas= array ("á","é","í","ó","ú","Á","É","Í","Ó","Ú","ñ","À","Ã","Ì","Ò","Ù","Ã™","Ã ","Ã¨","Ã¬","Ã²","Ã¹","ç","Ç","Ã¢","ê","Ã®","Ã´","Ã»","Ã‚","ÃŠ","ÃŽ","Ã”","Ã›","ü","Ã¶","Ã–","Ã¯","Ã¤","«","Ò","Ã","Ã„","Ã‹");

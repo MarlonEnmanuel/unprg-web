@@ -52,6 +52,49 @@ class Imagen extends abstractModel{
         return $this->md_estado;
 	}
 
+    public function searchtipo($tipo){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        if(!isset($tipo)){                  //debe tener id para buscar
+            $this->md_mensaje = "Debe indicar un tipo para buscar";
+            return $this->md_estado = false;
+        }
+
+        $sql="SELECT * FROM imagen WHERE tipo=? ORDER BY fchReg DESC ";
+
+        $stmt = $this->mysqli->stmt_init();
+        $stmt->prepare($sql);
+        $stmt->bind_param('s', $tipo);
+        $stmt->execute();
+        $stmt->bind_result(
+            $_idImagen,
+            $_fchReg,
+            $_nombre,
+            $_tipo,
+            $_ruta,
+            $_version,
+            $_idUsuario,
+            $_idGaleria
+            );
+        $list=array();
+        while ($stmt->fetch()) {
+            $img = new Imagen($this->mysqli);
+            $img->id        = $_idImagen;
+            $img->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
+            $img->nombre    = $_nombre;
+            $img->tipo      = $_tipo;
+            $img->ruta      = $_ruta;
+            $img->version   = $_version;
+            $img->idUsuario = $_idUsuario;
+            $img->idGaleria = $_idGaleria;
+            array_push($list, $img);
+        }
+        
+        $stmt->close();
+        return $list;
+
+    }
+
     public function getbyNombre($nombre){
         if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
@@ -110,16 +153,16 @@ class Imagen extends abstractModel{
             );
         $list=array();
         while ($stmt->fetch()) {
-            $doc = new Documento($this->mysqli);
-            $doc->id        = $_idImagen;
-            $doc->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
-            $doc->nombre    = $_nombre;
-            $doc->tipo      = $_tipo;
-            $doc->ruta      = $_ruta;
-            $doc->version   = $_version;
-            $doc->idUsuario = $_idUsuario;
-            $doc->idGaleria = $_idGaleria;
-            array_push($list, $doc);
+            $img = new Imagen($this->mysqli);
+            $img->id        = $_idImagen;
+            $img->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
+            $img->nombre    = $_nombre;
+            $img->tipo      = $_tipo;
+            $img->ruta      = $_ruta;
+            $img->version   = $_version;
+            $img->idUsuario = $_idUsuario;
+            $img->idGaleria = $_idGaleria;
+            array_push($list, $img);
         }
         $stmt->close();
         return $list;
@@ -151,16 +194,16 @@ class Imagen extends abstractModel{
             );
         $list=array();
         while ($stmt->fetch()) {
-            $doc = new Documento($this->mysqli);
-            $doc->id        = $_idImagen;
-            $doc->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
-            $doc->nombre    = $_nombre;
-            $doc->tipo      = $_tipo;
-            $doc->ruta      = $_ruta;
-            $doc->version   = $_version;
-            $doc->idUsuario = $_idUsuario;
-            $doc->idGaleria = $_idGaleria;
-            array_push($list, $doc);
+            $img = new Imagen($this->mysqli);
+            $img->id        = $_idImagen;
+            $img->fchReg    = DateTime::createFromFormat(config::$date_sql, $_fchReg);
+            $img->nombre    = $_nombre;
+            $img->tipo      = $_tipo;
+            $img->ruta      = $_ruta;
+            $img->version   = $_version;
+            $img->idUsuario = $_idUsuario;
+            $img->idGaleria = $_idGaleria;
+            array_push($list, $img);
         }
         $stmt->close();
         return $list;

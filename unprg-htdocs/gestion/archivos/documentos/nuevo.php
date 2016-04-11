@@ -13,7 +13,7 @@
 	);
 
 	$ctrl = new Controller();
-	$ctrl->checkAccess('aviso');
+	$ctrl->checkAccess('documento');
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -112,6 +112,8 @@
 					var form = $(this);
 					var info = form.find('.bksgw__form__status');
 
+
+
 					if( form.find('input[name=nombre]').val().length<1){
 						info.text('Llene los campos y/o seleccine un archivo');
 						return false;
@@ -120,6 +122,8 @@
 					form.find('input[type=submit]').attr('disabled','disabled');
 
 					var data = new FormData(form[0]);
+					data.append('_accion', 'create');
+					
 					
 					$.ajax({
 						url: "/backend/controllers/ctrlDocumento.php",
