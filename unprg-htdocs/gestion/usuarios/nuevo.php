@@ -48,7 +48,7 @@
 
 			<div class="bksgw__titulo">Nuevo Usuario</div>
 
-				<form class="bksgw__form formUser">
+				<form class="bksgw__form formUser" enctype="multipart/form-data">
 					<div class="bksgw__col--1">
 						<div>
 							<label>Email del usuario</label>
@@ -145,32 +145,21 @@
 					var form = $(this);
 					var info = form.find('.bksgw__form__status');
 					
-					var data = {
-						'accion' : 'nuevoUsuario',
-						'email' : form.find('input[name=email]').val().trim(),
-						'nombres' : form.find('input[name=nombres]').val().trim(),
-						'apellidos' : form.find('input[name=apellidos]').val().trim(),
-						'oficina' : form.find('input[name=oficina]').val().trim(),
-						'estado' : form.find('input[name=estado]').is(':checked'),
-						'p-aviso' : form.find('input[name=p-aviso]').is(':checked'),
-						'p-noticia' : form.find('input[name=p-noticia]').is(':checked'),
-						'p-evento' : form.find('input[name=p-evento]').is(':checked'),
-					};
-
-					if( data.email.length <1 || data.nombres.length<1 ||
-						data.apellidos.length<1 || data.oficina.length<1 ){
-
-						info.text('Llene los campos');
-						return false;
-					}
-
 					form.find('input[type=submit]').attr('disabled','disabled');
 					
+					var data= new FormData(form[0]);
+					data.append('_accion','create');
+
+					console.log(data);
+
 					$.ajax({
 						url: "/backend/controllers/ctrlUsuario.php",
 						type: 'post',
 						dataType: 'json',
-						data: data
+						data: data,
+						cache: false,
+			            contentType: false,
+				        processData: false
 					})
 					.done(function(rpta) {
 						info.html(rpta.mensaje);
@@ -186,7 +175,7 @@
 					})
 					.fail(function(rpta) {
 						console.log(rpta);
-						info.text('Error de conección');
+						info.html('Error de conección');
 						form.find('input[type=submit]').removeAttr('disabled');
 					});
 					

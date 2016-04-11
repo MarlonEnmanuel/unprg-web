@@ -115,7 +115,7 @@ class Usuario extends abstractModel{
     		$this->apellidos,
     		$this->oficina,
     		$this->permisos,
-    		intval($this->estado)
+    		$this->estado
     		);
     	if($stmt->execute()){
             $this->id = $stmt->insert_id;

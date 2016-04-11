@@ -54,6 +54,8 @@ $('.bksgw__form').submit(function(event) {
 		$info.text('Porfavor llene los campos');
 	}
 	var data = new FormData($form[0]);
+	data.append('_accion', 'create');
+					
 
 	$.ajax({
 		url: "../../../backend/controllers/ctrlImagen.php",

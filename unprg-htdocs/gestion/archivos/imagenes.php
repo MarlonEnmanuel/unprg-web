@@ -13,7 +13,7 @@
 	);
 
 	$ctrl = new Controller();
-	$ctrl->checkAccess();
+	$ctrl->checkAccess('imagen');
 ?>
 <!DOCTYPE html>
 <html lang="es">
