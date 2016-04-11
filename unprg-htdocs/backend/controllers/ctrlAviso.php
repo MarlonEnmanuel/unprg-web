@@ -28,7 +28,7 @@ class ctrlAviso extends abstractController {
     }
 
 
-    public function create($model){
+    public function create(){
         $Usuario = $this->checkAccess('aviso');
 
         $ops = array(
@@ -74,23 +74,19 @@ class ctrlAviso extends abstractController {
         $this->responder(true, "Aviso creado!");
     }
 
-    public function update($model){
+    public function update(){
         $this->responder(false, 'Método no soportado');
     }
 
-    public function patch($model){
+    public function delete(){
         $this->responder(false, 'Método no soportado');
     }
 
-    public function delete($model){
+    public function read(){
         $this->responder(false, 'Método no soportado');
     }
 
-    public function read($idtoRead){
-        $this->responder(false, 'Método no soportado');
-    }
-
-    public function readList($top, $offset){
+    public function readList(){
         $top = 6; $offset = 0;
 
         $mysqli = $this->getMysqli();

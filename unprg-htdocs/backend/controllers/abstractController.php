@@ -7,52 +7,34 @@ abstract class abstractController {
 	public $method;
 
 	public function __construct($isAjax=false){
-		
 		$this->isAjax = $isAjax ? true : false;
-
 		//Se inicializa el controlador solo si recibe peticiones ajax
 		if($isAjax){
 			//Identificar tipo de request
-
 			$this->method = empty($_POST) ? INPUT_GET : INPUT_POST;
-
+			//obtener Accion
 			$accion = filter_input($this->method, '_accion');
-			if( isset($accion) ){ //Se ejecuta la acción si se recibe
-				$this->init($accion);
-			}else{ //Si no se recibe la accion entonces indentificamos método de backbone
-				$this->method = null; //método no es usado
-
-				$_id = filter_input(INPUT_GET, '_id', FILTER_VALIDATE_INT);
-				if( isset($_id) ){
-					if(empty($_POST)){
-						$this->read($_id);
-					}else{
-						$accion = filter_input(INPUT_POST, '_method');
-						switch ($accion) {
-							case 'PUT'	  : $this->update ( json_decode(filter_input(INPUT_POST, 'model')) ); break;
-							case 'DELETE' : $this->delete ( $_id ); break;
-							default: $this->responder(false, "Método inválido"); break;
-						}
-					}
-				}else{
-					if(empty($_POST)){
-						$limit  = filter_input($this->method, '_limit', FILTER_VALIDATE_INT);
-						$offset = filter_input($this->method, '_offset', FILTER_VALIDATE_INT);
-						$this->readList($limit, $offset);
-					}else{
-						$this->create ( json_decode(filter_input(INPUT_POST, 'model')) );
-					}
-				}
+			//Si no existe la accion alertar
+			if(!isset($accion)) $this->responder(false, 'No se proporcionó una accion');
+			//ejecutar accion
+			switch ($accion) {
+				case 'read'		: $this->read(); 	 break;
+				case 'readList'	: $this->readList(); break;
+				case 'create'	: $this->create(); 	 break;
+				case 'update'	: $this->update(); 	 break;
+				case 'delete'	: $this->delete(); 	 break;
+				default : $this->init($accion); break;
 			}
+
 		}
 	}
 
 	abstract protected function init ($accion);
-	abstract public function create ($model);
-	abstract public function update ($model);
-	abstract public function delete ($_id);
-	abstract public function read ($_id);
-	abstract public function readList ($limit, $offset);
+	abstract public function create();
+	abstract public function update();
+	abstract public function delete();
+	abstract public function read();
+	abstract public function readList();
 
 	/**
 	* Abre una conección y comprueba su estado

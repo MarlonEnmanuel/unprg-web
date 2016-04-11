@@ -9,7 +9,7 @@ class ctrlPortada extends abstractController{
         $this->responder(false, "Acciones no implementadas");
     }
 
- 	public function create ($model){
+ 	public function create (){
  		$Usuario = $this->checkAccess('portada');
 
  		$ops=array(
@@ -34,16 +34,20 @@ class ctrlPortada extends abstractController{
 
         $this->responder(true, "Portada creada!");
 	}
-	public function update ($model){
+
+	public function update (){
 
 	}
-	public function delete ($_id){
+
+	public function delete (){
 
 	}
-	public function read ($_id){
+
+	public function read (){
 
 	}
-	public function readList ($limit, $offset){
+
+	public function readList (){
 		$top = 6; $offset = 0;
 
         $mysqli = $this->getMysqli();
@@ -64,6 +68,7 @@ class ctrlPortada extends abstractController{
 
         $this->responder(true, 'Portadas obtenidos', '', $port);
 	}
+
 }
 
 $ctrl= new ctrlPortada(true);

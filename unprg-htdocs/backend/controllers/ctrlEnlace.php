@@ -8,7 +8,8 @@ class ctrlEnlace extends abstractController{
 	protected function init ($accion){
 		$this->responder(false, "Acciones no implementadas");
 	}
-	public function create ($model){
+
+	public function create (){
 		$Usuario=$this->checkAccess('enlace');
 		$ops=array(
 			'nombre'		=> array('type'=>'string'),
@@ -32,16 +33,20 @@ class ctrlEnlace extends abstractController{
 
         $this->responder(true, "Enlace creado!");
 	}
-	public function update ($model){
+
+	public function update (){
 
 	}
-	public function delete ($_id){
+
+	public function delete (){
 
 	}
-	public function read ($_id){
+
+	public function read (){
 
 	}
-	public function readList ($limit, $offset){
+
+	public function readList (){
 		$mysqli = $this->getMysqli();
         $aux = new Enlace($mysqli);
 
@@ -56,6 +61,7 @@ class ctrlEnlace extends abstractController{
 
         $this->responder(true, 'enlaces obtenidos', '', $enlaces);
 	}
+
 }
 
 $ctrl=new ctrlEnlace(true);

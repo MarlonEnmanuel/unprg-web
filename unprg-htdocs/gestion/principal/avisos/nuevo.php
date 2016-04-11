@@ -132,6 +132,7 @@
 					form.find('input[type=submit]').attr('disabled','disabled');
 
 					var data = new FormData(form[0]);
+					data.append('_accion', 'create');
 					
 
 					console.log(data);

@@ -10,7 +10,7 @@ class ctrlImagen extends abstractController {
         $this->responder(false, "Acciones no implementadas");
     }
 
-    public function create ($model){
+    public function create (){
         $Usuario = $this->checkAccess('imagen');
 
         $ipts=$this->getFilterInputs('post', array(
@@ -101,19 +101,20 @@ class ctrlImagen extends abstractController {
 
         }
     }
-    public function update ($model){
+
+    public function update (){
         
     }
 
-    public function delete ($_id){
+    public function delete (){
         
     }
 
-    public function read ($_id){
+    public function read (){
         
     }
 
-    public function readList ($limit, $offset){
+    public function readList (){
         
     }
 

@@ -8,23 +8,23 @@ class Controller extends abstractController {
         return false;
     }
 
-    public function create ($model){
+    public function create (){
     	return false;
     }
 
-	public function update ($model){
+	public function update (){
 		return false;
 	}
 
-	public function delete ($_id){
+	public function delete (){
 		return false;
 	}
 
-	public function read ($_id){
+	public function read (){
 		return false;
 	}
 
-	public function readList ($limit, $offset){
+	public function readList (){
 		return false;
 	}
 

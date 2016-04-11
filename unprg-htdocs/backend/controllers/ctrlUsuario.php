@@ -15,7 +15,7 @@ class ctrlUsuario extends abstractController {
         }
     }
 
-    public function create ($model){
+    public function create (){
         $this->checkAccess('admin');
 
         $ipts = $this->getFilterInputs('post', array(
@@ -73,15 +73,15 @@ class ctrlUsuario extends abstractController {
         }
     }
 
-    public function update ($model){
+    public function update (){
 
     }
 
-    public function delete ($_id){
+    public function delete (){
 
     }
 
-    public function read ($_id){
+    public function read (){
         
         $Usuario=$this->checkAccess();
         $mysqli=$this->getMysqli();
@@ -100,7 +100,7 @@ class ctrlUsuario extends abstractController {
         
     }
 
-    public function readList ($limit, $offset){
+    public function readList (){
 
     }
 
