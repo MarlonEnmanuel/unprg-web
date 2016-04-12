@@ -87,37 +87,60 @@
 		width: 100%
 		display: table
 		vertical-align: middle
+		box-sizing: border-box
 		
 		&__cell
 			display: table-cell
 			vertical-align: middle
 			width: 100%
+			box-sizing: border-box
 			text-align: center
 			
 			&__in
 				display: inline-block
 				max-width: 100%
+				box-sizing: border-box
 				&__txt
 					display: block
 					width: 100%
+					max-width: 100%
 					height: auto
 					overflow: auto
 					border-radius: 10px 0 10px 0
-					padding: 4em
+					padding: 3em
 					font-size: 10px
 					text-align: left
 					box-sizing: border-box
+					@media all and (max-width: 820px)
+						font-size: 9px
+					@media all and (max-width: 700px)
+						font-size: 8px
+					@media all and (max-width: 580px)
+						font-size: 7px
+						
 					&__t
+						box-sizing: border-box
+						display: block
+						width: 100%
+						max-width: 100%
 						font-size: 2.6em
 						padding-bottom: 0.4em
 						margin-bottom: 1em
 						border-bottom: 1px solid crgb(ccAmarillo1)
 						
 					&__d
+						box-sizing: border-box
+						display: block
+						width: 100%
+						max-width: 100%
 						font-size: 1.7em
 						line-height: 1.6em
 						
 					&__l
+						box-sizing: border-box
+						display: block
+						width: 100%
+						max-width: 100%
 						display: block
 						padding-top: 2em
 						font-size: 1.6em
