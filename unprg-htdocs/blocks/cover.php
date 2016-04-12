@@ -13,7 +13,9 @@
 
 		<?php foreach ($covers as $key => $cov) { ?>
 				<div class="item bkcov__sl__item plx">
-					<img class="bkcov__sl__item__img" src="<?= $cov->ruta ?>" alt="Imagen Portada"/>
+					<div class="bkcov__sl__item__img">
+						<img src="<?= $cov->ruta ?>" alt="Imagen Portada"/>
+					</div>
 					<div class="bkcov__sl__item__text ff--condensed">
 						<div class="block__wraper plx__item slow">
 							<p class="bkcov__sl__item__text__1 ff--b"><?= $cov->titulo ?></p>

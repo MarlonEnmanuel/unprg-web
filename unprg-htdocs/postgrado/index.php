@@ -37,7 +37,9 @@
 	<section class="block infpg">
 	
 		<div class="infpg__cover plx">
-			<img class="infpg__cover__img" src="/frontend/img/info/postgrado.jpg" alt="Portada Admisión">
+			<div class="infpg__cover__img">
+				<img src="/frontend/img/info/postgrado.jpg" alt="Portada Admisión">
+			</div>
 			<div class="infpg__cover__texto ff--44 ff--condensed ff--special">
 				<div class="block__wraper--slim plx__item slow">
 					Alcansa tus metas profesionales

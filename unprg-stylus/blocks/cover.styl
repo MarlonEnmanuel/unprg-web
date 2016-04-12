@@ -23,7 +23,7 @@ $__bu
 .bkcov
 	position: relative
 	@media all and (max-width: 600px)
-		padding-top: 40px
+		padding-top: 38px
 	
 	&__bu
 		&--prev
@@ -41,15 +41,26 @@ $__bu
 			left: 0px
 			right: 0px
 			bottom: 1em
-			@media all and (max-width: 600px)
-				display: none
+			.owl-pagination
+				@media all and (max-width: 600px)
+					display: none
 				
 		&__item
 			overflow: hidden
 			
 			&__img
-				display: inline-block
+				position: relative
 				width: 100%
+				height: 0
+				padding-bottom: 39.5%
+				img
+					position: absolute
+					left: 0
+					top: 0
+					right: 0
+					bottom: 0
+					width: 100%
+					height: 100%
 				
 			&__text
 				color: white

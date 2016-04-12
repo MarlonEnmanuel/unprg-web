@@ -2,6 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/controllers/abstractController.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Portada.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Imagen.php';
 
 class ctrlPortada extends abstractController{
 	
@@ -28,9 +29,13 @@ class ctrlPortada extends abstractController{
  		$port->idUsuario	= $Usuario['id'];
  		$port->ruta 		= $ipts['enlace'];
 
- 		if(!$port->set()){
-			$this->responder(false, "No se pudo guardar la portada", $port->md_detalle, null, $mysqli);
-        }
+        $img = new Imagen($mysqli);
+        if(!$img->getbyNombre($port->ruta))
+            $this->responder(false, "No existe la imagen: ".$port->ruta, $port->md_detalle);
+        $port->idImagen = $img->id;
+
+ 		if(!$port->set())
+			$this->responder(false, "No se pudo guardar la portada", $port->md_detalle);
 
         $this->responder(true, "Portada creada!");
 	}

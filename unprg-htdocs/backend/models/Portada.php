@@ -55,15 +55,15 @@ class Portada extends abstractModel{
     		$this->md_mensaje = "El usuario ya tiene id";
     		return $this->md_estado = false;
     	}
-    	$sql="INSERT INTO portada (titulo,descripcion,idUsuario,idImagen) values (?, ?, ?,(SELECT idImagen FROM imagen where nombre=?))";
+    	$sql="INSERT INTO portada (titulo,descripcion,idUsuario,idImagen) values (?, ?, ?, ?)";
 
     	$stmt = $this->mysqli->stmt_init();
     	$stmt->prepare($sql);
-    	$stmt->bind_param('ssis',
+    	$stmt->bind_param('ssii',
     		$this->titulo,
     		$this->descripcion,
     		$this->idUsuario,
-    		$this->ruta
+    		$this->idImagen
     		);
     	if($stmt->execute()){
             $this->id = $stmt->insert_id;
