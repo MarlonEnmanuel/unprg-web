@@ -56,7 +56,7 @@ class ctrlDocumento extends abstractController{
         $mysqli->autocommit(false);
 
         $doc = new Documento($mysqli);
-        $doc->nombre        = $ipts['nombre'];
+        $doc->nombre        = trim($ipts['nombre']);
         $doc->ruta          = '';
         $doc->tipo          = $ipts['tipo'];
         $doc->version       = 0;

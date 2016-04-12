@@ -54,14 +54,14 @@ class ctrlAviso extends abstractController {
             $img = new Imagen($mysqli);
             $nombb = $this->stripAccents(strtolower(trim($ipts['enlace'])));
             if( $img->getbyNombre($nombb) == false )
-                $this->responder(false, 'No existe la imagen con nombre: '.$ipts['enlace']);
+                $this->responder(false, 'No existe la <b>imagen</b> con nombre: '.$ipts['enlace']);
             $link=$img->ruta;
         }
         if ($tipo=='documents') {
             $doc = new Documento($mysqli);
-            $nombb = $this->stripAccents(strtolower(trim($ipts['enlace'])));
+            $nombb = trim($ipts['enlace']);
             if( $doc->getbyNombre($nombb) == false )
-                $this->responder(false, 'No existe documento con nombre: '.$ipts['enlace']);
+                $this->responder(false, 'No existe <b>documento</b> con nombre: '.$ipts['enlace']);
             $link = $doc->ruta;
         }
 
