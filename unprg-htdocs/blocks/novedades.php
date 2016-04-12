@@ -51,7 +51,7 @@
 			<div class="bklast__col__cont bklast__doc__cont">
 				<script type="text/template" id="template_documento">
 					<span class="icon-file-pdf ff--44 cc--gris2"></span>
-					<a class="bklast__doc__el__text ff--14" href="#"><%= nombre %></a>
+					<div class="bklast__doc__el__text ff--14"><%= nombre %></div>
 					<div class="bklast__doc__el__fech ff--12 ff--r ff--b cc--azul3"><%= fchReg %></div>
 				</script>
 				<div class="bklast__error ff--14 ff--c cc--gris1">No se pudo obtener contenido :(</div>

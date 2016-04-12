@@ -3,6 +3,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/controllers/abstractController.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Aviso.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Imagen.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Documento.php';
 
 class ctrlAviso extends abstractController {
 
@@ -32,8 +33,8 @@ class ctrlAviso extends abstractController {
         $Usuario = $this->checkAccess('aviso');
 
         $ops = array(
-            'titulo'        => array('type'=>'string'),
-            'descripcion'   => array('type'=>'string', 'min'=>12),
+            'titulo'        => array('type'=>'string', 'min'=>10, 'max'=>45),
+            'descripcion'   => array('type'=>'string'),
             'destacado'     => array('type'=>'boolean'),
             'emergente'     => array('type'=>'boolean'),
             'estado'        => array('type'=>'boolean'),
@@ -45,14 +46,23 @@ class ctrlAviso extends abstractController {
         $mysqli = $this->getMysqli();
         $tipo=$ipts['tipo'];
         $link='';
+
         if($tipo=='link'){
             $link=$ipts['enlace'];
         };
         if($tipo=='images'){
-            $link='/uploads/images/'.$ipts['enlace'];
-        };
+            $img = new Imagen($mysqli);
+            $nombb = $this->stripAccents(strtolower(trim($ipts['enlace'])));
+            if( $img->getbyNombre($nombb) == false )
+                $this->responder(false, 'No existe la imagen con nombre: '.$ipts['enlace']);
+            $link=$img->ruta;
+        }
         if ($tipo=='documents') {
-            $link='/uploads/documents/'.$ipts['enlace'];
+            $doc = new Documento($mysqli);
+            $nombb = $this->stripAccents(strtolower(trim($ipts['enlace'])));
+            if( $doc->getbyNombre($nombb) == false )
+                $this->responder(false, 'No existe documento con nombre: '.$ipts['enlace']);
+            $link = $doc->ruta;
         }
 
 
@@ -69,7 +79,6 @@ class ctrlAviso extends abstractController {
         if(!$aviso->set()) { //Insertando el aviso
             $this->responder(false, "No se pudo guardar el aviso", $aviso->md_detalle, null, $mysqli);
         }
-
 
         $this->responder(true, "Aviso creado!");
     }

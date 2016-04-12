@@ -19,10 +19,9 @@
 		</div>
 
 		<div class="bkhdr__buttons ff--condensed">
-			<a class="ff--14" href="/centropre">Centro Pre</a>
-			<a class="ff--14" href="/admision">Admisión</a>
-			<a class="ff--14" href="/pregrado">Pregrado</a>
-			<a class="ff--14" href="/postgrado">Postgrado</a>
+			<a class="ff--14" href="http://cpu.unprg.edu.pe/phpcpu/">Centro Pre</a>
+			<!--a class="ff--14" href="">Pregrado</a-->
+			<a class="ff--14" href="http://www2.unprg.edu.pe/epg/">Postgrado</a>
 			<div class="block__clean"></div>
 		</div>
 

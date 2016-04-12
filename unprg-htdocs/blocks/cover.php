@@ -18,7 +18,7 @@
 					</div>
 					<div class="bkcov__sl__item__text ff--condensed">
 						<div class="block__wraper plx__item slow">
-							<p class="bkcov__sl__item__text__1 ff--b"><?= $cov->titulo ?></p>
+							<p class="bkcov__sl__item__text__1 ff--condensed ff--b"><?= $cov->titulo ?></p>
 							<p class="bkcov__sl__item__text__2"><?= $cov->descripcion ?></p>
 						</div>
 					</div>

@@ -51,6 +51,41 @@ class Documento extends abstractModel{
         return $this->md_estado;
 	}
 
+    public function getbyNombre($nombre){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        if(!isset($nombre)){                  //debe tener id para buscar
+            $this->md_mensaje = "Debe indicar un nombre para buscar";
+            return $this->md_estado = false;
+        }
+        $sql = "select * from documento where nombre=?";
+        $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
+        $stmt->prepare($sql);               //se arma la consulta preparada
+        $stmt->bind_param('s', $nombre);  //se vinculan los parámetros
+        $stmt->execute();
+        $stmt->bind_result(
+            $this->id,
+            $this->fchReg,
+            $this->nombre,
+            $this->tipo,
+            $this->ruta,
+            $this->version,
+            $this->estado,
+            $this->idUsuario
+            );
+        if($stmt->fetch()){
+            $this->fchReg = DateTime::createFromFormat(config::$date_sql, $this->fchReg); //se convierte de string a DateTime
+            $this->md_estado = true;                //estado del procedimiento: correcto
+            $this->md_mensaje = "documento obtenido"; //mensaje del procedimiento
+        }else{
+            $this->md_estado = false;               //estado del procedimiento: fallido
+            $this->md_mensaje = "Error al obtener Documento";//mensaje del procedimiento
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+        }
+        $stmt->close();
+        return $this->md_estado;
+    }
+
 	public function search($_onlyActive=true, $_limit=null, $_offset=0){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 

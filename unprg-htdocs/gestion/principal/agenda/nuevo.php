@@ -53,7 +53,7 @@
 					<div class="bksgw__col--1">
 						<div>
 							<label>Titulo del evento</label>
-							<input type="text" name="titulo" />
+							<input type="text" name="titulo" maxlength="45" />
 						</div>
 						<div class="bksgw__form__sep"></div>
 						<div>
@@ -74,7 +74,7 @@
 					<div class="bksgw__col--2">
 						<div>
 							<label title="Donde se realizara el evento">Lugar</label>
-							<input type="text" name="lugar" />
+							<input type="text" name="lugar" maxlength="45"/>
 						</div>
 						<div class="bksgw__form__sep"></div>
 						<div>
@@ -84,7 +84,7 @@
 						<div class="bksgw__form__sep"></div>
 						<div>
 							<label title="Persona u ofinica que lo organiza">Organizador</label>
-							<input type="text" name="organizador"/>
+							<input type="text" name="organizador" maxlength="45"/>
 						</div>
 					</div>
 					
@@ -128,7 +128,7 @@
 				        processData: false
 					})
 					.done(function(rpta) {
-						info.text(rpta.mensaje);
+						info.html(rpta.mensaje);
 						if(rpta.detalle=='redirect'){
 							window.setTimeout(function(){
 								window.location = rpta.data;
@@ -141,7 +141,7 @@
 					})
 					.fail(function(rpta) {
 						console.log(rpta);
-						info.text('Error de conección');
+						info.html('Error de conección');
 						form.find('input[type=submit]').removeAttr('disabled');
 					});
 					

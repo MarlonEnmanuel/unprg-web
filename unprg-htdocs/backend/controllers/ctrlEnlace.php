@@ -11,11 +11,13 @@ class ctrlEnlace extends abstractController{
 
 	public function create (){
 		$Usuario=$this->checkAccess('enlace');
+
 		$ops=array(
-			'nombre'		=> array('type'=>'string'),
+			'nombre'		=> array('type'=>'string', 'min'=>3, 'max'=>45),
 			'descripcion' 	=> array('type'=>'string'),
-			'link' 			=> array('type'=>'string')
+			'link' 			=> array('type'=>'url')
 			);
+
 		$ipts=$this->getFilterInputs('post',$ops);
 		$mysqli=$this->getMysqli();
 

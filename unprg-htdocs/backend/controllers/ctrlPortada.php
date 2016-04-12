@@ -14,8 +14,8 @@ class ctrlPortada extends abstractController{
  		$Usuario = $this->checkAccess('portada');
 
  		$ops=array(
- 			'titulo'		=> array('type'=>'string'),
- 			'descripcion'	=> array('type'=>'string','min'=>5),
+ 			'titulo'		=> array('type'=>'string', 'max'=>100),
+ 			'descripcion'	=> array('type'=>'string'),
  			'enlace'		=> array('type'=>'string')
  			);
  		$ipts=$this->getFilterInputs('post',$ops);

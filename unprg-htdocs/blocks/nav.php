@@ -19,7 +19,15 @@
 
 			<span class="bknav__ul__sep">|</span>
 
-			<li class="bknav__ul__li"><p class="bknav__ul__li__bu">Autoridades</p></li>
+			<li class="bknav__ul__li">
+				<p class="bknav__ul__li__bu">Autoridades</p>
+				<div class="bknav__sub bknav__sub--single">
+					<p class="bknav__sub__bu--title">Rector de la UNPRG</p>
+					<a class="bknav__sub__bu" href="#" target="_blank">Doc. Jorge Oliva Perez</a>
+					<p class="bknav__sub__bu--title"></p>
+					<div class="single"><a class="bknav__sub__bu" href="/autoridades.php" target="_blank">Oficinas y Departamentos</a></div>
+				</div>
+			</li>
 
 			<span class="bknav__ul__sep">|</span>
 
@@ -39,7 +47,7 @@
 						<a class="bknav__sub__bu" href="#" target="_blank">Fac. de Derecho y CC. Políticas</a>
 						<a class="bknav__sub__bu" href="#" target="_blank">Fac. de Enfermería</a>
 						<a class="bknav__sub__bu" href="#" target="_blank">Fac. de Ing. Agrícola</a>
-						<a class="bknav__sub__bu" href="#" target="_blank">Fac. de Ing. Civil, Sistemas y Arquitectura</a>
+						<a class="bknav__sub__bu" href="http://www2.unprg.edu.pe/ficsa/web/node/25" target="_blank">Fac. de Ing. Civil, Sistemas y Arquitectura</a>
 						<a class="bknav__sub__bu" href="#" target="_blank">Fac. de Ing Mecánica y Eléctrica</a>
 					</div>
 					<div class="bknav__sub__col--3">
@@ -55,10 +63,6 @@
 			<span class="bknav__ul__sep">|</span>
 
 			<li class="bknav__ul__li"><a class="bknav__ul__li__bu" href="/documentos">Documentos</a></li>
-
-			<span class="bknav__ul__sep">|</span>
-
-			<li class="bknav__ul__li"><p class="bknav__ul__li__bu">Enlaces</p></li>
 
 			<span class="bknav__ul__sep">|</span>
 

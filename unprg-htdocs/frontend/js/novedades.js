@@ -18,9 +18,16 @@ sgw.Views.Documento = Backbone.View.extend({
 	tagName 	: 'div',
 	className 	: 'bklast__doc__el',
 	template 	: _.template($('#template_documento').html()),
+	events 		: {
+		'click .icon-file-pdf' : 'visualizar'
+	},
 	render : function(){
 		this.$el.html(this.template(this.model.toJSON()));
 		return this;
+	},
+	visualizar : function(event){
+		this.model.set('link', this.model.get('ruta'));
+		if( views.visor ) views.visor.show( this.model , event);
 	}
 });
 sgw.Views.Agenda = Backbone.View.extend({

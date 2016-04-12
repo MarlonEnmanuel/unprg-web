@@ -11,23 +11,21 @@ class ctrlAgenda extends abstractController{
 	}
 
 	public function create (){
-
 		$Usuario=$this->checkAccess('agenda');
 
 		$ops=array(
-				'titulo'		=> array('type'=>'string'),
+				'titulo'		=> array('type'=>'string', 'min'=>10, 'max'=>45),
 				'fchInicio'		=> array('type'=>'string'),
 				'timeEvento'	=> array('type'=>'string'),
 				'texto'			=> array('type'=>'string'),
-				'lugar'			=> array('type'=>'string'),
+				'lugar'			=> array('type'=>'string', 'max'=>45),
 				'mapa'			=> array('type'=>'url'),
-				'organizador'	=> array('type'=>'string')
+				'organizador'	=> array('type'=>'string', 'max'=>45)
 			);
 
 		$ipts=$this->getFilterInputs('post',$ops);
 
 		$mysqli = $this->getMysqli();
-    	    
         
         $aux=$ipts['fchInicio'].' '.$ipts['timeEvento'];
         $fchInicio= DateTime::createFromFormat(config::$date_fechaHora,$aux);
@@ -40,8 +38,12 @@ class ctrlAgenda extends abstractController{
         $agenda->organizador 		= $ipts['organizador'];
         $agenda->idUsuario 			= $Usuario['id'];
 
+        if($fchInicio==false){
+        	$this->responder(false, 'Fecha u Hora no válida');
+        }
+
         if(!$agenda->set()){
-        	$this->responder(false,"No se pudo guardar la agenda",$agenda->md_detalle,null,$mysqli);
+        	$this->responder(false,"No se pudo guardar la agenda",$agenda->md_detalle,null);
         }
 
         $this->responder(true,"Agenda Creada!");

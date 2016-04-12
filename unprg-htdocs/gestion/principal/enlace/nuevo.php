@@ -51,7 +51,7 @@
 				<div class="bksgw__col--1">
 					<div>
 						<label>Nombre del Enlace</label>
-						<input type="text" name="nombre" />
+						<input type="text" name="nombre" maxlength="45" />
 					</div>
 					<div class="bksgw__form__sep"></div>
 					<div>
@@ -110,7 +110,7 @@
 				        processData: false
 					})
 					.done(function(rpta) {
-						info.text(rpta.mensaje);
+						info.html(rpta.mensaje);
 						if(rpta.detalle=='redirect'){
 							window.setTimeout(function(){
 								window.location = rpta.data;
@@ -123,7 +123,7 @@
 					})
 					.fail(function(rpta) {
 						console.log(rpta);
-						info.text('Error de conección');
+						info.html('Error de conección');
 						form.find('input[type=submit]').removeAttr('disabled');
 					});
 					

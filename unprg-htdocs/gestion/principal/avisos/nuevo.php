@@ -53,7 +53,7 @@
 					<div class="bksgw__col--1">
 						<div>
 							<label title="Titulo del aviso que aparece en el panel de avisos">Titulo del aviso</label>
-							<input type="text" name="titulo">
+							<input type="text" name="titulo" maxlength="45">
 						</div>
 						<div class="bksgw__form__sep"></div>
 						<div>
@@ -110,7 +110,7 @@
 					<div class="bksgw__form__sep--hr"></div>
 
 					<div class="bksgw__col--1">
-						<input type="submit" class="btn--azul" value="Crear Imágen">
+						<input type="submit" class="btn--azul" value="Crear Aviso">
 					</div>
 					<div class="bksgw__col--2">
 						<div class="bksgw__form__status">Estado de la operación</div>
@@ -146,7 +146,7 @@
 				        processData: false
 					})
 					.done(function(rpta) {
-						info.text(rpta.mensaje);
+						info.html(rpta.mensaje);
 						if(rpta.detalle=='redirect'){
 							window.setTimeout(function(){
 								window.location = rpta.data;
@@ -159,7 +159,7 @@
 					})
 					.fail(function(rpta) {
 						console.log(rpta);
-						info.text('Error de conección');
+						info.html('Error de conección');
 						form.find('input[type=submit]').removeAttr('disabled');
 					});
 					

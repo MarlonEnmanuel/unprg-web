@@ -57,37 +57,31 @@ class ctrlDocumento extends abstractController{
 
         $doc = new Documento($mysqli);
         $doc->nombre        = $ipts['nombre'];
-        $doc->ruta          = '.l.';
+        $doc->ruta          = '';
         $doc->tipo          = $ipts['tipo'];
         $doc->version       = 0;
         $doc->idUsuario     = $Usuario['id'];
 
+        $extension = substr(strrchr($file['type'], "/"), 1);
+        $nombre = preg_replace('/[ ]+/', '_', $this->stripAccents(strtolower(trim($ipts['nombre']))));
 
-        if( $doc->set() == false ){
-            $this->responder(false, "No se pudo guardar el documentos", $doc->md_detalle, null, $mysqli);
-        }
+        $doc->ruta = config::$upload_documents.$nombre.'.'.$extension;
 
+        $docaux = new Documento($mysqli);
+        if($docaux->getbyNombre($doc->nombre))
+            $this->responder(false, 'Ya existe un documento con este nombre', '', null, $mysqli);
 
-        $doc->get();
+        if( $doc->set() == false)
+            $this->responder(false, 'No se pudo guardar el documento', $doc->md_detalle, null, $mysqli);
 
-        $nombre = $doc->nombre.'.pdf';
-        $doc->ruta = config::$upload_documents.$nombre;
+        $rutaArchivo = $_SERVER['DOCUMENT_ROOT'].$doc->ruta;
+        if(move_uploaded_file($file['tmp'], $rutaArchivo) == false)
+            $this->responder(false, "No se pudo guardar el documento", 'Error al almacenar el documento subido', null, $mysqli);
 
-        if(!$doc->edit()){
-            $this->responder(false,'No se pudo insertar documento(ruta)',$doc->md_detalle,null,$mysqli);
-        }
-
-        $rutaNueva = $_SERVER['DOCUMENT_ROOT'].$doc->ruta;
-        if(!move_uploaded_file($file['tmp'], $rutaNueva)){
-            $this->responder(false, "No se pudo guardar imagen", 'Error al almacear la imagen subida', null, $mysqli);
-        }
-
-        if( $mysqli->commit()==false){
+        if( $mysqli->commit() == false)
             $this->responder(false, "No se pudo confirmar cambios", $mysqli->error, null, $mysqli);
-        }
 
-        $this->responder(true, "Documento creado!");
-
+        $this->responder(true, "Documento creado y guardado", '', $doc);
 
     }
     public function update (){
