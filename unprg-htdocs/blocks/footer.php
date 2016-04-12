@@ -1,6 +1,6 @@
 <div class="block__clean"></div>
 <footer class="block bkfoo bgc--gris1">
-	<div class="block__wraper">
+	<div class="block__wraper bkfoo__wraper">
 
 		<div class="bkfoo__logo">
 			<a class="bkfoo__logo__img" href="/">

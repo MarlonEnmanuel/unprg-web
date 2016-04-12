@@ -3,45 +3,75 @@
 
 .bkfoo
 	color: white
-	padding: 30px 0px
+	padding: 3em 0px
+	@media all and (max-width: 880px)
+		font-size: 9px
+		
+	&__wraper
+		text-align: center
 	
 	&__logo
 		float: left
 		display: inline-block
 		width: 38%
+		text-align: left
+		@media all and (max-width: 1024px)
+			width: 44%
+		@media all and (max-width: 760px)
+			width: 55%
+		@media all and (max-width: 600px)
+			width: 60%
+		@media all and (max-width: 560px)
+			width: auto
+			float: none
+			text-align: center
 		
 		&__img
 			display: inline-block
 			vertical-align: middle
-			img
+			@media all and (max-width: 560px)
 				display: block
+				margin-bottom: 1em
+				text-align: center
+			img
+				display: inline-block
 				height: auto
 				vertical-align: middle
-				width: 60px
+				width: 6em
 		&__name
 			display: inline-block
-			margin-left: 16px
+			margin-left: 1em
 			vertical-align: middle
+			@media all and (max-width: 560px)
+				margin-left: 0
+				margin-bottom: 1.5em
 			&__2
-				margin-top: 4px
+				margin-top: 0.1em
 				
 		&__dir
 			border-top: 1px solid crgb(ccGris2)
-			margin-left: 82px
-			padding-top: 15px
-			display: inline-block
+			margin-left: 6.2em
+			padding-top: 1.5em
+			display: block
+			@media all and (max-width: 560px)
+				margin-left: 0
 			&__l
-				margin-bottom: 5px
+				margin-bottom: 0.5em
 				span
 					display: inline-block
-					width: 90px
+					width: 6em
 	
 	&__map
 		display: inline-block
 		float: left
 		width: 24%
+		text-align: left
+		@media all and (max-width: 1024px)
+			width: 28%
+		@media all and (max-width: 760px)
+			display: none
 		&__t
-			margin-bottom: 10px
+			margin-bottom: 1em
 			font-weight: bold
 		a
 			display: block
@@ -55,16 +85,31 @@
 		float: left
 		width: 38%
 		text-align: right
+		box-sizing: border-box
+		padding-left: 1.5em
+		text-align: left
+		@media all and (max-width: 1024px)
+			width: 28%
+		@media all and (max-width: 760px)
+			width: 45%
+		@media all and (max-width: 600px)
+			width: 40%
+		@media all and (max-width: 560px)
+			width: 100%
+			float: none
+			margin-top: 36px
+			text-align: center
 		
 		&__sep
-			margin-bottom: 15px
+			margin-bottom: 1.4em
 			
 			&:last-child
 				margin-bottom: 0px
 			
 			&__t
 				font-weight: bold
-				margin-bottom: 8px
+				margin-bottom: 0.5em
 				font-family: font1
 			&__d
 				color: crgb(ccGris4)
+				margin-bottom: 0.2em
