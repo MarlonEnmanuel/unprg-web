@@ -8,33 +8,31 @@ $sgnavItems = array(
 	array(
 		'text' => 'Pagina Principal',
 		'menu' => array(
-			array('text' => 'Aviso', 'perm' => 'aviso', 'link' => '/gestion/principal/avisos/nuevo.php'),
-			array('text' => 'Agenda', 'perm' => 'agenda', 'link' => '/gestion/principal/agenda/nuevo.php'),
-			array('text'=>'Enlace','perm'=>'enlace','link'=>'/gestion/principal/enlace/nuevo.php'),
-			array('text'=>'Portada','perm'=>'portada','link'=>'/gestion/principal/portada/nuevo.php')
+			array('text' => 'Gestión de Avisos', 'perm' => 'aviso', 'link' => '/gestion/principal/avisos/nuevo.php'),
+			array('text' => 'Gestión de Agenda', 'perm' => 'agenda', 'link' => '/gestion/principal/agenda/nuevo.php'),
+			array('text'=>'Gestión de Enlaces','perm'=>'enlace','link'=>'/gestion/principal/enlace/nuevo.php'),
+			array('text'=>'Gestión de Portada','perm'=>'portada','link'=>'/gestion/principal/portada/nuevo.php')
 		)
 	),
 	array(
-		'text' => 'Archivos',
+		'text' => 'Gestionar Archivos',
 		'menu' => array(
-				array('text' => 'Documentos', 'perm' => 'aviso', 'link' => '/gestion/archivos/documentos/nuevo.php'),
-				array('text' => 'Imagenes', 'perm' => 'aviso', 'link' => '/gestion/archivos/imagenes.php')
-			)
+			array('text' => 'Documentos', 'perm' => 'aviso', 'link' => '/gestion/archivos/documentos/nuevo.php'),
+			array('text' => 'Imagenes', 'perm' => 'aviso', 'link' => '/gestion/archivos/imagenes.php')
+		)
 	),
 	
 	array(
 		'text' => 'Gestion',
 		'menu' => array(
-				array('text' => 'Usuarios', 'perm' => 'admin', 'link' => '/gestion/usuarios/nuevo.php')
-			)
+			array('text' => 'Gestión de Usuarios', 'perm' => 'admin', 'link' => '/gestion/usuarios/nuevo.php')
+		)
 	)
 );
 
-$sgnavSalir = array( 'text' => 'Salir', 'link' => '/backend/controllers/ctrlUsuario.php?_accion=logout' );
-
 ?>
 <div class="block__clean"></div>
-<nav class="block bknav bknav--sg">
+<nav class="block bknav bknav__sgw">
 	<div class="block__wraper">
 		
 		<div class="bknav__up">
@@ -43,49 +41,35 @@ $sgnavSalir = array( 'text' => 'Salir', 'link' => '/backend/controllers/ctrlUsua
 			</a>
 		</div>
 
-		<ul class="bknav__ul ff--16">
+		<ul class="bknav__ul">
+
+			<div class="bknav__ul__logo">
+				<img src="/frontend/img/logo.png" alt="UNPRG logo">
+			</div>
 
 			<?php
-				echo '<li class="bknav__ul__li">
-						  <a class="bknav__ul__li__bu" href="'.$sgnavInicio['link'].'">'.$sgnavInicio['text'].'</a>
-					  </li>';
-					echo '</li><span class="bknav__ul__sep">|</span>';
+				echo '<li class="bknav__ul__li">';
+				echo 	'<a class="bknav__ul__li__bu" href="'.$sgnavInicio['link'].'">'.$sgnavInicio['text'].'</a>';
+				echo '</li><span class="bknav__ul__sep">|</span>';
+
 				foreach ($sgnavItems as $key => $val) {
-					
+
 					echo '<li class="bknav__ul__li">';
-					if(isset($val['link'])){
-						echo '<a class="bknav__ul__li__bu" href="'.$val['link'].'">'.$val['text'].'</a>';
-					}else{
-						echo '<p class="bknav__ul__li__bu">'.$val['text'].'</p>';
-					}
+					echo 	'<p class="bknav__ul__li__bu">'.$val['text'].'</p>';
+					
 
 					if(isset($val['menu'])){
-						echo '<div class="bknav__sub--single">
-							  <div class="bknav__sub__wraper">
-							  <ul class="bknav__sub__ul--underline">';
+						echo '<div class="bknav__sub bknav__sub--single single">';
 
 						foreach ($val['menu'] as $idx => $itm) {
-							echo '<li class="bknav__sub__ul__li">';
-							if( $itm['perm']=='all'){
-								echo '<a class="bknav__sub__ul__li__bu" href="'.$itm['link'].'">'.$itm['text'].'</a>';
-							}else{
-								if( in_array($itm['perm'], $_SESSION['Usuario']['permisos']) ){
-									echo '<a class="bknav__sub__ul__li__bu" href="'.$itm['link'].'">'.$itm['text'].'</a>';
-								}
-							}
-							echo '</li>';
+							if( $itm['perm']=='all' || in_array($itm['perm'], $_SESSION['Usuario']['permisos']))
+								echo '<a class="bknav__sub__bu" href="'.$itm['link'].'">'.$itm['text'].'</a>';
 						}
 
-						echo '</ul>
-						      <div class="block__clean"></div>
-						      </div>
-						      </div>';
+						echo '</div>';
 					}
 					echo '</li><span class="bknav__ul__sep">|</span>';
 				}
-				echo '<li class="bknav__ul__li">
-						  <a class="bknav__ul__li__bu" href="'.$sgnavSalir['link'].'">'.$sgnavSalir['text'].'</a>
-					  </li>';
 			?>
 
 		</ul>
@@ -95,6 +79,7 @@ $sgnavSalir = array( 'text' => 'Salir', 'link' => '/backend/controllers/ctrlUsua
 				<span class="icon-menu"></span>
 			</div>
 		</div>
+
 	</div>
 </nav>
 <script type="text/javascript">
@@ -108,5 +93,22 @@ $sgnavSalir = array( 'text' => 'Salir', 'link' => '/backend/controllers/ctrlUsua
 				$nav.removeClass('bknav--stiky');
 			}
 		});
+
+		var winWidth = $(window).width();
+		$('.bknav__slide').on('click', function(){
+			$('.bknav__ul').toggleClass('show');
+		});
+		var winInteval = window.setInterval(function(){
+			var width = $(window).width();
+			if( winWidth !== width){
+				winWidth = width;
+				if(winWidth < 820){
+					$('.bknav').addClass('mobile');
+				}else{
+					$('.bknav').removeClass('mobile');
+				}
+			}
+		}, 200);
+
 	})();
 </script>

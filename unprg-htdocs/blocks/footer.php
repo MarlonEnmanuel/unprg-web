@@ -40,6 +40,8 @@
 				<div class="bkfoo__info__sep__t">Desarrollo por</div>
 				<div class="bkfoo__info__sep__d">Oficina General de Sistemas Informáticos Administrativos</div>
 				<div class="bkfoo__info__sep__d">Ing. Robert Puican Gutierres</div>
+				<div class="bkfoo__info__sep__d">Ing. Luis Llontop Cumpa</div>
+				<div class="bkfoo__info__sep__d">Ing. Cesar Guzman Valle</div>
 				<div class="bkfoo__info__sep__d">Marlon Enmanuel Montalvo Flores</div>
 				<div class="bkfoo__info__sep__d">Carlos Enrique Fernández Maza</div>
 			</div>

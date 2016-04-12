@@ -11,9 +11,7 @@
 		
 	&__wraper
 		height: 100%
-	
-	&--sg //color diferente para el menu del sistem sgw
-		background-color: crgb(ccAzul1)
+		
 	&--stiky //propiedades de menu pegajoso
 		left: 0px
 		position: fixed
@@ -172,10 +170,6 @@
 				vertical-align: top
 			
 				
-		.single .bknav__sub__bu
-			font-weight: bold
-			font-size: 15px
-				
 		&__bu
 			display: block
 			font-size: 16px
@@ -199,6 +193,13 @@
 				font-stretch: condensed
 				&:hover
 					text-decoration: underline
+					
+	.single .bknav__sub__bu
+		font-weight: bold
+		font-size: 15px
+		
+.bknav__sgw //color diferente para el menu del sistem sgw
+	background-color: crgb(ccAzul1)
 					
 .mobile
 	
@@ -224,7 +225,7 @@
 			height: auto
 			margin-left: 0
 			padding-left: 0
-			background-color: crgb(ccAzul2)
+			background-color: crgb(ccAzul1)
 			max-width: 75%
 			z-index: 11
 			box-shadow: 0 0 15px 4px rgba(0,0,0,0.7)
@@ -249,7 +250,7 @@
 					letter-spacing: 0
 					font-stretch: normal
 					box-sizing: border-box
-					border-bottom: 1px solid crgb(ccAzul3)
+					border-bottom: 1px solid crgba(ccAzul2,0.6)
 					@media all and (max-width: 940px)
 						padding: 0.4em 1em
 					@media all and (max-width: 820px)
@@ -269,7 +270,7 @@
 			position: static
 			top: auto
 			left: auto
-			right: autp
+			right: auto
 			background-color: white
 			box-shadow: inset 0px 0px 15px 0px rgba(0,0,0,0.75)
 			border: none
@@ -291,9 +292,6 @@
 					display: block
 					width: 100%
 					
-			.single .bknav__sub__bu
-				font-size: 13px
-					
 			&__bu
 				font-size: 14px
 				padding: 5px 8px 5px 25px
@@ -304,6 +302,9 @@
 					height: auto
 					font-size: 18px
 					padding: 8px 8px 8px 25px
+					
+		.single .bknav__sub__bu
+			font-size: 13px
 					
 	.show
 		left: 0px

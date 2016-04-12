@@ -1,5 +1,5 @@
 <a name="header"></a>
-<header class="block bkhdr bkhdr--sg bgc">
+<header class="block bkhdr bkhdr__sgw bgc">
 	<div class="block__wraper">
 
 		<div class="bkhdr__links ff--b ff--14">
