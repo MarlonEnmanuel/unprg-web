@@ -2,9 +2,11 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 $ctrl->checkAccess();
 
-$sgnavInicio = array( 'text' => 'Inicio', 'link' => '/gestion/miUsuario.php' );
-
 $sgnavItems = array(
+	array(
+		'text' => 'Inicio',
+		'link' => '/gestion/miUsuario.php'
+	),
 	array(
 		'text' => 'Pagina Principal',
 		'menu' => array(
@@ -48,14 +50,14 @@ $sgnavItems = array(
 			</div>
 
 			<?php
-				echo '<li class="bknav__ul__li">';
-				echo 	'<a class="bknav__ul__li__bu" href="'.$sgnavInicio['link'].'">'.$sgnavInicio['text'].'</a>';
-				echo '</li><span class="bknav__ul__sep">|</span>';
-
 				foreach ($sgnavItems as $key => $val) {
 
 					echo '<li class="bknav__ul__li">';
-					echo 	'<p class="bknav__ul__li__bu">'.$val['text'].'</p>';
+					if(isset($val['link'])){
+						echo '<a class="bknav__ul__li__bu" href="'.$val['link'].'">'.$val['text'].'</a>';
+					}else{
+						echo '<a class="bknav__ul__li__bu">'.$val['text'].'</a>';
+					}
 					
 
 					if(isset($val['menu'])){
@@ -70,6 +72,10 @@ $sgnavItems = array(
 					}
 					echo '</li><span class="bknav__ul__sep">|</span>';
 				}
+
+				echo '<li class="bknav__ul__li">';
+				echo 	'<a class="bknav__ul__li__bu" href="/backend/controllers/ctrlUsuario.php?_accion=logout">Cerrar Sesión</a>';
+				echo '</li>';
 			?>
 
 		</ul>
@@ -93,12 +99,11 @@ $sgnavItems = array(
 				$nav.removeClass('bknav--stiky');
 			}
 		});
-
-		var winWidth = $(window).width();
+		var winWidth = 0;
 		$('.bknav__slide').on('click', function(){
 			$('.bknav__ul').toggleClass('show');
 		});
-		var winInteval = window.setInterval(function(){
+		var responsive = function(){
 			var width = $(window).width();
 			if( winWidth !== width){
 				winWidth = width;
@@ -108,7 +113,8 @@ $sgnavItems = array(
 					$('.bknav').removeClass('mobile');
 				}
 			}
-		}, 200);
-
+		};
+		responsive();
+		var winInteval = window.setInterval(responsive, 200);
 	})();
 </script>

@@ -93,12 +93,11 @@
 				$nav.removeClass('bknav--stiky');
 			}
 		});
-
-		var winWidth = $(window).width();
+		var winWidth = 0;
 		$('.bknav__slide').on('click', function(){
 			$('.bknav__ul').toggleClass('show');
 		});
-		var winInteval = window.setInterval(function(){
+		var responsive = function(){
 			var width = $(window).width();
 			if( winWidth !== width){
 				winWidth = width;
@@ -108,7 +107,8 @@
 					$('.bknav').removeClass('mobile');
 				}
 			}
-		}, 200);
-
+		};
+		responsive();
+		var winInteval = window.setInterval(responsive, 200);
 	})();
 </script>
