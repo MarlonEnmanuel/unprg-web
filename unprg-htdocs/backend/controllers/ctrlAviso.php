@@ -84,11 +84,56 @@ class ctrlAviso extends abstractController {
     }
 
     public function update(){
-        $this->responder(false, 'Método no soportado');
+        $Usuario = $this->checkAccess('aviso');
+
+        $ops = array(
+            'id'            => array('type'=>'init'),
+            'titulo'        => array('type'=>'string', 'min'=>10, 'max'=>45),
+            'descripcion'   => array('type'=>'string'),
+            'destacado'     => array('type'=>'boolean'),
+            'emergente'     => array('type'=>'boolean'),
+            'estado'        => array('type'=>'boolean'),
+            'enlace'        => array('type'=>'string')
+
+        );
+        $ipts=$this->getFilterInputs('post',$ops);
+        //Abrir coneccion en modo NO autoconfirmado
+        $mysqli = $this->getMysqli();
+
+        $aviso = new Aviso($mysqli);
+        
+        $aviso->titulo      = $ipts['titulo'];
+        $aviso->texto       = $ipts['descripcion'];
+        $aviso->destacado   = $ipts['destacado'];
+        $aviso->emergente   = $ipts['emergente'];
+        $aviso->estado      = $ipts['estado'];
+        $aviso->link        = $ipts['enlace'];
+        $aviso->idUsuario   = $Usuario['id'];
+        $aviso->id          = $ipts['id'];
+
+        if(!$aviso->edit()) { //Insertando el aviso
+            $this->responder(false, "No se pudo editar el aviso", $aviso->md_detalle, null, $mysqli);
+        }
+
+        $this->responder(true, "Aviso editado!");
+
     }
 
     public function delete(){
-        $this->responder(false, 'Método no soportado');
+        $Usuario = $this->checkAccess('aviso');
+
+        $ops=array(
+            'id'            => array('type'=>'init'),
+            );
+        $ipts=$this->getFilterInputs('post',$ops);
+
+        $mysqli = $this->getMysqli();
+        $aviso = new Aviso($mysqli);
+
+        if(!$aviso->delete()){
+            $this->responder(false, "No se pudo eliminar el aviso", $aviso->md_detalle, null, $mysqli);
+        }
+        $this->responder(true, "Aviso eliminado!");
     }
 
     public function read(){
