@@ -42,18 +42,15 @@ sgw.Views.Agenda = Backbone.View.extend({
 
 sgw.Collections.Avisos = Backbone.Collection.extend({
 	model : Backbone.Model.extend({}),
-	url : '/backend/controllers/ctrlAviso.php',
-	parse : function(resp, options){ return resp.data; }
+	url : '/backend/controllers/ctrlAviso.php'
 });
 sgw.Collections.Documentos = Backbone.Collection.extend({
 	model : Backbone.Model.extend({}),
-	url : '/backend/controllers/ctrlDocumento.php',
-	parse : function(resp, options){ return resp.data; }
+	url : '/backend/controllers/ctrlDocumento.php'
 });
 sgw.Collections.Agendas = Backbone.Collection.extend({
 	model : Backbone.Model.extend({}),
-	url : '/backend/controllers/ctrlAgenda.php',
-	parse : function(resp, options){ return resp.data; }
+	url : '/backend/controllers/ctrlAgenda.php'
 });
 
 sgw.Views.Visor = Backbone.View.extend({
@@ -100,21 +97,18 @@ sgw.Views.Visor = Backbone.View.extend({
 	}
 });
 
-$(document).ready(function($) {
-	sgw.error = function(collection, resp, textStatus){
-		console.log(resp);
-	};
-	sgw.success = function(collection, resp, options){
-		if(!resp.data) sgw.error(collection, resp, options);
-	};
+sgw.Models.Emergente = Backbone.Model.extend({
+	url : '/backend/controllers/ctrlAviso.php'
+});
 
+$(document).ready(function($) {
 //obtener avisos
 	collections.avisos = new sgw.Collections.Avisos({});
 	collections.avisos.on('add', function(model){
 		var view = new sgw.Views.Aviso({ model: model });
 		view.render().$el.appendTo('.bklast__avi__cont');
 	});
-	collections.avisos.fetch({success : sgw.success,error : sgw.error});
+	collections.avisos.fetch();
 
 	//Crear visor de avisos
 	views.visor = new sgw.Views.Visor({ el : $('.bkvis'), collection: collections.avisos });
@@ -125,7 +119,7 @@ $(document).ready(function($) {
 		var view = new sgw.Views.Documento({ model: model });
 		view.render().$el.appendTo('.bklast__doc__cont');
 	});
-	collections.documentos.fetch({success : sgw.success, error : sgw.error });
+	collections.documentos.fetch();
 
 //obtener agendas
 	collections.agendas = new sgw.Collections.Agendas({});
@@ -133,17 +127,12 @@ $(document).ready(function($) {
 		var view = new sgw.Views.Agenda({ model: model });
 		view.render().$el.appendTo('.bklast__age__cont');
 	});
-	collections.agendas.fetch({success : sgw.success, error : sgw.error });
+	collections.agendas.fetch();
 
 //obtener y mostrar aviso emergente
-	sgw.Models.Emergente = Backbone.Model.extend({});
-	$.ajax({
-		url: '/backend/controllers/ctrlAviso.php',
-		dataType: 'json',
-		data: {'_accion': 'getEmergente'},
-	}).done(function(resp) {
-		models.emergente = new sgw.Models.Emergente(resp.data);
-		if(resp.estado) views.visor.show( models.emergente, null );
+	models.emergente = new sgw.Models.Emergente({});
+	models.emergente.on('change', function(model){
+		views.visor.show(model);
 	});
-
+	models.emergente.fetch({'attrs' : {'_accion':'getEmergente'}});
 });

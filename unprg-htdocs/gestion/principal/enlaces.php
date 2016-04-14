@@ -42,7 +42,6 @@
 			
 			<div class="sgwenl__cont">
 				<script type="text/template" id="template_enlace" data-tag="div" data-class="bklast__age__el clean">
-				<div class="sgwenl__el cc--gris1 bgc--gris5">
 					<div class="sgwenl__el__buttons">
 						<span class="icon-pencil2"></span>
 						<span class="icon-cross"></span>
@@ -50,9 +49,6 @@
 					<div class="sgwenl__el__nombre ff--b cc--azul2"><%=nombre%></div>
 					<div class="sgwenl__el__descripcion"><%=descripcion%></div>
 					<a href="<%=link%>" target="_black" class="sgwenl__el__link cc--azul3"><%=link%></a>
-					
-				</div>
-				
 				</script>
 			</div>
 

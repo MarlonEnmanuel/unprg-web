@@ -40,11 +40,28 @@ Backbone.sync = function(method, model, options) {
       options.errorThrown = errorThrown;
       if (error) error.call(options.context, model, xhr, textStatus);
     };
-    if(options.error) params.error = options.error;
-    if(options.success) params.success = options.success;
-    if(options.complete) params.complete = options.complete;
+
     if(options.beforeSend) params.beforeSend = options.beforeSend;
-    var xhr = options.xhr = Backbone.ajax(params);
+
+    var xhr = options.xhr = $.ajax(params)
+    .done(function(data, textStatus, jqXHR) {
+    	if(data.estado){
+    		if(typeof options.success == 'function')
+    			options.success(data.data, textStatus, jqXHR);
+    	}else{
+    		if(typeof options.error == 'function')
+    			options.error(jqXHR, textStatus , 'Internal Server Error');
+    	}
+    })
+    .fail(function(jqXHR, textStatus, errorThrown) {
+    	if(typeof options.error == 'function')
+    		options.error(jqXHR, textStatus , 'Internal Server Error');
+    })
+    .always(function(jqXHR, textStatus) {
+    	if(typeof options.complete == 'function')
+    		options.complete(jqXHR, textStatusm);
+    });
+    
     model.trigger('request', model, xhr, options);
     return xhr;
 };
@@ -67,7 +84,6 @@ $(document).ready(function($) {
 			}
 		}
 	});
-
 // Efecto paralax
 	(function(){
 		var options = {
@@ -125,5 +141,4 @@ $(document).ready(function($) {
 			paralax();
 		}, options.delay);
 	})();
-	
 });

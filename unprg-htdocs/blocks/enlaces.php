@@ -20,8 +20,7 @@
 	});
 	sgw.Collections.Enlaces = Backbone.Collection.extend({
 		model : Backbone.Model.extend({}),
-		url : '/backend/controllers/ctrlEnlace.php',
-		parse : function(resp, options){ return resp.data; }
+		url : '/backend/controllers/ctrlEnlace.php'
 	});
 	$(document).ready(function($) {
 		collections.enlaces = new sgw.Collections.Enlaces({});
