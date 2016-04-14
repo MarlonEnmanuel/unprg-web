@@ -41,73 +41,24 @@
 			<div class="bksgw__titulo">Mis Enlaces</div>
 			
 			<div class="sgwenl__cont">
+				<script type="text/template" id="template_enlace" data-tag="div" data-class="bklast__age__el clean">
+				<div class="sgwenl__el cc--gris1 bgc--gris5">
+					<div class="sgwenl__el__buttons">
+						<span class="icon-pencil2"></span>
+						<span class="icon-cross"></span>
+					</div>
+					<div class="sgwenl__el__nombre ff--b cc--azul2"><%=nombre%></div>
+					<div class="sgwenl__el__descripcion"><%=descripcion%></div>
+					<a href="<%=link%>" target="_black" class="sgwenl__el__link cc--azul3"><%=link%></a>
+					
+				</div>
 				
-				<div class="sgwenl__el cc--gris1 bgc--gris5">
-					<div class="sgwenl__el__buttons">
-						<span class="icon-pencil2"></span>
-						<span class="icon-cross"></span>
-					</div>
-					<div class="sgwenl__el__nombre ff--b cc--azul2">OCCA (Activo)</div>
-					<div class="sgwenl__el__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, quidem, unde. Expedita totam nemo, soluta, exercitationem recusandae.</div>
-					<a href="http://www.google.com" target="_black" class="sgwenl__el__link cc--azul3">http://www.google.com</a>
-					<div class="sgwenl__el__usuario"><b>Creado por:</b> Administrador del Sistema <b>(24/04/2016)</b></div>
-				</div>
-				<div class="sgwenl__el cc--gris1 bgc--gris5">
-					<div class="sgwenl__el__buttons">
-						<span class="icon-pencil2"></span>
-						<span class="icon-cross"></span>
-					</div>
-					<div class="sgwenl__el__nombre ff--b cc--azul2">OCCA (Activo)</div>
-					<div class="sgwenl__el__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, quidem, unde. Expedita totam nemo, soluta, exercitationem recusandae.</div>
-					<a href="http://www.google.com" target="_black" class="sgwenl__el__link cc--azul3">http://www.google.com</a>
-					<div class="sgwenl__el__usuario"><b>Creado por:</b> Administrador del Sistema <b>(24/04/2016)</b></div>
-				</div>
-				<div class="sgwenl__el cc--gris1 bgc--gris5">
-					<div class="sgwenl__el__buttons">
-						<span class="icon-pencil2"></span>
-						<span class="icon-cross"></span>
-					</div>
-					<div class="sgwenl__el__nombre ff--b cc--azul2">OCCA (Activo)</div>
-					<div class="sgwenl__el__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, quidem, unde. Expedita totam nemo, soluta, exercitationem recusandae.</div>
-					<a href="http://www.google.com" target="_black" class="sgwenl__el__link cc--azul3">http://www.google.com</a>
-					<div class="sgwenl__el__usuario"><b>Creado por:</b> Administrador del Sistema <b>(24/04/2016)</b></div>
-				</div>
-				<div class="sgwenl__el cc--gris1 bgc--gris5">
-					<div class="sgwenl__el__buttons">
-						<span class="icon-pencil2"></span>
-						<span class="icon-cross"></span>
-					</div>
-					<div class="sgwenl__el__nombre ff--b cc--azul2">OCCA (Activo)</div>
-					<div class="sgwenl__el__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, quidem, unde. Expedita totam nemo, soluta, exercitationem recusandae.</div>
-					<a href="http://www.google.com" target="_black" class="sgwenl__el__link cc--azul3">http://www.google.com</a>
-					<div class="sgwenl__el__usuario"><b>Creado por:</b> Administrador del Sistema <b>(24/04/2016)</b></div>
-				</div>
-				<div class="sgwenl__el cc--gris1 bgc--gris5">
-					<div class="sgwenl__el__buttons">
-						<span class="icon-pencil2"></span>
-						<span class="icon-cross"></span>
-					</div>
-					<div class="sgwenl__el__nombre ff--b cc--azul2">OCCA (Activo)</div>
-					<div class="sgwenl__el__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, quidem, unde. Expedita totam nemo, soluta, exercitationem recusandae.</div>
-					<a href="http://www.google.com" target="_black" class="sgwenl__el__link cc--azul3">http://www.google.com</a>
-					<div class="sgwenl__el__usuario"><b>Creado por:</b> Administrador del Sistema <b>(24/04/2016)</b></div>
-				</div>
-				<div class="sgwenl__el cc--gris1 bgc--gris5">
-					<div class="sgwenl__el__buttons">
-						<span class="icon-pencil2"></span>
-						<span class="icon-cross"></span>
-					</div>
-					<div class="sgwenl__el__nombre ff--b cc--azul2">OCCA (Activo)</div>
-					<div class="sgwenl__el__descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, quidem, unde. Expedita totam nemo, soluta, exercitationem recusandae.</div>
-					<a href="http://www.google.com" target="_black" class="sgwenl__el__link cc--azul3">http://www.google.com</a>
-					<div class="sgwenl__el__usuario"><b>Creado por:</b> Administrador del Sistema <b>(24/04/2016)</b></div>
-				</div>
-
+				</script>
 			</div>
 
 		</div>
 	</section>
-
+	<script type="text/javascript" src="/frontend/js/gestion/enlaces.js"></script>
 	<section class="block bksgw">
 		<div class="block__wraper--slim">
 			<div class="bksgw__titulo">Nuevo Enlace</div>

@@ -158,5 +158,37 @@ class Enlace extends abstractModel{
 
         return $list;
 	}
+
+    public function searchUser($_idUsuario){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        $sql="SELECT * FROM enlace WHERE idUsuario=?";
+        $stmt = $this->mysqli->stmt_init();
+        $stmt->prepare($sql);
+        
+        $stmt->bind_param('i',$_idUsuario);
+        $stmt->execute();
+        $stmt->bind_result(
+            $_id,
+            $_nombre,
+            $_descripcion,
+            $_link,
+            $_estado,
+            $_idUsuario);
+        $list=array();
+        while ($stmt->fetch()) {
+            $enl=new Enlace($this->mysqli);
+            $enl->id=$_id;
+            $enl->nombre=$_nombre;
+            $enl->descripcion=$_descripcion;
+            $enl->link=$_link;
+            $enl->estado=$_estado;
+            $enl->idUsuario=$_idUsuario;
+            array_push($list, $enl);
+        }
+        $stmt->close();
+
+        return $list;
+    }
 }
 ?>
