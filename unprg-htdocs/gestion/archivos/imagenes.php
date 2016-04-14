@@ -47,11 +47,10 @@
 
 	<section class="block bksgw sgwImg">
 		<div class="block__wraper--slim">
-			<div class="bksgw__titulo">Nuevo</div>
+			<div class="bksgw__titulo">Nueva Imagen</div>
 			<form class="bksgw__form">
 
-				<div class="bksgw__col--1">
-
+				<div class="bksgw__form__el">
 					<label for="tipo">Uso de la imagen</label>
 					<select name="tipo">
 						<option value="aviso">Para Aviso</option>
@@ -59,47 +58,36 @@
 						<option value="noticiaPortada">Para Portada de Noticia</option>
 						<option value="galeria">Para Galería</option>
 						<option value="portada">Portada Principal</option>
-					</select>
-
-					<div class="bksgw__form__sep"></div>
-
+						</select>
+				</div>
+				<div class="bksgw__form__el">
 					<div class="bksgw__form__info">
 						Está imagen podrá ser usada <b>para un aviso</b>, debe tener <b>máximo 900 píxeles</b> de ancho.
 					</div>
-
 				</div>
-
-				<div class="bksgw__col--2">
-
+				<div class="bksgw__form__el">
 					<label for="nombre">Nombre de la Imagen</label>
 					<input name="nombre" type="text" maxlength="45">
-
-					<div class="bksgw__form__sep"></div>
-
+				</div>
+				<div class="bksgw__form__el">
 					<label for="archivo[]">Seleccione imágen</label>
 					<input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
 					<input type="file" name="archivo" accept="image/*"/>
-
 				</div>
-
-				<div class="block__clean"></div>
-
-				<div class="sgwImg__visor">
-					<div class="bksgw__form__sep--hr"></div>
+				<div class="bksgw__form__el--w">
+					<div class="bksgw__form__hr"></div>
 					<label>Imágenes a subir</label>
 					<div class="sgwImg__visor__cont"></div>
 				</div>
-
-				<div class="bksgw__form__sep--hr"></div>
-
-				<div class="bksgw__col--1">
+				<div class="bksgw__form__el--w">
+					<div class="bksgw__form__hr"></div>
+				</div>
+				<div class="bksgw__form__el">
 					<input type="submit" class="btn--azul" value="Crear Imágen">
 				</div>
-				<div class="bksgw__col--2">
+				<div class="bksgw__form__el">
 					<div class="bksgw__form__status">Estado de la operación</div>
 				</div>
-
-				<div class="block__clean"></div>
 			</form>
 		</div>
 	</section>
