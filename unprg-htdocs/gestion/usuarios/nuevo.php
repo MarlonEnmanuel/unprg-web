@@ -7,7 +7,7 @@
 		//Las siguientes variables son obigatorias
 		"url" 			=> config::getAbsPath('/gestion'),
 		"type" 			=> "place",
-		"title" 		=> "SG WEB | Iniciar Sesión",
+		"title" 		=> "SG WEB | Usuarios",
 		"description" 	=> "Sistema de gestión de contenidos para la UNPRG",
 		"image" 		=> config::$path_socialImage
 	);
@@ -36,11 +36,10 @@
 	<section class="block bksgw--first sgwUsu">
 		<div class="block__wraper--slim">
 			
-			<div class="bksgw__titulo">Mis Usuarios</div>
+			<div class="bksgw__titulo">Usuarios</div>
 			
 
 		</div>
-		<div class="block__clean"></div>
 	</section>
 
 	<section class="block bksgw sgwUsu">
@@ -49,92 +48,75 @@
 			<div class="bksgw__titulo">Nuevo Usuario</div>
 
 				<form class="bksgw__form formUser" enctype="multipart/form-data">
-					<div class="bksgw__col--1">
-						<div>
-							<label>Email del usuario</label>
-							<input type="text" name="email">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label>Nombres del usuario</label>
-							<input type="text" name="nombres">
-						</div>
-						<div class="bksgw__form__sep"></div>
+					<div class="bksgw__form__el">
+						<label>Email del usuario</label>
+						<input type="text" name="email">
 					</div>
-					<div class="bksgw__col--2">
-						<div>
-							<label>Apellidos del usuario</label>
-							<input type="text" name="apellidos">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label>Oficina o Departamento</label>
-							<input type="text" name="oficina">
-						</div>	
-						<div class="bksgw__form__sep"></div>
+					<div class="bksgw__form__el">
+						<label>Nombres del usuario</label>
+						<input type="text" name="nombres">
+					</div>
+					<div class="bksgw__form__el">
+						<label>Apellidos del usuario</label>
+						<input type="text" name="apellidos">
+					</div>
+					<div class="bksgw__form__el">
+						<label>Oficina o Departamento</label>
+						<input type="text" name="oficina">
 					</div>
 
-					<div class="bksgw__form__sep--hr"></div>
+					<div class="bksgw__form__el--w">
+						<div class="bksgw__form__hr"></div>
+					</div>
 
-					<div class="bksgw__col--1">
-						<div>
-							<label>Usuario Activo</label>
-							<input type="checkbox" name="estado" checked>
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label>Acceso a Avisos</label>
-							<input type="checkbox" name="p-aviso">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label>Acceso a Noticias</label>
-							<input type="checkbox" name="p-noticia">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label>Acceso a Agenda</label>
-							<input type="checkbox" name="p-agenda">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label>Acceso a Imagenes</label>
-							<input type="checkbox" name="p-imagen">
-						</div>
-						<div class="bksgw__form__sep"></div>
-					</div>	
-					<div class="bksgw__col--2">
-						<div>
-							<label>Acceso a Documentos</label>
-							<input type="checkbox" name="p-documento">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label>Acceso a Enlace</label>
-							<input type="checkbox" name="p-enlace">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label>Acceso a Portada</label>
-							<input type="checkbox" name="p-portada">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label>Acceso a pagina</label>
-							<input type="checkbox" name="p-pagina">
-						</div>
+					<div class="bksgw__form__el">
+						<label>Usuario Activo</label>
+						<input type="checkbox" name="estado" checked>
+					</div>
+					<div class="bksgw__form__el">
+						<label>Acceso a Avisos</label>
+						<input type="checkbox" name="p-aviso">
+					</div>
+					<div class="bksgw__form__el">
+						<label>Acceso a Noticias</label>
+						<input type="checkbox" name="p-noticia">
+					</div>
+					<div class="bksgw__form__el">
+						<label>Acceso a Agenda</label>
+						<input type="checkbox" name="p-agenda">
+					</div>
+					<div class="bksgw__form__el">
+						<label>Acceso a Imagenes</label>
+						<input type="checkbox" name="p-imagen">
+					</div>
+					<div class="bksgw__form__el">
+						<label>Acceso a Documentos</label>
+						<input type="checkbox" name="p-documento">
+					</div>
+					<div class="bksgw__form__el">
+						<label>Acceso a Enlace</label>
+						<input type="checkbox" name="p-enlace">
+					</div>
+					<div class="bksgw__form__el">
+						<label>Acceso a Portada</label>
+						<input type="checkbox" name="p-portada">
+					</div>
+					<div class="bksgw__form__el">
+						<label>Acceso a pagina</label>
+						<input type="checkbox" name="p-pagina">
+					</div>
+
+					<div class="bksgw__form__el--w">
+						<div class="bksgw__form__hr"></div>
 					</div>
 					
-					<div class="bksgw__form__sep--hr"></div>
-
-					<div class="bksgw__col--1">
+					<div class="bksgw__form__el">
 						<input type="submit" class="btn--azul" value="Crear Imágen">
 					</div>
-					<div class="bksgw__col--2">
+					<div class="bksgw__form__el">
 						<div class="bksgw__form__status">Estado de la operación</div>
 					</div>
 
-					<div class="block__clean"></div>
 						
 				</form>
 
