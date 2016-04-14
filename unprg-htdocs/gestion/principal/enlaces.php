@@ -16,7 +16,15 @@
 	$ctrl->checkAccess('enlace');
 ?>
 <!DOCTYPE html>
+
+
 <html lang="es">
+<script type="text/javascript">
+	function seleccionar(nombre,descripcion,link,activo){
+		document.formEnlace.nombre.value=nombre;
+	}
+
+</script>
 <head>
 	<!-- Impresión de etiquetas META TITLE y DESCRIPTION-->
 		<?= config::getMetas($pagina) ?>
@@ -44,7 +52,7 @@
 				<script type="text/template" id="template_enlace" data-tag="div" data-class="bklast__age__el clean">
 				<div class="sgwenl__el cc--gris1 bgc--gris5">
 					<div class="sgwenl__el__buttons">
-						<span class="icon-pencil2"></span>
+						<a href="javacript:seleccionar('<%=nombre%>','<%=descripcion%>','<%=link%>','<%=estado%>')"><span class="icon-pencil2"></span>
 						<span class="icon-cross"></span>
 					</div>
 					<div class="sgwenl__el__nombre ff--b cc--azul2"><%=nombre%></div>
@@ -91,10 +99,10 @@
 	<section class="block bksgw">
 		<div class="block__wraper--slim">
 			<div class="bksgw__titulo">Modificar Enlace</div>
-			<form class="bksgw__form formEnlace" enctype="multipart/form-data">	
+			<form class="bksgw__form formEnlace" id="formEnlace" name="formEnlace" enctype="multipart/form-data">	
 				<div class="bksgw__form__el">
 					<label>Nombre del Enlace</label>
-					<input type="text" name="nombre" maxlength="45" />
+					<input type="text" name="nombre" id="nombre" maxlength="45" />
 				</div>
 				<div class="bksgw__form__el">
 					<label title="Breve descripcion del Enlace">Descripcion del Enlace</label>
