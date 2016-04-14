@@ -144,3 +144,13 @@
 						display: block
 						padding-top: 2em
 						font-size: 1.6em
+
+.block
+	transition: -webkit-filter 250ms
+	-webkit-transition: filter 250ms
+	transition: filter 250ms
+
+.blured
+	.block:not(.bkvis)
+		-webkit-filter: blur(3px)
+		filter: blur(3px)

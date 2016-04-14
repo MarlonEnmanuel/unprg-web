@@ -82,7 +82,6 @@ class ctrlUsuario extends abstractController {
     }
 
     public function read (){
-        
         $Usuario=$this->checkAccess();
         $mysqli=$this->getMysqli();
 
@@ -90,6 +89,8 @@ class ctrlUsuario extends abstractController {
         $user->id=$Usuario['id'];
         if($user->get()==false)
             $this->responder(false, 'Error al obtener Usuario', $user->md_detalle);
+
+        $user->permisos = implode(', ', explode(',', $user->permisos));
 
 
         $campos=array('id','email','nombres','apellidos','oficina','fchReg','permisos');

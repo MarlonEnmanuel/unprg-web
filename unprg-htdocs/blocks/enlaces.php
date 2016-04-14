@@ -1,4 +1,3 @@
-<div class="block__clean"></div>
 <div class="block bklinks bgc--gris6 cc--gris1">
 	<div class="block__wraper bklinks__wraper">
 		<script type="text/template" id="template_enlace" data-tag="a" data-class="bklinks__el bgc--azul2">

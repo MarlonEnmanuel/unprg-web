@@ -1,8 +1,6 @@
-<div class="block__clean"></div>
 <nav class="block bknav mobile">
 	<div class="block__wraper bknav__wraper">
 
-		
 		<div class="bknav__up">
 			<a class="bknav__up__bu" href="#header" title="Subir">
 				<span class="icon-circle-up"></span>
@@ -69,8 +67,6 @@
 			<li class="bknav__ul__li"><a class="bknav__ul__li__bu" href="/transparencia/">Transparencia</a></li>
 
 		</ul>
-
-
 
 		<div class="bknav__icons">
 			<a class="bknav__icons__bu" target="_blank" href="https://www.facebook.com/Universidad-Nacional-Pedro-Ruiz-Gallo-Oficial-2016-145705039139557/" title="Facebook">

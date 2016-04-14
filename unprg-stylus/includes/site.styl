@@ -14,6 +14,11 @@ a
 	cursor: default
 	font-size: 10px
 	width: 100%
+	&:after
+	&:before
+		content: "";
+		display: block;
+		clear: both;
 	
 	&__wraper
 		display: block
@@ -21,6 +26,11 @@ a
 		margin-right: auto
 		max-width: $pageMaxWidth
 		position: relative
+		&:after
+		&:before
+			content: "";
+			display: block;
+			clear: both;
 		@media all and (max-width: $pageMaxWidth)
 			margin-left: $pagePadding
 			margin-right: $pagePadding
@@ -35,11 +45,12 @@ a
 				margin-left: $pagePadding
 				margin-right: $pagePadding
 			
-	&__clean
-		clear: both
-		height: 0px
-		width: 100%
-	
+.clean
+	&:after
+	&:before
+		content: "";
+		display: block;
+		clear: both;
 
 .bgc
 	background-color: white

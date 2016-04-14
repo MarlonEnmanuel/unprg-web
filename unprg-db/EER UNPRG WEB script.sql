@@ -125,7 +125,7 @@ ENGINE = InnoDB;
 -- Table `unprg-web`.`agenda`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `unprg-web`.`agenda` (
-  `idAgenda` INT NOT NULL COMMENT '',
+  `idAgenda` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `fchInicio` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '',
   `titulo` VARCHAR(45) NOT NULL COMMENT '',
   `texto` TEXT NOT NULL COMMENT '',
@@ -186,8 +186,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `unprg-web`.`enlace` (
   `idEnlace` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `nombre` VARCHAR(45) NOT NULL COMMENT '',
-  `descripcion` VARCHAR(45) NOT NULL COMMENT '',
-  `link` VARCHAR(45) NOT NULL COMMENT '',
+  `descripcion` TEXT NOT NULL COMMENT '',
+  `link` TEXT NOT NULL COMMENT '',
   `estado` TINYINT(1) NOT NULL DEFAULT 1 COMMENT '',
   `idUsuario` INT NOT NULL COMMENT '',
   PRIMARY KEY (`idEnlace`)  COMMENT '',

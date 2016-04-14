@@ -67,14 +67,12 @@
 			<div class="infpg__block ff--18 plx">
 				<div class="infpg__col2 plx__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam rerum non nesciunt officia officiis beatae, odit minima magni, similique, laborum illo nostrum veniam. Ab maiores dolores vitae inventore in quidem!</div>
 				<div class="infpg__col2 plx__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam rerum non nesciunt officia officiis beatae, odit minima magni, similique, laborum illo nostrum veniam. Ab maiores dolores vitae inventore in quidem!</div>
-				<div class="block__clean"></div>
 			</div>
 
 			<div class="infpg__block ff--18 ff--j plx">
 				<div class="infpg__col3 plx__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam rerum non nesciunt officia officiis beatae, odit minima magni, similique, laborum illo nostrum veniam. Ab maiores dolores vitae inventore in quidem!</div>
 				<div class="infpg__col3 plx__item bgc--azul2 cc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam rerum non nesciunt officia officiis beatae, odit minima magni, similique, laborum illo nostrum veniam. Ab maiores dolores vitae inventore in quidem!</div>
 				<div class="infpg__col3 plx__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam rerum non nesciunt officia officiis beatae, odit minima magni, similique, laborum illo nostrum veniam. Ab maiores dolores vitae inventore in quidem!</div>
-				<div class="block__clean"></div>
 			</div>
 
 			<div class="infpg__block ff--18 plx">
@@ -82,7 +80,6 @@
 				<div class="infpg__col4 plx__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam rerum non nesciunt officia officiis beatae, odit minima magni, similique, laborum illo nostrum veniam. Ab maiores dolores vitae inventore in quidem!</div>
 				<div class="infpg__col4 plx__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam rerum non nesciunt officia officiis beatae, odit minima magni, similique, laborum illo nostrum veniam. Ab maiores dolores vitae inventore in quidem!</div>
 				<div class="infpg__col4 plx__item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam rerum non nesciunt officia officiis beatae, odit minima magni, similique, laborum illo nostrum veniam. Ab maiores dolores vitae inventore in quidem!</div>
-				<div class="block__clean"></div>
 			</div>
 
 			<div class="infpg__block ff--22 ff--c ff--b plx">
@@ -97,8 +94,6 @@
 				<div class="infpg__col3 plx__item">
 					<div class="btn--azul">Enlace</div>
 				</div>
-				
-				<div class="block__clean"></div>
 			</div>
 
 		</div>

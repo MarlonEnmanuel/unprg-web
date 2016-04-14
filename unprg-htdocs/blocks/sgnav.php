@@ -10,16 +10,16 @@ $sgnavItems = array(
 	array(
 		'text' => 'Pagina Principal',
 		'menu' => array(
-			array('text' => 'Gestión de Avisos', 'perm' => 'aviso', 'link' => '/gestion/principal/avisos/nuevo.php'),
-			array('text' => 'Gestión de Agenda', 'perm' => 'agenda', 'link' => '/gestion/principal/agenda/nuevo.php'),
-			array('text'=>'Gestión de Enlaces','perm'=>'enlace','link'=>'/gestion/principal/enlace/nuevo.php'),
-			array('text'=>'Gestión de Portada','perm'=>'portada','link'=>'/gestion/principal/portada/nuevo.php')
+			array('text' => 'Gestión de Avisos', 'perm' => 'aviso',  'link' => '/gestion/principal/avisos.php'),
+			array('text'=> 'Gestión de Portada', 'perm' => 'portada','link' => '/gestion/principal/portadas.php'),
+			array('text'=> 'Gestión de Enlaces', 'perm' => 'enlace', 'link' => '/gestion/principal/enlaces.php'),
+			array('text' => 'Gestión de Agenda', 'perm' => 'agenda', 'link' => '/gestion/principal/agenda.php')
 		)
 	),
 	array(
 		'text' => 'Gestionar Archivos',
 		'menu' => array(
-			array('text' => 'Documentos', 'perm' => 'aviso', 'link' => '/gestion/archivos/documentos/nuevo.php'),
+			array('text' => 'Documentos', 'perm' => 'aviso', 'link' => '/gestion/archivos/documentos.php'),
 			array('text' => 'Imagenes', 'perm' => 'aviso', 'link' => '/gestion/archivos/imagenes.php')
 		)
 	),
@@ -33,7 +33,6 @@ $sgnavItems = array(
 );
 
 ?>
-<div class="block__clean"></div>
 <nav class="block bknav bknav__sgw">
 	<div class="block__wraper">
 		

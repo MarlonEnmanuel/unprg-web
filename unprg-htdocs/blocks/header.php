@@ -17,11 +17,9 @@
 			</div>
 		</div>
 
-		<div class="bkhdr__buttons ff--condensed">
+		<div class="bkhdr__buttons ff--condensed clean">
 			<a class="ff--14" href="http://cpu.unprg.edu.pe/phpcpu/">Centro Pre</a>
-			<!--a class="ff--14" href="">Pregrado</a-->
 			<a class="ff--14" href="http://www2.unprg.edu.pe/epg/">Postgrado</a>
-			<div class="block__clean"></div>
 		</div>
 
 	</div>

@@ -1,4 +1,3 @@
-<div class="block__clean"></div>
 <footer class="block bkfoo bgc--gris1">
 	<div class="block__wraper bkfoo__wraper">
 
@@ -46,7 +45,5 @@
 				<div class="bkfoo__info__sep__d">Carlos Enrique Fernández Maza</div>
 			</div>
 		</div>
-
-		<div class="block__clean"></div>
 	</div>
 </footer>

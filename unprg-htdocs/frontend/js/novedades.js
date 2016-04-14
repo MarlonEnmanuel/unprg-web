@@ -1,7 +1,7 @@
 //Vista de Aviso
 sgw.Views.Aviso = Backbone.View.extend({
-	tagName 	: 'div',
-	className 	: 'bklast__avi__el',
+	tagName 	: $('#template_aviso').attr('data-tag'),
+	className 	: $('#template_aviso').attr('data-class'),
 	template 	: _.template($('#template_aviso').html()),
 	events 		: {
 		'click ' : 'visualizar'
@@ -15,8 +15,8 @@ sgw.Views.Aviso = Backbone.View.extend({
 	}
 });
 sgw.Views.Documento = Backbone.View.extend({
-	tagName 	: 'div',
-	className 	: 'bklast__doc__el',
+	tagName 	: $('#template_documento').attr('data-tag'),
+	className 	: $('#template_documento').attr('data-class'),
 	template 	: _.template($('#template_documento').html()),
 	events 		: {
 		'click .icon-file-pdf' : 'visualizar'
@@ -31,8 +31,8 @@ sgw.Views.Documento = Backbone.View.extend({
 	}
 });
 sgw.Views.Agenda = Backbone.View.extend({
-	tagName 	: 'div',
-	className 	: 'bklast__age__el',
+	tagName 	: $('#template_agenda').attr('data-tag'),
+	className 	: $('#template_agenda').attr('data-class'),
 	template 	: _.template($('#template_agenda').html()),
 	render : function(){
 		this.$el.html(this.template(this.model.toJSON()));
@@ -61,15 +61,20 @@ sgw.Views.Visor = Backbone.View.extend({
 	template_img : _.template($('#template_visor_img').html()),
 	template_txt : _.template($('#template_visor_txt').html()),
 	events : {
-		'click .bkvis__close' : "close"
+		'click .bkvis__close' : 'close'
+	},
+	initialize : function(){
+		var self = this;
 	},
 	close : function(event){
 		var self = this;
+		event.preventDefault();
 		self.$el.fadeOut(250, function(){
 			self.$el.find('.bkvis__el').each(function(index, el) {
 				$(el).remove();
 			});
 		});
+		$('body').removeClass('blured');
 	},
 	show : function(aviso, event){
 		if(event) event.preventDefault();
@@ -85,6 +90,7 @@ sgw.Views.Visor = Backbone.View.extend({
 		}
 		self.$el.find('.bkvis__wraper__cont').append(cont);
 		self.$el.fadeIn(250);
+		$('body').addClass('blured');
 	},
 	getExtencion : function(url){
 		var ext = url.split('?')[0];

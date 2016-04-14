@@ -23,6 +23,11 @@
 			box-sizing: border-box
 			min-height: 5px
 			padding-right: 12px
+			&:after
+			&:before
+				content: "";
+				display: block;
+				clear: both;
 			@media all and (max-width: 800px)
 				width: 100%
 				padding-right: 0
@@ -32,6 +37,11 @@
 			box-sizing: border-box
 			min-height: 5px
 			padding-left: 12px
+			&:after
+			&:before
+				content: "";
+				display: block;
+				clear: both;
 			@media all and (max-width: 800px)
 				width: 100%
 				padding-left: 0
@@ -41,13 +51,19 @@
 		font-size: 15px
 		color: crgb(ccGris1)
 		padding: 12px
+		&:after
+		&:before
+			content: "";
+			display: block;
+			clear: both;
 		
 		&__info
-			overflow: hidden
 			display: block
 			width: 100%
 			color: crgb(ccGris2)
 			font-size: 14px
+			padding: 4px 0
+			white-space: normal
 			
 		&__status
 			overflow: hidden
@@ -107,3 +123,11 @@
 		
 		input[type=checkbox]
 			height: 20px
+			
+		input[disabled]
+			background-color: transparent
+			cursor: normal
+			border: none
+			padding-left: 0
+			padding-right: 0
+			color: crgb(ccGris2)
