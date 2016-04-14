@@ -50,73 +50,61 @@
 			<div class="bksgw__titulo">Nuevo aviso</div>
 
 				<form class="bksgw__form formAviso" enctype="multipart/form-data">
-					<div class="bksgw__col--1">
-						<div>
-							<label title="Titulo del aviso que aparece en el panel de avisos">Titulo del aviso</label>
-							<input type="text" name="titulo" maxlength="45">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label title="Descripción breve del aviso, aparece en el panel de avisos.">
-								Descripción del aviso
-							</label>
-							<input type="text" name="descripcion">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label title="Hacer que el avise parpadee para llamar la atención.">
-								Aviso destacado
-							</label>
-							<input type="checkbox" name="destacado">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label title="Hacer que el aviso, se despliegue al cargar la página (Nota: el aviso será emergente, hasta que algún usuario cree otro aviso emergente).">
-								Mostrar al abrir la página
-							</label>
-							<input type="checkbox" name="emergente">
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label title="Hacer que el aviso sea público, caso contrario solo Ud. y el administrador podrán verlo.">
-								Disponible al público
-							</label>
-							<input type="checkbox" name="estado" checked>
-						</div>
+					<div class="bksgw__form__el">
+						<label title="Titulo del aviso que aparece en el panel de avisos">Titulo del aviso</label>
+						<input type="text" name="titulo" maxlength="45">
 					</div>
-					<div class="bksgw__col--2">
-						<div>
-							<label title="Seleccione el tipo de archivo que desea con extension">Tipo de Archivo</label>
-							<select name="tipo">
-								<option value="images">Imagen</option>
-								<option value="documents">Documentos</option>
-								<option value="link">Link Externo</option>
-								<option value="vacio">Sin Link</option>
-							</select>
-						</div>
-						<div class="bksgw__form__sep"></div>
-						<div>
-							<label class="p2" title="Enlace de la imagen o archivo">
-								Nombre del archivo
-							</label>
-							<input type="text" name="enlace" maxlength="45">
-						</div>
-						
-						
+					<div class="bksgw__form__el">
+						<label title="Descripción breve del aviso, aparece en el panel de avisos.">
+							Descripción del aviso
+						</label>
+						<input type="text" name="descripcion">
+					</div>
+					<div class="bksgw__form__el">
+						<label title="Seleccione el tipo de archivo que desea con extension">Tipo de Archivo</label>
+						<select name="tipo">
+							<option value="images">Imagen</option>
+							<option value="documents">Documentos</option>
+							<option value="link">Link Externo</option>
+							<option value="vacio">Sin Link</option>
+						</select>
+					</div>
+					<div class="bksgw__form__el">
+						<label class="p2" title="Enlace de la imagen o archivo">
+							Nombre del archivo
+						</label>
+						<input type="text" name="enlace" maxlength="45">
+					</div>
+					<div class="bksgw__form__el">
+						<label title="Hacer que el avise parpadee para llamar la atención.">
+							Aviso destacado
+						</label>
+						<input type="checkbox" name="destacado">
+					</div>
+					<div class="bksgw__form__el">
+						<label title="Hacer que el aviso, se despliegue al cargar la página (Nota: el aviso será emergente, hasta que algún usuario cree otro aviso emergente).">
+							Mostrar al abrir la página
+						</label>
+						<input type="checkbox" name="emergente">
+					</div>
+					<div class="bksgw__form__el">
+						<label title="Hacer que el aviso sea público, caso contrario solo Ud. y el administrador podrán verlo.">
+							Disponible al público
+						</label>
+						<input type="checkbox" name="estado" checked>
+					</div>
+					
+					<div class="bksgw__form__el--w">
+						<div class="bksgw__form__hr"></div>
 					</div>
 
-					<div class="block__clean"></div>
-
-					<div class="bksgw__form__sep--hr"></div>
-
-					<div class="bksgw__col--1">
+					<div class="bksgw__form__el">
 						<input type="submit" class="btn--azul" value="Crear Aviso">
 					</div>
-					<div class="bksgw__col--2">
+					<div class="bksgw__form__el">
 						<div class="bksgw__form__status">Estado de la operación</div>
 					</div>
 
-					<div class="block__clean"></div>
 				</form>
 			
 

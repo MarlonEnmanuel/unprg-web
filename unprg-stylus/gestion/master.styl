@@ -18,6 +18,7 @@
 		
 	&__col
 		&--1
+			font-size: 15px
 			width: 50%
 			float: left
 			box-sizing: border-box
@@ -32,6 +33,7 @@
 				width: 100%
 				padding-right: 0
 		&--2
+			font-size: 15px
 			width: 50%
 			float: left
 			box-sizing: border-box
@@ -48,47 +50,50 @@
 		
 	&__form
 		display: block
-		font-size: 15px
 		color: crgb(ccGris1)
-		padding: 12px
-		&:after
-		&:before
-			content: "";
-			display: block;
-			clear: both;
+		padding: 8px 0
+		font-size: 0
+		white-space: normal
 		
 		&__info
 			display: block
-			width: 100%
 			color: crgb(ccGris2)
 			font-size: 14px
-			padding: 4px 0
-			white-space: normal
+			overflow: hidden
 			
 		&__status
-			overflow: hidden
 			display: block
-			width: 100%
 			color: crgb(ccAzul2)
-			font-size: 15px
+			overflow: hidden
 		
-		&__sep
+		&__hr
 			display: block
 			width: 100%
-			height: 20px
-			clear: both
-			
-			&--hr
-				display: block
-				padding-top: 16px
-				border-bottom: 2px solid crgb(ccGris4)
-				margin-bottom: 16px
-				clear: both
+			border-bottom: 1px solid crgb(ccGris4)
+			margin: 5px 0
 			
 		.btn--azul
+		.btn--amarillo
 			font-size: 16px
 			padding: 5px 10px
 			font-weight: bold
+			
+		&__el
+			display: inline-block
+			font-size: 15px
+			padding: 10px 10px
+			width: 50%
+			box-sizing: border-box
+			text-align: top
+			@media all and (max-width: 800px)
+				width: 100%
+			&--w
+				display: block
+				font-size: 15px
+				padding: 10px 10px
+				width: 100%
+				box-sizing: border-box
+				text-align: top
 		
 		label
 			display: block
@@ -123,6 +128,7 @@
 		
 		input[type=checkbox]
 			height: 20px
+			vertical-align: top
 			
 		input[disabled]
 			background-color: transparent
