@@ -7,7 +7,7 @@
 		//Las siguientes variables son obigatorias
 		"url" 			=> config::getAbsPath('/gestion'),
 		"type" 			=> "place",
-		"title" 		=> "SG WEB | Nuevo Enlace",
+		"title" 		=> "SG WEB | Enlaces",
 		"description" 	=> "Sistema de gestión de contenidos para la UNPRG",
 		"image" 		=> config::$path_socialImage
 	);
@@ -35,28 +35,28 @@
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
 
-	<section class="block bksgw--first sgwenl">
+	<section class="block bksgw--first">
 		<div class="block__wraper--slim">		
 
 			<div class="bksgw__titulo">Mis Enlaces</div>
 			
 			<div class="sgwenl__cont">
-				<script type="text/template" id="template_enlace" data-tag="div" data-class="bklast__age__el clean">
+				<script type="text/template" id="template_enlace" data-tag="div" data-class="sgwenl__el cc--gris1 bgc--gris5">
 					<div class="sgwenl__el__buttons">
 						<span class="icon-pencil2"></span>
 						<span class="icon-cross"></span>
 					</div>
-					<div class="sgwenl__el__nombre ff--b cc--azul2"><%=nombre%></div>
-					<div class="sgwenl__el__descripcion"><%=descripcion%></div>
-					<a href="<%=link%>" target="_black" class="sgwenl__el__link cc--azul3"><%=link%></a>
+					<div class="sgwenl__el__nombre ff--b cc--azul2"><%= nombre %></div>
+					<div class="sgwenl__el__descripcion"><%= descripcion %></div>
+					<a href="<%= link %>" target="_black" class="sgwenl__el__link cc--azul3"><%= link %></a>
 				</script>
 			</div>
 
 		</div>
 	</section>
-	<script type="text/javascript" src="/frontend/js/gestion/enlaces.js"></script>
-	<section class="block bksgw">
-		<div class="block__wraper--slim">
+
+	<section class="block bksgw--nuevo bgc--gris5">
+		<script type="text/template" data-tag="div" data-class="block__wraper--slim" id="template__nuevo">
 			<div class="bksgw__titulo">Nuevo Enlace</div>
 			<form class="bksgw__form formEnlace" enctype="multipart/form-data">	
 				<div class="bksgw__form__el">
@@ -81,11 +81,12 @@
 					<div class="bksgw__form__status">Estado de la operación</div>
 				</div>
 			</form>
-		</div>
+		</script>
 	</section>
 
-	<section class="block bksgw">
-		<div class="block__wraper--slim">
+		
+	<section class="block bksgw--editar">
+		<script type="text/template" data-tag="section" data-class="block__wraper--slim" id="template__editar">
 			<div class="bksgw__titulo">Modificar Enlace</div>
 			<form class="bksgw__form formEnlace" enctype="multipart/form-data">	
 				<div class="bksgw__form__el">
@@ -114,54 +115,10 @@
 					<div class="bksgw__form__status">Estado de la operación</div>
 				</div>
 			</form>
-		</div>
+		</script>
 	</section>
 
-	<script type="text/template" data-tag="section" data-class="block bksgw" id="template__enlace__nuevo">
-	</script>
-
-	<script type="text/javascript">
-		$('.formEnlace').submit(function(event) {
-			event.preventDefault();
-			var form = $(this);
-			var info = form.find('.bksgw__form__status');
-			
-			form.find('input[type=submit]').attr('disabled','disabled');
-
-			var data = new FormData(form[0]);
-			data.append('_accion', 'create');
-
-			console.log(data);
-			$.ajax({
-				url: "/backend/controllers/ctrlEnlace.php",
-				type: 'post',
-				dataType: 'json',
-				data: data,
-				cache: false,
-	            contentType: false,
-		        processData: false
-			})
-			.done(function(rpta) {
-				info.html(rpta.mensaje);
-				if(rpta.detalle=='redirect'){
-					window.setTimeout(function(){
-						window.location = rpta.data;
-					}, 600);
-				}
-				if(!rpta.estado){
-					console.log(rpta);
-					form.find('input[type=submit]').removeAttr('disabled');
-				}
-			})
-			.fail(function(rpta) {
-				console.log(rpta);
-				info.html('Error de conección');
-				form.find('input[type=submit]').removeAttr('disabled');
-			});
-			
-		});
-	</script>
-
+	<script type="text/javascript" src="/frontend/js/gestion/enlaces.js"></script>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>
 </body>
 </html>

@@ -15,9 +15,7 @@ sgw.Views.User = Backbone.View.extend({
 sgw.Models.User=Backbone.Model.extend({
 	url : function(){
 		return '/backend/controllers/ctrlUsuario.php?_id=' + this.get('id');
-	},
-	parse : function(resp, options){ return resp.data; }
-
+	}
 });
 
 $(document).ready(function($) {

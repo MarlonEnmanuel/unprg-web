@@ -108,7 +108,7 @@ $(document).ready(function($) {
 		var view = new sgw.Views.Aviso({ model: model });
 		view.render().$el.appendTo('.bklast__avi__cont');
 	});
-	collections.avisos.fetch();
+	collections.avisos.fetch({'attrs' : {'_limit':'6'}});
 
 	//Crear visor de avisos
 	views.visor = new sgw.Views.Visor({ el : $('.bkvis'), collection: collections.avisos });
@@ -119,7 +119,7 @@ $(document).ready(function($) {
 		var view = new sgw.Views.Documento({ model: model });
 		view.render().$el.appendTo('.bklast__doc__cont');
 	});
-	collections.documentos.fetch();
+	collections.documentos.fetch({'attrs' : {'_limit':'5'}});
 
 //obtener agendas
 	collections.agendas = new sgw.Collections.Agendas({});
@@ -127,7 +127,7 @@ $(document).ready(function($) {
 		var view = new sgw.Views.Agenda({ model: model });
 		view.render().$el.appendTo('.bklast__age__cont');
 	});
-	collections.agendas.fetch();
+	collections.agendas.fetch({'attrs' : {'_limit':'4'}});
 
 //obtener y mostrar aviso emergente
 	models.emergente = new sgw.Models.Emergente({});

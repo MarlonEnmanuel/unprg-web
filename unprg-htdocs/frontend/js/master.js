@@ -20,7 +20,7 @@ Backbone.sync = function(method, model, options) {
 
     if ( method === 'create' || method === 'update' ) {
     	params.data = _.extend(model.toJSON(),  { '_accion' : method });
-    	params.data = _.extend( params.data, data.attrs );
+    	params.data = _.extend( params.data, options.attrs );
     }else if( method === 'read' ){
     	if(model.models){ //es una coleccion
 			params.data = _.extend({'_accion': 'readList'}, options.attrs);

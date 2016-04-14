@@ -32,8 +32,7 @@ class ctrlEnlace extends abstractController{
             $this->responder(false, "No se pudo guardar el enlace", $enlace->md_detalle, null, $mysqli);
         }
 
-
-        $this->responder(true, "Enlace creado!");
+        $this->responder(true, "Enlace creado!", '', $enlace->toArray());
 	}
 
 	public function update (){
