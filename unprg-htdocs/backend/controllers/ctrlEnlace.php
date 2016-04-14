@@ -47,8 +47,10 @@ class ctrlEnlace extends abstractController{
 	public function read (){
 		$Usuario=$this->checkAccess('enlace');
 		$mysqli = $this->getMysqli();
+		$idUser=$Usuario['id'];
+		
         $aux = new Enlace($mysqli);
-        $idUser=$Usuario['id'];
+        
         $lista = $aux->searchUser($idUser);
         if(empty($lista)) $this->responder(false, 'No hay enlaces para mostrar');
         $enlaces = array();

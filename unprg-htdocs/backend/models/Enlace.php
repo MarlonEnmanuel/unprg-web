@@ -165,7 +165,7 @@ class Enlace extends abstractModel{
         $sql="SELECT * FROM enlace WHERE idUsuario=?";
         $stmt = $this->mysqli->stmt_init();
         $stmt->prepare($sql);
-        
+        $_idUsuario=1;
         $stmt->bind_param('i',$_idUsuario);
         $stmt->execute();
         $stmt->bind_result(

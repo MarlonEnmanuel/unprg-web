@@ -19,12 +19,7 @@
 
 
 <html lang="es">
-<script type="text/javascript">
-	function seleccionar(nombre,descripcion,link,activo){
-		document.formEnlace.nombre.value=nombre;
-	}
 
-</script>
 <head>
 	<!-- Impresión de etiquetas META TITLE y DESCRIPTION-->
 		<?= config::getMetas($pagina) ?>
@@ -52,7 +47,7 @@
 				<script type="text/template" id="template_enlace" data-tag="div" data-class="bklast__age__el clean">
 				<div class="sgwenl__el cc--gris1 bgc--gris5">
 					<div class="sgwenl__el__buttons">
-						<a href="javacript:seleccionar('<%=nombre%>','<%=descripcion%>','<%=link%>','<%=estado%>')"><span class="icon-pencil2"></span>
+						<a href="javascript:seleccionar('<%=nombre%>','<%=descripcion%>','<%=link%>','<%=estado%>')"><span class="icon-pencil2"></span></a>
 						<span class="icon-cross"></span>
 					</div>
 					<div class="sgwenl__el__nombre ff--b cc--azul2"><%=nombre%></div>
@@ -99,10 +94,10 @@
 	<section class="block bksgw">
 		<div class="block__wraper--slim">
 			<div class="bksgw__titulo">Modificar Enlace</div>
-			<form class="bksgw__form formEnlace" id="formEnlace" name="formEnlace" enctype="multipart/form-data">	
+			<form id="formEnlace" name="formEnlace" class="bksgw__form formEnlace"  enctype="multipart/form-data">	
 				<div class="bksgw__form__el">
 					<label>Nombre del Enlace</label>
-					<input type="text" name="nombre" id="nombre" maxlength="45" />
+					<input type="text" name="nombre" maxlength="45" />
 				</div>
 				<div class="bksgw__form__el">
 					<label title="Breve descripcion del Enlace">Descripcion del Enlace</label>
@@ -114,7 +109,7 @@
 				</div>
 				<div class="bksgw__form__el">
 					<label title="Link a un enlace externo y/o interno">Enlace Activo</label>
-					<input type="checkbox" name="link" checked />
+					<input type="checkbox" name="activo" />
 				</div>
 				<div class="bksgw__form__el--w">
 					<div class="bksgw__form__hr"></div>
@@ -132,6 +127,18 @@
 	<script type="text/template" data-tag="section" data-class="block bksgw" id="template__enlace__nuevo">
 	</script>
 
+	<script language="javascript1.2" type="text/javascript">
+		function seleccionar(nombre,descripcion,link,activo){
+			document.formEnlace.nombre.value=nombre;
+			document.formEnlace.descripcion.value=descripcion;
+			document.formEnlace.link.value=link;
+			if (activo==1) {
+				document.formEnlace.activo.checked=true;
+			}else{
+				document.formEnlace.activo.checked=false;
+			}
+		}
+	</script>
 	<script type="text/javascript">
 		$('.formEnlace').submit(function(event) {
 			event.preventDefault();
