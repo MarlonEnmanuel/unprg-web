@@ -44,7 +44,7 @@ class ctrlDocumento extends abstractController{
     public function create (){
         $Usuario = $this->checkAccess('documento');
 
-        $ipts = $this->getFilterInputs('post', array(
+        $ipts = $this->getFilterInputs( array(
             'nombre'    => array('type'=>'string'),
             'tipo'      => array('type'=>'string')
         ));

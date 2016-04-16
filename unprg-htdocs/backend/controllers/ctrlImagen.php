@@ -16,7 +16,7 @@ class ctrlImagen extends abstractController {
     public function create (){
         $Usuario = $this->checkAccess('imagen');
 
-        $ipts=$this->getFilterInputs('post', array(
+        $ipts=$this->getFilterInputs( array(
                 'tipo' => array('type'=>'string'),
                 'nombre' => array('type'=>'string','min'=>5,'max'=>'45')
             ));

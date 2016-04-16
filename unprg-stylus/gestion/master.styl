@@ -13,6 +13,11 @@
 		.block__wraper
 		.block__wraper--slim
 			padding: 2em 0
+			
+	&--editar
+		.block__wraper
+		.block__wraper--slim
+			display: none
 		
 	&__titulo
 		font-family: font2
@@ -84,6 +89,7 @@
 			outline: none
 			border 1px solid crgb(ccGris3)
 			margin: 1px
+			vertical-align: top
 			
 			&:focus
 				outline: none
@@ -110,3 +116,45 @@
 			padding-left: 0
 			padding-right: 0
 			color: crgb(ccGris2)
+			
+
+.sgwstatus
+	position: fixed
+	left: 0
+	right: 0
+	bottom: 1em
+	z-index: 8
+	@media all and (max-width: 540px)
+		font-size: 9px
+		
+	&__wraper
+		text-align: center
+	
+	&__cont
+		color: white
+		display: inline-block
+		padding: 1em
+		border-radius: 4px
+		position: relative
+		box-shadow: 0 0 8px 0 rgb(0,0,0,0.5)
+		line-height: 1.4em
+		text-align: left
+		&__close
+			color: crgb(ccAmarillo2)
+			position: absolute
+			font-size: 14px
+			padding: 6px 6px 6px 6px
+			top -6px
+			right: -6px
+			cursor: pointer
+			display: inline-block
+			border-radius: 100%
+			
+	.ok
+		background-color: crgb(ccAzul1)
+		.sgwstatus__cont__close
+			background-color: crgb(ccAzul1)
+	.err
+		background-color: crgb(ccGris1)
+		.sgwstatus__cont__close
+			background-color: crgb(ccGris1)

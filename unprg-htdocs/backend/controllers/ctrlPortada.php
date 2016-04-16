@@ -18,7 +18,7 @@ class ctrlPortada extends abstractController{
  			'descripcion'	=> array('type'=>'string'),
  			'enlace'		=> array('type'=>'string')
  			);
- 		$ipts=$this->getFilterInputs('post',$ops);
+ 		$ipts=$this->getFilterInputs($ops);
 
  		$mysqli=$this->getMysqli();
         $a=array('<','>');

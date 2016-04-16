@@ -18,7 +18,7 @@ class ctrlUsuario extends abstractController {
     public function create (){
         $this->checkAccess('admin');
 
-        $ipts = $this->getFilterInputs('post', array(
+        $ipts = $this->getFilterInputs( array(
             'email'     => array('type'=>'email'),
             'nombres'   => array('type'=>'string', 'min'=>4, 'max'=>45),
             'apellidos' => array('type'=>'string', 'min'=>4, 'max'=>45),
@@ -106,7 +106,7 @@ class ctrlUsuario extends abstractController {
     }
 
     protected function login(){
-        $inputs = $this->getFilterInputs('post', array(
+        $inputs = $this->getFilterInputs( array(
             'email' => array('type'=>'email'),
             'pass'  => array('type'=>'string', 'min'=>'40', 'max'=>'40'),
         ));
@@ -146,7 +146,7 @@ class ctrlUsuario extends abstractController {
     protected function cambiarContra(){
         $Usuario = $this->checkAccess();
 
-        $ipts = $this->getFilterInputs('post', array(
+        $ipts = $this->getFilterInputs( array(
             'pass'      => array('type'=>'string', 'min'=>40, 'max'=>40),
             'nuevoPass' => array('type'=>'string', 'min'=>40, 'max'=>40),
             'nuevoPass2'=> array('type'=>'string', 'min'=>40, 'max'=>40),

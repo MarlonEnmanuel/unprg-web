@@ -23,7 +23,7 @@ class ctrlAgenda extends abstractController{
 				'organizador'	=> array('type'=>'string', 'max'=>45)
 			);
 
-		$ipts=$this->getFilterInputs('post',$ops);
+		$ipts=$this->getFilterInputs($ops);
 
 		$mysqli = $this->getMysqli();
         

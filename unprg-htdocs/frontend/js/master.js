@@ -52,10 +52,21 @@ Backbone.sync = function(method, model, options) {
     		if(typeof options.error == 'function')
     			options.error(jqXHR, textStatus , 'Internal Server Error');
     	}
+    	if(data.detalle === 'redirect'){
+    		options.report = true;
+    		data.mensaje += '<br><center><p>Redireccionando ...</p></center>';
+    		window.setTimeout(function(){
+    			window.location = data.data;
+    		}, 1500);
+    	}
+    	if(views.status && options.report!=false)
+    		views.status.show(data.estado, data.mensaje, data.detalle);
     })
     .fail(function(jqXHR, textStatus, errorThrown) {
     	if(typeof options.error == 'function')
     		options.error(jqXHR, textStatus , 'Internal Server Error');
+    	if(views.status)
+    		views.status.show(false, 'El servidor no respondió como se esperaba :(', errorThrown);
     })
     .always(function(jqXHR, textStatus) {
     	if(typeof options.complete == 'function')

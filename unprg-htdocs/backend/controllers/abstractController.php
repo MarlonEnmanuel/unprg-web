@@ -11,7 +11,7 @@ abstract class abstractController {
 		//Se inicializa el controlador solo si recibe peticiones ajax
 		if($isAjax){
 			//Identificar tipo de request
-			$this->method = empty($_POST) ? INPUT_GET : INPUT_POST;
+			$this->method = empty($_GET) ? INPUT_POST : INPUT_GET;
 			//obtener Accion
 			$accion = filter_input($this->method, '_accion');
 			//Si no existe la accion alertar
@@ -125,19 +125,19 @@ abstract class abstractController {
 			$val; $type = strtolower(trim($options['type']));
 
 			if($type==='string'){
-				$val = $this->getInputString($this->method, $name, $options);
+				$val = $this->getInputString($name, $options);
 
-			}elseif ($type==='int' || $type==='integer') {
-				$val = $this->getInputInt($this->method, $name, $options);
+			}else if ($type==='int' || $type==='integer') {
+				$val = $this->getInputInt($name, $options);
 
-			}elseif ($type==='bool' || $type==='boolean') {
-				$val = $this->getInputBoolean($this->method, $name, $options);
+			}else if ($type==='bool' || $type==='boolean') {
+				$val = $this->getInputBoolean($name, $options);
 
-			}elseif ($type==='email') {
-				$val = $this->getInputEmail($this->method, $name);
+			}else if ($type==='email') {
+				$val = $this->getInputEmail($name);
 
-			}elseif ($type==='url') {
-				$val = $this->getInputURL($this->method, $name);
+			}else if ($type==='url') {
+				$val = $this->getInputURL($name);
 
 			}else{
 				return false;
@@ -147,13 +147,13 @@ abstract class abstractController {
 		return $ips;
 	}
 
-	public final function getInputBoolean($method, $name){
+	public final function getInputBoolean($name){
 		$val = filter_input($this->method, $name, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
 		if(!isset($val)) $this->responder(false, "Chekbox ".$name.' no válido');
 		return $val;
 	}
 
-	public final function getInputInt($method, $name, $options){
+	public final function getInputInt($name, $options){
 		$ops = array('options'=>array());
 		if( !isset($options['min']) ) $options['min'] = '-';
 		if( !isset($options['max']) ) $options['max'] = '-';
@@ -167,13 +167,13 @@ abstract class abstractController {
 		}else{
 			$options['max'] = '-';
 		}
-		$msj = 'Número inválido: '.$name.'<br>Min: '.$options['min'].', Max: '.$filter['max'];
+		$msj = 'Número inválido: '.$name.'<br>Min: '.$options['min'].', Max: '.$options['max'];
 		$val = filter_input($this->method, $name, FILTER_VALIDATE_INT, $ops);
 		if(is_null($val) || $val===false) $this->responder(false, $msj);
 		return $val;
 	}
 
-	public final function getInputString($method, $name, $options){
+	public final function getInputString($name, $options){
 		if( !isset($options['min']) ) $options['min'] = '-';
 		if( !isset($options['max']) ) $options['max'] = '-';
 		if( !is_int($options['min']) ) $options['min'] = '-';
@@ -183,19 +183,19 @@ abstract class abstractController {
 		if(is_null($val) || $val===false) $this->responder(false, $msj);
 		if( is_int($options['min']) && strlen($val)<$options['min']) $this->responder(false, $msj);
 		if( is_int($options['max']) && strlen($val)>$options['max']) $this->responder(false, $msj);
-		return $val;
+		return trim($val);
 	}
 
-	public final function getInputEmail($method, $name){
+	public final function getInputEmail($name){
 		$val = filter_input($this->method, $name, FILTER_VALIDATE_EMAIL);
 		$msj = 'Email inválido';
 		if(is_null($val) || $val===false) $this->responder(false, $msj);
 		return $val;
 	}
 
-	public final function getInputURL($method, $name){
+	public final function getInputURL($name){
 		$val = filter_input($this->method, $name, FILTER_VALIDATE_URL);
-		$msj = 'URL inválida';
+		$msj = 'URL no válida';
 		if(is_null($val) || $val===false) $this->responder(false, $msj);
 		return $val;
 	}

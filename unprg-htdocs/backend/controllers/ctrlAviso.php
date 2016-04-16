@@ -41,7 +41,7 @@ class ctrlAviso extends abstractController {
             'tipo'          => array('type'=>'string'),
             'enlace'        => array('type'=>'string')
         );
-        $ipts=$this->getFilterInputs('post',$ops);
+        $ipts=$this->getFilterInputs($ops);
         //Abrir coneccion en modo NO autoconfirmado
         $mysqli = $this->getMysqli();
         $tipo=$ipts['tipo'];
@@ -96,7 +96,7 @@ class ctrlAviso extends abstractController {
             'enlace'        => array('type'=>'string')
 
         );
-        $ipts=$this->getFilterInputs('post',$ops);
+        $ipts=$this->getFilterInputs($ops);
         //Abrir coneccion en modo NO autoconfirmado
         $mysqli = $this->getMysqli();
 
@@ -125,7 +125,7 @@ class ctrlAviso extends abstractController {
         $ops=array(
             'id'            => array('type'=>'init'),
             );
-        $ipts=$this->getFilterInputs('post',$ops);
+        $ipts=$this->getFilterInputs($ops);
 
         $mysqli = $this->getMysqli();
         $aviso = new Aviso($mysqli);
