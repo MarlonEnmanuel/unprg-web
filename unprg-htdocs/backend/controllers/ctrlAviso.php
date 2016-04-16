@@ -32,16 +32,16 @@ class ctrlAviso extends abstractController {
     public function create(){
         $Usuario = $this->checkAccess('aviso');
 
-        $ops = array(
-            'titulo'        => array('type'=>'string', 'min'=>10, 'max'=>45),
-            'descripcion'   => array('type'=>'string'),
-            'destacado'     => array('type'=>'boolean'),
-            'emergente'     => array('type'=>'boolean'),
-            'estado'        => array('type'=>'boolean'),
-            'tipo'          => array('type'=>'string'),
-            'enlace'        => array('type'=>'string')
-        );
-        $ipts=$this->getFilterInputs($ops);
+        $ipts = $this->getFilterInputs(array(
+                    'titulo'        => array('type'=>'string', 'min'=>10, 'max'=>45),
+                    'descripcion'   => array('type'=>'string'),
+                    'destacado'     => array('type'=>'boolean'),
+                    'emergente'     => array('type'=>'boolean'),
+                    'estado'        => array('type'=>'boolean'),
+                    'tipo'          => array('type'=>'string'),
+                    'enlace'        => array('type'=>'string')
+                ));
+
         //Abrir coneccion en modo NO autoconfirmado
         $mysqli = $this->getMysqli();
         $tipo=$ipts['tipo'];
@@ -83,21 +83,21 @@ class ctrlAviso extends abstractController {
         $this->responder(true, "Aviso creado!");
     }
 
+
     public function update(){
         $Usuario = $this->checkAccess('aviso');
 
-        $ops = array(
-            'id'            => array('type'=>'init'),
-            'titulo'        => array('type'=>'string', 'min'=>10, 'max'=>45),
-            'descripcion'   => array('type'=>'string'),
-            'destacado'     => array('type'=>'boolean'),
-            'emergente'     => array('type'=>'boolean'),
-            'estado'        => array('type'=>'boolean'),
-            'enlace'        => array('type'=>'string')
+        $ipts = $this->getFilterInputs(array(
+                    'id'            => array('type'=>'init'),
+                    'titulo'        => array('type'=>'string', 'min'=>10, 'max'=>45),
+                    'descripcion'   => array('type'=>'string'),
+                    'destacado'     => array('type'=>'boolean'),
+                    'emergente'     => array('type'=>'boolean'),
+                    'estado'        => array('type'=>'boolean'),
+                    'enlace'        => array('type'=>'string')
 
-        );
-        $ipts=$this->getFilterInputs($ops);
-        //Abrir coneccion en modo NO autoconfirmado
+                ));
+    
         $mysqli = $this->getMysqli();
 
         $aviso = new Aviso($mysqli);
@@ -119,13 +119,13 @@ class ctrlAviso extends abstractController {
 
     }
 
+
     public function delete(){
         $Usuario = $this->checkAccess('aviso');
 
-        $ops=array(
-            'id'            => array('type'=>'init'),
-            );
-        $ipts=$this->getFilterInputs($ops);
+        $ipts = $this->getFilterInputs(array(
+                    '_id' => array('type'=>'init'),
+                ));
 
         $mysqli = $this->getMysqli();
         $aviso = new Aviso($mysqli);
@@ -133,12 +133,15 @@ class ctrlAviso extends abstractController {
         if(!$aviso->delete()){
             $this->responder(false, "No se pudo eliminar el aviso", $aviso->md_detalle, null, $mysqli);
         }
+
         $this->responder(true, "Aviso eliminado!");
     }
+
 
     public function read(){
         $this->responder(false, 'Método no soportado');
     }
+
 
     public function readList(){
         $top = 6; $offset = 0;

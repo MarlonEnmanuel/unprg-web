@@ -36,6 +36,14 @@ class abstractModel {
         if(isset($id)) $this->id = $id;
     }
 
+
+    //abstract public function get();
+    //abstract public function set();
+    //abstract public function edit();
+    //abstract public function delete();
+    //abstract public function search($active=false, $limit=null, $offset=null);
+
+
     public final function checkMysqli(){
         if($this->mysqli->connect_errno || $this->mysqli->errno){
             $this->md_estado = false;

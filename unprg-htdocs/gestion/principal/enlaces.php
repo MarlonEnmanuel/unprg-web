@@ -92,7 +92,7 @@
 	<section class="block bksgw--nuevo bgc--gris5">
 		<script type="text/template" data-tag="div" data-class="block__wraper--slim" id="template__nuevo">
 			<div class="bksgw__titulo">Nuevo Enlace</div>
-			<form class="bksgw__form formEnlace" enctype="multipart/form-data">	
+			<form class="bksgw__form" enctype="multipart/form-data">	
 				<div class="bksgw__form__el">
 					<label>Nombre del Enlace</label>
 					<input type="text" name="nombre" maxlength="45" />

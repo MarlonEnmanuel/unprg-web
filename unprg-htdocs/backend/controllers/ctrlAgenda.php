@@ -10,20 +10,19 @@ class ctrlAgenda extends abstractController{
 		
 	}
 
+
 	public function create (){
 		$Usuario=$this->checkAccess('agenda');
 
-		$ops=array(
-				'titulo'		=> array('type'=>'string', 'min'=>10, 'max'=>45),
-				'fchInicio'		=> array('type'=>'string'),
-				'timeEvento'	=> array('type'=>'string'),
-				'texto'			=> array('type'=>'string'),
-				'lugar'			=> array('type'=>'string', 'max'=>45),
-				'mapa'			=> array('type'=>'url'),
-				'organizador'	=> array('type'=>'string', 'max'=>45)
-			);
-
-		$ipts=$this->getFilterInputs($ops);
+		$ipts = $this->getFilterInputs(array(
+					'titulo'		=> array('type'=>'string', 'min'=>10, 'max'=>45),
+					'fchInicio'		=> array('type'=>'string'),
+					'timeEvento'	=> array('type'=>'string'),
+					'texto'			=> array('type'=>'string'),
+					'lugar'			=> array('type'=>'string', 'max'=>45),
+					'mapa'			=> array('type'=>'url'),
+					'organizador'	=> array('type'=>'string', 'max'=>45)
+				));
 
 		$mysqli = $this->getMysqli();
         
@@ -49,17 +48,21 @@ class ctrlAgenda extends abstractController{
         $this->responder(true,"Agenda Creada!");
 	}
 
+
 	public function update (){
 
 	}
+
 
 	public function delete (){
 
 	}
 
+
 	public function read (){
 
 	}
+
 
 	public function readList (){
 		$top=5;$offset=0;
@@ -92,6 +95,7 @@ class ctrlAgenda extends abstractController{
 
         $this->responder(true, 'Evento visible', '', $agendas);
 	}
+
 
 	public function mothName($numberMonth){
 		$num = intval($numberMonth);

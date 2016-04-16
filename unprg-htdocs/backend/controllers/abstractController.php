@@ -11,7 +11,7 @@ abstract class abstractController {
 		//Se inicializa el controlador solo si recibe peticiones ajax
 		if($isAjax){
 			//Identificar tipo de request
-			$this->method = empty($_GET) ? INPUT_POST : INPUT_GET;
+			$this->method = empty($_POST) ? INPUT_GET : INPUT_POST;
 			//obtener Accion
 			$accion = filter_input($this->method, '_accion');
 			//Si no existe la accion alertar
@@ -117,7 +117,7 @@ abstract class abstractController {
 	*
 	* @return array devuele un array con llave input y valor el valor del input, o false en caso de error
 	*/
-	public final function getFilterInputs($methd, $ipData){
+	public final function getFilterInputs($ipData){
 		$ips = array();
 		foreach ($ipData as $name => $options) {
 			if( !isset($options['type']) ) return false;
@@ -148,8 +148,8 @@ abstract class abstractController {
 	}
 
 	public final function getInputBoolean($name){
-		$val = filter_input($this->method, $name, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
-		if(!isset($val)) $this->responder(false, "Chekbox ".$name.' no válido');
+		$val = filter_input($this->method, $name, FILTER_VALIDATE_BOOLEAN);
+		if($val!==true) $val = false;
 		return $val;
 	}
 
@@ -169,7 +169,10 @@ abstract class abstractController {
 		}
 		$msj = 'Número inválido: '.$name.'<br>Min: '.$options['min'].', Max: '.$options['max'];
 		$val = filter_input($this->method, $name, FILTER_VALIDATE_INT, $ops);
-		if(is_null($val) || $val===false) $this->responder(false, $msj);
+
+		$required = isset($options['required']) ? $options['required'] : true;
+		if($val===false) $this->responder(false, $msj);
+		if($required && is_null($val)) $this->responder(false, $msj);
 		return $val;
 	}
 
@@ -178,25 +181,40 @@ abstract class abstractController {
 		if( !isset($options['max']) ) $options['max'] = '-';
 		if( !is_int($options['min']) ) $options['min'] = '-';
 		if( !is_int($options['max']) ) $options['max'] = '-';
+
 		$msj = 'Texto inválido: '.$name.'<br>Min: '.$options['min'].', max: '.$options['max'].' caracteres';
 		$val = filter_input($this->method, $name, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_LOW | FILTER_FLAG_NO_ENCODE_QUOTES);
-		if(is_null($val) || $val===false) $this->responder(false, $msj);
-		if( is_int($options['min']) && strlen($val)<$options['min']) $this->responder(false, $msj);
-		if( is_int($options['max']) && strlen($val)>$options['max']) $this->responder(false, $msj);
-		return trim($val);
+
+		$required = isset($options['required']) ? $options['required'] : true;
+		if($val===false) $this->responder(false, $msj);
+		if($required && is_null($val)) $this->responder(false, $msj);
+
+		if(isset($val)){
+			if( is_int($options['min']) && strlen($val)<$options['min']) $this->responder(false, $msj);
+			if( is_int($options['max']) && strlen($val)>$options['max']) $this->responder(false, $msj);
+			$val = trim($val);
+		}
+		
+		return $val;
 	}
 
 	public final function getInputEmail($name){
-		$val = filter_input($this->method, $name, FILTER_VALIDATE_EMAIL);
 		$msj = 'Email inválido';
-		if(is_null($val) || $val===false) $this->responder(false, $msj);
+		$val = filter_input($this->method, $name, FILTER_VALIDATE_EMAIL);
+
+		$required = isset($options['required']) ? $options['required'] : true;
+		if($val===false) $this->responder(false, $msj);
+		if($required && is_null($val)) $this->responder(false, $msj);
 		return $val;
 	}
 
 	public final function getInputURL($name){
 		$val = filter_input($this->method, $name, FILTER_VALIDATE_URL);
 		$msj = 'URL no válida';
-		if(is_null($val) || $val===false) $this->responder(false, $msj);
+
+		$required = isset($options['required']) ? $options['required'] : true;
+		if($val===false) $this->responder(false, $msj);
+		if($required && is_null($val)) $this->responder(false, $msj);
 		return $val;
 	}
 

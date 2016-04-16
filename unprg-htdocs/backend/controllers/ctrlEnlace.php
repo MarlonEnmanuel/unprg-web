@@ -10,6 +10,7 @@ class ctrlEnlace extends abstractController{
 		$this->responder(false, "Acciones no implementadas");
 	}
 
+
 	public function create (){
 		$Usuario=$this->checkAccess('enlace');
 
@@ -42,10 +43,11 @@ class ctrlEnlace extends abstractController{
         $this->responder(true, "Enlace creado!", '', $enlace->toArray());
 	}
 
+
 	public function update (){
 		$Usuario=$this->checkAccess('enlace');
 
-		$ipts = $this->getFilterInputs( array(
+		$ipts = $this->getFilterInputs(array(
 			'id'			=> array('type'=>'int', 'min'=>1),
 			'nombre'		=> array('type'=>'string', 'min'=>3, 'max'=>45),
 			'descripcion' 	=> array('type'=>'string'),
@@ -74,15 +76,35 @@ class ctrlEnlace extends abstractController{
 		$enlace->estado			= $ipts['estado'];
 
 		if($enlace->edit() == false) {
-            $this->responder(false, "No se pudo guardar el enlace", $enlace->md_detalle);
+            $this->responder(false, "No se pudo actualizar el enlace", $enlace->md_detalle);
         }
 
         $this->responder(true, "Enlace actualizado!", '', $enlace->toArray());
 	}
 
+
 	public function delete (){
-		
+		$Usuario=$this->checkAccess('enlace');
+
+		$ipts = $this->getFilterInputs(array(
+					'_id' => array('type'=>'int', 'min'=>1)
+				));
+
+		$mysqli=$this->getMysqli();
+
+		$enlace = new Enlace($mysqli, $ipts['_id']);
+
+		if($enlace->get() == false){
+			$this->responder(false, 'El enlace no existe');
+		}
+
+		if($enlace->delete() == false) {
+            $this->responder(false, "No se pudo eliminar el enlace", $enlace->md_detalle);
+        }
+
+        $this->responder(true, "Enlace eliminado!", '', array('status'=>'ok'));
 	}
+
 
 	public function read (){
 		$Usuario=$this->checkAccess('enlace');
@@ -104,17 +126,27 @@ class ctrlEnlace extends abstractController{
         $this->responder(true, 'enlaces obtenidos', '', $enlaces);
 	}
 
+
 	public function readList (){
 		$mysqli = $this->getMysqli();
+
+		$_activos = $this->getInputBoolean('_activos');
+		$_limit   = $this->getInputInt('_limit', array('min'=>1, 'required'=>false));
+		$_offset  = $this->getInputInt('_offset', array('min'=>0, 'required'=>false));
+
         $aux = new Enlace($mysqli);
 
-        $lista = $aux->search(true, 6);
-        if(empty($lista)) $this->responder(false, 'No hay enlaces para mostrar');
-        $enlaces = array();
+        session_start();
+        if(!isset($_SESSION['Usuario'])){
+        	$_activos = true;
+        }
 
+        $lista = $aux->search($_activos, $_limit, $_offset);
+        if(empty($lista)) $this->responder(false, 'No hay enlaces para mostrar');
+
+        $enlaces = array();
         foreach ($lista as $key => $enlace) {
-            $enlaces[$key]=$enlace->toArray();
-            
+            $enlaces[$key] = $enlace->toArray();
         }
 
         $this->responder(true, 'enlaces obtenidos', '', $enlaces);

@@ -10,15 +10,15 @@ class ctrlPortada extends abstractController{
         $this->responder(false, "Acciones no implementadas");
     }
 
+
  	public function create (){
  		$Usuario = $this->checkAccess('portada');
 
- 		$ops=array(
- 			'titulo'		=> array('type'=>'string', 'max'=>100),
- 			'descripcion'	=> array('type'=>'string'),
- 			'enlace'		=> array('type'=>'string')
- 			);
- 		$ipts=$this->getFilterInputs($ops);
+ 		$ipts = $this->getFilterInputs(array(
+                    'titulo'        => array('type'=>'string', 'max'=>100),
+                    'descripcion'   => array('type'=>'string'),
+                    'enlace'        => array('type'=>'string')
+                ));
 
  		$mysqli=$this->getMysqli();
         $a=array('<','>');
@@ -40,17 +40,21 @@ class ctrlPortada extends abstractController{
         $this->responder(true, "Portada creada!");
 	}
 
+
 	public function update (){
 
 	}
+
 
 	public function delete (){
 
 	}
 
+
 	public function read (){
 
 	}
+
 
 	public function readList (){
 		$top = 6; $offset = 0;

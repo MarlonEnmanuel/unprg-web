@@ -8,10 +8,14 @@ sgw.Views.Enlace = Backbone.View.extend({
 	},
 	initialize : function(){
 		this.model.on('change', this.render, this);
+		this.model.on('destroy', this.remove, this);
 	},
 	render : function(){
 		this.$el.html(this.template(this.model.toJSON()));
 		return this.$el;
+	},
+	remove : function(){
+		this.$el.remove();
 	},
 	onEdit : function(){
 		views.editar.load(this.model);
@@ -39,11 +43,16 @@ sgw.Views.Nuevo = Backbone.View.extend({
 	className 	: $('#template__nuevo').attr('data-class'),
 	template 	: _.template($('#template__nuevo').html()),
 	events : {
-		'submit form' : 'create'
+		'submit form' : 'create',
+		'click .bksgw__titulo': 'show',
+		'click input[type=reset]' : 'show'
 	},
 	render : function(){
 		this.$el.html(this.template());
 		return this.$el;
+	},
+	show : function(){
+		this.$el.find('.bksgw__form').slideToggle(200);
 	},
 	create : function(event){
 		event.preventDefault();

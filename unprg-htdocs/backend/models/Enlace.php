@@ -10,10 +10,6 @@ class Enlace extends abstractModel{
     public $idUsuario;
 
 
-    public function __construct(&$mysqli, $id=null){
-        parent::__construct($mysqli, $id);
-    }
-
     public function get(){
         if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
@@ -46,38 +42,6 @@ class Enlace extends abstractModel{
         return $this->md_estado;
     }
 
-    public function getbyNombre($nombre){
-        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
-
-        if(!isset($nombre)){                  //debe tener id para buscar
-            $this->md_mensaje = "Debe indicar un nombre para buscar";
-            return $this->md_estado = false;
-        }
-
-        $sql="select * from enlace where nombre like ?";
-        $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
-        $stmt->prepare($sql);               //se arma la consulta preparada
-        $stmt->bind_param('s', $nombre);    //se vinculan los parámetros
-        $stmt->execute();                   //se ejecuta la consulta
-        $stmt->bind_result(
-            $this->id,
-            $this->nombre,
-            $this->descripcion,
-            $this->link,
-            $this->estado,
-            $this->idUsuario
-            );
-        if($stmt->fetch()){
-            $this->md_estado=true;
-            $this->md_mensaje="Enlace obtenido";
-        }else{
-            $this->md_estado = false;               //estado del procedimiento: fallido
-            $this->md_mensaje = "Error al obtener Enlace";//mensaje del procedimiento
-            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
-        }
-        $stmt->close();
-        return $this->md_estado;
-    }
 
     public function set(){
         if($this->checkMysqli()===false) return false; //verificar estado de mysqli
@@ -85,7 +49,7 @@ class Enlace extends abstractModel{
             $this->md_mensaje = "El Enlace ya tiene id";
             return $this->md_estado = false;
         }
-        $sql="INSERT INTO enlace(nombre,descripcion,link,estado,idUsuario)VALUES(?,?,?,?,?)";
+        $sql="INSERT INTO enlace(nombre,descripcion,link,estado,idUsuario) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->mysqli->stmt_init();
         $stmt->prepare($sql);
         $stmt->bind_param('sssii',
@@ -108,6 +72,7 @@ class Enlace extends abstractModel{
         if($this->md_estado) $this->get();
         return $this->md_estado;
     }
+
 
     public function edit(){
         if($this->checkMysqli()===false) return false; //verificar estado de mysqli
@@ -162,11 +127,21 @@ class Enlace extends abstractModel{
         return $this->md_estado;
     }
 
-    public function search($_onlyActive=true){
+
+    public function search($active=false, $limit=null, $offset=null){
         if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
         $sql="SELECT * FROM enlace ";
-        if($_onlyActive) $sql .= "WHERE estado=1 ";
+
+        if($active){
+            $sql .= "WHERE estado=1 ";
+        }
+
+        if(is_int($limit) && $limit>=1 ){
+            $sql .= " LIMIT ".$limit;
+            if(is_int($offset) && $offset>=1)
+                $sql .= " OFFSET ".$offset;
+        }
         
         $stmt = $this->mysqli->stmt_init();
         $stmt->prepare($sql);
@@ -192,6 +167,39 @@ class Enlace extends abstractModel{
         $stmt->close();
 
         return $list;
+    }
+
+    public function getbyNombre($nombre){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        if(!isset($nombre)){                  //debe tener id para buscar
+            $this->md_mensaje = "Debe indicar un nombre para buscar";
+            return $this->md_estado = false;
+        }
+
+        $sql="select * from enlace where nombre like ?";
+        $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
+        $stmt->prepare($sql);               //se arma la consulta preparada
+        $stmt->bind_param('s', $nombre);    //se vinculan los parámetros
+        $stmt->execute();                   //se ejecuta la consulta
+        $stmt->bind_result(
+            $this->id,
+            $this->nombre,
+            $this->descripcion,
+            $this->link,
+            $this->estado,
+            $this->idUsuario
+            );
+        if($stmt->fetch()){
+            $this->md_estado=true;
+            $this->md_mensaje="Enlace obtenido";
+        }else{
+            $this->md_estado = false;               //estado del procedimiento: fallido
+            $this->md_mensaje = "Error al obtener Enlace";//mensaje del procedimiento
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+        }
+        $stmt->close();
+        return $this->md_estado;
     }
 
 }

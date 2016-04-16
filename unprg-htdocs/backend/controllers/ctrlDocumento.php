@@ -23,8 +23,10 @@ class ctrlDocumento extends abstractController{
         }
 	}
 
+
 	public function readList(){
 		$mysqli = $this->getMysqli();
+
         $vi=3;
         $fi=0;
         $aux = new Documento($mysqli);
@@ -41,10 +43,12 @@ class ctrlDocumento extends abstractController{
         $this->responder(true, 'Documento visible', '', $documentos);
 
 	}
+
+
     public function create (){
         $Usuario = $this->checkAccess('documento');
 
-        $ipts = $this->getFilterInputs( array(
+        $ipts = $this->getFilterInputs(array(
             'nombre'    => array('type'=>'string'),
             'tipo'      => array('type'=>'string')
         ));
@@ -84,12 +88,18 @@ class ctrlDocumento extends abstractController{
         $this->responder(true, "Documento creado y guardado", '', $doc);
 
     }
+
+
     public function update (){
 
     }
+
+
     public function delete (){
 
     }
+
+
     public function read (){
 
     }

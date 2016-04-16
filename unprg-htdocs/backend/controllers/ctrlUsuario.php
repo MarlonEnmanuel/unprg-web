@@ -15,10 +15,11 @@ class ctrlUsuario extends abstractController {
         }
     }
 
+
     public function create (){
         $this->checkAccess('admin');
 
-        $ipts = $this->getFilterInputs( array(
+        $ipts = $this->getFilterInputs(array(
             'email'     => array('type'=>'email'),
             'nombres'   => array('type'=>'string', 'min'=>4, 'max'=>45),
             'apellidos' => array('type'=>'string', 'min'=>4, 'max'=>45),
@@ -73,13 +74,16 @@ class ctrlUsuario extends abstractController {
         }
     }
 
+
     public function update (){
 
     }
 
+
     public function delete (){
 
     }
+
 
     public function read (){
         $Usuario=$this->checkAccess();
@@ -101,9 +105,11 @@ class ctrlUsuario extends abstractController {
         
     }
 
+
     public function readList (){
 
     }
+
 
     protected function login(){
         $inputs = $this->getFilterInputs( array(
@@ -127,6 +133,7 @@ class ctrlUsuario extends abstractController {
         $this->responder(true, 'Bienvenido', 'redirect', '/gestion/miUsuario.php');
     }
 
+
     public function logout(){
         session_start();
         session_destroy();
@@ -135,6 +142,7 @@ class ctrlUsuario extends abstractController {
         exit();
     }
 
+
     private function getRandomPass($length){
         $pass = '';
         for ($i=0; $i < $length; $i++) { 
@@ -142,6 +150,7 @@ class ctrlUsuario extends abstractController {
         }
         return $pass;
     }
+
 
     protected function cambiarContra(){
         $Usuario = $this->checkAccess();

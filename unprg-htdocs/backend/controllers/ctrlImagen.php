@@ -13,10 +13,11 @@ class ctrlImagen extends abstractController {
         }
     }
 
+
     public function create (){
         $Usuario = $this->checkAccess('imagen');
 
-        $ipts=$this->getFilterInputs( array(
+        $ipts=$this->getFilterInputs(array(
                 'tipo' => array('type'=>'string'),
                 'nombre' => array('type'=>'string','min'=>5,'max'=>'45')
             ));
@@ -105,21 +106,26 @@ class ctrlImagen extends abstractController {
         }
     }
 
+
     public function update (){
         
     }
+
 
     public function delete (){
         
     }
 
+
     public function read (){
         
     }
 
+
     public function readList (){
         
     }
+
 
     public function readTipo(){
         $mysqli = $this->getMysqli();
