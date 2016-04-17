@@ -57,10 +57,8 @@ sgw.Views.Nuevo = Backbone.View.extend({
 	create : function(event){
 		event.preventDefault();
 		var form = this.$el.find('.bksgw__form');
-		var data = {};
-	    _.each(form.serializeArray(), function(input){
-	    	data[ input.name ] = input.value;
-	    });
+		var data = form.serializeObject();
+		
 	    model = new sgw.Models.Enlace(data);
 	    model.on('sync', function(){
 	    	collections.enlaces.add(model);
@@ -98,16 +96,12 @@ sgw.Views.Editar = Backbone.View.extend({
 		event.preventDefault();
 		var self = this;
 		var form = self.$el.find('.bksgw__form');
-		var model = self.model;
-		var data = {};
-	    _.each(form.serializeArray(), function(input){
-	    	data[ input.name ] = input.value;
-	    });
-	    model.on('sync', function(){
+		var data = form.serializeObject();
+	    self.model.on('sync', function(){
 	    	form[0].reset();
 	    	self.close();
 	    });
-	    model.save(data,{wait: true});
+	    self.model.save(data,{wait: true});
 	}
 });
 

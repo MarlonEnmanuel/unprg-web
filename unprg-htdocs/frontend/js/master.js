@@ -11,6 +11,21 @@
 	sgw.slider={};
 })();
 
+jQuery.fn.extend({
+	serializeObject : function(){
+		var data = {};
+		this.find('[name]').each(function(index, el) {
+			el = $(el);
+			if(el.is('[type=checkbox]')){
+				data[el.attr('name')] = el.is(':checked');
+			}else{
+				data[el.attr('name')] = el.val();
+			}
+		});
+		return data;
+	}
+});
+
 Backbone.sync = function(method, model, options) {
     var params = {type: 'POST', dataType: 'json'};
 
