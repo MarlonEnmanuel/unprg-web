@@ -97,6 +97,11 @@ class ctrlAgenda extends abstractController{
 	}
 
 
+	public function readAll(){
+		
+	}
+
+
 	public function mothName($numberMonth){
 		$num = intval($numberMonth);
 		switch ($num) {

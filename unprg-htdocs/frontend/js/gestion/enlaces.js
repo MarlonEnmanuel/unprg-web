@@ -27,16 +27,6 @@ sgw.Views.Enlace = Backbone.View.extend({
 		}
 	}
 });
-sgw.Models.Enlace = Backbone.Model.extend({
-	url : '/backend/controllers/ctrlEnlace.php',
-	toString : function(){
-		return this.get('nombre');
-	}
-});
-sgw.Collections.Enlaces = Backbone.Collection.extend({
-	model : sgw.Models.Enlace,
-	url : '/backend/controllers/ctrlEnlace.php'
-});
 
 sgw.Views.Nuevo = Backbone.View.extend({
 	tagName 	: $('#template__nuevo').attr('data-tag'),
@@ -105,13 +95,25 @@ sgw.Views.Editar = Backbone.View.extend({
 	}
 });
 
+sgw.Models.Enlace = Backbone.Model.extend({
+	url : '/backend/controllers/ctrlEnlace.php',
+	toString : function(){
+		return this.get('nombre');
+	}
+});
+
+sgw.Collections.Enlaces = Backbone.Collection.extend({
+	model : sgw.Models.Enlace,
+	url : '/backend/controllers/ctrlEnlace.php'
+});
+
 $(document).ready(function($) {
 	collections.enlaces = new sgw.Collections.Enlaces({});
 	collections.enlaces.on('add', function(model){
 		var view = new sgw.Views.Enlace({ model: model });
 		view.render().appendTo('.sgwenl__cont');
 	});
-	collections.enlaces.fetch({report:false});
+	collections.enlaces.fetch({report:false, attrs:{'_accion': 'readAll'}});
 
 
 	views.nuevo = new sgw.Views.Nuevo({});

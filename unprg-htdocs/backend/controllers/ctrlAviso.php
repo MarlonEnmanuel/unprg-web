@@ -162,6 +162,11 @@ class ctrlAviso extends abstractController {
         $this->responder(true, 'Avisos obtenidos', '', $avisos);
     }
 
+
+    public function readAll(){
+        
+    }
+
 }
 
 $ctrl = new ctrlAviso(true);

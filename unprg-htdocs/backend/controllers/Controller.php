@@ -28,6 +28,10 @@ class Controller extends abstractController {
 		return false;
 	}
 
+	public function readAll(){
+		return false;
+	}
+
 
 }
 

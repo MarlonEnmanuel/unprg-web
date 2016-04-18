@@ -105,6 +105,9 @@ class ctrlDocumento extends abstractController{
     }
 
 	
+    public function readAll(){
+        
+    }
 
 }
 

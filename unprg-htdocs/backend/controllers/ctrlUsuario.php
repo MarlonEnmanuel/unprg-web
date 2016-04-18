@@ -111,6 +111,11 @@ class ctrlUsuario extends abstractController {
     }
 
 
+    public function readAll(){
+        
+    }
+
+
     protected function login(){
         $inputs = $this->getFilterInputs( array(
             'email' => array('type'=>'email'),

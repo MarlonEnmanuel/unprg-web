@@ -78,6 +78,12 @@ class ctrlPortada extends abstractController{
         $this->responder(true, 'Portadas obtenidos', '', $port);
 	}
 
+
+    public function readAll(){
+        
+    }
+    
+
 }
 
 $ctrl= new ctrlPortada(true);

@@ -20,6 +20,7 @@ abstract class abstractController {
 			switch ($accion) {
 				case 'read'		: $this->read(); 	 break;
 				case 'readList'	: $this->readList(); break;
+				case 'readAll'	: $this->readAll(); break;
 				case 'create'	: $this->create(); 	 break;
 				case 'update'	: $this->update(); 	 break;
 				case 'delete'	: $this->delete(); 	 break;
@@ -29,12 +30,14 @@ abstract class abstractController {
 		}
 	}
 
-	abstract protected function init ($accion);
-	abstract public function create();
-	abstract public function update();
-	abstract public function delete();
-	abstract public function read();
-	abstract public function readList();
+	abstract protected function init ($accion); //proxy para acciones personalizadas
+
+	abstract public function create();	 //insertar un registro
+	abstract public function update(); 	 //actualizar un registro
+	abstract public function delete();	 //borrar un registro
+	abstract public function read();	 //obtener un registro
+	abstract public function readList(); //obtener lista de registros para visitante de la página
+	abstract public function readAll();  //obtener lista de registro para usuario del sistema
 
 	/**
 	* Abre una conección y comprueba su estado

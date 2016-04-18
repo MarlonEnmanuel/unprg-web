@@ -107,42 +107,22 @@ class ctrlEnlace extends abstractController{
 
 
 	public function read (){
-		$Usuario=$this->checkAccess('enlace');
-
-		$mysqli = $this->getMysqli();
-        $aux = new Enlace($mysqli);
-
-        $idUser=$Usuario['id'];
-        $lista = $aux->searchUser($idUser);
-
-        if(empty($lista)) $this->responder(false, 'No hay enlaces para mostrar');
-        $enlaces = array();
-
-        foreach ($lista as $key => $enlace) {
-            $enlaces[$key]=$enlace->toArray();
-            
-        }
-
-        $this->responder(true, 'enlaces obtenidos', '', $enlaces);
 	}
 
 
 	public function readList (){
 		$mysqli = $this->getMysqli();
 
-		$_activos = $this->getInputBoolean('_activos');
 		$_limit   = $this->getInputInt('_limit', array('min'=>1, 'required'=>false));
 		$_offset  = $this->getInputInt('_offset', array('min'=>0, 'required'=>false));
 
         $aux = new Enlace($mysqli);
 
-        session_start();
-        if(!isset($_SESSION['Usuario'])){
-        	$_activos = true;
-        }
+        $lista = $aux->search(true, $_limit, $_offset);
 
-        $lista = $aux->search($_activos, $_limit, $_offset);
-        if(empty($lista)) $this->responder(false, 'No hay enlaces para mostrar');
+        if(empty($lista)){
+        	$this->responder(false, 'No hay enlaces para mostrar');
+        }
 
         $enlaces = array();
         foreach ($lista as $key => $enlace) {
@@ -151,6 +131,31 @@ class ctrlEnlace extends abstractController{
 
         $this->responder(true, 'enlaces obtenidos', '', $enlaces);
 	}
+
+
+	public function readAll(){
+		$Usuario=$this->checkAccess('enlace');
+
+		$_limit   = $this->getInputInt('_limit', array('min'=>1, 'required'=>false));
+		$_offset  = $this->getInputInt('_offset', array('min'=>0, 'required'=>false));
+
+		$mysqli = $this->getMysqli();
+
+        $aux = new Enlace($mysqli);
+
+        $lista = $aux->search(false, $_limit, $_offset);
+
+        $enlaces = array();
+        foreach ($lista as $key => $enlace) {
+        	$user = new Usuario($mysqli, $enlace->idUsuario);
+        	$user->get();
+            $enlaces[$key] = $enlace->toArray();
+            $enlaces[$key]['usuario'] = $user->email;
+        }
+
+        $this->responder(true, 'enlaces obtenidos', '', $enlaces);
+	}
+
 
 }
 

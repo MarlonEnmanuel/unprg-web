@@ -127,6 +127,11 @@ class ctrlImagen extends abstractController {
     }
 
 
+    public function readAll(){
+        
+    }
+
+
     public function readTipo(){
         $mysqli = $this->getMysqli();
         $aux=new Imagen($mysqli);

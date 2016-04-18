@@ -47,9 +47,17 @@
 						<span class="sgwenl__el__buttons__edit icon-pencil2" title="Modificar"></span>
 						<span class="sgwenl__el__buttons__delete icon-cross" title="Eliminar"></span>
 					</div>
-					<div class="sgwenl__el__nombre ff--b cc--azul2"><%= nombre %></div>
+					<div class="sgwenl__el__nombre ff--b cc--azul2">
+						<%= nombre %> 
+						<% if(estado){ %>
+							<span> ( Activo )</span>
+						<% }else{ %>
+							<span> ( Inactivo )</span>
+						<% } %>
+					</div>
 					<div class="sgwenl__el__descripcion"><%= descripcion %></div>
 					<a href="<%= link %>" target="_black" class="sgwenl__el__link cc--azul3"><%= link %></a>
+					<div class="sgwenl__el__usuario">Creado por: <%= usuario %></div>
 				</script>
 			</div>
 
