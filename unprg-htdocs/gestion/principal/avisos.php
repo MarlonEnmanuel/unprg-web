@@ -34,20 +34,21 @@
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
 	
-	<section class="block bksgw--first sgwAvi	">
-		<div class="block__wraper--slim">
-			
-			<div class="bksgw__titulo">Mis imágenes</div>
-			
+	<section class="bksgw">
+		<div class="block bksgw--first sgwAvi	">
+			<div class="block__wraper--slim">
+				
+				<div class="bksgw__titulo">Mis imágenes</div>
+				
 
+			</div>
+			<div class="block__clean"></div>
 		</div>
-		<div class="block__clean"></div>
-	</section>
 
-	<section class="block bksgw sgwAvi">
-		<div class="block__wraper--slim">
+		<div class="block bksgw sgwAvi">
+			<div class="block__wraper--slim">
 
-			<div class="bksgw__titulo">Nuevo aviso</div>
+				<div class="bksgw__titulo">Nuevo aviso</div>
 
 				<form class="bksgw__form formAviso" enctype="multipart/form-data">
 					<div class="bksgw__form__el">
@@ -106,57 +107,57 @@
 					</div>
 
 				</form>
+
+			</div>
+		</div>
+
+	</section>
+
+	<script type="text/javascript">
+					
+		$('.formAviso').submit(function(event) {
+			event.preventDefault();
+
+			var form = $(this);
+			var info = form.find('.bksgw__form__status');
+
+			
+			form.find('input[type=submit]').attr('disabled','disabled');
+
+			var data = new FormData(form[0]);
+			data.append('_accion', 'create');
 			
 
-			<script type="text/javascript">
-				
-				$('.formAviso').submit(function(event) {
-					event.preventDefault();
-
-					var form = $(this);
-					var info = form.find('.bksgw__form__status');
-
-					
-					form.find('input[type=submit]').attr('disabled','disabled');
-
-					var data = new FormData(form[0]);
-					data.append('_accion', 'create');
-					
-
-					console.log(data);
-					$.ajax({
-						url: "/backend/controllers/ctrlAviso.php",
-						type: 'post',
-						dataType: 'json',
-						data: data,
-						cache: false,
-			            contentType: false,
-				        processData: false
-					})
-					.done(function(rpta) {
-						info.html(rpta.mensaje);
-						if(rpta.detalle=='redirect'){
-							window.setTimeout(function(){
-								window.location = rpta.data;
-							}, 600);
-						}
-						if(!rpta.estado){
-							console.log(rpta);
-							form.find('input[type=submit]').removeAttr('disabled');
-						}
-					})
-					.fail(function(rpta) {
-						console.log(rpta);
-						info.html('Error de conección');
-						form.find('input[type=submit]').removeAttr('disabled');
-					});
-					
-				});
-			</script>
-
-		</div>
-		<div class="clean"></div>
-	</section>
+			console.log(data);
+			$.ajax({
+				url: "/backend/controllers/ctrlAviso.php",
+				type: 'post',
+				dataType: 'json',
+				data: data,
+				cache: false,
+	            contentType: false,
+		        processData: false
+			})
+			.done(function(rpta) {
+				info.html(rpta.mensaje);
+				if(rpta.detalle=='redirect'){
+					window.setTimeout(function(){
+						window.location = rpta.data;
+					}, 600);
+				}
+				if(!rpta.estado){
+					console.log(rpta);
+					form.find('input[type=submit]').removeAttr('disabled');
+				}
+			})
+			.fail(function(rpta) {
+				console.log(rpta);
+				info.html('Error de conección');
+				form.find('input[type=submit]').removeAttr('disabled');
+			});
+			
+		});
+	</script>
 
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>
 </body>

@@ -1,4 +1,4 @@
-sgw.Views.User = Backbone.View.extend({
+sgw.Views.Usuario = Backbone.View.extend({
 	tagName:'for',
 	className:'formUser',
 	mostrarDatos:function(Usuario){
@@ -12,24 +12,21 @@ sgw.Views.User = Backbone.View.extend({
 
 });
 
-sgw.Models.User=Backbone.Model.extend({
-	url : function(){
-		return '/backend/controllers/ctrlUsuario.php?_id=' + this.get('id');
-	}
+sgw.Models.Usuario = Backbone.Model.extend({
+	url : '/backend/controllers/ctrlUsuario.php'
 });
 
 $(document).ready(function($) {
 	
-	models.User=new sgw.Models.User({});
+	models.usuario = new sgw.Models.Usuario({});
 	
-	views.User=new sgw.Views.User({
+	views.usuario = new sgw.Views.Usuario({
 		el:$('.formUser')
 	});	
 
-	models.User.set('id','0');
-	models.User.fetch();
-	models.User.on('sync', function() {
-		views.User.mostrarDatos(models.User);
+	models.usuario.fetch();
+	models.usuario.on('change', function() {
+		views.usuario.mostrarDatos(models.usuario);
 	});
 
 	

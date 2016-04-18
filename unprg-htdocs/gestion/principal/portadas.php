@@ -33,48 +33,53 @@
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
-	<section class="block bksgw--first sgwImg">
-		<div class="block__wraper--slim">
-			
-			<div class="bksgw__titulo">Mis imágenes</div>
-			
+	
+	<section class="bksgw">
 
+		<div class="block bksgw--first sgwImg">
+			<div class="block__wraper--slim">
+				
+				<div class="bksgw__titulo">Mis imágenes</div>
+				
+
+			</div>
 		</div>
-	</section>
 
-	<section class="block bksgw sgwPor">
-		<div class="block__wraper--slim">
+		<div class="block bksgw sgwPor">
+			<div class="block__wraper--slim">
 
-			<div class="bksgw__titulo">Nueva Portada</div>
-			<form class="bksgw__form formPortada" enctype="multipart/form-data">
-				<div class="bksgw__form__el">
-					<label title="Titulo de la portada que aparece en el panel ">Titulo de la portada</label>
-					<input type="text" name="titulo" maxlength="100">
-				</div>
-				<div class="bksgw__form__el">
-					<label title="Descripción breve de la imagen">
-						Descripción de la portada
-					</label>
-					<input type="text" name="descripcion">
-				</div>
-				<div class="bksgw__form__el">
-					<label class="p2" title="Enlace de la imagen o archivo">
-						Nombre de la imagen
-					</label>
-					<input type="text" name="enlace" maxlength="45">
-				</div>
-				<div class="bksgw__form__el--w">
-					<div class="bksgw__form__hr"></div>
-				</div>
-				<div class="bksgw__form__el">
-					<input type="submit" class="btn--azul" value="Crear Imágen">
-				</div>
-				<div class="bksgw__form__el">
-					<div class="bksgw__form__status">Estado de la operación</div>
-				</div>
-			</form>
+				<div class="bksgw__titulo">Nueva Portada</div>
+				<form class="bksgw__form formPortada" enctype="multipart/form-data">
+					<div class="bksgw__form__el">
+						<label title="Titulo de la portada que aparece en el panel ">Titulo de la portada</label>
+						<input type="text" name="titulo" maxlength="100">
+					</div>
+					<div class="bksgw__form__el">
+						<label title="Descripción breve de la imagen">
+							Descripción de la portada
+						</label>
+						<input type="text" name="descripcion">
+					</div>
+					<div class="bksgw__form__el">
+						<label class="p2" title="Enlace de la imagen o archivo">
+							Nombre de la imagen
+						</label>
+						<input type="text" name="enlace" maxlength="45">
+					</div>
+					<div class="bksgw__form__el--w">
+						<div class="bksgw__form__hr"></div>
+					</div>
+					<div class="bksgw__form__el">
+						<input type="submit" class="btn--azul" value="Crear Imágen">
+					</div>
+					<div class="bksgw__form__el">
+						<div class="bksgw__form__status">Estado de la operación</div>
+					</div>
+				</form>
 
+			</div>
 		</div>
+
 	</section>
 
 	<script type="text/javascript">

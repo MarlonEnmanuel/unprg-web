@@ -64,6 +64,10 @@ class ctrlEnlace extends abstractController{
 			$this->responder(false, 'El enlace no existe');
 		}
 
+		if($enlace->id != $Usuario['id'] && !$this->isAdmin()){
+			$this->responder(false, 'Este enlace fue creado por otro usuario, no tiene permisos para modificarlo');
+		}
+
 		if($aux->getbyNombre($ipts['nombre'])){
 			if($aux->id !== $enlace->id){
 				$this->responder(false, "Ya existe un enlace con el nombre: ".$enlace->nombre);
@@ -96,6 +100,10 @@ class ctrlEnlace extends abstractController{
 
 		if($enlace->get() == false){
 			$this->responder(false, 'El enlace no existe');
+		}
+
+		if($enlace->id != $Usuario['id'] && !$this->isAdmin()){
+			$this->responder(false, 'Este enlace fue creado por otro usuario, no tiene permisos para modificarlo');
 		}
 
 		if($enlace->delete() == false) {

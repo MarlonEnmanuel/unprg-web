@@ -35,61 +35,61 @@
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
 	
-	<section class="block bksgw--first sgwImg">
-		<div class="block__wraper--slim">
-			
-			<div class="bksgw__titulo">Mis imágenes</div>
-			
+	<section class="bksgw">
 
+		<div class="block">
+			<div class="block__wraper--slim">
+				<div class="bksgw__titulo">Mis imágenes</div>
+			</div>
 		</div>
-		<div class="block__clean"></div>
-	</section>
 
-	<section class="block bksgw sgwImg">
-		<div class="block__wraper--slim">
-			<div class="bksgw__titulo">Nueva Imagen</div>
-			<form class="bksgw__form">
+		<div class="block bksgw sgwImg">
+			<div class="block__wraper--slim">
+				<div class="bksgw__titulo">Nueva Imagen</div>
+				<form class="bksgw__form">
 
-				<div class="bksgw__form__el">
-					<label for="tipo">Uso de la imagen</label>
-					<select name="tipo">
-						<option value="aviso">Para Aviso</option>
-						<option value="noticiaCuerpo">Para Cuerpo de Noticia</option>
-						<option value="noticiaPortada">Para Portada de Noticia</option>
-						<option value="galeria">Para Galería</option>
-						<option value="portada">Portada Principal</option>
-						</select>
-				</div>
-				<div class="bksgw__form__el">
-					<div class="bksgw__form__info">
-						Está imagen podrá ser usada <b>para un aviso</b>, debe tener <b>máximo 900 píxeles</b> de ancho.
+					<div class="bksgw__form__el">
+						<label for="tipo">Uso de la imagen</label>
+						<select name="tipo">
+							<option value="aviso">Para Aviso</option>
+							<option value="noticiaCuerpo">Para Cuerpo de Noticia</option>
+							<option value="noticiaPortada">Para Portada de Noticia</option>
+							<option value="galeria">Para Galería</option>
+							<option value="portada">Portada Principal</option>
+							</select>
 					</div>
-				</div>
-				<div class="bksgw__form__el">
-					<label for="nombre">Nombre de la Imagen</label>
-					<input name="nombre" type="text" maxlength="45">
-				</div>
-				<div class="bksgw__form__el">
-					<label for="archivo[]">Seleccione imágen</label>
-					<input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
-					<input type="file" name="archivo" accept="image/*"/>
-				</div>
-				<div class="bksgw__form__el--w">
-					<div class="bksgw__form__hr"></div>
-					<label>Imágenes a subir</label>
-					<div class="sgwImg__visor__cont"></div>
-				</div>
-				<div class="bksgw__form__el--w">
-					<div class="bksgw__form__hr"></div>
-				</div>
-				<div class="bksgw__form__el">
-					<input type="submit" class="btn--azul" value="Crear Imágen">
-				</div>
-				<div class="bksgw__form__el">
-					<div class="bksgw__form__status">Estado de la operación</div>
-				</div>
-			</form>
+					<div class="bksgw__form__el">
+						<div class="bksgw__form__info">
+							Está imagen podrá ser usada <b>para un aviso</b>, debe tener <b>máximo 900 píxeles</b> de ancho.
+						</div>
+					</div>
+					<div class="bksgw__form__el">
+						<label for="nombre">Nombre de la Imagen</label>
+						<input name="nombre" type="text" maxlength="45">
+					</div>
+					<div class="bksgw__form__el">
+						<label for="archivo[]">Seleccione imágen</label>
+						<input type="hidden" name="MAX_FILE_SIZE" value="2000000"/>
+						<input type="file" name="archivo" accept="image/*"/>
+					</div>
+					<div class="bksgw__form__el--w">
+						<div class="bksgw__form__hr"></div>
+						<label>Imágenes a subir</label>
+						<div class="sgwImg__visor__cont"></div>
+					</div>
+					<div class="bksgw__form__el--w">
+						<div class="bksgw__form__hr"></div>
+					</div>
+					<div class="bksgw__form__el">
+						<input type="submit" class="btn--azul" value="Crear Imágen">
+					</div>
+					<div class="bksgw__form__el">
+						<div class="bksgw__form__status">Estado de la operación</div>
+					</div>
+				</form>
+			</div>
 		</div>
+
 	</section>
 
 	<script type="text/javascript" src="/frontend/js/gestion/imagenes.js"></script>

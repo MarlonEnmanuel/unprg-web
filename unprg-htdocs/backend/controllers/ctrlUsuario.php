@@ -91,13 +91,14 @@ class ctrlUsuario extends abstractController {
 
         $user=new Usuario($mysqli);
         $user->id=$Usuario['id'];
+
         if($user->get()==false)
             $this->responder(false, 'Error al obtener Usuario', $user->md_detalle);
 
         $user->permisos = implode(', ', explode(',', $user->permisos));
 
 
-        $campos=array('id','email','nombres','apellidos','oficina','fchReg','permisos');
+        $campos=array('id','email','nombres','apellidos','oficina','fchReg','permisos', 'estado', 'reset');
 
         $User=$user->toArray($campos);
         $User['fchReg']=$user->fchReg->format("d/m/Y H:i");

@@ -34,55 +34,56 @@
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
 	
-	<section class="block bksgw--first sgwDoc">
-		<div class="block__wraper--slim">
+	<section class="bksgw">
 
-			<div class="bksgw__titulo">Mis Documentos</div>
-			
-
+		<div class="block">
+			<div class="block__wraper--slim">
+				<div class="bksgw__titulo">Mis Documentos</div>
+			</div>
 		</div>
-	</section>
 
-	<section class="block bksgw sgwDoc">
-		<div class="block__wraper--slim">
+		<div class="block bksgw sgwDoc">
+			<div class="block__wraper--slim">
 
-			<div class="bksgw__titulo">Nuevo documento</div>
+				<div class="bksgw__titulo">Nuevo documento</div>
 
-			<form class="bksgw__form formDocumento" enctype="multipart/form-data">
-				<div class="bksgw__form__el">
-					<label title="Seleccione el tipo de archivo">Tipo del documento</label>
-					<select name="tipo">
-						<option value="Resolucion">Resolución</option>
-						<option value="Oficina">Oficio</option>
-						<option value="Carta">Carta</option>
-						<option value="Principal">Principal</option>
-					</select>
-				</div>
-				<div class="bksgw__form__el">
-					<label class="p2" title="Nombre que tendrá el archivo al ser descargado.">
-						Nombre del archivo
-					</label>
-					<input type="text" name="nombre" maxlength="45">
-				</div>
-				<div class="bksgw__form__el">
-					<label class="p1" title="Este archivo se mostrará al desplegar el aviso.">
-						Seleccione documento
-					</label>
-					<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
-					<input type="file" name="archivo" accept="application/pdf">
-				</div>
-				<div class="bksgw__form__el--w">
-					<div class="bksgw__form__hr"></div>
-				</div>
-				<div class="bksgw__form__el">
-					<input type="submit" class="btn--azul" value="Crear Documento">
-				</div>
-				<div class="bksgw__form__el">
-					<div class="bksgw__form__status">Estado de la operación</div>
-				</div>
-			</form>
+				<form class="bksgw__form formDocumento" enctype="multipart/form-data">
+					<div class="bksgw__form__el">
+						<label title="Seleccione el tipo de archivo">Tipo del documento</label>
+						<select name="tipo">
+							<option value="Resolucion">Resolución</option>
+							<option value="Oficina">Oficio</option>
+							<option value="Carta">Carta</option>
+							<option value="Principal">Principal</option>
+						</select>
+					</div>
+					<div class="bksgw__form__el">
+						<label class="p2" title="Nombre que tendrá el archivo al ser descargado.">
+							Nombre del archivo
+						</label>
+						<input type="text" name="nombre" maxlength="45">
+					</div>
+					<div class="bksgw__form__el">
+						<label class="p1" title="Este archivo se mostrará al desplegar el aviso.">
+							Seleccione documento
+						</label>
+						<input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
+						<input type="file" name="archivo" accept="application/pdf">
+					</div>
+					<div class="bksgw__form__el--w">
+						<div class="bksgw__form__hr"></div>
+					</div>
+					<div class="bksgw__form__el">
+						<input type="submit" class="btn--azul" value="Crear Documento">
+					</div>
+					<div class="bksgw__form__el">
+						<div class="bksgw__form__status">Estado de la operación</div>
+					</div>
+				</form>
 
+			</div>
 		</div>
+
 	</section>
 
 	<script type="text/javascript">

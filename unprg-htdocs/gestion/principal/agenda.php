@@ -33,61 +33,65 @@
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
+	
+	<section class="bksgw">
 
-	<section class="block bksgw--first sgwImg">
-		<div class="block__wraper--slim">
-			
-			<div class="bksgw__titulo">Mis Agendas</div>
-			
+		<div class="block bksgw--first sgwImg">
+			<div class="block__wraper--slim">
+				
+				<div class="bksgw__titulo">Mis Agendas</div>
+				
 
+			</div>
 		</div>
-	</section>
 
-	<section class="block bksgw">
-		<div class="block__wraper--slim">
+		<div class="block bksgw">
+			<div class="block__wraper--slim">
 
-			<div class="bksgw__titulo">Nueva Agenda</div>
-			<form class="bksgw__form formAgenda" enctype="multipart/form-data">
-				<div class="bksgw__form__el">
-					<label>Titulo del evento</label>
-					<input type="text" name="titulo" maxlength="45" />
-				</div>
-				<div class="bksgw__form__el">
-					<label title="Breve descripcion del evento">Descripcion del Evento</label>
-					<input type="text" name="texto"/>
-				</div>
-				<div class="bksgw__form__el">
-					<label title="Seleccione la fecha de Realizacion del evento">Fecha del Evento</label>
-					<input type="date" name="fchInicio" />
-				</div>
-				<div class="bksgw__form__el">
-					<label title="Hora de Inicio del Evento">Hora del Evento</label>
-					<input type="time" name="timeEvento"/>
-				</div>
-				<div class="bksgw__form__el">
-					<label title="Donde se realizara el evento">Lugar</label>
-					<input type="text" name="lugar" maxlength="45"/>
-				</div>
-				<div class="bksgw__form__el">
-					<label title="Copiar de google maps el lugar">Mapa</label>
-					<input type="text" name="mapa" />
-				</div>
-				<div class="bksgw__form__el">
-					<label title="Persona u ofinica que lo organiza">Organizador</label>
-					<input type="text" name="organizador" maxlength="45"/>
-				</div>
-				<div class="bksgw__form__el--w">
-					<div class="bksgw__form__hr"></div>
-				</div>
-				<div class="bksgw__form__el">
-					<input type="submit" class="btn--azul" value="Enviar">
-				</div>
-				<div class="bksgw__form__el">
-					<div class="bksgw__form__status">Información de estado</div>
-				</div>
-			</form>
+				<div class="bksgw__titulo">Nueva Agenda</div>
+				<form class="bksgw__form formAgenda" enctype="multipart/form-data">
+					<div class="bksgw__form__el">
+						<label>Titulo del evento</label>
+						<input type="text" name="titulo" maxlength="45" />
+					</div>
+					<div class="bksgw__form__el">
+						<label title="Breve descripcion del evento">Descripcion del Evento</label>
+						<input type="text" name="texto"/>
+					</div>
+					<div class="bksgw__form__el">
+						<label title="Seleccione la fecha de Realizacion del evento">Fecha del Evento</label>
+						<input type="date" name="fchInicio" />
+					</div>
+					<div class="bksgw__form__el">
+						<label title="Hora de Inicio del Evento">Hora del Evento</label>
+						<input type="time" name="timeEvento"/>
+					</div>
+					<div class="bksgw__form__el">
+						<label title="Donde se realizara el evento">Lugar</label>
+						<input type="text" name="lugar" maxlength="45"/>
+					</div>
+					<div class="bksgw__form__el">
+						<label title="Copiar de google maps el lugar">Mapa</label>
+						<input type="text" name="mapa" />
+					</div>
+					<div class="bksgw__form__el">
+						<label title="Persona u ofinica que lo organiza">Organizador</label>
+						<input type="text" name="organizador" maxlength="45"/>
+					</div>
+					<div class="bksgw__form__el--w">
+						<div class="bksgw__form__hr"></div>
+					</div>
+					<div class="bksgw__form__el">
+						<input type="submit" class="btn--azul" value="Enviar">
+					</div>
+					<div class="bksgw__form__el">
+						<div class="bksgw__form__status">Información de estado</div>
+					</div>
+				</form>
 
+			</div>
 		</div>
+
 	</section>
 
 	<script type="text/javascript">

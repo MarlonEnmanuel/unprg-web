@@ -34,40 +34,43 @@
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
+	
+	<section class="bksgw">
 
-	<section class="block bksgw--first sgwUser">
-		<div class="block__wraper--slim">
+		<div class="block bksgw--first sgwUser">
+			<div class="block__wraper--slim">
 
-			<div class="bksgw__titulo">Mi Usuario</div>
+				<div class="bksgw__titulo">Mi Usuario</div>
 
-			<form class="bksgw__form formUser" enctype="multipart/form-data">
-				<div class="bksgw__form__el">
-					<label>Nombres</label>
-					<input type="text" name="nombres" disabled>
-				</div>
-				<div class="bksgw__form__el">
-					<label>Email</label>
-					<input type="text" name="email" disabled>
-				</div>
-				<div class="bksgw__form__el">
-					<label>Fecha de Registro</label>
-					<div class="bksgw__form__info" name="fchReg"></div>
-				</div>
+				<form class="bksgw__form formUser" enctype="multipart/form-data">
+					<div class="bksgw__form__el">
+						<label>Nombres</label>
+						<input type="text" name="nombres" disabled>
+					</div>
+					<div class="bksgw__form__el">
+						<label>Email</label>
+						<input type="text" name="email" disabled>
+					</div>
+					<div class="bksgw__form__el">
+						<label>Fecha de Registro</label>
+						<div class="bksgw__form__info" name="fchReg"></div>
+					</div>
 
-				<div class="bksgw__form__el">
-					<label>Apellidos</label>
-					<input type="text" name="apellidos" disabled>
-				</div>
-				<div class="bksgw__form__el">
-					<label>Oficina</label>
-					<input type="text" name="oficina" disabled>
-				</div>
-				<div class="bksgw__form__el">
-					<label>Permisos del usuario</label>
-					<div class="bksgw__form__info" name="permisos"></div>
-				</div>
-			</form>
+					<div class="bksgw__form__el">
+						<label>Apellidos</label>
+						<input type="text" name="apellidos" disabled>
+					</div>
+					<div class="bksgw__form__el">
+						<label>Oficina</label>
+						<input type="text" name="oficina" disabled>
+					</div>
+					<div class="bksgw__form__el">
+						<label>Permisos del usuario</label>
+						<div class="bksgw__form__info" name="permisos"></div>
+					</div>
+				</form>
 
+			</div>
 		</div>
 	</section>
 

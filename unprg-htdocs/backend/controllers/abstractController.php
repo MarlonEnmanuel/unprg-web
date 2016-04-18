@@ -105,6 +105,10 @@ abstract class abstractController {
 		return $_SESSION['Usuario'];
 	}
 
+	public final function isAdmin(){
+		return in_array('admin' , $_SESSION['Usuario']['permisos']);
+	}
+
 	/**
 	* Obtiene inputs GET o POST, filtra valida y responde
 	*
