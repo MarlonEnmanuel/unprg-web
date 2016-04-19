@@ -64,7 +64,7 @@ class ctrlEnlace extends abstractController{
 			$this->responder(false, 'El enlace no existe');
 		}
 
-		if($enlace->id != $Usuario['id'] && !$this->isAdmin()){
+		if($enlace->idUsuario!=$Usuario['id'] && !$this->isAdmin()){
 			$this->responder(false, 'Este enlace fue creado por otro usuario, no tiene permisos para modificarlo');
 		}
 
