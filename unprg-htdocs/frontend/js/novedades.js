@@ -46,7 +46,13 @@ sgw.Collections.Avisos = Backbone.Collection.extend({
 });
 sgw.Collections.Documentos = Backbone.Collection.extend({
 	model : Backbone.Model.extend({}),
-	url : '/backend/controllers/ctrlDocumento.php'
+	url : '/backend/controllers/ctrlDocumento.php',
+	parse : function(data){
+		_(data).each(function(el, index, list){
+			el.fchReg = new Date(el.fchReg*1000);
+		});
+		return data;
+	}
 });
 sgw.Collections.Agendas = Backbone.Collection.extend({
 	model : Backbone.Model.extend({}),

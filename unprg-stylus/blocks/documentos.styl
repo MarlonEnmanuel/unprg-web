@@ -1,0 +1,39 @@
+
+@import "nib"
+@import "../includes/config.styl"
+
+.bkdocs
+	margin-top: 38px
+	padding: 3em 0
+	min-height: 350px
+	
+	&__group
+		&__title
+			padding-bottom: 0.2em
+			margin-bottom: 0.5em
+			border-bottom: 1px solid crgb(ccGris4)
+
+		&__cont
+			margin-bottom: 40px
+			
+	
+	&__el
+		display: inline-block
+		box-sizing: border-box
+		width: 25%
+		padding: 1.6em
+		vertical-align: top
+		transition: background-color 100ms
+		cursor: pointer
+		font-size: 10px
+		&:hover
+			background-color: crgb(ccGris6)
+		&__nombre
+			margin-bottom: 0.3em
+			font-size: 1.5em
+		&__fecha
+			font-size: 0.8em
+			
+		&__tipo
+			display: block
+			font-size: 1.4em

@@ -37,7 +37,7 @@ class ctrlDocumento extends abstractController{
         $documentos = array();
         foreach ($lista as $key => $document) {
         	$documentos[$key] = $document->toArray();
-            $documentos[$key]['fchReg'] = $documentos[$key]['fchReg']->format(config::$date_fecha);
+            $documentos[$key]['fchReg'] = $documentos[$key]['fchReg']->format('U');
         }
 
         $this->responder(true, 'Documento visible', '', $documentos);

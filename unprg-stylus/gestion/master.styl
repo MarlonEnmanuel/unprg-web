@@ -57,6 +57,7 @@
 			width: 50%
 			box-sizing: border-box
 			text-align: top
+			float: left
 			@media all and (max-width: 800px)
 				width: 100%
 			&--w
@@ -66,6 +67,7 @@
 				width: 100%
 				box-sizing: border-box
 				text-align: top
+				float: left
 		
 		label
 			display: block
@@ -101,7 +103,6 @@
 		
 		input[type=checkbox]
 			height: 20px
-			vertical-align: top
 			
 		input[disabled]
 			background-color: transparent
@@ -110,6 +111,58 @@
 			padding-left: 0
 			padding-right: 0
 			color: crgb(ccGris2)
+			
+		.inputDateTime
+			display: block
+			box-sizing: border-box
+			text-align: center
+			vertical-align: top
+			&:after
+			&:before
+				content: ""
+				display: block
+				clear: both
+				
+			input
+				display: inline-block
+				float: left
+				width: 16%
+				text-align: center
+				box-sizing: border-box
+			span
+				padding-top: 4px
+				display: inline-block
+				float: left
+				width: 4.2%
+				text-align: center
+				box-sizing: border-box
+				font-size: 20px
+				
+		.inputTime
+			display: block
+			box-sizing: border-box
+			text-align: center
+			vertical-align: top
+			&:after
+			&:before
+				content: ""
+				display: block
+				clear: both
+				
+			input
+				display: inline-block
+				float: left
+				width: 44%
+				text-align: center
+				box-sizing: border-box
+			span
+				padding-top: 4px
+				display: inline-block
+				float: left
+				width: 10%
+				text-align: center
+				box-sizing: border-box
+				font-size: 20px
 			
 
 .sgwstatus

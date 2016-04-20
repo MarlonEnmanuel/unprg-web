@@ -17,8 +17,7 @@ class ctrlAgenda extends abstractController{
 
 		$ipts = $this->getFilterInputs(array(
 					'titulo'		=> array('type'=>'string', 'min'=>10, 'max'=>45),
-					'fch'			=> array('type'=>'string'),
-					'timeEvento'	=> array('type'=>'string'),
+					'fchInicio'		=> array('type'=>'datetime'),
 					'texto'			=> array('type'=>'string'),
 					'lugar'			=> array('type'=>'string', 'max'=>45),
 					'mapa'			=> array('type'=>'url'),
@@ -27,20 +26,14 @@ class ctrlAgenda extends abstractController{
 
 		$mysqli = $this->getMysqli();
         
-        $aux=$ipts['fch'].' '.$ipts['timeEvento'];
-        $fchInicio= DateTime::createFromFormat(config::$date_fechaHora,$aux);
         $agenda =new Agenda($mysqli);
-        $agenda->fchInicio			= $fchInicio;
+        $agenda->fchInicio			= $ipts['fchInicio'];
         $agenda->titulo				= $ipts['titulo'];
         $agenda->texto 				= $ipts['texto'];
         $agenda->lugar				= $ipts['lugar'];
         $agenda->mapa 				= $ipts['mapa'];
         $agenda->organizador 		= $ipts['organizador'];
         $agenda->idUsuario 			= $Usuario['id'];
-
-        if($fchInicio==false){
-        	$this->responder(false, 'Fecha u Hora no válida');
-        }
 
         if(!$agenda->set()){
         	$this->responder(false,"No se pudo guardar la agenda",$agenda->md_detalle,null);
@@ -191,8 +184,7 @@ class ctrlAgenda extends abstractController{
 			$user->get();
 			$agendas[$key]=$agenda->toArray();
 			$agendas[$key]['usuario'] = $user->email;
-			$agendas[$key]['fch']=$agendas[$key]['fchInicio']->format('Y-m-d');
-			$agendas[$key]['timeEvento']=$agendas[$key]['fchInicio']->format('H:i');
+			$agendas[$key]['fchInicio']=$agendas[$key]['fchInicio']->format('U');
 		}
 
 		$this->responder(true, 'agendas obtenidas','',$agendas);
