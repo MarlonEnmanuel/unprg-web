@@ -2,12 +2,13 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/controllers/abstractController.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Agenda.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Usuario.php';
 
 
 class ctrlAgenda extends abstractController{
 	
 	protected function init ($accion){
-		
+		$this->responder(false, "Acciones no implementadas");
 	}
 
 
@@ -16,17 +17,17 @@ class ctrlAgenda extends abstractController{
 
 		$ipts = $this->getFilterInputs(array(
 					'titulo'		=> array('type'=>'string', 'min'=>10, 'max'=>45),
-					'fchInicio'		=> array('type'=>'string'),
+					'fch'			=> array('type'=>'string'),
 					'timeEvento'	=> array('type'=>'string'),
 					'texto'			=> array('type'=>'string'),
 					'lugar'			=> array('type'=>'string', 'max'=>45),
 					'mapa'			=> array('type'=>'url'),
-					'organizador'	=> array('type'=>'string', 'max'=>45)
+					'organizador'	=> array('type'=>'string')
 				));
 
 		$mysqli = $this->getMysqli();
         
-        $aux=$ipts['fchInicio'].' '.$ipts['timeEvento'];
+        $aux=$ipts['fch'].' '.$ipts['timeEvento'];
         $fchInicio= DateTime::createFromFormat(config::$date_fechaHora,$aux);
         $agenda =new Agenda($mysqli);
         $agenda->fchInicio			= $fchInicio;
@@ -45,18 +46,92 @@ class ctrlAgenda extends abstractController{
         	$this->responder(false,"No se pudo guardar la agenda",$agenda->md_detalle,null);
         }
 
-        $this->responder(true,"Agenda Creada!");
+        $this->responder(true,"Agenda Creada!",'',$agenda->toArray());
 	}
 
 
 	public function update (){
+		$Usuario=$this->checkAccess('agenda');
 
+		$ipts = $this->getFilterInputs(array(
+			'id'			=> array('type'=>'int', 'min'=>1),
+			'titulo'		=> array('type'=>'string', 'min'=>10, 'max'=>45),
+			'fch'			=> array('type'=>'string'),
+			'timeEvento'	=> array('type'=>'string'),
+			'texto'			=> array('type'=>'string'),
+			'lugar'			=> array('type'=>'string', 'max'=>45),
+			'mapa'			=> array('type'=>'url'),
+			'organizador'	=> array('type'=>'string'),
+			'estado'		=> array('type'=>'boolean')
+		));
+
+		$mysqli=$this->getMysqli();
+
+		$agenda = new Agenda($mysqli, $ipts['id']);
+		$aux    = new Agenda($mysqli);
+
+		if($agenda->get() == false){
+			$this->responder(false, 'El agenda no existe');
+		}
+
+		if($agenda->idUsuario!=$Usuario['id'] && !$this->isAdmin()){
+			$this->responder(false, 'Este agenda fue creado por otro usuario, no tiene permisos para modificarlo');
+		}
+
+		if($aux->getbyNombre($ipts['titulo'])){
+			if($aux->id !== $agenda->id){
+				$this->responder(false, "Ya existe un agenda con el nombre: ".$agenda->nombre);
+			}
+		}
+
+		$auxi=$ipts['fch'].' '.$ipts['timeEvento'];
+        $fchInicio= DateTime::createFromFormat(config::$date_fechaHora,$auxi);
+
+        
+		$agenda->fchInicio 		= $fchInicio;
+		$agenda->titulo			= $ipts['titulo'];
+		$agenda->texto 			= $ipts['texto'];
+		$agenda->lugar 			= $ipts['lugar'];
+		$agenda->mapa 			= $ipts['mapa'];
+		$agenda->organizador 	= $ipts['organizador'];
+		$agenda->estado			= $ipts['estado'];
+
+
+		if($agenda->edit() == false) {
+            $this->responder(false, "No se pudo actualizar el agenda", $agenda->md_detalle);
+        }
+
+        $this->responder(true, "agenda actualizado!", '', $agenda->toArray());
 	}
 
 
 	public function delete (){
+		$Usuario=$this->checkAccess('agenda');
 
+		$ipts = $this->getFilterInputs(array(
+					'_id' => array('type'=>'int', 'min'=>1)
+				));
+
+		$mysqli=$this->getMysqli();
+
+		$agenda = new Agenda($mysqli, $ipts['_id']);
+
+		if($agenda->get() == false){
+			$this->responder(false, 'El agenda no existe');
+		}
+
+		if($agenda->id != $Usuario['id'] && !$this->isAdmin()){
+			$this->responder(false, 'Este agenda fue creado por otro usuario, no tiene permisos para modificarlo');
+		}
+
+		if($agenda->delete() == false) {
+            $this->responder(false, "No se pudo eliminar el agenda", $agenda->md_detalle);
+        }
+
+        $this->responder(true, "Agenda eliminada!", '', array('status'=>'ok'));
 	}
+
+
 
 
 	public function read (){
@@ -93,12 +168,34 @@ class ctrlAgenda extends abstractController{
 
 		if(empty($agendas)) $this->responder(false, 'No hay eventos para mostrar');
 
-        $this->responder(true, 'Evento visible', '', $agendas);
+        $this->responder(true, 'Agendas Obtenidas', '', $agendas);
 	}
 
 
 	public function readAll(){
-		
+		$Usuario=$this->checkAccess('agenda');
+
+		$_limit   = $this->getInputInt('_limit', array('min'=>1, 'required'=>false));
+		$_offset  = $this->getInputInt('_offset', array('min'=>0, 'required'=>false));
+
+		$mysqli = $this->getMysqli();
+
+		$aux = new Agenda($mysqli);
+
+		$lista= $aux->search(false, $_limit, $_offset);
+
+		$agendas=array();
+
+		foreach ($lista as $key => $agenda) {
+			$user= new Usuario($mysqli, $agenda->idUsuario);
+			$user->get();
+			$agendas[$key]=$agenda->toArray();
+			$agendas[$key]['usuario'] = $user->email;
+			$agendas[$key]['fch']=$agendas[$key]['fchInicio']->format('Y-m-d');
+			$agendas[$key]['timeEvento']=$agendas[$key]['fchInicio']->format('H:i');
+		}
+
+		$this->responder(true, 'agendas obtenidas','',$agendas);
 	}
 
 

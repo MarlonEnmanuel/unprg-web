@@ -56,14 +56,16 @@ class ctrlPortada extends abstractController{
 	}
 
 
-	public function readList (){
-		$top = 6; $offset = 0;
-
+    public function readList (){
         $mysqli = $this->getMysqli();
+
+        $_limit   = $this->getInputInt('_limit', array('min'=>1, 'required'=>false));
+        $_offset  = $this->getInputInt('_offset', array('min'=>0, 'required'=>false));
+
         $aux = new Portada($mysqli);
 
-        $lista = $aux->search(true);
-        if(empty($lista)) $this->responder(false, 'No hay portadas para mostrar');
+        $lista = $aux->search(true,$_limit,$_offset);
+        if(empty($lista)) $this->responder(true, 'No hay portadas para mostrar');
         $a=array('[',']');
         $b=array('<','>');
         $port = array();
@@ -71,8 +73,6 @@ class ctrlPortada extends abstractController{
         foreach ($lista as $key => $portada) {
             $port[$key]=$portada->toArray();
             $port[$key]['descripcion']=str_replace($a, $b, $port[$key]['descripcion']);
-            
-            
         }
 
         $this->responder(true, 'Portadas obtenidos', '', $port);
@@ -80,7 +80,25 @@ class ctrlPortada extends abstractController{
 
 
     public function readAll(){
-        
+        $mysqli = $this->getMysqli();
+
+        $_limit   = $this->getInputInt('_limit', array('min'=>1, 'required'=>false));
+        $_offset  = $this->getInputInt('_offset', array('min'=>0, 'required'=>false));
+
+        $aux = new Portada($mysqli);
+
+        $lista = $aux->search(false,$_limit,$_offset);
+        if(empty($lista)) $this->responder(true, 'No hay portadas para mostrar');
+        $a=array('[',']');
+        $b=array('<','>');
+        $port = array();
+
+        foreach ($lista as $key => $portada) {
+            $port[$key]=$portada->toArray();
+            $port[$key]['descripcion']=str_replace($a, $b, $port[$key]['descripcion']);
+        }
+
+        $this->responder(true, 'Portadas obtenidos', '', $port);
     }
     
 

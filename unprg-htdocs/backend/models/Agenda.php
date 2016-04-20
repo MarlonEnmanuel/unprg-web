@@ -54,14 +54,20 @@ class Agenda extends abstractModel{
 		return $this->md_estado;
 	}
 
-	public function search($_onlyActive=true, $_limit=null, $_offset=0){
+	public function search($_onlyActive=false, $_limit=null, $_offset=0){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
 		$sql="SELECT * FROM agenda ";
-        if($_onlyActive) $sql .= "WHERE estado=1 ";
-        $sql .= "ORDER BY fchReg DESC ";
-        if(isset($_limit) && is_int($_limit) && is_int($_offset) ) 
-            $sql .= "LIMIT ".$_limit." OFFSET ".$_offset;
+
+        if($_onlyActive){
+            $sql .= "WHERE estado=1 ";
+        }
+
+        if(is_int($_limit) && $_limit>=1 ){
+            $sql .= " LIMIT ".$_limit;
+            if(is_int($_offset) && $_offset>=1)
+                $sql .= " OFFSET ".$_offset;
+        }
 
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
@@ -169,6 +175,99 @@ class Agenda extends abstractModel{
     	return $this->md_estado;
 	}
 
+	public function edit(){
+		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        if(!isset($this->id)){  //debe tener id para poder editar
+            $this->md_mensaje = "Debe indicar un id para buscar";
+            return $this->md_estado = false;
+        }
+        $sql="UPDATE agenda SET fchInicio=?,titulo=?,texto=?,lugar=?,mapa=?,organizador=?,estado=? WHERE idAgenda=?";
+        $stmt = $this->mysqli->stmt_init();
+        $stmt->prepare($sql);
+        $aux=$this->fchInicio->format(config::$date_sql);
+        $stmt->bind_param('ssssssii',
+            $aux,
+            $this->titulo,
+            $this->texto,
+            $this->lugar,
+            $this->mapa,
+            $this->organizador,
+            $this->estado,
+            $this->id
+            );
+        if($stmt->execute()){
+            $this->md_estado = true;
+            $this->md_mensaje = "Enlace actualizado";
+        }else{
+            $this->md_estado = false;
+            $this->md_mensaje = "Error al actualizar enlace";
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+        }
+        $stmt->close();
+        return $this->md_estado;
+    }
+
+    public function delete(){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        if(!isset($this->id)){  //debe tener id para poder eliminar
+            $this->md_mensaje = "Debe indicar un id para eliminar";
+            return $this->md_estado = false;
+        }
+        
+        $sql = "DELETE FROM agenda WHERE idAgenda=?";
+        $stmt = $this->mysqli->stmt_init();
+        $stmt->prepare($sql);
+        $stmt->bind_param('i', $this->id);
+        if($stmt->execute()){
+            $this->md_estado = true;
+            $this->md_mensaje = "Agenda Eliminada";
+        }else{
+            $this->md_estado = false;
+            $this->md_mensaje = "Error al eliminar agenda";
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+        }
+        $stmt->close();
+        return $this->md_estado;
+    }
+
+
+    public function getbyNombre($nombre){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        if(!isset($nombre)){                  //debe tener id para buscar
+            $this->md_mensaje = "Debe indicar un nombre para buscar";
+            return $this->md_estado = false;
+        }
+
+        $sql="select * from agenda where titulo like ?";
+        $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
+        $stmt->prepare($sql);               //se arma la consulta preparada
+        $stmt->bind_param('s', $nombre);    //se vinculan los parámetros
+        $stmt->execute();                   //se ejecuta la consulta
+        $stmt->bind_result(
+            $this->id,
+            $this->fchInicio,
+            $this->titulo,
+            $this->texto,
+            $this->lugar,
+            $this->mapa,
+            $this->organizador,
+            $this->estado,
+            $this->idUsuario
+            );
+        if($stmt->fetch()){
+            $this->md_estado=true;
+            $this->md_mensaje="Agenda obtenida";
+        }else{
+            $this->md_estado = false;               //estado del procedimiento: fallido
+            $this->md_mensaje = "Error al obtener Agenda";//mensaje del procedimiento
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+        }
+        $stmt->close();
+        return $this->md_estado;
+    }
 	
 }
 ?>

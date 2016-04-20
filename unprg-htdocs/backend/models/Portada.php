@@ -132,10 +132,17 @@ class Portada extends abstractModel{
         return $this->md_estado;
 	}
 
-	public function search($_onlyActive=true){
+	public function search($_onlyActive=false,$limit=null,$offset=null){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
 		$sql = "select idPortada,titulo,descripcion,estado,p.idUsuario,i.ruta from portada p inner join imagen i on p.idImagen=i.idImagen ";
 		if($_onlyActive) $sql.="WHERE estado=1";
+
+        if(is_int($limit) && $limit>=1 ){
+            $sql .= " LIMIT ".$limit;
+            if(is_int($offset) && $offset>=1)
+                $sql .= " OFFSET ".$offset;
+        }
 
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
@@ -167,5 +174,38 @@ class Portada extends abstractModel{
 		$stmt->close();
 		return $list;
 	}
+
+    public function getbyNombre($nombre){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        if(!isset($nombre)){                  //debe tener id para buscar
+            $this->md_mensaje = "Debe indicar un nombre para buscar";
+            return $this->md_estado = false;
+        }
+
+        $sql="select * from portada where titulo like ?";
+        $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
+        $stmt->prepare($sql);               //se arma la consulta preparada
+        $stmt->bind_param('s', $nombre);    //se vinculan los parámetros
+        $stmt->execute();                   //se ejecuta la consulta
+        $stmt->bind_result(
+            $this->idPortada,
+            $this->titulo,
+            $this->descripcion,
+            $this->estado,
+            $this->idUsuario,
+            $this->idImagen
+            );
+        if($stmt->fetch()){
+            $this->md_estado=true;
+            $this->md_mensaje="Portada obtenida";
+        }else{
+            $this->md_estado = false;               //estado del procedimiento: fallido
+            $this->md_mensaje = "Error al obtener Portada";//mensaje del procedimiento
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+        }
+        $stmt->close();
+        return $this->md_estado;
+    }
 }
 ?>
