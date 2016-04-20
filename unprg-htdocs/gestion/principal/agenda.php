@@ -63,8 +63,8 @@
 				<span> ( Inactivo )</span>
 			<% } %>
 		</div>
-		<div class="sgwenl__el__descripcion"><%= fch %></div>
-		<div class="sgwenl__el__descripcion"><%= lugar%></div>
+		<div class="sgwenl__el__descripcion"><%= fchInicio.toLocaleDateString() %></div>
+		<div class="sgwenl__el__descripcion"><%= lugar %></div>
 		
 	</script>
 
@@ -78,8 +78,7 @@
 				<span> ( Inactivo )</span>
 			<% } %>
 		</div>
-		<div class="sgwenl__el__descripcion"><%= fch %></div>
-		
+		<div class="sgwenl__el__descripcion"><%= fchInicio.toLocaleDateString() %></div>
 		<div class="sgwenl__el__usuario">Creado por: <%= usuario %></div>
 	</script>
 
@@ -89,40 +88,43 @@
 			<div class="bksgw__titulo">Modificar Agenda</div>
 			<form class="bksgw__form" enctype="multipart/form-data">	
 				<div class="bksgw__form__el">
-					<label>Fecha de Agenda</label>
-					<input type="date" name="fch" maxlength="45" value="<%= fch %>" />
+					<label>Titulo del evento</label>
+					<input type="text" name="titulo" maxlength="45" value="<%= titulo %>" />
 				</div>
 				<div class="bksgw__form__el">
-					<label>Hora de Agenda</label>
-					<input type="time" name="timeEvento" maxlength="45" value="<%= timeEvento %>" />
+					<label title="Seleccione la fecha de Realizacion del evento">Fecha del Evento</label>
+					<div class="inputDateTime" name="fchInicio">
+						<input type="number" min="1" max="31" maxlength="2" placeholder="Día" value="<%= fchInicio.getDay() %>" />
+						<span>/</span>
+						<input type="number" min="1" max="12" maxlength="2" placeholder="Mes" value="<%= fchInicio.getMonth() %>"/>
+						<span>/</span>
+						<input type="number" min="2000" maxlength="4" placeholder="Año" value="<%= fchInicio.getFullYear() %>"/>
+						<span></span>
+						<input type="number" min="0" max="23" maxlength="2" placeholder="Hora" value="<%= fchInicio.getHours() %>"/>
+						<span>:</span>
+						<input type="number" min="0" max="59" maxlength="2" placeholder="Minuto" value="<%= fchInicio.getMinutes() %>"/>
+					</div>
+				</div>					
+				<div class="bksgw__form__el">
+					<label title="Donde se realizara el evento">Lugar</label>
+					<input type="text" name="lugar" maxlength="45" value="<%= lugar %>" />
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Breve descripcion del Enlace">Titulo</label>
-					<input type="text" name="titulo" value="<%= titulo %>" />
-				</div>
-				
-				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Lugar</label>
-					<input type="text" name="lugar" value="<%= lugar %>" />
+					<label title="Copiar de google maps el lugar">Mapa</label>
+					<input type="text" name="mapa" value="<%= mapa %>" />
 				</div>
 				<div class="bksgw__form__el--w">
-					<label name="texto">Descripcion</label>
+					<label>Descripcion</label>
 					<textarea name="texto"><%=texto%></textarea>
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Mapa</label>
-					<input type="text" name="mapa" value="<%= mapa %>" />
+					<label title="Persona u ofinica que lo organiza">Organizador</label>
+					<input type="text" name="organizador" maxlength="45" value="<%= organizador %>" />
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Organizador</label>
-					<input type="text" name="organizador" value="<%= organizador %>" />
-				</div>
-				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Agenda Activa</label>
+					<label title="Link a un enlace externo y/o interno">Enlace Activo</label>
 					<input type="checkbox" name="estado" <% if(estado){ %>checked<% } %> />
 				</div>
-
-				
 				<div class="bksgw__form__el--w">
 					<div class="bksgw__form__hr"></div>
 				</div>
@@ -142,35 +144,40 @@
 			<div class="bksgw__titulo pointer">Nueva Agenda</div>
 			<form class="bksgw__form hide" enctype="multipart/form-data">	
 				<div class="bksgw__form__el">
-						<label>Titulo del evento</label>
-						<input type="text" name="titulo" maxlength="45" />
+					<label>Titulo del evento</label>
+					<input type="text" name="titulo" maxlength="45" />
+				</div>
+				<div class="bksgw__form__el">
+					<label title="Seleccione la fecha de Realizacion del evento">Fecha del Evento</label>
+					<div class="inputDateTime" name="fchInicio">
+						<input type="number" min="1" max="31" maxlength="2" placeholder="Día" />
+						<span>/</span>
+						<input type="number" min="1" max="12" maxlength="2" placeholder="Mes"/>
+						<span>/</span>
+						<input type="number" min="2000" maxlength="4" placeholder="Año"/>
+						<span></span>
+						<input type="number" min="0" max="23" maxlength="2" placeholder="Hora" />
+						<span>:</span>
+						<input type="number" min="0" max="59" maxlength="2" placeholder="Minuto"/>
 					</div>
-					
-					<div class="bksgw__form__el">
-						<label title="Seleccione la fecha de Realizacion del evento">Fecha del Evento</label>
-						<input type="date" name="fch" />
-					</div>
-					<div class="bksgw__form__el">
-						<label title="Hora de Inicio del Evento">Hora del Evento</label>
-						<input type="time" name="timeEvento"/>
-					</div>
-					<div class="bksgw__form__el">
-						<label title="Donde se realizara el evento">Lugar</label>
-						<input type="text" name="lugar" maxlength="45"/>
-					</div>
-					<div class="bksgw__form__el--w">
-						<label>Descripcion</label>
-						<textarea name="texto"></textarea>
-					</div>
-					<div class="bksgw__form__el">
-						<label title="Copiar de google maps el lugar">Mapa</label>
-						<input type="text" name="mapa" />
-					</div>
-					<div class="bksgw__form__el">
-						<label title="Persona u ofinica que lo organiza">Organizador</label>
-						<input type="text" name="organizador" maxlength="45"/>
-					</div>
-					<div class="bksgw__form__el">
+				</div>					
+				<div class="bksgw__form__el">
+					<label title="Donde se realizara el evento">Lugar</label>
+					<input type="text" name="lugar" maxlength="45"/>
+				</div>
+				<div class="bksgw__form__el">
+					<label title="Copiar de google maps el lugar">Mapa</label>
+					<input type="text" name="mapa" />
+				</div>
+				<div class="bksgw__form__el--w">
+					<label>Descripcion</label>
+					<textarea name="texto"></textarea>
+				</div>
+				<div class="bksgw__form__el">
+					<label title="Persona u ofinica que lo organiza">Organizador</label>
+					<input type="text" name="organizador" maxlength="45"/>
+				</div>
+				<div class="bksgw__form__el">
 					<label title="Link a un enlace externo y/o interno">Enlace Activo</label>
 					<input type="checkbox" name="estado" checked />
 				</div>

@@ -141,10 +141,13 @@ abstract class abstractController {
 				$val = $this->getInputBoolean($name, $options);
 
 			}else if ($type==='email') {
-				$val = $this->getInputEmail($name);
+				$val = $this->getInputEmail($name, $options);
 
 			}else if ($type==='url') {
-				$val = $this->getInputURL($name);
+				$val = $this->getInputURL($name, $options);
+
+			}else if ($type==='datetime') {
+				$val = $this->getInputDateTime($name, $options);
 
 			}else{
 				return false;
@@ -205,7 +208,7 @@ abstract class abstractController {
 		return $val;
 	}
 
-	public final function getInputEmail($name){
+	public final function getInputEmail($name, $options){
 		$msj = 'Email inválido';
 		$val = filter_input($this->method, $name, FILTER_VALIDATE_EMAIL);
 
@@ -215,13 +218,26 @@ abstract class abstractController {
 		return $val;
 	}
 
-	public final function getInputURL($name){
+	public final function getInputURL($name, $options){
 		$val = filter_input($this->method, $name, FILTER_VALIDATE_URL);
 		$msj = 'URL no válida';
 
 		$required = isset($options['required']) ? $options['required'] : true;
 		if($val===false) $this->responder(false, $msj);
 		if($required && is_null($val)) $this->responder(false, $msj);
+		return $val;
+	}
+
+	public final function getInputDateTime($name, $options){
+		$msj = 'Fecha no válida';
+		$val = filter_input($this->method, $name);
+
+		$required = isset($options['required']) ? $options['required'] : true;
+		if($required && is_null($val)) $this->responder(false, $msj);
+
+		$format = isset($options['format']) ? $options['format'] : config::$date_sql;
+		$val = DateTime::createFromFormat($format, $val);
+		if($val==false) $this->responder(false, $msj);
 		return $val;
 	}
 

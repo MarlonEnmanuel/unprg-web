@@ -150,6 +150,12 @@ sgw.Collections.Agendas = Backbone.Collection.extend({
 	compareBy : 'id',
 	comparator : function(model){
 		return model.get(this.get(this.compareBy));
+	},
+	parse : function(data){
+		_(data).each(function(el, index, list){
+			el.fchInicio = new Date(el.fchInicio*1000);
+		});
+		return data;
 	}
 });
 
