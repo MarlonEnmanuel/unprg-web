@@ -106,6 +106,8 @@ class Portada extends abstractModel{
             $this->md_mensaje = "Error al actualizar portada";
             if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
 		}
+         $stmt->close();
+        return $this->md_estado;
 	}
 
 	public function delete(){
@@ -136,7 +138,9 @@ class Portada extends abstractModel{
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
 		$sql = "select idPortada,titulo,descripcion,estado,p.idUsuario,i.ruta from portada p inner join imagen i on p.idImagen=i.idImagen ";
-		if($_onlyActive) $sql.="WHERE estado=1";
+		if($_onlyActive){
+            $sql .= "WHERE estado=1 ";
+        }
 
         if(is_int($limit) && $limit>=1 ){
             $sql .= " LIMIT ".$limit;
