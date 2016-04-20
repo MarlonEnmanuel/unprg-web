@@ -39,7 +39,9 @@ class ctrlAgenda extends abstractController{
         	$this->responder(false,"No se pudo guardar la agenda",$agenda->md_detalle,null);
         }
 
-        $this->responder(true,"Agenda Creada!",'',$agenda->toArray());
+        $agenda->fchInicio = $agenda->fchInicio->format('U');
+
+        $this->responder(true, "Agenda Creada!", '', $agenda->toArray());
 	}
 
 
@@ -49,8 +51,7 @@ class ctrlAgenda extends abstractController{
 		$ipts = $this->getFilterInputs(array(
 			'id'			=> array('type'=>'int', 'min'=>1),
 			'titulo'		=> array('type'=>'string', 'min'=>10, 'max'=>45),
-			'fch'			=> array('type'=>'string'),
-			'timeEvento'	=> array('type'=>'string'),
+			'fchInicio'		=> array('type'=>'datetime'),
 			'texto'			=> array('type'=>'string'),
 			'lugar'			=> array('type'=>'string', 'max'=>45),
 			'mapa'			=> array('type'=>'url'),
@@ -76,12 +77,8 @@ class ctrlAgenda extends abstractController{
 				$this->responder(false, "Ya existe un agenda con el nombre: ".$agenda->nombre);
 			}
 		}
-
-		$auxi=$ipts['fch'].' '.$ipts['timeEvento'];
-        $fchInicio= DateTime::createFromFormat(config::$date_fechaHora,$auxi);
-
         
-		$agenda->fchInicio 		= $fchInicio;
+		$agenda->fchInicio 		= $ipts['fchInicio'];
 		$agenda->titulo			= $ipts['titulo'];
 		$agenda->texto 			= $ipts['texto'];
 		$agenda->lugar 			= $ipts['lugar'];
@@ -93,6 +90,8 @@ class ctrlAgenda extends abstractController{
 		if($agenda->edit() == false) {
             $this->responder(false, "No se pudo actualizar el agenda", $agenda->md_detalle);
         }
+
+        $agenda->fchInicio = $agenda->fchInicio->format('U');
 
         $this->responder(true, "agenda actualizado!", '', $agenda->toArray());
 	}

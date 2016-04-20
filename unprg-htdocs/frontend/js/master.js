@@ -20,7 +20,21 @@ jQuery.fn.extend({
 				data[el.attr('name')] = el.is(':checked');
 			}else if(el.hasClass('inputDateTime')){
 				var f = el.find('input');
-				data[el.attr('name')] = new Date($(f[2]).val(), $(f[1]).val(), $(f[0]).val(), $(f[3]).val(), $(f[4]).val(), 0, 0);
+				
+				var dia  = $(f[0]).val();
+				var mes  = $(f[1]).val();
+				var año  = $(f[2]).val();
+				var hora = $(f[3]).val();
+				var min  = $(f[4]).val();
+
+				debugger;
+
+				if(mes.length==1) mes = '0'+mes;
+				if(dia.length==1) dia = '0'+dia;
+				if(hora.length==1) hora = '0'+hora;
+				if(min.length==1) min = '0'+min;
+
+				data[el.attr('name')] = año+'-'+mes+'-'+dia+' '+hora+':'+min+':00';
 			}else{
 				data[el.attr('name')] = el.val();
 			}
@@ -28,21 +42,6 @@ jQuery.fn.extend({
 		return data;
 	}
 });
-
-Date.prototype.toString = function(){
-	var año = this.getFullYear().toString();
-	var mes = this.getMonth().toString();
-	if(mes.length==1) mes = '0'+mes;
-	var dia = this.getDay().toString();
-	if(dia.length==1) dia = '0'+dia;
-	var hora = this.getHours().toString();
-	if(hora.length==1) hora = '0'+hora;
-	var min = this.getMinutes().toString();
-	if(min.length==1) min = '0'+min;
-	var seg = this.getSeconds().toString();
-	if(seg.length==1) seg = '0'+seg;
-	return año+'-'+mes+'-'+dia+' '+hora+':'+min+':'+seg;
-};
 
 Backbone.sync = function(method, model, options) {
     var params = {type: 'POST', dataType: 'json'};

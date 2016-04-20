@@ -141,6 +141,10 @@ sgw.Models.Agenda = Backbone.Model.extend({
 	url : '/backend/controllers/ctrlAgenda.php',
 	toString : function(){
 		return this.get('titulo');
+	},
+	parse : function(data){
+		data.fchInicio = new Date(data.fchInicio*1000);
+		return data;
 	}
 });
 
