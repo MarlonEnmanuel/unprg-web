@@ -94,16 +94,15 @@ class Aviso extends abstractModel{
             $this->md_mensaje = "Debe indicar un id para buscar";
             return $this->md_estado = false;
         }
-        $sql = "UPDATE aviso SET titulo=?, texto=?, destacado=?, emergente=?, link=?, estado=? WHERE idAviso=?";
+        $sql = "UPDATE aviso SET titulo=?, texto=?, destacado=?, emergente=?, estado=? WHERE idAviso=?";
         $stmt = $this->mysqli->stmt_init();
         $stmt->prepare($sql);
 
-        $stmt->bind_param('ssiisii',
+        $stmt->bind_param('ssiiii',
             $this->titulo,
             $this->texto,
             $this->destacado,
             $this->emergente,
-            $this->link,
             $this->estado,
             $this->id
             );
@@ -228,6 +227,41 @@ class Aviso extends abstractModel{
         return $this->md_estado;
     }
 
+    public function getbyNombre($nombre){
+        if($this->checkMysqli()===false) return false; //verificar estado de mysqli
+
+        if(!isset($nombre)){                  //debe tener id para buscar
+            $this->md_mensaje = "Debe indicar un nombre para buscar";
+            return $this->md_estado = false;
+        }
+
+        $sql="select * from aviso where titulo like ?";
+        $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
+        $stmt->prepare($sql);               //se arma la consulta preparada
+        $stmt->bind_param('s', $nombre);    //se vinculan los parámetros
+        $stmt->execute();                   //se ejecuta la consulta
+        $stmt->bind_result(
+            $this->idAviso,
+            $this->fchReg,
+            $this->titulo,
+            $this->texto,
+            $this->destacado,
+            $this->emergente,
+            $this->link,
+            $this->estado,
+            $this->idUsuario
+            );
+        if($stmt->fetch()){
+            $this->md_estado=true;
+            $this->md_mensaje="Aviso obtenido";
+        }else{
+            $this->md_estado = false;               //estado del procedimiento: fallido
+            $this->md_mensaje = "Error al obtener Aviso";//mensaje del procedimiento
+            if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
+        }
+        $stmt->close();
+        return $this->md_estado;
+    }
 
 }
 

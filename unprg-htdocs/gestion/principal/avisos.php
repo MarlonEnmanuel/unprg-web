@@ -24,7 +24,7 @@
 	<!-- Importación de Estilos -->
 		<?= config::getStyles() ?>
 		<link rel="stylesheet" href="/frontend/css/gestion/master.css">
-
+		<link rel="stylesheet" href="/frontend/css/gestion/enlaces.css">
 	<!-- Importación de Scripts -->
 		<?= config::getScripts() ?>
 		
@@ -33,25 +33,106 @@
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
-	
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/gestion/status.php'; ?>
+
 	<section class="bksgw">
-		<div class="block bksgw--first sgwAvi	">
-			<div class="block__wraper--slim">
-				
-				<div class="bksgw__titulo">Mis imágenes</div>
-				
+		
 
-			</div>
-			<div class="block__clean"></div>
+	</section>
+
+	<script type="text/template" data-tag="div" data-class="block sgwenl" id="template_avisos">
+		<div class="block__wraper--slim">
+			<div class="bksgw__titulo">Mis Avisos</div>
+			<div class="sgwenl__cont"></div>
+			<br><br><br>
+			<div class="bksgw__titulo pointer">Avisos de otros usuarios</div>
+			<div class="sgwenl__cont hide"></div>
 		</div>
+	</script>
 
-		<div class="block bksgw sgwAvi">
-			<div class="block__wraper--slim">
+	<script type="text/template" data-tag="div" data-class="sgwenl__el cc--gris1 bgc--gris5" id="template_aviso">
+		<div class="sgwenl__el__buttons">
+			<span class="sgwenl__el__buttons__edit icon-pencil2" title="Modificar"></span>
+			<span class="sgwenl__el__buttons__delete icon-cross" title="Eliminar"></span>
+		</div>
+		<div class="sgwenl__el__nombre ff--b cc--azul2">
+			<%= titulo %> 
+			<% if(estado){ %>
+				<span> ( Activo )</span>
+			<% }else{ %>
+				<span> ( Inactivo )</span>
+			<% } %>
+		</div>
+		<div class="sgwenl__el__descripcion"><%= texto %></div>
+		<a href="<%= link %>" target="_black" class="sgwenl__el__link cc--azul3"><%= link %></a>
 
-				<div class="bksgw__titulo">Nuevo aviso</div>
+	</script>
 
-				<form class="bksgw__form formAviso" enctype="multipart/form-data">
-					<div class="bksgw__form__el">
+
+	<script type="text/template" data-tag="div" data-class="sgwenl__el cc--gris1 bgc--gris5" id="template_aviso_otro">
+		<div class="sgwenl__el__nombre ff--b cc--azul2">
+			<%= titulo %> 
+			<% if(estado){ %>
+				<span> ( Activo )</span>
+			<% }else{ %>
+				<span> ( Inactivo )</span>
+			<% } %>
+		</div>
+		<div class="sgwenl__el__descripcion"><%= texto %></div>
+		<a href="<%= link %>" target="_black" class="sgwenl__el__link cc--azul3"><%= link %></a>
+		<div class="sgwenl__el__usuario">Creado por: <%= usuario %></div>
+	</script>
+
+
+	<script type="text/template" data-tag="div" data-class="block bksgw__editar hide" id="template_editar">
+		<div class="block__wraper--slim">
+			<div class="bksgw__titulo">Modificar Aviso</div>
+			<form class="bksgw__form" enctype="multipart/form-data">	
+				<div class="bksgw__form__el">
+					<label>Titulo del Aviso</label>
+					<input type="text" name="titulo"  value="<%= titulo %>" />
+				</div>
+				<div class="bksgw__form__el">
+					<label title="Breve descripcion del Enlace">Descripcion del Aviso</label>
+					<input type="text" name="descripcion" value="<%= texto %>" />
+				</div>
+				<div class="bksgw__form__el">
+					<label title="Link a un enlace externo y/o interno">Link Externo</label>
+					<input type="text" name="link" value="<%= link %>" disabled />
+				</div>
+				<div class="bksgw__form__el">
+					<label title="Link a un enlace externo y/o interno">Mostrar al Abrir</label>
+
+					<input type="checkbox" name="emergente" <% if(emergente){ %>checked<% } %> />
+				</div>
+				<div class="bksgw__form__el">
+					<label title="Link a un enlace externo y/o interno">Aviso Destacado</label>
+					<input type="checkbox" name="destacado" <% if(destacado){ %>checked<% } %> />
+				</div>
+				<div class="bksgw__form__el">
+					<label title="Link a un enlace externo y/o interno">Enlace Activo</label>
+					<input type="checkbox" name="estado" <% if(estado){ %>checked<% } %> />
+				</div>
+
+				<div class="bksgw__form__el--w">
+					<div class="bksgw__form__hr"></div>
+				</div>
+				<div class="bksgw__form__el">
+					<input type="submit" class="btn--azul" value="Modificar Enlace">
+				</div>
+				<div class="bksgw__form__el">
+					<input type="reset" class="btn--amarillo" value="Cancelar">
+				</div>
+			</form>
+		</div>
+	</script>
+
+
+	<script type="text/template" data-tag="div" data-class="block bksgw__nuevo bgc--gris5" id="template_nuevo">
+		<div class="block__wraper--slim">
+			<div class="bksgw__titulo pointer">Nuevo Aviso</div>
+			<form class="bksgw__form hide" enctype="multipart/form-data">	
+				<div class="bksgw__form__el">
 						<label title="Titulo del aviso que aparece en el panel de avisos">Titulo del aviso</label>
 						<input type="text" name="titulo" maxlength="45">
 					</div>
@@ -94,70 +175,18 @@
 						</label>
 						<input type="checkbox" name="estado" checked>
 					</div>
-					
-					<div class="bksgw__form__el--w">
-						<div class="bksgw__form__hr"></div>
-					</div>
-
-					<div class="bksgw__form__el">
-						<input type="submit" class="btn--azul" value="Crear Aviso">
-					</div>
-					<div class="bksgw__form__el">
-						<div class="bksgw__form__status">Estado de la operación</div>
-					</div>
-
-				</form>
-
-			</div>
+				<div class="bksgw__form__el--w">
+					<div class="bksgw__form__hr"></div>
+				</div>
+				<div class="bksgw__form__el">
+					<input type="submit" class="btn--azul" value="Crear Enlace">
+				</div>
+			</form>
 		</div>
-
-	</section>
-
-	<script type="text/javascript">
-					
-		$('.formAviso').submit(function(event) {
-			event.preventDefault();
-
-			var form = $(this);
-			var info = form.find('.bksgw__form__status');
-
-			
-			form.find('input[type=submit]').attr('disabled','disabled');
-
-			var data = new FormData(form[0]);
-			data.append('_accion', 'create');
-			
-
-			console.log(data);
-			$.ajax({
-				url: "/backend/controllers/ctrlAviso.php",
-				type: 'post',
-				dataType: 'json',
-				data: data,
-				cache: false,
-	            contentType: false,
-		        processData: false
-			})
-			.done(function(rpta) {
-				info.html(rpta.mensaje);
-				if(rpta.detalle=='redirect'){
-					window.setTimeout(function(){
-						window.location = rpta.data;
-					}, 600);
-				}
-				if(!rpta.estado){
-					console.log(rpta);
-					form.find('input[type=submit]').removeAttr('disabled');
-				}
-			})
-			.fail(function(rpta) {
-				console.log(rpta);
-				info.html('Error de conección');
-				form.find('input[type=submit]').removeAttr('disabled');
-			});
-			
-		});
 	</script>
+
+	<script type="text/javascript" src="/frontend/js/gestion/aviso.js"></script>
+
 
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>
 </body>

@@ -4,6 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/backend/controllers/abstractController.
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Aviso.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Imagen.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Documento.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/Usuario.php';
 
 class ctrlAviso extends abstractController {
 
@@ -68,6 +69,8 @@ class ctrlAviso extends abstractController {
 
         //Creando el aviso
         $aviso = new Aviso($mysqli);
+        $aux= new Aviso($mysqli);
+
         $aviso->titulo      = $ipts['titulo'];
         $aviso->texto       = $ipts['descripcion'];
         $aviso->destacado   = $ipts['destacado'];
@@ -75,6 +78,10 @@ class ctrlAviso extends abstractController {
         $aviso->estado      = $ipts['estado'];
         $aviso->link        = $link;
         $aviso->idUsuario   = $Usuario['id'];
+
+        if($aux->getbyNombre($aviso->titulo)){
+            $this->responder(false,"Ya existe un aviso con el nombre: ".$aviso->titulo);
+        }
 
         if(!$aviso->set()) { //Insertando el aviso
             $this->responder(false, "No se pudo guardar el aviso", $aviso->md_detalle, null, $mysqli);
@@ -88,34 +95,51 @@ class ctrlAviso extends abstractController {
         $Usuario = $this->checkAccess('aviso');
 
         $ipts = $this->getFilterInputs(array(
-                    'id'            => array('type'=>'init'),
-                    'titulo'        => array('type'=>'string', 'min'=>10, 'max'=>45),
+                    'id'            => array('type'=>'int'),
+                    'titulo'        => array('type'=>'string'),
                     'descripcion'   => array('type'=>'string'),
                     'destacado'     => array('type'=>'boolean'),
                     'emergente'     => array('type'=>'boolean'),
-                    'estado'        => array('type'=>'boolean'),
-                    'enlace'        => array('type'=>'string')
+                    'estado'        => array('type'=>'boolean')
 
                 ));
     
         $mysqli = $this->getMysqli();
-
-        $aviso = new Aviso($mysqli);
         
+
+        $aviso = new Aviso($mysqli, $ipts['id']);
+        $aux    = new Aviso($mysqli);
+
+        if($aviso->get() == false){
+            $this->responder(false, 'El aviso no existe');
+        }
+
+        if($aviso->idUsuario!=$Usuario['id'] && !$this->isAdmin()){
+            $this->responder(false, 'Este aviso fue creado por otro usuario, no tiene permisos para modificarlo');
+        }
+
+        if($aux->getbyNombre($ipts['titulo'])){
+            if($aux->idAviso !== $aviso->idAviso){
+                $this->responder(false, "Ya existe un aviso con el titulo: ".$aviso->titulo);
+            }
+        }
+
+
         $aviso->titulo      = $ipts['titulo'];
         $aviso->texto       = $ipts['descripcion'];
         $aviso->destacado   = $ipts['destacado'];
         $aviso->emergente   = $ipts['emergente'];
         $aviso->estado      = $ipts['estado'];
-        $aviso->link        = $ipts['enlace'];
         $aviso->idUsuario   = $Usuario['id'];
         $aviso->id          = $ipts['id'];
+
+        
 
         if(!$aviso->edit()) { //Insertando el aviso
             $this->responder(false, "No se pudo editar el aviso", $aviso->md_detalle, null, $mysqli);
         }
 
-        $this->responder(true, "Aviso editado!");
+        $this->responder(true, "Aviso editado!",'',$aviso->toArray());
 
     }
 
@@ -124,22 +148,35 @@ class ctrlAviso extends abstractController {
         $Usuario = $this->checkAccess('aviso');
 
         $ipts = $this->getFilterInputs(array(
-                    '_id' => array('type'=>'init'),
+                    '_id' => array('type'=>'int','min'=>1),
                 ));
 
+        
+
         $mysqli = $this->getMysqli();
-        $aviso = new Aviso($mysqli);
+        $aviso = new Aviso($mysqli, $ipts['_id'] );
+
+        
+
+        if($aviso->get() == false){
+            $this->responder(false, 'El aviso no existe');
+        }
+
+        if($aviso->id != $Usuario['id'] && !$this->isAdmin()){
+            $this->responder(false, 'Este aviso fue creado por otro usuario, no tiene permisos para modificarlo');
+        }
+
 
         if(!$aviso->delete()){
             $this->responder(false, "No se pudo eliminar el aviso", $aviso->md_detalle, null, $mysqli);
         }
 
-        $this->responder(true, "Aviso eliminado!");
+        $this->responder(true, "Aviso eliminado!",'',array('status'=>'ok'));
     }
 
 
     public function read(){
-        $this->responder(false, 'Método no soportado');
+        
     }
 
 
@@ -164,7 +201,26 @@ class ctrlAviso extends abstractController {
 
 
     public function readAll(){
-        
+        $Usuario=$this->checkAccess('aviso');
+
+        $_limit   = $this->getInputInt('_limit', array('min'=>1, 'required'=>false));
+        $_offset  = $this->getInputInt('_offset', array('min'=>0, 'required'=>false));
+
+        $mysqli = $this->getMysqli();
+
+        $aux = new Aviso($mysqli);
+
+        $lista = $aux->search(false, $_limit, $_offset);
+
+        $avisos = array();
+        foreach ($lista as $key => $aviso) {
+            $user = new Usuario($mysqli, $aviso->idUsuario);
+            $user->get();
+            $avisos[$key] = $aviso->toArray();
+            $avisos[$key]['usuario'] = $user->email;
+        }
+
+        $this->responder(true, 'avisos obtenidos', '', $avisos);
     }
 
 }
