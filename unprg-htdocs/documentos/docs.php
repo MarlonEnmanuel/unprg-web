@@ -39,7 +39,7 @@
 			
 			<div class="bkdocs__group">
 				<div class="bkdocs__group__title cc--azul3 ff--22 ff--special">Documentos de Abril 2016</div>
-				<div class="bkdocs__group__cont ff--0">
+				<div class="bkdocs__group__cont">
 
 				</div>
 			</div>
@@ -49,11 +49,9 @@
 	</section>
 	
 	<script type="text/template" data-tag="article" data-class="bkdocs__el" id="template_documento">
-		<div class="bkdocs__el__nombre cc--gris2 ff--b">
-			<%= nombre %> 
-			<span class="bkdocs__el__fecha cc--azul2">@<%= fchReg.toLocaleDateString() %></span>
-		</div>
-		<div class="bkdocs__el__tipo cc--gris3 ff--b"><%= tipo %></div>
+		<div class="bkdocs__el__nombre"><%= nombre %></div>
+		<div class="bkdocs__el__fecha"><%= fchReg.toLocaleDateString() %></div>
+		<div class="bkdocs__el__tipo"><%= tipo %></div>
 	</script>
 
 	<script type="text/javascript">
