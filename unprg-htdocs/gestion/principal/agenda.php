@@ -94,7 +94,7 @@
 				<div class="bksgw__form__el">
 					<label title="Seleccione la fecha de Realizacion del evento">Fecha del Evento</label>
 					<div class="inputDateTime" name="fchInicio">
-						<input type="number" min="1" max="31" maxlength="2" placeholder="Día" value="<%= fchInicio.getDay() %>" />
+						<input type="number" min="1" max="31" maxlength="2" placeholder="Día" value="<%= fchInicio.getDate() %>" />
 						<span>/</span>
 						<input type="number" min="1" max="12" maxlength="2" placeholder="Mes" value="<%= fchInicio.getMonth() %>"/>
 						<span>/</span>

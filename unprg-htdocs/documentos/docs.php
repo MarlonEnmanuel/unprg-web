@@ -37,25 +37,18 @@
 	<section class="block bkdocs">
 		<div class="block__wraper bkdocs__wraper">
 			
-			<div class="bkdocs__group">
-				<div class="bkdocs__group__title cc--azul3 ff--22 ff--special">Documentos de Abril 2016</div>
-				<div class="bkdocs__group__cont">
-
-				</div>
-			</div>
-
-
 		</div>
 	</section>
+
+	<script type="text/template" data-tag="div" data-class="bkdocs__group" id="template_grupo">
+		<div class="bkdocs__group__title cc--azul3 ff--22 ff--special">Documentos de <%= mes %> <%= año %></div>
+		<div class="bkdocs__group__cont"></div>
+	</script>
 	
 	<script type="text/template" data-tag="article" data-class="bkdocs__el" id="template_documento">
-		<div class="bkdocs__el__nombre"><%= nombre %></div>
-		<div class="bkdocs__el__fecha"><%= fchReg.toLocaleDateString() %></div>
+		<div class="bkdocs__el__nombre"><a href="<%= ruta %>"><%= nombre %></a></div>
+		<div class="bkdocs__el__fecha"><%= fchReg.toDateString() %></div>
 		<div class="bkdocs__el__tipo"><%= tipo %></div>
-	</script>
-
-	<script type="text/javascript">
-		
 	</script>
 	
 	<script type="text/javascript" src="/frontend/js/documentos.js"></script>

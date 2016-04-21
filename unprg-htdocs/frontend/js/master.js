@@ -43,6 +43,10 @@ jQuery.fn.extend({
 	}
 });
 
+Date.prototype.toDateString = function(){
+	return this.getDate()+'/'+this.getMonth()+'/'+this.getFullYear();
+};
+
 Backbone.sync = function(method, model, options) {
     var params = {type: 'POST', dataType: 'json'};
 
