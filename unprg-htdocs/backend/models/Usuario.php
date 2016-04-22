@@ -204,9 +204,9 @@ class Usuario extends abstractModel{
 
         if($this->checkMysqli()===false) return false;
 
-    	$sql="SELECT * FROM usuario ";
+    	$sql="SELECT * FROM usuario where email NOT LIKE 'admin@admin.com' ";
     	if($active){
-    		$sql .="WHERE estado =1";
+    		$sql .="and estado =1";
     	}
 
     	if(is_int($limit) && $limit>=1 ){
@@ -286,6 +286,9 @@ class Usuario extends abstractModel{
         $stmt->close();
         return $this->md_estado;
     }
+
+
+    
 
 }
 

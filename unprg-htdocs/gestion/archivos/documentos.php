@@ -36,12 +36,6 @@
 	
 	<section class="bksgw">
 
-		<div class="block">
-			<div class="block__wraper--slim">
-				<div class="bksgw__titulo">Mis Documentos</div>
-			</div>
-		</div>
-
 		<div class="block bksgw sgwDoc">
 			<div class="block__wraper--slim">
 

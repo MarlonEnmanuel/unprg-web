@@ -95,35 +95,35 @@
 
 				<div class="bksgw__form__el">
 					<label>Acceso a Avisos</label>
-					<input type="checkbox" name="p-aviso">
+					<input type="checkbox" name="p-aviso" <% if(permisos.indexOf('aviso')!=-1){ %>checked<%}%>>
 				</div>
 				<div class="bksgw__form__el">
 					<label>Acceso a Noticias</label>
-					<input type="checkbox" name="p-noticia">
+					<input type="checkbox" name="p-noticia" <% if(permisos.indexOf('noticia')!=-1){ %>checked<%}%>>
 				</div>
 				<div class="bksgw__form__el">
 					<label>Acceso a Agenda</label>
-					<input type="checkbox" name="p-agenda">
+					<input type="checkbox" name="p-agenda" <% if(permisos.indexOf('agenda')!=-1){ %>checked<%}%>>
 				</div>
 				<div class="bksgw__form__el">
 					<label>Acceso a Imagenes</label>
-					<input type="checkbox" name="p-imagen">
+					<input type="checkbox" name="p-imagen" <% if(permisos.indexOf('imagen')!=-1){ %>checked<%}%>>
 				</div>
 				<div class="bksgw__form__el">
 					<label>Acceso a Documentos</label>
-					<input type="checkbox" name="p-documento">
+					<input type="checkbox" name="p-documento" <% if(permisos.indexOf('documento')!=-1){ %>checked<%}%>>
 				</div>
 				<div class="bksgw__form__el">
 					<label>Acceso a Enlace</label>
-					<input type="checkbox" name="p-enlace">
+					<input type="checkbox" name="p-enlace" <% if(permisos.indexOf('enlace')!=-1){ %>checked<%}%>>
 				</div>
 				<div class="bksgw__form__el">
 					<label>Acceso a Portada</label>
-					<input type="checkbox" name="p-portada">
+					<input type="checkbox" name="p-portada" <% if(permisos.indexOf('portada')!=-1){ %>checked<%}%>>
 				</div>
 				<div class="bksgw__form__el">
 					<label>Acceso a pagina</label>
-					<input type="checkbox" name="p-pagina">
+					<input type="checkbox" name="p-pagina" <% if(permisos.indexOf('pagina')!=-1){ %>checked<%}%>>
 				</div>
 				
 

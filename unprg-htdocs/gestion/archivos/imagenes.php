@@ -37,12 +37,6 @@
 	
 	<section class="bksgw">
 
-		<div class="block">
-			<div class="block__wraper--slim">
-				<div class="bksgw__titulo">Mis imágenes</div>
-			</div>
-		</div>
-
 		<div class="block bksgw sgwImg">
 			<div class="block__wraper--slim">
 				<div class="bksgw__titulo">Nueva Imagen</div>

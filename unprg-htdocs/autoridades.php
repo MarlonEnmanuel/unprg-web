@@ -182,7 +182,7 @@
 					<p class="persona-cargo">Jefe de la Oficina General de Biblioteca</p>
 				</div>
 				<div class="persona">
-					<p class="persona-nombre">Ing. Luis Alberto  Llontop Cumpa</p>
+					<p class="persona-nombre">Ing. Robert Puican Gutierres</p>
 					<p class="persona-cargo">Jefe de la Oficina General de Sistemas Informáticos Administrativos</p>
 				</div>
 				<div class="persona">
