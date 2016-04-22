@@ -67,6 +67,11 @@ class ctrlUsuario extends abstractController {
         $user->estado = $ipts['estado'];
         $user->permisos = $ipts['permisos'];
 
+        $aux=new Usuario($mysqli);
+        if($aux->getbyNombre($user->email)){
+            $this->responder(false, "Ya existe un user con el email: ".$user->email);
+        }
+
         if($user->set()){
             $this->responder(true, 'Usuario creado! los datos de acceso son:<br>Email: '.$user->email.'<br>Contraseña: '.$randPass.'<br>Sírvase notificar al usuario');
         }else{
@@ -76,12 +81,93 @@ class ctrlUsuario extends abstractController {
 
 
     public function update (){
+        $Usuario=$this->checkAccess('admin');
+        $ipts = $this->getFilterInputs(array(
+            'id'        => array('type'=>'int', 'min'=>1),
+            'email'     => array('type'=>'email'),
+            'nombres'   => array('type'=>'string', 'min'=>4, 'max'=>45),
+            'apellidos' => array('type'=>'string', 'min'=>4, 'max'=>45),
+            'oficina'   => array('type'=>'string', 'min'=>4, 'max'=>45),
+            'estado'    => array('type'=>'boolean'),
+            'p-aviso'   => array('type'=>'boolean'),
+            'p-noticia' => array('type'=>'boolean'),
+            'p-agenda'  => array('type'=>'boolean'),
+            'p-imagen'  => array('type'=>'boolean'),
+            'p-documento'  => array('type'=>'boolean'),
+            'p-enlace'  => array('type'=>'boolean'),
+            'p-portada'  => array('type'=>'boolean'),
+            'p-pagina'  => array('type'=>'boolean')
 
+        ));
+
+        $ipts['permisos'] = array();
+        if($ipts['p-aviso']) array_push($ipts['permisos'], 'aviso');
+        if($ipts['p-noticia']) array_push($ipts['permisos'], 'noticia');
+        if($ipts['p-agenda']) array_push($ipts['permisos'], 'agenda');
+        if($ipts['p-imagen']) array_push($ipts['permisos'], 'imagen');
+        if($ipts['p-documento']) array_push($ipts['permisos'], 'documento');
+        if($ipts['p-enlace']) array_push($ipts['permisos'], 'enlace');
+        if($ipts['p-portada']) array_push($ipts['permisos'], 'portada');
+        if($ipts['p-pagina']) array_push($ipts['permisos'], 'pagina');
+        if( empty($ipts['permisos']) ){
+            $this->responder(false, 'Debe elegir al menos un acceso');
+        }
+        $ipts['permisos'] = implode(',', $ipts['permisos']);
+
+        $mysqli = $this->getMysqli();
+
+        $usuario=new Usuario($mysqli, $ipts['id']);
+        $aux=new Usuario($mysqli);
+
+        if($usuario->get()==false){
+            $this->responder(false,'El Usuario no existe');
+        }
+
+        if($aux->getbyNombre($ipts['email'])){
+            if($aux->id!=$usuario->id){
+                $this->responder(false,"Ya existe un usuario con este correo: ".$usuario->email);
+
+            }
+        }
+
+        $usuario->email = $ipts['email'];
+        
+        $usuario->nombres = $ipts['nombres'];
+        $usuario->apellidos = $ipts['apellidos'];
+        $usuario->oficina = $ipts['oficina'];
+        $usuario->estado = $ipts['estado'];
+        $usuario->permisos = $ipts['permisos'];
+
+        if($usuario->edit()==false){
+            $this->responder(false,"No se pudo actualizar el usuario",$usuario->md_detalle);
+        }
+
+        $this->responder(true,"Usuario actualizado!","",$usuario->toArray());
     }
 
 
     public function delete (){
+        $Usuario=$this->checkAccess('admin');
 
+        $ipts = $this->getFilterInputs(array(
+                    '_id' => array('type'=>'int', 'min'=>1)
+                ));
+
+        $mysqli=$this->getMysqli();
+
+        $usuario = new Usuario($mysqli, $ipts['_id']);
+
+        if($usuario->get() == false){
+            $this->responder(false, 'El usuario no existe');
+        }
+
+        
+
+        if($usuario->reset() == false) {
+            $this->responder(false, "No se pudo resetear el usuario", $usuario->md_detalle);
+        }
+
+        $this->responder(true, "usuario reseteado!", '', array('status'=>'ok'));
     }
 
 
@@ -108,12 +194,49 @@ class ctrlUsuario extends abstractController {
 
 
     public function readList (){
+        $mysqli = $this->getMysqli();
 
+        $_limit   = $this->getInputInt('_limit', array('min'=>1, 'required'=>false));
+        $_offset  = $this->getInputInt('_offset', array('min'=>0, 'required'=>false));
+
+        $aux = new Usuario($mysqli);
+
+        $lista=$aux->search(true,$_limit,$_offset);
+
+        if(empty($lista)){
+            $this->responder(false, 'No hay usuarios para mostrar');
+        }
+
+        $usuarios = array();
+        foreach ($lista as $key => $user) {
+            $usuarios[$key] = $user->toArray();
+        }
+
+        $this->responder(true, 'usuarios obtenidos', '', $usuarios);
     }
 
 
     public function readAll(){
-        
+        $Usuario=$this->checkAccess('admin');
+        $mysqli = $this->getMysqli();
+
+        $_limit   = $this->getInputInt('_limit', array('min'=>1, 'required'=>false));
+        $_offset  = $this->getInputInt('_offset', array('min'=>0, 'required'=>false));
+
+        $aux = new Usuario($mysqli);
+
+        $lista=$aux->search(false,$_limit,$_offset);
+
+        if(empty($lista)){
+            $this->responder(false, 'No hay usuarios para mostrar');
+        }
+
+        $usuarios = array();
+        foreach ($lista as $key => $user) {
+            $usuarios[$key] = $user->toArray();
+        }
+
+        $this->responder(true, 'usuarios obtenidos', '', $usuarios);
     }
 
 

@@ -72,6 +72,36 @@
 
 			</div>
 		</div>
+
+		<div class="block bksgw--first sgwUser">
+			<div class="block__wraper--slim">
+
+				<div class="bksgw__titulo">Cambio de Contraseña</div>
+
+				<form class="bksgw__form formUser" enctype="multipart/form-data">
+					<div class="bksgw__form__el">
+						<label>Reseteo</label>
+						<div class="bksgw__form__info" name="reset"></div>
+					</div>
+					<div class="bksgw__form__el">
+						<label>Contraseña Actual</label>
+						<input type="password" name="passAct" >
+					</div>
+					<div class="bksgw__form__el">
+						<label>Contraseña Nueva</label>
+						<input type="password" name="passNew">
+					</div>
+					<div class="bksgw__form__el">
+						<label>Repetir Contraseña</label>
+						<input type="password" name="passNew2">
+					</div>
+					<div class="bksgw__form__el">
+					<input type="submit" class="btn--azul" value="Cambiar Contraseña">
+				</div>
+				</form>
+
+			</div>
+		</div>
 	</section>
 
 	<script src="/frontend/js/miUser.js"></script>

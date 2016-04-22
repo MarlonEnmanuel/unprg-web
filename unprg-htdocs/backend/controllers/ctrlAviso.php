@@ -87,7 +87,7 @@ class ctrlAviso extends abstractController {
             $this->responder(false, "No se pudo guardar el aviso", $aviso->md_detalle, null, $mysqli);
         }
 
-        $this->responder(true, "Aviso creado!");
+        $this->responder(true, "Aviso creado!",'',$aviso->toArray());
     }
 
 
