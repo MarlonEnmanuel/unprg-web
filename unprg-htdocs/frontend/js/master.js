@@ -27,8 +27,6 @@ jQuery.fn.extend({
 				var hora = $(f[3]).val();
 				var min  = $(f[4]).val();
 
-				debugger;
-
 				if(mes.length==1) mes = '0'+mes;
 				if(dia.length==1) dia = '0'+dia;
 				if(hora.length==1) hora = '0'+hora;

@@ -90,6 +90,8 @@ class config {
 		//Nombre del sitio web
 		$metas .= '<meta property="og:site_name" 	content="UNPRG" />';
 
+		$metas .= '<meta name="theme-color" content="#008dd2">';
+
 		return $metas;
 	}
 

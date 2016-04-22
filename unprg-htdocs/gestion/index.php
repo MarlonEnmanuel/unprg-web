@@ -91,7 +91,6 @@
 			.fail(function(data) {
 				$form.find('input[type=submit]').removeAttr('disabled').val('Entrar');
 				$info.html('Error del Servidor');
-				console.log(data);
 			});
 		});
 	</script>

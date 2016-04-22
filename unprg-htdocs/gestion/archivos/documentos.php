@@ -119,12 +119,10 @@
 					}, 600);
 				}
 				if(!rpta.estado){
-					console.log(rpta);
 					form.find('input[type=submit]').removeAttr('disabled');
 				}
 			})
 			.fail(function(rpta) {
-				console.log(rpta);
 				info.html('Error de conección');
 				form.find('input[type=submit]').removeAttr('disabled');
 			});
