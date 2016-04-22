@@ -5,11 +5,13 @@
 	<title>Document</title>
 </head>
 <body>
-	<select name="holi" id="1" disabled>
-		<option value="1">Opcion 1</option>
-		<option value="2">Opcion 2</option>
-		<option value="3">Opcion 3</option>
-		<option value="4">Opcion 4</option>
-	</select>
+	<textarea>
+		<ul>
+			<li>Hola</li>
+			<li>Dos</li>
+			<li>Uno</li>
+			<li>Cuatro</li>
+		</ul>
+	</textarea>
 </body>
 </html>

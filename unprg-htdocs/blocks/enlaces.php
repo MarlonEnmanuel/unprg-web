@@ -15,6 +15,7 @@
 			this.$el.html(this.template(this.model.toJSON()));
 			this.$el.attr('href', this.model.get('link'));
 			this.$el.attr('target', '_blank');
+			this.$el.attr('title', this.model.get('descripcion'));
 			return this;
 		}
 	});

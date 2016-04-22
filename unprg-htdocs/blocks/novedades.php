@@ -47,7 +47,10 @@
 			</div>
 		</div>
 		<div class="bklast__col bgc bklast__doc plx__item">
-			<div class="bklast__col__titulo ff--26 ff--special cc--azul2">Documentos</div>
+			<div class="bklast__col__titulo ff--26 ff--special cc--azul2">
+				<a href="/documentos/investigacion.php">Documentos</a>
+				<a href="/documentos/" class="bklast__col__ver"> Ver Todo</a>
+			</div>
 			<div class="bklast__col__cont bklast__doc__cont">
 				<script type="text/template" id="template_documento" data-tag="div" data-class="bklast__doc__el">
 					<span class="icon-file-pdf ff--44 cc--gris2"></span>
