@@ -1,3 +1,15 @@
+sgw.Routers.Documento = Backbone.Router.extend({
+	routes : {
+		"" : "onAll",
+		":md5" : "onSingle"
+	},
+	onAll : function(){
+		app.md5 = null;
+	},
+	onSingle : function(md5){
+		app.md5 = md5;
+	}
+});
 
 sgw.Views.Grupo = Backbone.View.extend({
 	tagName 	: $('#template_grupo').attr('data-tag'),
@@ -9,14 +21,68 @@ sgw.Views.Grupo = Backbone.View.extend({
 	},
 });
 
-sgw.Views.Documento = Backbone.View.extend({
-	tagName 	: $('#template_documento').attr('data-tag'),
-	className 	: $('#template_documento').attr('data-class'),
-	template 	: _.template($('#template_documento').html()),
+sgw.Views.Visor = Backbone.View.extend({
+	tagName 	: $('#template_visor').attr('data-tag'),
+	className 	: $('#template_visor').attr('data-class'),
+	template 	: _.template($('#template_visor').html()),
 	render : function(){
 		this.$el.html(this.template(this.model.toJSON()));
 		return this.$el;
 	},
+});
+
+sgw.Views.Documento = Backbone.View.extend({
+	tagName 	: $('#template_documento').attr('data-tag'),
+	className 	: $('#template_documento').attr('data-class'),
+	template 	: _.template($('#template_documento').html()),
+	events : {
+		"click .bkdocs__el__datos__nombre" : "navegar",
+		"click .bkdocs__el__datos__cerrar" : "close"
+	},
+	initialize : function(){
+		var self = this;
+		routers.documento.on('route:onAll', function(){
+			self.hide();
+		});
+		routers.documento.on('route:onSingle', function(){
+			if(app.md5 == self.model.get('md5')){
+				self.show();
+			}else{
+				self.hide();
+			}
+		});
+	},
+	render : function(){
+		this.$el.html(this.template(this.model.toJSON()));
+		return this.$el;
+	},
+	navegar : function(){
+		Backbone.history.navigate(this.model.get('md5'), {trigger: true});
+	},
+	show : function(){
+		var self = this;
+		if(!self.visor){
+			self.visor = new sgw.Views.Visor({model: self.model});
+			self.visor.render().appendTo(self.$el);
+		}
+		self.$el.addClass('visor');
+		self.visor.$el.slideDown(400);
+		var off = self.$el.offset().top-50;
+		$('html,body').animate({scrollTop: off}, 400);
+	},
+	hide : function(){
+		var self = this;
+		if(self.visor){
+			self.visor.$el.slideUp(200, function(){
+				self.$el.removeClass('visor');
+			});
+		}
+	},
+	close : function(){
+		var self = this;
+		self.hide();
+		Backbone.history.navigate("", {trigger: false});
+	}
 });
 
 sgw.Collections.Grupos = Backbone.Collection.extend({
@@ -56,6 +122,8 @@ sgw.Collections.Documentos = Backbone.Collection.extend({
 
 
 $(document).ready(function($) {
+
+	routers.documento = new sgw.Routers.Documento();
 	
 	collections.documentos = new sgw.Collections.Documentos({});
 
@@ -89,6 +157,13 @@ $(document).ready(function($) {
 		_(data).each(function(el, index){
 			collections.grupos.add(el);
 		});
+
+		Backbone.history.start({
+			root : "documentos/",
+			pushState : true
+		});
+
+		app.paralax();
 	});
 
 	collections.documentos.fetch();

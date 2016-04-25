@@ -1,2 +1,2 @@
 RewriteEngine On
-RewriteRule ^([a-z0-9]+)$ /documentos/index.php?md5=$1
+RewriteRule ^([a-z0-9]+)$ /documentos/index.php
