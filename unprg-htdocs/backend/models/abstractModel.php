@@ -93,6 +93,7 @@ class abstractModel {
                 }
             }
         }
+        $array['md5'] = md5($this->id);
         return $array;
     }
 }

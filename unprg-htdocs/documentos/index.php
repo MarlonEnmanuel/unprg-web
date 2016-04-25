@@ -46,9 +46,14 @@
 	</script>
 	
 	<script type="text/template" data-tag="article" data-class="bkdocs__el" id="template_documento">
-		<div class="bkdocs__el__nombre"><a href="<%= ruta %>"><%= nombre %></a></div>
-		<div class="bkdocs__el__fecha"><%= fchReg.toDateString() %></div>
-		<div class="bkdocs__el__tipo"><%= tipo %></div>
+		<div class="bkdocs__el__nombre">
+			<a href="<%= ruta %>" download="<%= nombre.replace(/\s/g,"_") %>" title="Descargar">
+				<span class="icon-cloud-download"></span>
+			</a>
+			<a href="<%= ruta %>"><%= nombre %></a>
+		</div>
+		<div class="bkdocs__el__fecha" title="<%= fchReg.toDateString() %>"><%= fchReg.toDateString() %></div>
+		<div class="bkdocs__el__tipo" title="<%= tipo %>"><%= tipo %></div>
 	</script>
 	
 	<script type="text/javascript" src="/frontend/js/documentos.js"></script>
