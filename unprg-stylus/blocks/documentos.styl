@@ -24,7 +24,6 @@
 		display: block
 		box-sizing: border-box
 		margin-left: 3%
-		cursor: pointer
 		transition: background-color 150ms
 		border-bottom: 1px solid crgb(ccGris5)
 		font-size: 10px
@@ -33,41 +32,109 @@
 		@media all and (max-width: 460px)
 			font-size: 8px
 			margin-left: 0
-		&:after
-		&:before
-			content: ""
-			display: block
-			clear: both
 			
-		&:hover
-			background-color: crgb(ccGris6)
-			.bkdocs__el__nombre
-				text-decoration: underline
-		div
-			height: 100%
-			float: left
-			box-sizing: border-box
-			vertical-align: middle
-			font-weight: bold
-			white-space: nowrap
-			overflow: hidden
-			text-overflow: ellipsis
-		&__nombre
-			padding: 0.8em 0.1em
-			color : crgb(ccGris2)
-			width: 66%
-			font-size: 1.7em
-			vertical-align: middle
-			font-stretch: condensed
+		&__datos
+			display: table
+			height: 46px
+			width: 100%
+			&:hover
+				background-color: crgb(ccGris6)
+			
 			a
-				text-decoration: none
-		&__fecha
-			color : crgb(ccAzul3)
-			width: 15%
-			font-size: 1.4em
-			padding: 1.18em 0.1em
-		&__tipo
-			color : crgb(ccGris2)
-			width: 19%
-			font-size: 1.4em
-			padding: 1.18em 0.1em
+				text-decoration: none !important
+				&:hover
+					text-decoration: underline !important
+				
+			& > div
+				display: table-cell
+				vertical-align: middle
+				height: 100%
+				font-weight: bold
+				overflow: hidden
+				
+			&__nombre
+				padding: 0.8em 0.1em
+				color : crgb(ccGris2)
+				width: auto
+				font-size: 1.7em
+				vertical-align: middle
+				font-stretch: condensed
+				cursor: pointer
+				&:hover
+					text-decoration: underline
+			&__fecha
+				color : crgb(ccAzul3)
+				width: 7em
+				font-size: 1.4em
+				text-align: center
+				@media all and (max-width: 620px)
+					width: 6em
+			&__tipo
+				color : crgb(ccGris2)
+				width: 11em
+				font-size: 1.4em
+				text-align: center
+				@media all and (max-width: 620px)
+					width: 10em
+				@media all and (max-width: 460px)
+					width: 8em
+			&__descarga
+				line-height: 0.4em
+				font-size: 2.4em
+				width: 1.4em
+				text-align: center
+				color: crgb(ccAzul1)
+				&:hover
+					color: crgb(ccAzul2)
+					
+			&__cerrar
+				font-size: 0px
+				width: 0px
+				text-align: right
+				color: crgb(ccGris4)
+				cursor: pointer
+				&:hover
+					color: red
+					
+		&__visor
+			display: none
+			width: 100%
+			&__file
+				display: bottom
+				width: 100%
+	
+
+
+.visor
+	.bkdocs__el
+		
+		&__wraper
+			background-color: crgb(ccAzul1)
+			padding: 0 1em
+			
+		&__datos
+			&:hover
+				background-color: transparent
+			
+			&__nombre
+				color : white
+				cursor: normal
+				&:hover
+					text-decoration: none !important
+				
+			&__fecha
+				color : crgb(ccAzul3)
+				
+			&__tipo
+				color : crgb(ccGris5)
+				font-size: 0px
+				width: 0px
+				
+			&__descarga
+				color: crgb(ccAmarillo1)
+				&:hover
+					color: crgb(ccAmarillo2)
+					
+			&__cerrar
+				font-size: 2em
+				width: 1.8em

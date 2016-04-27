@@ -17,7 +17,8 @@
 	
 	a
 		text-decoration: none
-		display: block
+		&:hover
+			text-decoration: underline
 	
 	&__col
 		box-sizing: border-box
@@ -29,6 +30,14 @@
 		&__titulo
 			padding-bottom: 0.2em
 			border-bottom: 1px solid crgb(ccGris5)
+		&__ver
+			font-size: 0.65em
+			text-transform: uppercase
+			font-family: font1
+			font-stretch: condensed
+			font-weight: bold
+			color: crgb(ccGris3)
+			display: inline-block
 			
 	&__avi
 		@media all and (max-width: 700px)
@@ -101,3 +110,5 @@
 					
 			&__text
 				margin-bottom: 0.4em
+				display: block
+				min-height: 2em

@@ -4,11 +4,12 @@
 	sgw.Models = {};
 	sgw.Views = {};
 	sgw.Collections = {};
-
+	sgw.Routers = {};
 	window.models = {};
 	window.views = {};
 	window.collections = {};
-	sgw.slider={};
+	window.routers = {};
+	window.app = {};
 })();
 
 jQuery.fn.extend({
@@ -130,7 +131,7 @@ $(document).ready(function($) {
 		}
 	});
 // Efecto paralax
-	(function(){
+	app.paralax = function(){
 		var options = {
 			timeTransition : 500,
 			timeTransitionSlow : 1400,
@@ -185,5 +186,6 @@ $(document).ready(function($) {
 			});
 			paralax();
 		}, options.delay);
-	})();
+	};
+	app.paralax();
 });

@@ -50,6 +50,7 @@ class Documento extends abstractModel{
         $stmt->close();
         return $this->md_estado;
 	}
+    
 
     public function getbyNombre($nombre){
         if($this->checkMysqli()===false) return false; //verificar estado de mysqli

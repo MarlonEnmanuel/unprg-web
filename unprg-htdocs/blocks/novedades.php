@@ -47,11 +47,14 @@
 			</div>
 		</div>
 		<div class="bklast__col bgc bklast__doc plx__item">
-			<div class="bklast__col__titulo ff--26 ff--special cc--azul2">Documentos</div>
+			<div class="bklast__col__titulo ff--26 ff--special cc--azul2">
+				<a href="/documentos/investigacion.php">Documentos</a>
+				<a href="/documentos/" class="bklast__col__ver"> Ver Todo</a>
+			</div>
 			<div class="bklast__col__cont bklast__doc__cont">
 				<script type="text/template" id="template_documento" data-tag="div" data-class="bklast__doc__el">
 					<span class="icon-file-pdf ff--44 cc--gris2"></span>
-					<div class="bklast__doc__el__text ff--14"><%= nombre %></div>
+					<div class="bklast__doc__el__text ff--14"><a href="/documentos/<%= md5 %>"><%= nombre %></a></div>
 					<div class="bklast__doc__el__fech ff--12 ff--r ff--b cc--azul3"><%= fchReg.toLocaleDateString() %></div>
 				</script>
 				<div class="bklast__error ff--14 ff--c cc--gris1">No se pudo obtener contenido :(</div>
