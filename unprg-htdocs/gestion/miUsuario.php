@@ -76,7 +76,7 @@
 		<div class="block bksgw--first sgwUser">
 			<div class="block__wraper--slim">
 
-				<div class="bksgw__titulo">Cambio de Contraseña</div>
+				<div class="bksgw__titulo">Cambio de Contraseña/AUN EN CONSTRUCCION/</div>
 
 				<form class="bksgw__form formUser" enctype="multipart/form-data">
 					<div class="bksgw__form__el">
@@ -105,7 +105,45 @@
 	</section>
 
 	<script src="/frontend/js/miUser.js"></script>
-	
+	<script type="text/javascript">
+		$('.formAviso').submit(function(event) {
+					event.preventDefault();
+					var form = $(this);
+					var info = form.find('.info');
+					
+					form.find('input[type=submit]').attr('disabled','disabled');
+					var data = new FormData(form[0]);
+					data.append('accion','nuevoAviso');
+					console.log(data);
+					$.ajax({
+						url: "<?= config::getPath(false, '/backend/controllers/ctrlAviso.php') ?>",
+						type: 'post',
+						dataType: 'json',
+						data: data,
+						cache: false,
+			            contentType: false,
+				        processData: false
+					})
+					.done(function(rpta) {
+						info.text(rpta.mensaje);
+						if(rpta.detalle=='redirect'){
+							window.setTimeout(function(){
+								window.location = rpta.data;
+							}, 600);
+						}
+						if(!rpta.estado){
+							console.log(rpta);
+							form.find('input[type=submit]').removeAttr('disabled');
+						}
+					})
+					.fail(function(rpta) {
+						console.log(rpta);
+						info.text('Error de conección');
+						form.find('input[type=submit]').removeAttr('disabled');
+					});
+					
+				});
+	</script>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>
 </body>
 </html>
