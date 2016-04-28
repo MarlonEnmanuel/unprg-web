@@ -125,7 +125,7 @@ $(document).ready(function($) {
 
 	routers.documento = new sgw.Routers.Documento();
 	
-	collections.documentos = new sgw.Collections.Documentos({});
+	collections.documentos = new sgw.Collections.Documentos();
 
 	collections.grupos = new sgw.Collections.Grupos();
 
