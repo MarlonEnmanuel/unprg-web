@@ -20,7 +20,7 @@ class ctrlAgenda extends abstractController{
 					'fchInicio'		=> array('type'=>'datetime'),
 					'texto'			=> array('type'=>'string'),
 					'lugar'			=> array('type'=>'string', 'max'=>45),
-					'mapa'			=> array('type'=>'url'),
+					'mapa'			=> array('type'=>'string'),
 					'organizador'	=> array('type'=>'string')
 				));
 
@@ -35,13 +35,25 @@ class ctrlAgenda extends abstractController{
         $agenda->organizador 		= $ipts['organizador'];
         $agenda->idUsuario 			= $Usuario['id'];
 
-        if(!$agenda->set()){
+        $ruta=$agenda->mapa;
+        $fr='<iframe';
+        $fra='</iframe>';
+        $in=substr($ruta, 0,7);
+        $fi=substr($ruta, -9);
+        
+        if($in==$fr and $fi==$fra){
+        	if(!$agenda->set()){
         	$this->responder(false,"No se pudo guardar la agenda",$agenda->md_detalle,null);
+        	}
+        }else {
+        	$this->responder(false,"Error en la direccion de mapa", $agenda->md_detalle,null);
         }
+        
 
         $agenda->fchInicio = $agenda->fchInicio->format('U');
 
         $this->responder(true, "Agenda Creada!", '', $agenda->toArray());
+        
 	}
 
 

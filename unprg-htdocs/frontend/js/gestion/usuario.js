@@ -8,9 +8,8 @@ sgw.Views.Enlaces = Backbone.View.extend({
 	initialize : function(){
 		var self = this;
 		self.collection.on('add', function(model){
-			models.usuario.get('id') == model.get('idUsuario');
-				var view = new sgw.Views.Enlace({model: model});
-				view.render().appendTo(self.$container1);
+			var view = new sgw.Views.Enlace({model: model});
+			view.render().appendTo(self.$container1);
 
 		});
 	},
@@ -45,7 +44,7 @@ sgw.Views.Enlace = Backbone.View.extend({
 		views.editar.load(this.model);
 	},
 	onDelete : function(){
-		var conf = confirm('Está seguro de eliminar el enlace: '+this.model.toString());
+		var conf = confirm('Está seguro que desea resetear el usuario: '+this.model.toString());
 		if(conf){
 			this.model.destroy({wait: true});
 		}

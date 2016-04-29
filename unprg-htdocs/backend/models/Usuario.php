@@ -204,7 +204,7 @@ class Usuario extends abstractModel{
 
         if($this->checkMysqli()===false) return false;
 
-    	$sql="SELECT * FROM usuario where email NOT LIKE 'admin@admin.com' ";
+    	$sql="SELECT * FROM usuario ";
     	if($active){
     		$sql .="and estado =1";
     	}
