@@ -7,7 +7,7 @@
 		//Las siguientes variables son obigatorias
 		"url" 			=> config::getAbsPath('/gestion'),
 		"type" 			=> "place",
-		"title" 		=> "SG WEB | Nueva Agenda",
+		"title" 		=> "SG WEB | Agendas",
 		"description" 	=> "Sistema de gestión de contenidos para la UNPRG",
 		"image" 		=> config::$path_socialImage
 	);
@@ -122,14 +122,14 @@
 					<input type="text" name="organizador" maxlength="45" value="<%= organizador %>" />
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Enlace Activo</label>
+					<label title="Link a un enlace externo y/o interno">Agenda Activa</label>
 					<input type="checkbox" name="estado" <% if(estado){ %>checked<% } %> />
 				</div>
 				<div class="bksgw__form__el--w">
 					<div class="bksgw__form__hr"></div>
 				</div>
 				<div class="bksgw__form__el">
-					<input type="submit" class="btn--azul" value="Modificar Enlace">
+					<input type="submit" class="btn--azul" value="Modificar Agenda">
 				</div>
 				<div class="bksgw__form__el">
 					<input type="reset" class="btn--amarillo" value="Cancelar">
@@ -178,7 +178,7 @@
 					<input type="text" name="organizador" maxlength="45"/>
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Enlace Activo</label>
+					<label title="Link a un enlace externo y/o interno">Agenda Activo</label>
 					<input type="checkbox" name="estado" checked />
 				</div>
 				<div class="bksgw__form__el--w">
