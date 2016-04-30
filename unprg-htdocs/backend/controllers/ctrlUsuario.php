@@ -10,6 +10,8 @@ class ctrlUsuario extends abstractController {
             case 'login': $this->login(); break;
 
             case 'logout': $this->logout(); break;
+
+            case 'cambiarContra': $this->cambiarContra(); break;
             
             default: $this->responder(false, "Acción no soportada"); break;
         }
@@ -294,7 +296,7 @@ class ctrlUsuario extends abstractController {
             'nuevoPass2'=> array('type'=>'string', 'min'=>40, 'max'=>40),
         ));
 
-        if($Usuario['password']!=$ipts['pass']){
+        if($Usuario['password']!=sha1($ipts['pass'])){
             $this->responder(false, 'Contraseña incorrecta');
         }
 
@@ -306,7 +308,7 @@ class ctrlUsuario extends abstractController {
 
         $user = new Usuario($mysqli, $Usuario['id']);
         $user->get();
-        $user->password = $ipts['nuevoPass'];
+        $user->password = sha1($ipts['nuevoPass']);
 
         if(!$user->edit()){
             $this->responder(false, 'Error al guardar cambios', $user->md_detalle);

@@ -12,6 +12,22 @@ sgw.Views.Usuario = Backbone.View.extend({
 
 });
 
+sgw.Views.Contra = Backbone.View.extend({
+	tagName:'for',
+	className:'formPass',
+	events : {
+		'submit' : 'cambiarContra'
+	},
+	cambiarContra : function(event){
+		debugger;
+		event.preventDefault();
+		var data = this.$el.serializeObject();
+		var user = new sgw.Models.Usuario(data);
+		user.save({attrs : {'_accion': 'cambiarContra'}});
+	}
+
+});
+
 sgw.Models.Usuario = Backbone.Model.extend({
 	url : '/backend/controllers/ctrlUsuario.php'
 });
@@ -22,7 +38,11 @@ $(document).ready(function($) {
 	
 	views.usuario = new sgw.Views.Usuario({
 		el:$('.formUser')
-	});	
+	});
+
+	views.contra = new sgw.Views.Contra({
+		el:$('.formPass')
+	});
 
 	models.usuario.fetch();
 	models.usuario.on('change', function() {

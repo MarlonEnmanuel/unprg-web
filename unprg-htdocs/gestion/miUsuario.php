@@ -78,7 +78,7 @@
 
 				<div class="bksgw__titulo">Cambio de Contraseña/AUN EN CONSTRUCCION/</div>
 
-				<form class="bksgw__form formUser" enctype="multipart/form-data">
+				<form class="bksgw__form formPass" enctype="multipart/form-data">
 					<div class="bksgw__form__el">
 						<label>Reseteo</label>
 						<div class="bksgw__form__info" name="reset"></div>
