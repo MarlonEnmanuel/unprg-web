@@ -141,6 +141,7 @@ class Usuario extends abstractModel{
 
     	$sql = "UPDATE usuario SET 
 					email=?, 
+                    password=?,
 					nombres=?, 
 					apellidos=?, 
 					oficina=?, 
@@ -149,8 +150,9 @@ class Usuario extends abstractModel{
 				WHERE idUsuario=?";
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
-		$stmt->bind_param('sssssii',
+		$stmt->bind_param('ssssssii',
 			$this->email,
+            $this->password,
 			$this->nombres,
 			$this->apellidos,
 			$this->oficina,
