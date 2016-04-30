@@ -7,7 +7,7 @@
 		//Las siguientes variables son obigatorias
 		"url" 			=> config::getAbsPath('/gestion'),
 		"type" 			=> "place",
-		"title" 		=> "SG WEB | Enlaces",
+		"title" 		=> "SG WEB | Usuarios",
 		"description" 	=> "Sistema de gestión de contenidos para la UNPRG",
 		"image" 		=> config::$path_socialImage
 	);
@@ -206,7 +206,7 @@
 					<div class="bksgw__form__hr"></div>
 				</div>
 				<div class="bksgw__form__el">
-					<input type="submit" class="btn--azul" value="Crear Enlace">
+					<input type="submit" class="btn--azul" value="Crear Usuario">
 				</div>
 			</form>
 		</div>

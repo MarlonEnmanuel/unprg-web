@@ -106,14 +106,14 @@
 				</div>
 
 				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Enlace Activo</label>
+					<label title="Link a un enlace externo y/o interno">Portada Activa</label>
 					<input type="checkbox" name="estado" <% if(estado){ %>checked<% } %> />
 				</div>
 				<div class="bksgw__form__el--w">
 					<div class="bksgw__form__hr"></div>
 				</div>
 				<div class="bksgw__form__el">
-					<input type="submit" class="btn--azul" value="Modificar Enlace">
+					<input type="submit" class="btn--azul" value="Modificar Portada">
 				</div>
 				<div class="bksgw__form__el">
 					<input type="reset" class="btn--amarillo" value="Cancelar">
@@ -147,7 +147,7 @@
 					<div class="bksgw__form__hr"></div>
 				</div>
 				<div class="bksgw__form__el">
-					<input type="submit" class="btn--azul" value="Crear Enlace">
+					<input type="submit" class="btn--azul" value="Crear Portada">
 				</div>
 			</form>
 		</div>

@@ -7,7 +7,7 @@
 		//Las siguientes variables son obigatorias
 		"url" 			=> config::getAbsPath('/gestion'),
 		"type" 			=> "place",
-		"title" 		=> "SG WEB | Nuevo Aviso",
+		"title" 		=> "SG WEB | Avisos",
 		"description" 	=> "Sistema de gestión de contenidos para la UNPRG",
 		"image" 		=> config::$path_socialImage
 	);
@@ -93,24 +93,24 @@
 					<input type="text" name="titulo"  value="<%= titulo %>" />
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Breve descripcion del Enlace">Descripcion del Aviso</label>
+					<label Descripcion del Aviso</label>
 					<input type="text" name="descripcion" value="<%= texto %>" />
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Link Externo</label>
+					<label >Link Externo</label>
 					<input type="text" name="link" value="<%= link %>" disabled />
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Mostrar al Abrir</label>
+					<label >Mostrar al Abrir</label>
 
 					<input type="checkbox" name="emergente" <% if(emergente){ %>checked<% } %> />
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Aviso Destacado</label>
+					<label >Aviso Destacado</label>
 					<input type="checkbox" name="destacado" <% if(destacado){ %>checked<% } %> />
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Enlace Activo</label>
+					<label >Aviso Activo</label>
 					<input type="checkbox" name="estado" <% if(estado){ %>checked<% } %> />
 				</div>
 
@@ -118,7 +118,7 @@
 					<div class="bksgw__form__hr"></div>
 				</div>
 				<div class="bksgw__form__el">
-					<input type="submit" class="btn--azul" value="Modificar Enlace">
+					<input type="submit" class="btn--azul" value="Modificar Aviso">
 				</div>
 				<div class="bksgw__form__el">
 					<input type="reset" class="btn--amarillo" value="Cancelar">
@@ -179,7 +179,7 @@
 					<div class="bksgw__form__hr"></div>
 				</div>
 				<div class="bksgw__form__el">
-					<input type="submit" class="btn--azul" value="Crear Enlace">
+					<input type="submit" class="btn--azul" value="Crear Aviso">
 				</div>
 			</form>
 		</div>

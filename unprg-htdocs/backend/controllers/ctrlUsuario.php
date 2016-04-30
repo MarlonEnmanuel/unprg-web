@@ -226,6 +226,7 @@ class ctrlUsuario extends abstractController {
         $aux = new Usuario($mysqli);
 
         $lista=$aux->search(false,$_limit,$_offset);
+        
 
         if(empty($lista)){
             $this->responder(false, 'No hay usuarios para mostrar');
@@ -234,6 +235,9 @@ class ctrlUsuario extends abstractController {
         $usuarios = array();
         foreach ($lista as $key => $user) {
             $usuarios[$key] = $user->toArray();
+            if($usuarios[$key]['email']==$Usuario['email']){
+                unset($usuarios[$key]);
+            }
         }
 
         $this->responder(true, 'usuarios obtenidos', '', $usuarios);
