@@ -52,7 +52,7 @@
 	<script type="text/template" data-tag="div" data-class="sgwenl__el cc--gris1 bgc--gris5" id="template_enlace">
 		<div class="sgwenl__el__buttons">
 			<span class="sgwenl__el__buttons__edit icon-pencil2" title="Modificar"></span>
-			<span class="sgwenl__el__buttons__delete icon-cross" title="Resetear"></span>
+			<span class="sgwenl__el__buttons__delete icon-loop" title="Resetear"></span>
 		</div>
 		<div class="sgwenl__el__nombre ff--b cc--azul2">
 			<%= email %> 

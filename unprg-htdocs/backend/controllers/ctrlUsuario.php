@@ -302,7 +302,9 @@ class ctrlUsuario extends abstractController {
         if($ipts['nuevoPass']!=$ipts['nuevoPass']){
             $this->responder(false, 'Las contraseñas no coinciden');
         }
-
+        echo sha1($ipts['pass']);
+        echo sha1($ipts['nuevoPass']);
+        exit;
         $mysqli = $this->getMysqli();
 
         $user = new Usuario($mysqli, $Usuario['id']);

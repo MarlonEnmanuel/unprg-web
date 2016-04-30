@@ -44,7 +44,7 @@ sgw.Views.Enlace = Backbone.View.extend({
 		views.editar.load(this.model);
 	},
 	onDelete : function(){
-		var conf = confirm('Está seguro que desea resetear el usuario: '+this.model.toString());
+		var conf = confirm('Está seguro que desea resetear la contraseña del usuario: '+this.model.toString());
 		if(conf){
 			this.model.destroy({wait: true});
 		}
@@ -124,7 +124,7 @@ sgw.Views.Nuevo = Backbone.View.extend({
 sgw.Models.Enlace = Backbone.Model.extend({
 	url : '/backend/controllers/ctrlUsuario.php',
 	toString : function(){
-		return this.get('nombre');
+		return this.get('email');
 	}
 });
 
