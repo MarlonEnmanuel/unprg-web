@@ -236,9 +236,8 @@ class ctrlUsuario extends abstractController {
 
         $usuarios = array();
         foreach ($lista as $key => $user) {
-            $usuarios[$key] = $user->toArray();
-            if($usuarios[$key]['email']==$Usuario['email']){
-                unset($usuarios[$key]);
+            if(strpos($user->permisos,'admin')===false){
+                array_push($usuarios, $user);
             }
         }
 
