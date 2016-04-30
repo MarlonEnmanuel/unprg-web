@@ -22,8 +22,8 @@ sgw.Views.Contra = Backbone.View.extend({
 		debugger;
 		event.preventDefault();
 		var data = this.$el.serializeObject();
-		var user = new sgw.Models.Usuario(data);
-		user.save({attrs : {'_accion': 'cambiarContra'}});
+		var user = new sgw.Models.Usuario();
+		user.save(data, {attrs:{'_accion': 'cambiarContra'}});
 	}
 
 });
