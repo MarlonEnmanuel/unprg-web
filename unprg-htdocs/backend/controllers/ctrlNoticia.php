@@ -94,7 +94,7 @@ class ctrlNoticia extends abstractController{
 
     	$noticia->titulo 		= $ipts['titulo'];
     	$noticia->json 			= $ipts['json'];
-    	$noticia->extra 		= $ipts['extra'];
+    	$noticia->extras 		= $ipts['extra'];
     	$noticia->estado		= $ipts['estado'];
 
     	if($noticia->edit()==false){

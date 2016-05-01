@@ -100,7 +100,7 @@
 					<input type="text" name="extra"  value="<%=extras%>"/>
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Enlace Activo</label>
+					<label title="Link a un enlace externo y/o interno">Noticia Activa</label>
 					<input type="checkbox" name="estado" <% if(estado){ %>checked<% } %> />
 				</div>
 				<div class="bksgw__form__el--w">
