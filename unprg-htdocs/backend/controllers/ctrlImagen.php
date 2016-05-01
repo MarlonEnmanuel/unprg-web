@@ -34,15 +34,15 @@ class ctrlImagen extends abstractController {
             
             $galeria = new Galeria($mysqli);
             $galeria->nombre = $this->stripAccents(strtolower(trim( $ipts['nombre'] )));
-            $img->titulo     = $ipts['nombre'];
-            $img->descripcion= ''; //Corregir luego
+            $galeria->titulo     = $ipts['nombre'];
+            $galeria->descripcion= ''; //Corregir luego
 
             $galaux = new Galeria($mysqli);
             if($galaux->getbyNombre($galeria->nombre))
                 $this->responder(false, 'Ya existe una galería con este nombre', '', null, $mysqli);
 
             if($galeria->set()==false)
-                $this->responder(false, "Error al insertar la galería", '', null, $mysqli);
+                $this->responder(false, "Error al insertar la galería", $galeria->md_detalle, null, $mysqli);
 
 
             foreach ($files as $key => $file) {

@@ -11,10 +11,7 @@ class Imagen extends abstractModel{
     public $version;
     public $idUsuario;
     public $idGaleria;
-
-	public function __construct(&$mysqli,$id=null){
-		parent::__construct($mysqli, $id);
-	}
+    
 
 	public function get(){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
