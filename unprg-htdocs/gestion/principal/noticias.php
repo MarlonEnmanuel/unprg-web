@@ -56,29 +56,28 @@
 			<span class="sgwenl__el__buttons__delete icon-cross" title="Eliminar"></span>
 		</div>
 		<div class="sgwenl__el__nombre ff--b cc--azul2">
-			<%= nombre %> 
+			<%= titulo %> 
 			<% if(estado){ %>
 				<span> ( Activo )</span>
 			<% }else{ %>
 				<span> ( Inactivo )</span>
 			<% } %>
 		</div>
-		<div class="sgwenl__el__descripcion"><%= descripcion %></div>
-		<a href="<%= link %>" target="_black" class="sgwenl__el__link cc--azul3"><%= link %></a>
+		
+		
 	</script>
 
 
 	<script type="text/template" data-tag="div" data-class="sgwenl__el cc--gris1 bgc--gris5" id="template_enlace_otro">
 		<div class="sgwenl__el__nombre ff--b cc--azul2">
-			<%= nombre %> 
+			<%= titulo %> 
 			<% if(estado){ %>
 				<span> ( Activo )</span>
 			<% }else{ %>
 				<span> ( Inactivo )</span>
 			<% } %>
 		</div>
-		<div class="sgwenl__el__descripcion"><%= descripcion %></div>
-		<a href="<%= link %>" target="_black" class="sgwenl__el__link cc--azul3"><%= link %></a>
+		
 		<div class="sgwenl__el__usuario">Creado por: <%= usuario %></div>
 	</script>
 
@@ -88,16 +87,17 @@
 			<div class="bksgw__titulo">Modificar Noticia</div>
 			<form class="bksgw__form" enctype="multipart/form-data">	
 				<div class="bksgw__form__el">
-					<label>Nombre del Enlace</label>
-					<input type="text" name="nombre" maxlength="45" value="<%= nombre %>" />
+					<label>Titulo de la Noticia</label>
+					<input type="text" name="titulo"  value="<%=titulo%>"/>
+				</div>
+				
+				<div class="bksgw__form__el--w">
+					<label>Cuerpo de la Noticia</label>
+					<textarea name="json" rows="10"><%=json%></textarea>
 				</div>
 				<div class="bksgw__form__el">
-					<label title="Breve descripcion del Enlace">Descripcion del Enlace</label>
-					<input type="text" name="descripcion" value="<%= descripcion %>" />
-				</div>
-				<div class="bksgw__form__el">
-					<label title="Link a un enlace externo y/o interno">Link Externo</label>
-					<input type="text" name="link" value="<%= link %>" />
+					<label>Extras de la Noticia</label>
+					<input type="text" name="extra"  value="<%=extras%>"/>
 				</div>
 				<div class="bksgw__form__el">
 					<label title="Link a un enlace externo y/o interno">Enlace Activo</label>
@@ -123,11 +123,11 @@
 			<form class="bksgw__form hide" enctype="multipart/form-data">	
 				<div class="bksgw__form__el">
 					<label>Titulo de la Noticia</label>
-					<input type="text" name="titulo" maxlength="45" />
+					<input type="text" name="titulo"  />
 				</div>
 				<div class="bksgw__form__el">
 					<label>Foto Principal</label>
-					<input type="text" name="principal" maxlength="45" />
+					<input type="text" name="principal"  />
 				</div>
 				<div class="bksgw__form__el--w">
 					<label>Cuerpo de la Noticia</label>
@@ -135,23 +135,23 @@
 				</div>
 				<div class="bksgw__form__el">
 					<label>Extras de la Noticia</label>
-					<input type="text" name="extras" maxlength="45" />
+					<input type="text" name="extras"  />
 				</div>
 				<div class="bksgw__form__el">
 					<label>Nombre de Galeria</label>
-					<input type="text" name="galeria" maxlength="45" />
+					<input type="text" name="galeria"  />
 				</div>
 				<div class="bksgw__form__el--w">
 					<div class="bksgw__form__hr"></div>
 				</div>
 				<div class="bksgw__form__el">
-					<input type="submit" class="btn--azul" value="Crear Enlace">
+					<input type="submit" class="btn--azul" value="Crear Noticia">
 				</div>
 			</form>
 		</div>
 	</script>
 
-	<script type="text/javascript" src="/frontend/js/gestion/enlaces.js"></script>
+	<script type="text/javascript" src="/frontend/js/gestion/noticias.js"></script>
 
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/footer.php'; ?>
 </body>

@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/config.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/backend/models/abstractModel.php';
 
-class Enlace extends abstractModel{
+class Noticia extends abstractModel{
 	public $fchReg;
 	public $titulo;
 	public $json;
@@ -12,7 +12,7 @@ class Enlace extends abstractModel{
 	public $idGaleria;
 	public $idImagen;
 
-	public function get(){
+    public function get(){
 		if($this->checkMysqli()===false) return false;
 
 		if(!isset($this->id)){
@@ -46,6 +46,7 @@ class Enlace extends abstractModel{
             if(config::$isDebugging) $this->md_detalle = $stmt->error;      //detalle del procedimiento
         }
         $stmt->close();
+        return $this->md_estado;
 	}
 
 	public function set(){
@@ -54,14 +55,13 @@ class Enlace extends abstractModel{
             $this->md_mensaje = "La noticia ya tiene id";
             return $this->md_estado = false;
         }
-        $sql="INSERT INTO noticia(titulo,json,extras,estado,idUsuario,idGaleria,idImagen) VALUES(?,?,?,?,?,?,?)";
-        $stmt=$this->mysqli->stmt_init;
+        $sql="INSERT INTO noticia(titulo,json,extras,idUsuario,idGaleria,idImagen) VALUES(?,?,?,?,?,?)";
+        $stmt=$this->mysqli->stmt_init();
         $stmt->prepare($sql);
-        $stmt->bind_param('sssiiii',
+        $stmt->bind_param('sssiii',
         	$this->titulo,
         	$this->json,
         	$this->extras,
-        	$this->estado,
         	$this->idUsuario,
         	$this->idGaleria,
         	$this->idImagen
@@ -197,15 +197,15 @@ class Enlace extends abstractModel{
         $stmt->bind_param('s', $nombre);    //se vinculan los parámetros
         $stmt->execute();  
         $stmt->bind_result(
-        	$_id,
-        	$_fchReg,
-        	$_titulo,
-        	$_json,
-        	$_extras,
-        	$_estado,
-        	$_idUsuario,
-        	$_idGaleria,
-        	$_idImagen
+        	$this->id,
+        	$this->fchReg,
+        	$this->titulo,
+        	$this->json,
+        	$this->extras,
+        	$this->estado,
+        	$this->idUsuario,
+        	$this->idGaleria,
+        	$this->idImagen
         	);
         if($stmt->fetch()){
             $this->md_estado=true;
