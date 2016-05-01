@@ -103,6 +103,10 @@
 					<label title="Link a un enlace externo y/o interno">Noticia Activa</label>
 					<input type="checkbox" name="estado" <% if(estado){ %>checked<% } %> />
 				</div>
+				<div class="bksgw__form__el">
+					<label title="Link a un enlace externo y/o interno">Noticia Destacada</label>
+					<input type="checkbox" name="destacado" <% if(destacado){ %>checked<% } %> />
+				</div>
 				<div class="bksgw__form__el--w">
 					<div class="bksgw__form__hr"></div>
 				</div>
@@ -140,6 +144,14 @@
 				<div class="bksgw__form__el">
 					<label>Nombre de Galeria</label>
 					<input type="text" name="galeria"  />
+				</div>
+				<div class="bksgw__form__el">
+					<label >Noticia Activa</label>
+					<input type="checkbox" name="estado" />
+				</div>
+				<div class="bksgw__form__el">
+					<label>Noticia Destacada</label>
+					<input type="checkbox" name="destacado" />
 				</div>
 				<div class="bksgw__form__el--w">
 					<div class="bksgw__form__hr"></div>

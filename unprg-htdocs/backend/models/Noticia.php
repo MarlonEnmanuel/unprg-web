@@ -8,6 +8,7 @@ class Noticia extends abstractModel{
 	public $json;
 	public $extras;
 	public $estado;
+    public $destacado;
 	public $idUsuario;
 	public $idGaleria;
 	public $idImagen;
@@ -33,6 +34,7 @@ class Noticia extends abstractModel{
 			$this->json,
 			$this->extras,
 			$this->estado,
+            $this->destacado,
 			$this->idUsuario,
 			$this->idGaleria,
 			$this->idImagen
@@ -55,13 +57,15 @@ class Noticia extends abstractModel{
             $this->md_mensaje = "La noticia ya tiene id";
             return $this->md_estado = false;
         }
-        $sql="INSERT INTO noticia(titulo,json,extras,idUsuario,idGaleria,idImagen) VALUES(?,?,?,?,?,?)";
+        $sql="INSERT INTO noticia(titulo,json,extras,estado,destacado,idUsuario,idGaleria,idImagen) VALUES(?,?,?,?,?,?,?,?)";
         $stmt=$this->mysqli->stmt_init();
         $stmt->prepare($sql);
-        $stmt->bind_param('sssiii',
+        $stmt->bind_param('sssiiiii',
         	$this->titulo,
         	$this->json,
         	$this->extras,
+            $this->estado,
+            $this->destacado,
         	$this->idUsuario,
         	$this->idGaleria,
         	$this->idImagen
@@ -88,14 +92,15 @@ class Noticia extends abstractModel{
             $this->md_mensaje = "Debe indicar un id para buscar";
             return $this->md_estado = false;
         }
-        $sql="UPDATE noticia SET titulo=?,json=?,extras=?,estado=? WHERE idNoticia=?";
+        $sql="UPDATE noticia SET titulo=?,json=?,extras=?,estado=?,destacado=? WHERE idNoticia=?";
         $stmt = $this->mysqli->stmt_init();
         $stmt->prepare($sql);
-        $stmt->bind_param('sssii',
+        $stmt->bind_param('sssiii',
             $this->titulo,
             $this->json,
             $this->extras,
             $this->estado,
+            $this->destacado,
             $this->id
             );
         if($stmt->execute()){
@@ -159,6 +164,7 @@ class Noticia extends abstractModel{
         	$_json,
         	$_extras,
         	$_estado,
+            $_destacado,
         	$_idUsuario,
         	$_idGaleria,
         	$_idImagen
@@ -172,6 +178,7 @@ class Noticia extends abstractModel{
         	$not->json=$_json;
         	$not->extras=$_extras;
         	$not->estado=$_estado;
+            $not->destacado=$_destacado;
         	$not->idUsuario=$_idUsuario;
         	$not->idGaleria=$_idGaleria;
         	$not->idImagen=$_idImagen;
@@ -203,6 +210,7 @@ class Noticia extends abstractModel{
         	$this->json,
         	$this->extras,
         	$this->estado,
+            $this->destacado,
         	$this->idUsuario,
         	$this->idGaleria,
         	$this->idImagen

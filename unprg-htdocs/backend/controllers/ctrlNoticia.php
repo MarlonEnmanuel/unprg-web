@@ -20,7 +20,9 @@ class ctrlNoticia extends abstractController{
     		'principal'		=> array('type'=>'string'),
     		'json' 			=> array('type'=>'string'),
     		'extras'		=> array('type'=>'string'),
-    		'galeria' 		=> array('type'=>'string')
+    		'galeria' 		=> array('type'=>'string'),
+            'estado'        => array('type'=>'boolean'),
+            'destacado'     => array('type'=>'boolean'),
     		));
 
     	$mysqli=$this->getMysqli();
@@ -35,6 +37,8 @@ class ctrlNoticia extends abstractController{
     	$noticia->idUsuario		= $Usuario['id'];
     	$noticia->principal		= $ipts['principal'];
     	$noticia->galeria 		= $ipts['galeria'];
+        $noticia->estado        = $ipts['estado'];
+        $noticia->destacado     = $ipts['destacado'];
 
     	//Obtiene el id de la Imagen Portada
     	$img = new Imagen($mysqli);
@@ -70,7 +74,8 @@ class ctrlNoticia extends abstractController{
     		'titulo' 	=> array('type'=>'string'),
     		'json' 		=> array('type'=>'string'),
     		'extra' 	=> array('type'=>'string'),
-    		'estado' 	=> array('type'=>'boolean')
+    		'estado' 	=> array('type'=>'boolean'),
+            'destacado' => array('type'=>'boolean' )
     		));
 
     	$mysqli=$this->getMysqli();
@@ -96,6 +101,7 @@ class ctrlNoticia extends abstractController{
     	$noticia->json 			= $ipts['json'];
     	$noticia->extras 		= $ipts['extra'];
     	$noticia->estado		= $ipts['estado'];
+        $noticia->destacado     = $ipts['destacado'];
 
     	if($noticia->edit()==false){
     		$this->responder(false,"No se pudo actualizar la noticia",$noticia->md_detalle);
