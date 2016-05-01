@@ -35,7 +35,6 @@ class Galeria extends abstractModel {
             $this->fchReg,
             $this->nombre,
             $this->titulo,
-            $this->descripcion,
             $this->estado
             );
         if($stmt->fetch()){
@@ -54,12 +53,12 @@ class Galeria extends abstractModel {
     public function getbyNombre($nombre){
         if($this->checkMysqli()===false) return false; //verificar estado de mysqli
 
-        if(!isset($this->id)){                  //debe tener id para buscar
+        if(!isset($nombre)){                  //debe tener id para buscar
             $this->md_mensaje = "Debe indicar un nombre para buscar";
             return $this->md_estado = false;
         }
 
-        $sql = "select * from galeria where nombre=?";
+        $sql = "select * from galeria where nombre like ?";
         $stmt = $this->mysqli->stmt_init(); //se inicia la consulta preparada
         $stmt->prepare($sql);               //se arma la consulta preparada
         $stmt->bind_param('s', $nombre);  //se vinculan los parámetros
@@ -69,7 +68,6 @@ class Galeria extends abstractModel {
             $this->fchReg,
             $this->nombre,
             $this->titulo,
-            $this->descripcion,
             $this->estado
             );
         if($stmt->fetch()){
@@ -102,7 +100,6 @@ class Galeria extends abstractModel {
             $_fchReg,
             $_nombre,
             $_titulo,
-            $_descripcion,
             $_estado
             );
         $list=array();
@@ -128,10 +125,10 @@ class Galeria extends abstractModel {
             return $this->md_estado = false;
         }
 
-        $sql="INSERT INTO galeria(nombre, titulo, descripcion) VALUES (?)";
+        $sql="INSERT INTO galeria(nombre, titulo) VALUES (?,?)";
         $stmt=$this->mysqli->stmt_init();
         $stmt->prepare($sql);
-        $stmt->bind_param('sss', $this->nombre, $this->titulo, $this->descripcion );
+        $stmt->bind_param('ss', $this->nombre, $this->titulo);
         if($stmt->execute()){
             $this->id=$stmt->insert_id;
             $this->md_estado=true;
