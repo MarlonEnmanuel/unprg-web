@@ -290,33 +290,31 @@ class ctrlUsuario extends abstractController {
         $Usuario = $this->checkAccess();
 
         $ipts = $this->getFilterInputs( array(
-            'pass'      => array('type'=>'string', 'min'=>40, 'max'=>40),
-            'nuevoPass' => array('type'=>'string', 'min'=>40, 'max'=>40),
-            'nuevoPass2'=> array('type'=>'string', 'min'=>40, 'max'=>40),
+            'pass'      => array('type'=>'string'),
+            'nuevoPass' => array('type'=>'string'),
+            'nuevoPass2'=> array('type'=>'string'),
         ));
 
-        if($Usuario['password']!=sha1($ipts['pass'])){
+        if($Usuario['password']!=$ipts['pass']){
             $this->responder(false, 'Contraseña incorrecta');
         }
 
-        if($ipts['nuevoPass']!=$ipts['nuevoPass']){
+        if($ipts['nuevoPass']!=$ipts['nuevoPass2']){
             $this->responder(false, 'Las contraseñas no coinciden');
         }
-        echo sha1($ipts['pass']);
-        echo sha1($ipts['nuevoPass']);
-        exit;
+        
         $mysqli = $this->getMysqli();
 
         $user = new Usuario($mysqli, $Usuario['id']);
         $user->get();
-        $user->password = sha1($ipts['nuevoPass']);
+        $user->password = $ipts['nuevoPass'];
 
         if(!$user->edit()){
             $this->responder(false, 'Error al guardar cambios', $user->md_detalle);
         }
 
         $_SESSION['Usuario'] = $user->toArray();
-        $this->responder(true, 'Cambios guardados');
+        $this->responder(true, 'Contraseña cambiada');
     }
 
 }

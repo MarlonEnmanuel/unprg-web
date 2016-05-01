@@ -19,9 +19,12 @@ sgw.Views.Contra = Backbone.View.extend({
 		'submit' : 'cambiarContra'
 	},
 	cambiarContra : function(event){
-		debugger;
 		event.preventDefault();
 		var data = this.$el.serializeObject();
+		data.pass=hex_sha1(data.pass);
+		data.nuevoPass=hex_sha1(data.nuevoPass);
+		data.nuevoPass2=hex_sha1(data.nuevoPass2);
+		
 		var user = new sgw.Models.Usuario();
 		user.save(data, {attrs:{'_accion': 'cambiarContra'}});
 	}
@@ -44,7 +47,9 @@ $(document).ready(function($) {
 		el:$('.formPass')
 	});
 
-	models.usuario.fetch();
+	models.usuario.fetch({
+		report:false
+	});
 	models.usuario.on('change', function() {
 		views.usuario.mostrarDatos(models.usuario);
 	});

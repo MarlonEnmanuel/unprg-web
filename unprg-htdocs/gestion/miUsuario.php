@@ -28,12 +28,14 @@
 
 	<!-- Importación de Scripts -->
 		<?= config::getScripts() ?>
+		<script src="/frontend/jslibs/sha1.js"></script>
 		
 	<!-- Fin de la importación -->
 </head>
 <body>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgheader.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/sgnav.php'; ?>
+	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/gestion/status.php'; ?>
 	
 	<section class="bksgw">
 
@@ -76,24 +78,21 @@
 		<div class="block bksgw--first sgwUser">
 			<div class="block__wraper--slim">
 
-				<div class="bksgw__titulo">Cambio de Contraseña/AUN EN CONSTRUCCION/</div>
+				<div class="bksgw__titulo">Cambio de Contraseña</div>
 
 				<form class="bksgw__form formPass" enctype="multipart/form-data">
-					<div class="bksgw__form__el">
-						<label>Reseteo</label>
-						<div class="bksgw__form__info" name="reset"></div>
-					</div>
+					
 					<div class="bksgw__form__el">
 						<label>Contraseña Actual</label>
-						<input type="password" name="passAct" >
+						<input type="password" name="pass" >
 					</div>
 					<div class="bksgw__form__el">
 						<label>Contraseña Nueva</label>
-						<input type="password" name="passNew">
+						<input type="password" name="nuevoPass">
 					</div>
 					<div class="bksgw__form__el">
 						<label>Repetir Contraseña</label>
-						<input type="password" name="passNew2">
+						<input type="password" name="nuevoPass2">
 					</div>
 					<div class="bksgw__form__el">
 					<input type="submit" class="btn--azul" value="Cambiar Contraseña">

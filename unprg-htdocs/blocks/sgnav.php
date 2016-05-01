@@ -11,9 +11,13 @@ $sgnavItems = array(
 		'text' => 'Pagina Principal',
 		'menu' => array(
 			array('text' => 'Gestión de Avisos', 'perm' => 'aviso',  'link' => '/gestion/principal/avisos.php'),
-			array('text'=> 'Gestión de Portada', 'perm' => 'portada','link' => '/gestion/principal/portadas.php'),
+			array('text' => 'Gestión de Agenda', 'perm' => 'agenda', 'link' => '/gestion/principal/agenda.php'),
 			array('text'=> 'Gestión de Enlaces', 'perm' => 'enlace', 'link' => '/gestion/principal/enlaces.php'),
-			array('text' => 'Gestión de Agenda', 'perm' => 'agenda', 'link' => '/gestion/principal/agenda.php')
+			array('text'=> 'Gestión de Noticia', 'perm' => 'noticia', 'link' => '/gestion/principal/noticias.php'),
+			array('text'=> 'Gestión de Portada', 'perm' => 'portada','link' => '/gestion/principal/portadas.php')
+
+			
+			
 		)
 	),
 	array(

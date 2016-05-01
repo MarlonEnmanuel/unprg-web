@@ -127,6 +127,7 @@ sgw.Views.Nuevo = Backbone.View.extend({
 		event.preventDefault();
 		var form = this.$el.find('.bksgw__form');
 		var data = form.serializeObject();
+		data.mapa=$(data.mapa).attr('src');
 		
 	    model = new sgw.Models.Agenda(data);
 	    model.on('sync', function(){
