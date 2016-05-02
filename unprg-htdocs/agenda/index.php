@@ -45,8 +45,13 @@
 
 	<script type="text/template" data-tag="article" data-class="bkagen__el" id="template_agenda">
 		<div class="bkagen__el__wraper">
-			<div class="bkagen__el__fecha">
-			
+			<div class="bkagen__el__date">
+				<div class="bkagen__el__date__fech">
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates error itaque corporis fuga, sint esse sed sit ipsam porro rem quidem cupiditate libero voluptate, eum. Suscipit eveniet ea odit quae.
+				</div>
+				<div class="bkagen__el__date__hora">
+					
+				</div>
 			</div>
 			<div class="bkagen__el__titulo ff--18 ff--special cc--azul2">
 				<%= titulo %>
