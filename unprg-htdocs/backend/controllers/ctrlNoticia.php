@@ -26,7 +26,9 @@ class ctrlNoticia extends abstractController{
     		));
 
     	$mysqli=$this->getMysqli();
-
+        $j=$ipts['json'];
+        echo $j;
+        exit;
 
     	$noticia= new Noticia($mysqli);
     	$aux= new Noticia($mysqli);
@@ -175,15 +177,16 @@ class ctrlNoticia extends abstractController{
 
         $lista = $aux->search(false, $_limit, $_offset);
 
-        $enlaces = array();
-        foreach ($lista as $key => $enlace) {
-        	$user = new Usuario($mysqli, $enlace->idUsuario);
+        $not = array();
+        foreach ($lista as $key => $noticia) {
+        	$user = new Usuario($mysqli, $noticia->idUsuario);
         	$user->get();
-            $enlaces[$key] = $enlace->toArray();
-            $enlaces[$key]['usuario'] = $user->email;
+            $not[$key] = $noticia->toArray();
+            $not[$key]['usuario'] = $user->email;
+            
         }
 
-        $this->responder(true, 'noticias obtenidas', '', $enlaces);
+        $this->responder(true, 'noticias obtenidas', '', $not);
     }
     
 

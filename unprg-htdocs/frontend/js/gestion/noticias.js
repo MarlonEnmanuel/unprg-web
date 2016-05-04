@@ -125,7 +125,6 @@ sgw.Views.Nuevo = Backbone.View.extend({
 		event.preventDefault();
 		var form = this.$el.find('.bksgw__form');
 		var data = form.serializeObject();
-		
 	    model = new sgw.Models.Enlace(data);
 	    model.on('sync', function(){
 	    	collections.enlaces.add(model);
