@@ -157,8 +157,15 @@ class ctrlNoticia extends abstractController{
         if(empty($lista)) $this->responder(true, 'No hay noticias para mostrar');
         $not = array();
 
+        
         foreach ($lista as $key => $noticia) {
             $not[$key]=$noticia->toArray();
+            $id=$not[$key]['idImagen'];
+            $img = new Imagen($mysqli,$id);
+            $img->get();
+            $not[$key]['ruta']=$img->ruta;
+            
+
         }
 
         $this->responder(true, 'Noticias obtenidas', '', $not);

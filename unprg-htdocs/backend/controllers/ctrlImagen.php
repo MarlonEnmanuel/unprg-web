@@ -155,6 +155,7 @@ class ctrlImagen extends abstractController {
         $this->responder(true, 'Imagenes obtenidas', '', $imagenes);
     }
 
+    
 }
 
 $ctrl = new ctrlImagen(true);

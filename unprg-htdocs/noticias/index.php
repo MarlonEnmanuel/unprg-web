@@ -34,6 +34,9 @@
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/header.php'; ?>
 	<?php require_once $_SERVER['DOCUMENT_ROOT'].'/blocks/nav.php'; ?>
 	
+
+	
+
 	<section class="block bknoti">
 		<div class="block__wraper bknoti__wraper">
 			<div class="bknoti__titulo ff--30 ff--special cc--azul2">Noticias de la UNPRG</div>
