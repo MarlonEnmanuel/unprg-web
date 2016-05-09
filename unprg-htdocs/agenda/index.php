@@ -43,23 +43,48 @@
 		</div>
 	</section>
 
-	<script type="text/template" data-tag="article" data-class="bkagen__el" id="template_agenda">
-		<div class="bkagen__el__wraper">
-			<div class="bkagen__el__date">
-				<div class="bkagen__el__date__fech">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates error itaque corporis fuga, sint esse sed sit ipsam porro rem quidem cupiditate libero voluptate, eum. Suscipit eveniet ea odit quae.
-				</div>
-				<div class="bkagen__el__date__hora">
-					
-				</div>
+	<script type="text/template" data-tag="div" data-class="block__wraper bkagen__vi" id="template_agenda_single">
+		<div class="bkagen__vi__head">
+			<div class="bkagen__vi__head__dt ff--c">
+				<div class="bkagen__vi__head__dt__mes ff--26 ff--b cc--gris2"><%= fchInicio.getStrMonth() %></div>
+				<div class="bkagen__vi__head__dt__dia ff--40 cc--azul2 ff--special"><%= fchInicio.getStrDate() %></div>
 			</div>
-			<div class="bkagen__el__titulo ff--18 ff--special cc--azul2">
-				<%= titulo %>
+			<div class="bkagen__vi__head__hr">
+				<div class="bkagen__vi__head__hr__dia ff--22 cc--gris2 ff--special"><%= fchInicio.getStrDay() %></div>
+				<div class="bkagen__vi__head__hr__hora ff--22 cc--gris2 ff--b"><%= fchInicio.getStrHour() %></div>
 			</div>
-			<div class="bkagen__el__descrip cc--gris2">
+			<div class="bkagen__vi__head__titulo ff--26 cc--azul3 ff--special"><%= titulo %></div>
+		</div>
+		<div class="bkagen__vi__body">
+			<div class="bkagen__vi__body__descrip ff--16 cc--gris2">
 				<%= texto %>
 			</div>
-			<div class="bkagen__el__elip ff--22 cc--gris2">...</div>
+		</div>
+	</script>
+
+	<script type="text/template" data-tag="article" data-class="bkagen__el" id="template_agenda">
+		<div class="bkagen__el__wraper">
+			<div class="bkagen__el__dt">
+				<div class="bkagen__el__dt__fch">
+					<div class="bkagen__el__dt__fch__name ff--14 cc--amarillo2"><%= fchInicio.getStrDay() %></div>
+					<div class="bkagen__el__dt__fch__dia ff--38 ff--special cc"><%= fchInicio.getStrDate() %></div>
+					<div class="bkagen__el__dt__fch__mes ff--14 ff--b cc--amarillo1"><%= fchInicio.getStrMonth().substr(0,3) %></div>
+				</div>
+			</div>
+			<dib class="bkagen__el__enc">
+				<div class="bkagen__el__enc__hora bgc--gris2">
+					<div class="bkagen__el__enc__hora__h ff--16 ff--r ff--b cc">
+						<%= fchInicio.getStrHour() %>
+					</div>
+				</div>
+				<div class="bkagen__el__enc__titulo ff--22 ff--special cc--azul2">
+					<%= titulo %>
+				</div>
+			</dib>
+			<div class="bkagen__el__body">
+				<div class="bkagen__el__body__descrip ff--16 cc--gris2"><%= texto %></div>
+				<div class="bkagen__el__body__elip ff--22 cc--gris2">...</div>
+			</div>
 		</div>
 	</script>
 	

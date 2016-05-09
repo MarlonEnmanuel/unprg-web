@@ -135,33 +135,24 @@ class ctrlAgenda extends abstractController{
 
 
 	public function readList (){
-		$top=5;$offset=0;
+		$_limit   = $this->getInputInt('_limit', array('min'=>1, 'required'=>false));
+		$_offset  = $this->getInputInt('_offset', array('min'=>0, 'required'=>false));
 
 		$mysqli=$this->getMysqli();
 		$aux=new Agenda($mysqli);
 
-		$lista=$aux->searchNow();
+		$lista=$aux->searchNow($_limit, $_offset);
+
+		if(empty($lista)) $this->responder(false, 'No hay eventos para mostrar');
 		$agendas=array();
 
 		foreach ($lista as $key => $agenda) {
-			$arrayAgenda=array(
-				'id'			=> $agenda->id,
-				'fecha'			=> $agenda->fchInicio->format(config::$date_fechaHora),
-				'titulo'		=> $agenda->titulo,
-				'texto'			=> $agenda->texto,
-				'lugar'			=> $agenda->lugar,
-				'mapa'			=> $agenda->mapa,
-				'organizador'	=> $agenda->organizador,
-				'estado'		=> $agenda->estado,
-				'idUsuario'		=> $agenda->idUsuario,
-				'fchInicio_dia' => $agenda->fchInicio->format('d'),
-				'fchInicio_mes' => $this->mothName($agenda->fchInicio->format('m')),
-				'fchInicio_hora'=> $agenda->fchInicio->format('H:i')
-				);
-			$agendas[$key]=$arrayAgenda;
+			$agendas[$key]=$agenda->toArray();
+			$agendas[$key]['fchInicio'] = $agendas[$key]['fchInicio']->format('U');
+			$agendas[$key]['fchInicio_dia'] = $agenda->fchInicio->format('d');
+			$agendas[$key]['fchInicio_mes'] = $this->mothName($agenda->fchInicio->format('m'));
+			$agendas[$key]['fchInicio_hora'] = $agenda->fchInicio->format('H:i');
 		}
-
-		if(empty($agendas)) $this->responder(false, 'No hay eventos para mostrar');
 
         $this->responder(true, 'Agendas Obtenidas', '', $agendas);
 	}

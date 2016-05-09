@@ -1,0 +1,3 @@
+
+ALTER TABLE `unprg-web`.`noticia` 
+ADD COLUMN `destacado` TINYINT NOT NULL DEFAULT 0 COMMENT '' AFTER `estado`;

@@ -102,13 +102,19 @@ class Agenda extends abstractModel{
 	}
 
 
-	public function searchNow(){
+	public function searchNow($_limit=null, $_offset=0){
 		if($this->checkMysqli()===false) return false; //verificar estado de mysqli
-		$sql = "select * from agenda where estado=? and fchInicio> NOW() ORDER BY fchInicio asc limit 5";
+
+		$sql = "select * from agenda where estado=1 and fchInicio> NOW() ORDER BY fchInicio asc ";
+
+        if(is_int($_limit) && $_limit>=1 ){
+            $sql .= " LIMIT ".$_limit;
+            if(is_int($_offset) && $_offset>=1)
+                $sql .= " OFFSET ".$_offset;
+        }
+
 		$stmt = $this->mysqli->stmt_init();
 		$stmt->prepare($sql);
-        $val=1;
-		$stmt->bind_param('i',$val);
 		$stmt->execute();
 		$stmt->bind_result(
 			$_id,

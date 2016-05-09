@@ -7,6 +7,9 @@
 	padding: 4em 0
 	min-height: 350px
 	
+	&__wraper
+		display: none
+	
 	&__titulo
 		display: block
 		margin-bottom: 20px
@@ -23,21 +26,94 @@
 		font-size: 10px
 		vertical-align: top
 		
+		@media all and (max-width: 1100px)
+			width: 33.3333333%
+		@media all and (max-width: 800px)
+			width: 50%
+			padding: 1em 0.9em
+		@media all and (max-width: 560px)
+			font-size: 9px
+			padding: 1em 0.8em
+		@media all and (max-width: 460px)
+			width: 100%
+			padding: 1em 0
+		
 		&__wraper
 			display: block
-			padding: 1em
-			background-color: crgb(ccGris5)
 			border-radius: 3px
-
-		&__fecha
-			margin-bottom: 0.5em
-		&__titulo
-			margin-bottom: 0.5em
-			font-size: 2em
-		&__descrip
-			font-size: 1.5em
-			line-height: 1.4em
-			max-height: 7em
+			background-color: crgb(ccGris5)
 			overflow: hidden
-		&__elip
-			margin-top: -0.3em
+
+		&__dt
+			width: 8em
+			float: left
+			background-color: crgb(ccAzul1)
+			border-radius: 0 0 100% 0
+			margin 0 0 1em 0
+			box-shadow: 0 0 5px 0 rgba(0,0,0,0.8)
+			&__fch
+				padding: 1em
+				padding-bottom: 2em
+				&__name
+					font-stretch: condensed
+					font-weight: bold
+				&__dia
+					margin-top: -0.1em
+					line-height: 1em
+				&__mes
+					text-transform: uppercase
+					padding-top: 0.2em
+		
+		&__enc
+			padding: 1em
+			
+			&__hora
+				padding: 0.8em 1em
+				margin-bottom: 1em
+			&__titulo
+				padding: 0 1em
+			
+		&__body
+			width: 100%
+			padding: 1em
+			box-sizing: border-box
+			width: 100%
+			&:after
+			&:before
+				content: ""
+				display: block
+				clear: both
+			&__descrip
+				line-height: 1.4em
+				max-height: 5.5em
+				overflow: hidden
+			&__elip
+				margin-top: -0.3em
+				
+	&__vi
+		display: none
+		&__head
+			&__dt
+				display: inline-block
+				&__dia
+					font-size: 8em
+					box-sizing: border-box
+					margin-top: -0.2em
+				&__mes
+					//text-transform: uppercase
+					//font-stretch: condensed
+					border-bottom: 1px solid crgb(ccGris4)
+					padding-bottom: 0.1em
+			&__hr
+				margin-left: 2em
+				display: inline-block
+				&__dia
+					margin-bottom: 0.4em
+			&__titulo
+				margin-left: 1em
+				display: inline-block
+				
+		&__body
+			&__descrip
+				margin-top: 2em
+				line-height: 1.5em

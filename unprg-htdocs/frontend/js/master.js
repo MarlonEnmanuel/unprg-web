@@ -43,7 +43,7 @@ jQuery.fn.extend({
 });
 
 Date.prototype.toDateString = function(){
-	return this.getDate()+'/'+this.getMonth()+'/'+this.getFullYear();
+	return this.getDate()+'/'+(this.getMonth()+1)+'/'+this.getFullYear();
 };
 
 Backbone.sync = function(method, model, options) {
