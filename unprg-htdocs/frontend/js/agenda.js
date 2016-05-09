@@ -22,12 +22,18 @@ sgw.Views.AgendaFull = Backbone.View.extend({
 	tagName 	: $('#template_agenda_single').attr('data-tag'),
 	className 	: $('#template_agenda_single').attr('data-class'),
 	template 	: _.template($('#template_agenda_single').html()),
+	events: {
+		'click .bkagen__vi__head__boton' : 'verTodo'
+	},
 	initialize : function(){
 		this.$el.appendTo('.bkagen');
 	},
 	render : function(){
 		this.$el.html(this.template(this.model.toJSON()));
 		return this.$el;
+	},
+	verTodo : function(){
+		Backbone.history.navigate('', {trigger: true});
 	}
 });
 
@@ -59,7 +65,8 @@ sgw.Routers.Agenda = Backbone.Router.extend({
 			if(model.get('md5')==app.md5){
 				views.agendas.$el.hide();
 				views.agendaFull.model = model;
-				views.agendaFull.render().fadeIn(200);
+				views.agendaFull.render().fadeIn(250);
+				$('html,body').animate({scrollTop: 0}, 500);
 			}
 		});
 	}

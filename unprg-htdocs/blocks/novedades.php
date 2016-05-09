@@ -72,7 +72,7 @@
 						<div class="bklast__age__el__fech__mes ff--special ff--18 cc--amarillo2 ff--r"><%= fchInicio_mes %></div>
 						<div class="bklast__age__el__fech__hor ff--b ff--18"><%= fchInicio_hora %></div>
 					</div>
-					<a class="bklast__age__el__text ff--16 ff--special" href="#"><%= titulo %></a>
+					<a class="bklast__age__el__text ff--16 ff--special" href="/agenda/<%= md5 %>"><%= titulo %></a>
 					<div class="bklast__age__el__place ff--14 ff--r ff--b cc--azul3"><%= lugar %></div>
 				</script>
 				<div class="bklast__error ff--14 ff--c cc--gris1">No se pudo obtener contenido :(</div>

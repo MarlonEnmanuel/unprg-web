@@ -25,6 +25,7 @@
 		box-sizing: border-box
 		font-size: 10px
 		vertical-align: top
+		cursor: pointer
 		
 		@media all and (max-width: 1100px)
 			width: 33.3333333%
@@ -96,6 +97,7 @@
 			font-size: 9px
 			
 		&__head
+			position: relative
 			&:after
 			&:before
 				content: ""
@@ -130,6 +132,13 @@
 				@media all and (max-width: 640px)
 					padding-top: 0.8em
 					
+			&__boton
+				display: inline-block
+				width: 132px
+				position: absolute
+				top: 0
+				right: 0
+					
 		&__body
 			&__descrip
 				margin-top: 2em
@@ -147,8 +156,10 @@
 					width: 50%
 					box-sizing: border-box
 					vertical-align: top
+					padding-right: 1.5em
 					@media all and (max-width: 640px)
 						width: 100%
+						padding-right: 0
 				&__mapa
 					display: inline-block
 					width: 50%

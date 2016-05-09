@@ -45,6 +45,9 @@
 
 	<script type="text/template" data-tag="div" data-class="block__wraper bkagen__vi" id="template_agenda_single">
 		<div class="bkagen__vi__head">
+			<div class="bkagen__vi__head__boton">
+				<div class="btn--amarillo ff--b">Ver Agenda</div>
+			</div>
 			<div class="bkagen__vi__head__fch">
 				<div class="bkagen__vi__head__fch__dt ff--c">
 					<div class="bkagen__vi__head__fch__dt__mes ff--26 ff--b cc--gris2"><%= fchInicio.getStrMonth() %></div>
@@ -75,8 +78,10 @@
 					<br><br><br>
 				</div>
 				<div class="bkagen__vi__body__detalle__mapa ff">
-					<p class="ff--18 ff--b cc--azul3">Mapa</p><br>
-					<iframe src="<%= mapa %>" frameborder="0" style="border:0" allowfullscreen></iframe>
+					<% if(mapa) {%>
+						<p class="ff--18 ff--b cc--azul3">Mapa</p><br>
+						<iframe src="<%= mapa %>" frameborder="0" style="border:0" allowfullscreen></iframe>
+					<% } %>
 				</div>
 			</div>
 		</div>
