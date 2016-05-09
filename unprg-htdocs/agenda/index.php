@@ -45,19 +45,39 @@
 
 	<script type="text/template" data-tag="div" data-class="block__wraper bkagen__vi" id="template_agenda_single">
 		<div class="bkagen__vi__head">
-			<div class="bkagen__vi__head__dt ff--c">
-				<div class="bkagen__vi__head__dt__mes ff--26 ff--b cc--gris2"><%= fchInicio.getStrMonth() %></div>
-				<div class="bkagen__vi__head__dt__dia ff--40 cc--azul2 ff--special"><%= fchInicio.getStrDate() %></div>
-			</div>
-			<div class="bkagen__vi__head__hr">
-				<div class="bkagen__vi__head__hr__dia ff--22 cc--gris2 ff--special"><%= fchInicio.getStrDay() %></div>
-				<div class="bkagen__vi__head__hr__hora ff--22 cc--gris2 ff--b"><%= fchInicio.getStrHour() %></div>
+			<div class="bkagen__vi__head__fch">
+				<div class="bkagen__vi__head__fch__dt ff--c">
+					<div class="bkagen__vi__head__fch__dt__mes ff--26 ff--b cc--gris2"><%= fchInicio.getStrMonth() %></div>
+					<div class="bkagen__vi__head__fch__dt__dia ff--40 cc--azul2 ff--special"><%= fchInicio.getStrDate() %></div>
+				</div>
+				<div class="bkagen__vi__head__fch__hr">
+					<div class="bkagen__vi__head__fch__hr__dia ff--22 cc--gris2 ff--special"><%= fchInicio.getStrDay() %></div>
+					<div class="bkagen__vi__head__fch__hr__hora ff--22 cc--gris2 ff--b"><%= fchInicio.getStrHour() %></div>
+				</div>
 			</div>
 			<div class="bkagen__vi__head__titulo ff--26 cc--azul3 ff--special"><%= titulo %></div>
 		</div>
 		<div class="bkagen__vi__body">
 			<div class="bkagen__vi__body__descrip ff--16 cc--gris2">
 				<%= texto %>
+			</div>
+			<div class="bkagen__vi__body__detalle ff--0">
+				<div class="bkagen__vi__body__detalle__datos ff">
+					<div>
+						<p class="ff--18 ff--b cc--azul3">Lugar</p><br>
+						<p class="tab--2 ff--16 cc--gris2"><%= lugar %></p>
+					</div>
+					<br><br><br>
+					<div>
+						<p class="ff--18 ff--b cc--azul3">Organizador</p><br>
+						<p class="tab--2 ff--16 cc--gris2"><%= organizador %></p>
+					</div>
+					<br><br><br>
+				</div>
+				<div class="bkagen__vi__body__detalle__mapa ff">
+					<p class="ff--18 ff--b cc--azul3">Mapa</p><br>
+					<iframe src="<%= mapa %>" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
 			</div>
 		</div>
 	</script>

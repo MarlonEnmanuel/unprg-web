@@ -61,7 +61,10 @@
 			</div>
 		</div>
 		<div class="bklast__col bgc bklast__age plx__item">
-			<div class="bklast__col__titulo ff--26 ff--special cc--azul2">Agenda</div>
+			<div class="bklast__col__titulo ff--26 ff--special cc--azul2">
+				Agenda
+				<a href="/agenda/" class="bklast__col__ver"> Ver Todo</a>
+			</div>
 			<div class="bklast__col__cont bklast__age__cont">
 				<script type="text/template" id="template_agenda" data-tag="div" data-class="bklast__age__el clean">
 					<div class="bklast__age__el__fech bgc--azul2 cc ff ff--c">
