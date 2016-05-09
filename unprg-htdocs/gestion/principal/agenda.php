@@ -96,7 +96,7 @@
 					<div class="inputDateTime" name="fchInicio">
 						<input type="number" min="1" max="31" maxlength="2" placeholder="Día" value="<%= fchInicio.getDate() %>" />
 						<span>/</span>
-						<input type="number" min="1" max="12" maxlength="2" placeholder="Mes" value="<%= fchInicio.getMonth() %>"/>
+						<input type="number" min="1" max="12" maxlength="2" placeholder="Mes" value="<%= fchInicio.getMonth()+1 %>"/>
 						<span>/</span>
 						<input type="number" min="2000" maxlength="4" placeholder="Año" value="<%= fchInicio.getFullYear() %>"/>
 						<span></span>
@@ -111,7 +111,7 @@
 				</div>
 				<div class="bksgw__form__el">
 					<label title="Copiar de google maps el lugar">Mapa</label>
-					<input type="text" name="mapa" value="<%= mapa %>" />
+					<input type="text" name="mapa" value='<iframe src="<%= mapa %>" frameborder="0" style="border:0" allowfullscreen></iframe>' />
 				</div>
 				<div class="bksgw__form__el--w">
 					<label>Descripcion</label>

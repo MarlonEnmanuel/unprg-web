@@ -97,6 +97,7 @@ sgw.Views.Editar = Backbone.View.extend({
 		var self = this;
 		var form = self.$el.find('.bksgw__form');
 		var data = form.serializeObject();
+		data.mapa=$(data.mapa).attr('src');
 	    self.model.on('sync', function(){
 	    	form[0].reset();
 	    	self.close();
