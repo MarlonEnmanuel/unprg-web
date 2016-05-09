@@ -48,7 +48,7 @@
 						<div class="bknoti__el__port">
 							<span class="bknoti__el__port__icon icon-star-full" title="Destacado"></span>
 							<img class="bknoti__el__port__img" src="/frontend/img/noticia-demo.jpg" alt="noticia portada">
-							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam perspiciatis.</div>
+							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
 						</div>
 						<div class="bknoti__el__texto">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam perspiciatis quis consectetur consequatur reprehenderit nemo nobis ipsum voluptatum rerum sequi non officiis repellat temporibus quas necessitatibus illum hic, tempora, facilis.
@@ -66,7 +66,7 @@
 						<div class="bknoti__el__port">
 							<span class="bknoti__el__port__icon icon-star-full" title="Destacado"></span>
 							<img class="bknoti__el__port__img" src="/frontend/img/noticia-demo.jpg" alt="noticia portada">
-							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, suscipit.</div>
+							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
 						</div>
 						<div class="bknoti__el__texto">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, suscipit, possimus quae ab deleniti, dignissimos libero debitis, quod neque vero esse provident voluptatem. Corrupti ea, libero quaerat sapiente est rem!
@@ -84,7 +84,7 @@
 						<div class="bknoti__el__port">
 							<span class="bknoti__el__port__icon icon-star-full" title="Destacado"></span>
 							<img class="bknoti__el__port__img" src="/frontend/img/noticia-demo.jpg" alt="noticia portada">
-							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur obc.</div>
+							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
 						</div>
 						<div class="bknoti__el__texto">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur obcaecati sunt quo, fugiat natus aliquam, delectus eos necessitatibus error illo, adipisci ipsum, ipsa ullam! Saepe aliquid eligendi aspernatur commodi explicabo?
@@ -102,7 +102,7 @@
 						<div class="bknoti__el__port">
 							<span class="bknoti__el__port__icon icon-star-full" title="Destacado"></span>
 							<img class="bknoti__el__port__img" src="/frontend/img/noticia-demo.jpg" alt="noticia portada">
-							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus eius seq.</div>
+							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
 						</div>
 						<div class="bknoti__el__texto">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus eius sequi voluptates, vel asperiores sint beatae enim nam porro quas debitis aut odio quo impedit. Iure at nemo illum earum.
@@ -120,7 +120,7 @@
 						<div class="bknoti__el__port">
 							<span class="bknoti__el__port__icon icon-star-full" title="Destacado"></span>
 							<img class="bknoti__el__port__img" src="/frontend/img/noticia-demo.jpg" alt="noticia portada">
-							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente minus, .</div>
+							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
 						</div>
 						<div class="bknoti__el__texto">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente minus, corrupti nesciunt atque aperiam, ex nam quisquam dolorum ipsum quasi dolor fugiat harum ut laboriosam reprehenderit quod consequatur nostrum labore!
@@ -138,7 +138,7 @@
 						<div class="bknoti__el__port">
 							<span class="bknoti__el__port__icon icon-star-full" title="Destacado"></span>
 							<img class="bknoti__el__port__img" src="/frontend/img/noticia-demo.jpg" alt="noticia portadadiv">
-							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus nemo .</div>
+							<div class="bknoti__el__port__titulo">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
 						</div>
 						<div class="bknoti__el__texto">
 							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus nemo optio perspiciatis nam cumque qui inventore similique saepe illo, voluptas fuga incidunt, recusandae quidem consectetur eius, accusantium consequatur maxime ratione.

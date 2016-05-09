@@ -88,7 +88,7 @@
 	</script>
 
 	<script type="text/template" data-tag="article" data-class="bkagen__el" id="template_agenda">
-		<div class="bkagen__el__wraper">
+		<div class="bkagen__el__wraper bgc--gris5">
 			<div class="bkagen__el__dt">
 				<div class="bkagen__el__dt__fch">
 					<div class="bkagen__el__dt__fch__name ff--14 cc--amarillo2"><%= fchInicio.getStrDay() %></div>
