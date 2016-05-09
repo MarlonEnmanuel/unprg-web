@@ -35,8 +35,11 @@ class ctrlAgenda extends abstractController{
         $agenda->organizador 		= $ipts['organizador'];
         $agenda->idUsuario 			= $Usuario['id'];
 
+        if(strpos($agenda->mapa, 'https://www.google.com/maps/embed?')===false){
+        	$this->responder(false, "Mapa de google no válido");
+        }
             
-       if(!$agenda->set()){
+        if(!$agenda->set()){
         	$this->responder(false,"No se pudo guardar la agenda",$agenda->md_detalle,null);
         }
         
@@ -89,6 +92,9 @@ class ctrlAgenda extends abstractController{
 		$agenda->organizador 	= $ipts['organizador'];
 		$agenda->estado			= $ipts['estado'];
 
+		if(strpos($agenda->mapa, 'https://www.google.com/maps/embed?')===false){
+        	$this->responder(false, "Mapa de google no válido");
+        }
 
 		if($agenda->edit() == false) {
             $this->responder(false, "No se pudo actualizar el agenda", $agenda->md_detalle);

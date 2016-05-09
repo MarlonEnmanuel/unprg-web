@@ -27,8 +27,6 @@ class ctrlNoticia extends abstractController{
 
     	$mysqli=$this->getMysqli();
         $j=$ipts['json'];
-        echo $j;
-        exit;
 
     	$noticia= new Noticia($mysqli);
     	$aux= new Noticia($mysqli);
